@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
 
 const Profile = () => {
-  const { loading, user } = useAuth0();
+  const { loading, user, getTokenSilently } = useAuth0();
+
+  useEffect(() => {
+    (async () => {
+      const token = await getTokenSilently();
+      console.log('token', token);
+    })();
+  }, [user, getTokenSilently]);
 
   if (loading || !user) return <div>Loading...</div>;
 
@@ -15,5 +22,7 @@ const Profile = () => {
     </>
   );
 };
+
+// Ask him how to get a proper JWT back from Auth0 because at the moment we're getting a malformed JWT error.
 
 export default Profile;

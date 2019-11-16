@@ -19,7 +19,7 @@ function App() {
       </header>
 
       <Switch>
-        <Route path="/" exact />
+        <Route path="/" exact render={() => <div>Home</div>} />
         <PrivateRoute path="/profile" component={Profile} />
       </Switch>
     </div>
