@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Auth0Provider } from './react-auth0-spa';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import config from './auth_config.json';
+import history from './utils/history'
 import store from './app/store';
 import './index.css';
 
-// A function that routes the user to the right place after login
 const onRedirectCallback = appState => {
-  window.history.replaceState(
-    {},
-    document.title,
-    appState && appState.targetUrl ? appState.targetUrl : window.location.pathname
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
   );
 };
 
@@ -28,7 +28,7 @@ const render = () => {
       onRedirectCallback={onRedirectCallback}
     >
       <Provider store={store}>
-        <Router>
+        <Router history={history}>
           <App />
         </Router>
       </Provider>
