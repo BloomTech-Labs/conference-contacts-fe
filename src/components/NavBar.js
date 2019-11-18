@@ -10,6 +10,7 @@ const NavBar = () => {
       <span>
         <NavLink to="/">Home</NavLink>&nbsp;
         <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/users">Users</NavLink>
       </span>
 
       {!isAuthenticated ? (

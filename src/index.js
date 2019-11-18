@@ -4,9 +4,27 @@ import { Auth0Provider } from './react-auth0-spa';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import config from './auth_config.json';
-import history from './utils/history'
+import history from './utils/history';
+
+import ApolloClient, { gql } from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks'
+
 import store from './app/store';
 import './index.css';
+
+const client = new ApolloClient({
+  uri: 'https://api.swaap.cos'
+})
+
+client.query({
+  query: gql`
+    {
+      users {
+        id
+      }
+    }
+  `
+}).then(results => console.log('this is the client', results))
 
 const onRedirectCallback = appState => {
   history.push(
@@ -27,11 +45,11 @@ const render = () => {
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
-      <Provider store={store}>
-        <Router history={history}>
-          <App />
-        </Router>
-      </Provider>
+      <ApolloProvider client={client}>
+          <Router history={history}>
+            <App />
+          </Router>
+      </ApolloProvider>
     </Auth0Provider>,
     document.getElementById('root')
   );
