@@ -17,12 +17,11 @@ const Users = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{'there was an error', error}</p>;
 
-    return data.users.map(({ user }) => {
+    return data.users.map(({ id, name}) => {
         return (
-            <div key={user.id}>
-              <h1>this is an h1</h1>
-                <p>{user.id}</p>
-                <p>{user.name}</p>
+            <div key={id}>
+              <h1>Users</h1>
+                <h2>{name}</h2>
             </div>
         )
     })

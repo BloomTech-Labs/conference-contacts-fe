@@ -21,7 +21,7 @@ function App() {
 
       <Switch>
         <Route path="/" exact render={() => <div>Home</div>} />
-        {/* <Route path="/users" exact component={Users} /> */}
+        <Route path="/users" exact component={Users} />
         <PrivateRoute path="/profile" component={Profile} />
       </Switch>
     </div>
