@@ -13,13 +13,14 @@ import store from './app/store';
 import './index.css';
 
 const client = new ApolloClient({
-  uri: 'https://api.swaap.cos'
+  uri: 'https://lambda-labs-swaap-staging.herokuapp.com/'
 })
 
 client.query({
   query: gql`
     {
       users {
+        name
         id
       }
     }
