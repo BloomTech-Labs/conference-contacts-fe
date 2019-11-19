@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import { gql } from 'apollo-boost';
+import { client } from './index';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -35,6 +37,16 @@ export const Auth0Provider = ({
         const user = await auth0FromHook.getUser();
         const token = await auth0FromHook.getTokenSilently();
         localStorage.setItem('token', token);
+        client.mutate({
+          mutation: gql`
+            mutation CreateUser($data: CreateUserInput!) {
+              createUser(data: $data) {
+                id
+              }
+            }
+          `,
+          variables: { data: user }
+        });
         setUser(user);
       }
 

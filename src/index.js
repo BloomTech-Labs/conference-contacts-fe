@@ -10,7 +10,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import './index.css';
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: 'https://lambda-labs-swaap-staging.herokuapp.com/',
   request: operation => {
     const token = localStorage.getItem('token');
