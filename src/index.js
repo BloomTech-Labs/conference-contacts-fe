@@ -8,7 +8,7 @@ import history from './utils/history';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-import './index.css';
+import './styles/tailwind.css';
 
 export const client = new ApolloClient({
   uri: 'https://lambda-labs-swaap-staging.herokuapp.com/',
