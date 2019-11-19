@@ -2,36 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Auth0Provider } from './react-auth0-spa';
 import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import config from './auth_config.json';
 import history from './utils/history';
 
-import ApolloClient, { gql } from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks'
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-import store from './app/store';
 import './index.css';
 
 const client = new ApolloClient({
-  uri: 'https://lambda-labs-swaap-staging.herokuapp.com/'
-})
-
-client.query({
-  query: gql`
-    {
-      users {
-        name
-        id
+  uri: 'https://lambda-labs-swaap-staging.herokuapp.com/',
+  request: operation => {
+    const token = localStorage.getItem('token');
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
       }
-    }
-  `
-}).then(results => console.log('this is the client', results))
+    });
+  }
+});
 
 const onRedirectCallback = appState => {
-  history.push(
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname
+  history.push(appState && appState.targetUrl
+    ? appState.targetUrl
+    : window.location.pathname
   );
 };
 
@@ -47,9 +41,9 @@ const render = () => {
       onRedirectCallback={onRedirectCallback}
     >
       <ApolloProvider client={client}>
-          <Router history={history}>
-            <App />
-          </Router>
+        <Router history={history}>
+          <App />
+        </Router>
       </ApolloProvider>
     </Auth0Provider>,
     document.getElementById('root')
