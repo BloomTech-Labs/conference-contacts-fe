@@ -8346,8 +8346,9 @@ video {
   z-index: auto;
 }
 
-/* @import "utilities/background-patterns";
-@import "utilities/skew-transforms"; */
+/* @import "utilities/background-patterns"; */
+
+/* @import "utilities/skew-transforms"; */
 
 @media (min-width: 640px) {
   .sm\:sr-only {
