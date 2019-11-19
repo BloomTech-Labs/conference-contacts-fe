@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../components/PrivateRoute';
 import { useAuth0 } from '../react-auth0-spa';
 import NavBar from '../components/NavBar';
-import Profile from '../components/Profile';
+import Profile from '../features/profile/Profile';
 import Users from '../components/Users';
 
 function App() {
