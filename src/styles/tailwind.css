@@ -8346,9 +8346,9 @@ video {
   z-index: auto;
 }
 
-/* @import "utilities/background-patterns"; */
-
-/* @import "utilities/skew-transforms"; */
+.padding-edit-icon {
+  padding: 0 10px 0 10px;
+}
 
 @media (min-width: 640px) {
   .sm\:sr-only {

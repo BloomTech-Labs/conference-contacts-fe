@@ -4,7 +4,6 @@ import PrivateRoute from '../components/PrivateRoute';
 import { useAuth0 } from '../react-auth0-spa';
 import NavBar from '../components/NavBar';
 import Profile from '../features/profile/Profile';
-import Users from '../components/Users';
 
 function App() {
   const { loading } = useAuth0();
@@ -16,12 +15,11 @@ function App() {
   return (
     <div className="App">
       <header>
-        <NavBar />
+        <NavBar className='sticky top-0' />
       </header>
 
       <Switch>
         <Route path="/" exact render={() => <div>Home</div>} />
-        <Route path="/users" component={Users} />
         <PrivateRoute path="/profile" component={Profile} />
       </Switch>
     </div>
