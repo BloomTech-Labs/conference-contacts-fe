@@ -25,12 +25,10 @@
   "scripts": {
     "start": "npm-run-all -p start:css start:js",
     "build": "npm-run-all build:css build:js",
-
     "start:js": "react-scripts start",
     "build:js": "react-scripts build",
     "start:css": "postcss src/styles/tailwind.src.css -o src/styles/tailwind.css -w",
     "build:css": "postcss src/styles/tailwind.src.css -o src/styles/tailwind.css --env production",
-
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

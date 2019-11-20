@@ -19,7 +19,8 @@ export const client = new ApolloClient({
         authorization: token ? `Bearer ${token}` : ''
       }
     });
-  }
+  },
+  connectToDevTools: true
 });
 
 const onRedirectCallback = appState => {
