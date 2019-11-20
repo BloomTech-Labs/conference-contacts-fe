@@ -15,7 +15,10 @@ const Users = () => {
   const { loading, error, data } = useQuery(GET_ALL_USERS);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) {
+    console.error(error);
+    return <p>There was an error.</p>;
+  };
 
   return (
     <>

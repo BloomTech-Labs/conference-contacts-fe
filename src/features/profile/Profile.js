@@ -1,36 +1,43 @@
 import React from 'react';
-import { useAuth0 } from '../../react-auth0-spa';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 const GET_USER_PROFILE = gql`
   query GetUserProfile {
-    users {
-      name
+    user {
       id
+      name
+      picture
     }
   }
 `;
 
 const Profile = () => {
-  const { loading, user } = useAuth0();
-  // const { error, data } = useQuery(GET_USER_PROFILE);
+  const { loading, error, data } = useQuery(GET_USER_PROFILE);
 
-  // if (loading || !user) return <div>Loading...</div>;
-  // if (error) return <p>There was an error: {error}</p>;
- 
+  if (loading || !data) return <div>Loading...</div>;
+  if (error) return <p>There was an error: {error}</p>;
+
+  const { email, name, picture } = data.user;
+
   return (
     <>
       <div className="max-w-sm mx-auto m-10 rounded overflow-hidden shadow-lg">
-        <img className="w-full" src={user.picture} alt={`profile picuture of ${user.name}`} />
+        <img className="w-full" src={picture} alt={`profile picuture of ${name}`} />
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{user.name}</div>
-          {/* <p className="text-gray-700 text-base">{user.email}</p> */}
+          <div className="font-bold text-xl mb-2">{name}</div>
+          {email && <p className="text-gray-700 text-base">{email}</p>}
         </div>
         <div className="px-6 py-4">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            #photography
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            #travel
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+            #winter
+          </span>
         </div>
       </div>
 
