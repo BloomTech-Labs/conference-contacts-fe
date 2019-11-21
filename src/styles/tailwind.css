@@ -8346,6 +8346,8 @@ video {
   z-index: auto;
 }
 
+/* Edit icon */
+
 .padding-edit-icon {
   padding: 0 10px 0 10px;
 }
