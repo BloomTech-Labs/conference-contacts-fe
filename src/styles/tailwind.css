@@ -8461,6 +8461,11 @@ video {
   height: 120%;
 }
 
+.desktop-active {
+  border-bottom: 3px solid #007AFF;
+  padding-bottom: 25px;
+}
+
 @media(max-width:568px){
   .desktop-nav {
     display: none;
