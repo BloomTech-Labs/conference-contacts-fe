@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Settings = () => {
     return (
         <div>
-            <div className='>
+            <div className=''>
                 <h2>Cancel</h2>
                 <h2>Save</h2>
             </div>
