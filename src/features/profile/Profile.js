@@ -1,7 +1,12 @@
 import React from 'react';
 import { useAuth0 } from '../../react-auth0-spa';
-
+// import ReactGA from 'react-ga';
+// function initizeAnalytics() {
+//   ReactGA.initialize('UA-152876258-1');
+//   ReactGA.pageview('/Profile');
+// }
 const Profile = () => {
+  // initizeAnalytics()
   const { loading, user } = useAuth0();
 
   if (loading || !user) return <div>Loading...</div>;
