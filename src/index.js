@@ -10,6 +10,12 @@ import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 
 import './styles/tailwind.css';
 
+
+
+
+
+
+
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_APOLLO_URI,
   request: operation => {
