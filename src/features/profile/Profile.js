@@ -31,10 +31,10 @@ const Profile = () => {
       <>
       <div className='overflow-hidden'>
         <img className="rounded-br-full rounded-tr-full
-        rounded-bl-full -mt-1 -ml-8 left-2 top-0 max-w-xs" src={picture} alt={`profile picuture of ${name}`}/>
+        rounded-bl-full mt-16 -ml-12 left-2 top-0 max-w-sm shadow-md" src={picture} alt={`profile picuture of ${name}`}/>
 
-        <span className='inline-block flex justify-end mr-10'>
-        <svg className='h-12 w-12 bg-gray-400 rounded-full padding-edit-icon align-middle' viewBox="0 0 24 24"xmlns="http://www.w3.org/2000/svg"><path d="M14.34 0c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L15.4.44C15.1.15 14.72 0 14.34 0zm-3.9 3.27l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11-5.31-5.3zm-8.69 9.04L0 19l6.7-1.79-.24-2.16-2.31-.17-.18-2.32" fill="#007AFF"/></svg>
+        <span className='flex justify-end mr-12'>
+        <svg className='h-16 w-16 bg-gray-400 rounded-full padding-edit-icon shadow-sm mb-2' viewBox="0 0 22 20"xmlns="http://www.w3.org/2000/svg"><path d="M14.34 0c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L15.4.44C15.1.15 14.72 0 14.34 0zm-3.9 3.27l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11-5.31-5.3zm-8.69 9.04L0 19l6.7-1.79-.24-2.16-2.31-.17-.18-2.32" fill="#007AFF"/></svg>
         </span>
       </div>
       <div className='mt-8 ml-10'>
