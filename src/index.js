@@ -7,6 +7,8 @@ import history from './utils/history';
 
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
 
 import './styles/tailwind.css';
 
@@ -20,7 +22,11 @@ export const client = new ApolloClient({
       }
     });
   },
-  connectToDevTools: true
+  connectToDevTools: true,
+  link: new HttpLink(),
+  cache: new InMemoryCache({
+    dataIdFromObject: object => object.key || null
+  })
 });
 
 const onRedirectCallback = appState => {

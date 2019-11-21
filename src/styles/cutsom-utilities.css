@@ -103,6 +103,14 @@
     padding-bottom: 25px;
   }
 
+  .desktop-link {
+    color: #007AFF;
+  }
+
+  .social-tag {
+    color: #007AFF;
+  }
+
   @media(max-width:568px){
     .desktop-nav {
         display: none;
