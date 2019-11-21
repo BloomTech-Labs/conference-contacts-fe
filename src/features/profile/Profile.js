@@ -42,7 +42,7 @@ const Profile = () => {
         <h1 className='text-4xl font-medium'>{data.user.name}</h1>
         <p className='text-xl mt-4'>{data.user.industry}</p>
         <p className='text-2xl mt-2'>{data.user.jobtitle}</p>
-        <p className='text-xl mt-6 text-blue-400'>@bobbyhalljr</p>
+        <p className='social-tag text-xl mt-6'>@bobbyhalljr</p>
         <p className='text-xl mt-6'>{data.user.bio}</p>
         <p className='text-xl mt-4'>{data.user.gender}</p>
         <p className='text-xl mt-4'>{data.user.birthdate}</p>
