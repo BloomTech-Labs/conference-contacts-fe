@@ -50,8 +50,8 @@ const NavBar = () => {
               <div className=''>
                 <div className='bg-gray-200 pt-10 shadow-sm'>
                   <div className='w-32 m-auto flex-col justify-center items-center'>
-                    <img className='mb-4 object-cover bg-center rounded-full' src={data.user.picture} alt={`picture of ${data.user.name}`} />
-                    <p className='pb-12 text-2xl pl-2'>{data.user.name}</p>
+                    <img className='mb-4 object-cover bg-center rounded-full' src='' alt={`picture of`} />
+                    <p className='pb-12 text-2xl pl-2'></p>
                     <p className='pb-10'>QR Code goes here</p>
                   </div>
                 </div>
