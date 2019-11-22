@@ -99,8 +99,8 @@
   }
 
   .desktop-active {
-    border-bottom: 3px solid #007AFF;
-    padding-bottom: 25px;
+    border-bottom: 5px solid #007AFF;
+    padding-bottom: 30px;
   }
 
   .desktop-link {
@@ -111,13 +111,13 @@
     color: #007AFF;
   }
 
-  @media(max-width:568px){
+  @media(max-width:700px){
     .desktop-nav {
         display: none;
     }
  }
  
- @media(min-width:568px){
+ @media(min-width:700px){
      .mobile-nav {
          display: none;
      }
