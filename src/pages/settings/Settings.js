@@ -9,22 +9,37 @@ const GET_USER_PROFILE = gql`
     user {
       name
       picture
+      industry
+      jobtitle
+      gender
+      bio
     }
   }
 `;
 
 const UPDATE_USER_INFO = gql`
-    mutation updateUser($id: ID!, $data: updateUserInput!){
-            updateUser(id: $id, data: $data) {
-            id
-            data
-        }
+    mutation updateUser(
+        $id: ID!
+        $name: String
+    ) {
+    updateUser(id: $id, name: $name) {
+        id
+        name
     }
+  }
 `;
 
 const Settings = ({ id }) => {
     let input;
-    const [updateUser] = useMutation(UPDATE_USER_INFO)
+
+    const [nameInput, setNameInput] = useState('')
+    const [industryInput, setIndustryInput] = useState('')
+    const [jobTitleInput, setJobTitleInput] = useState('')
+    const [genderinput, setGenderInput] = useState('')
+    const [bioInput, setBioInput] = useState('')
+
+    const updateUser = useMutation(UPDATE_USER_INFO)
+    console.log(UPDATE_USER_INFO)
     
     const { loading, error, data } = useQuery(GET_USER_PROFILE);
     let [upload, setupload] = useState(null);
@@ -37,11 +52,10 @@ const Settings = ({ id }) => {
     return (
         <div>
             <form
-                onSubmit={e => {
+                onSubmit={(e, { name, picture, birthdate, industry, jobtitle, email, bio }) => {
                     e.preventDefault();
-                    updateUser({ variables: { id, data: input.value } });
-
-                    input.value = '';
+                    updateUser({ variables: { id, name }})
+                    input.value = data.name;
                 }}
             >
                 <div className='pt-32 pb-32 bg-gray-200'>
@@ -67,25 +81,25 @@ const Settings = ({ id }) => {
                                 Name
                             </label>
                             {/* INPUT */}
-                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name" />
+                            <input value={data.user.name} onChange={e => setNameInput(e.target.value)} ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name" />
                         </div>
                         <div className="mb-6 w-2/3 m-auto">
                             <label className="block text-gray-700 text-sm font-bold mb-2" for="industry">
                                 Industry
                             </label>
-                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="industry" type="text" placeholder="Industry" />
+                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={data.user.industry} id="industry" type="text" placeholder="Industry" />
                         </div>
                         <div className="mb-6 w-2/3 m-auto">
                             <label className="block text-gray-700 text-sm font-bold mb-2" for="jobtitle">
                                 Job Title
                             </label>
-                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="jobtitle" type="text" placeholder="Job Title" />
+                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={data.user.jobtitle} id="jobtitle" type="text" placeholder="Job Title" />
                         </div>
                         <div className="mb-6 w-2/3 m-auto">
                             <label className="block text-gray-700 text-sm font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" />
+                            <input ref={node => { input = node }} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={data.user.email} id="email" type="text" placeholder="Email" />
                         </div>
                         <div className="mb-6 w-2/3 m-auto">
                             <label className="block text-gray-700 text-sm font-bold mb-2" for="preferred">
@@ -110,11 +124,11 @@ const Settings = ({ id }) => {
                                 Gender
                             </label>
                             {/* SELECT INPUT */}
-                            <select class="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white">
-                                <option value='' selected data-default>Please pick a gender or (non-binary)</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Non-Binary</option>
+                            <select className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white">
+                                {/* <option selected data-default>Please pick a gender or (non-binary)</option> */}
+                                <option value={data.user.gender}>Male</option>
+                                <option value={data.user.gender}>Female</option>
+                                <option value={data.user.gender}>Non-Binary</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 pt-6 pr-4 flex items-center px-2 text-gray-700">
                                 {/* ARROW SVG */}
@@ -128,7 +142,7 @@ const Settings = ({ id }) => {
                                 Bio
                             </label>
                             {/* TEXTAREA */}
-                            <textarea className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32" id="bio" type="textarea" placeholder="Tell Me About Yourself..."></textarea>
+                            <textarea value={data.user.bio} className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32" id="bio" type="textarea" placeholder="Tell Me About Yourself..."></textarea>
                         </div>
                     </div>
                 </div>
