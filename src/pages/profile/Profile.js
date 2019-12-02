@@ -33,7 +33,7 @@ const Profile = () => {
       <div className='overflow-hidden'>
         {/* IMG ROUNG LARGE */}
         <img className="rounded-br-full rounded-tr-full
-        rounded-bl-full round-tl-lg mt-16 -ml-12 left-2 top-0 max-w-sm shadow-md" src={data.user.picture} alt={`profile picuture of ${data.user.name}`}/>
+        rounded-bl-full round-tl-full mt-16 -ml-12 left-2 top-0 max-w-sm shadow-md" src={data.user.picture} alt={`profile picuture of ${data.user.name}`}/>
 
         <NavLink to='/settings' className='flex justify-end mr-12'>
           {/* EDIT ICON */}
