@@ -35,8 +35,10 @@ export const Auth0Provider = ({
 
       if (isAuthenticated) {
         let user = await auth0FromHook.getUser();
-        const token = await auth0FromHook.getTokenSilently();
-        localStorage.setItem('token', token);
+
+        localStorage.setItem('token', await auth0FromHook.getTokenSilently());
+        client.writeData({ data: { isLoggedIn: true } });
+
         await client.mutate({
           mutation: gql`
             mutation CreateUser($user: CreateUserInput!) {
@@ -57,6 +59,7 @@ export const Auth0Provider = ({
       }
       setLoading(false);
     };
+
     initAuth0();
     // eslint-disable-next-line
   }, []);
