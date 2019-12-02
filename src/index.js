@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
 import { Auth0Provider } from './react-auth0-spa';
 import { Router } from 'react-router-dom';
 import config from './auth_config.json';
@@ -28,6 +29,8 @@ const onRedirectCallback = appState => {
     : window.location.pathname
   );
 };
+
+Sentry.init({ dsn: "https://fc80a5275503499ca0fd7f2e93ca9b3b@sentry.io/1826956" });
 
 const render = () => {
   const App = require('./app/App').default;
