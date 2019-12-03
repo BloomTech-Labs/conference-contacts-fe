@@ -1,24 +1,21 @@
 import { gql } from 'apollo-boost';
 
 export const UPDATE_USER_INFO = gql`
-mutation updateUser($id: ID!, $data: UpdateUserInput!) {
-  updateUser(id: $id, data: $data) {
-    user {
-      id
-      name
-      picture
-      jobtitle
-      industry
-      gender
-      birthdate
-      bio
+  mutation updateUser($id: ID!, $data: UpdateUserInput!) {
+    updateUser(id: $id, data: $data) {
+      code
+      success
+      message
+      user {
+        id
+        name
+        industry
+        jobtitle
+        gender
+        bio
+      }
     }
-    __typename
-    code
-    message
-    success
   }
-}
 `;
 
 export const GET_USER_PROFILE = gql`
@@ -32,6 +29,13 @@ export const GET_USER_PROFILE = gql`
       jobtitle
       gender
       industry
+      profile {
+        id
+        value
+        type
+        privacy
+        preferredContact
+      }
     }
   }
 `;

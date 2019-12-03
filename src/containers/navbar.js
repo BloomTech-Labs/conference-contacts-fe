@@ -61,24 +61,16 @@ export default function NavBar() {
               {/* DESKTOP NAV */}
               <ul className="desktop-nav flex items-center">
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="contacts">
-                    Contacts
-                  </NavLink>
+                  <NavLink to="contacts">Contacts</NavLink>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="messages">
-                    Messages
-                  </NavLink>
+                  <NavLink to="messages">Messages</NavLink>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="profile">
-                    Profile
-                  </NavLink>
+                  <NavLink to="profile">Profile</NavLink>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="settings">
-                    Settings
-                  </NavLink>
+                  <NavLink to="settings">Settings</NavLink>
                 </li>
                 <li className="p-6 desktop-link text-lg">
                   <div className="">

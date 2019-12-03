@@ -1,57 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { GET_USER_PROFILE, UPDATE_USER_INFO } from '../queries/index';
-import { profile } from '../pages/profile';
+import { navigate } from '@reach/router';
 
 const Settings = () => {
-  let [upload, setupload] = useState(null);
-  const [name, setName] = useState('')
-  const [picture, setPicture] = useState('')
-  const [birthdate, setBirthdate] = useState('')
-  const [gender, setgender] = useState('')
-  const [industry, setIndustry] = useState('')
-  const [jobtitle, setJobTitle] = useState('')
-  const [bio, setBio] = useState('')
-  const [email, setEmail] = useState('')
+  const [fields, setFields] = useState({ bio: '', name: '' });
 
-  let input;
-  const [ updateUser, { id } ] = useMutation(UPDATE_USER_INFO);
+  const { loading: queryLoading, error: queryError, data } = useQuery(GET_USER_PROFILE);
 
-  const { loading, error, data } = useQuery(GET_USER_PROFILE);
+  const [updateUser, { loading: mutationLoading, error: mutationError }] = useMutation(
+    UPDATE_USER_INFO
+  );
 
-  if (loading || !data) return <div>Loading...</div>;
+  useEffect(() => {
+    if (!queryLoading) setFields(data.user);
+  }, [queryLoading, data]);
 
-  if (error) return <p>There was an error: {error}</p>;
+  if (queryLoading) return <div>Loading...</div>;
+  if (queryError) return <p>There was an error: {queryError}</p>;
 
-  const handleChange = e => {
-    setName({ name: e.target.value })
-  }
+  const handleFieldUpdate = e =>
+    setFields({
+      ...fields,
+      [e.target.name]: e.target.value
+    });
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const { id, profile, __typename, ...changes } = fields;
+      await updateUser({ variables: { id, data: changes } });
+      navigate('profile');
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          updateUser({
-            refetchQueries: [{ query: GET_USER_PROFILE }], 
-            variables: { id, data: { 
-            name,
-            picture,
-            birthdate,
-            industry,
-            jobtitle,
-            bio,
-            email
-          }
-        }});
-          input.value = '';
-        }}
-      >
+      {mutationLoading && <p>Loading...</p>}
+      {mutationError && <p>Error :( Please try again</p>}
+      <form onSubmit={handleSubmit}>
         <div className="pt-32 pb-32 bg-gray-200">
           <div className="flex justify-between pl-10 pr-10 mb-8 text-xl">
             {/* CANCEL BTN */}
-            <button onClick={() => <profile />} className="text-red-500 focus:outline-none hover:text-red-400">Cancel</button>
+            <button
+              onClick={() => <profile />}
+              className="text-red-500 focus:outline-none hover:text-red-400"
+            >
+              Cancel
+            </button>
             {/* SAVE BTN */}
             <button
               type="submit"
@@ -61,7 +60,7 @@ const Settings = () => {
             </button>
           </div>
           <div className="flex items-center justify-center">
-            <button className="focus:outline-none" onClick={e => upload.click()}>
+            <button className="focus:outline-none" onClick={e => console.log('click')}>
               <div className="relative flex items-center justify-center">
                 <img
                   className="shadow-lg w-56 m-auto mb-10 rounded-full"
@@ -92,15 +91,13 @@ const Settings = () => {
               </label>
               {/* INPUT */}
               <input
-                ref={node => {
-                  input = node;
-                }}
+                name="name"
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="name"
                 type="text"
                 placeholder="Name"
-                value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={handleFieldUpdate}
+                value={fields.name}
               />
             </div>
             <div className="mb-6 w-2/3 m-auto">
@@ -108,13 +105,13 @@ const Settings = () => {
                 Industry
               </label>
               <input
-                ref={node => {
-                  input = node;
-                }}
+                name="industry"
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="industry"
                 type="text"
                 placeholder="Industry"
+                onChange={handleFieldUpdate}
+                value={fields.industry}
               />
             </div>
             <div className="mb-6 w-2/3 m-auto">
@@ -122,58 +119,50 @@ const Settings = () => {
                 Job Title
               </label>
               <input
-                ref={node => {
-                  input = node;
-                }}
+                name="jobtitle"
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="jobtitle"
                 type="text"
                 placeholder="Job Title"
+                onChange={handleFieldUpdate}
+                value={fields.jobtitle}
               />
             </div>
-            <div className="mb-6 w-2/3 m-auto">
+            {/* <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                 Email
               </label>
               <input
-                ref={node => {
-                  input = node;
-                }}
+                name="email"
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
                 type="text"
                 placeholder="Email"
               />
-            </div>
-            <div className="mb-6 w-2/3 m-auto">
+            </div> */}
+            {/* <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="preferred">
                 Preferred Form Of Contact
               </label>
               <input
-                ref={node => {
-                  input = node;
-                }}
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="preferred"
                 type="text"
                 placeholder="Preferred form of contact"
               />
-            </div>
-            <div className="mb-6 w-2/3 m-auto">
+            </div> */}
+            {/* <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="socialmedia">
                 Social Media
               </label>
               <input
-                ref={node => {
-                  input = node;
-                }}
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="socialmedia"
                 type="text"
                 placeholder="Social Media"
               />
-            </div>
-            <div className="mb-6 w-2/3 m-auto">
+            </div> */}
+            {/* <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
                 Image
               </label>
@@ -189,14 +178,21 @@ const Settings = () => {
                 accept="image/*"
                 placeholder="Upload Image"
               />
-            </div>
+            </div> */}
             <div className="relative mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
                 Gender
               </label>
               {/* SELECT INPUT */}
-              <select className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white">
-                <option selected disabled>Your preference</option>
+              <select
+                name="gender"
+                onChange={handleFieldUpdate}
+                value={fields.gender}
+                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
+              >
+                <option defaultValue disabled>
+                  Your preference
+                </option>
                 <option value="MALE">Male</option>
                 <option value="FEMALE">Female</option>
                 <option value="NONBINARY">Non-Binary</option>
@@ -220,10 +216,13 @@ const Settings = () => {
               </label>
               {/* TEXTAREA */}
               <textarea
+                name="bio"
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
                 id="bio"
                 type="textarea"
                 placeholder="Tell Me About Yourself..."
+                onChange={handleFieldUpdate}
+                value={fields.bio}
               ></textarea>
             </div>
           </div>
