@@ -5,10 +5,8 @@ import { Auth0Provider } from './react-auth0-spa';
 import { Router } from 'react-router-dom';
 import config from './auth_config.json';
 import history from './utils/history';
-
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-
 import './index.css';
 
 export const client = new ApolloClient({
@@ -24,13 +22,10 @@ export const client = new ApolloClient({
 });
 
 const onRedirectCallback = appState => {
-  history.push(appState && appState.targetUrl
-    ? appState.targetUrl
-    : window.location.pathname
-  );
+  history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
 };
 
-Sentry.init({ dsn: "https://fc80a5275503499ca0fd7f2e93ca9b3b@sentry.io/1826956" });
+Sentry.init({ dsn: 'https://fc80a5275503499ca0fd7f2e93ca9b3b@sentry.io/1826956' });
 
 const render = () => {
   const App = require('./app/App').default;
