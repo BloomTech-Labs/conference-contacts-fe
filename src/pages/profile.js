@@ -1,21 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import { Link } from '@reach/router';
-
-const GET_USER_PROFILE = gql`
-  query GetUserProfile {
-    user {
-      name
-      picture
-      bio
-      birthdate
-      jobtitle
-      gender
-      industry
-    }
-  }
-`;
+import { GET_USER_PROFILE } from '../queries/index';
 
 const Profile = () => {
   const { loading, error, data } = useQuery(GET_USER_PROFILE);
@@ -37,7 +23,7 @@ const Profile = () => {
           alt={`profile picuture of ${data.user.name}`}
         />
 
-        <Link to="settings" className="flex justify-end mr-12">
+        <Link to="/settings" className="flex justify-end mr-12">
           {/* EDIT ICON */}
           <svg className="h-16 w-16 bg-gray-400 rounded-full padding-edit-icon shadow-sm mb-2" viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg" > <path d="M14.34 0c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L15.4.44C15.1.15 14.72 0 14.34 0zm-3.9 3.27l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11-5.31-5.3zm-8.69 9.04L0 19l6.7-1.79-.24-2.16-2.31-.17-.18-2.32" fill="#007AFF" /> </svg>
         </Link>

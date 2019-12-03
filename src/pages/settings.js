@@ -1,50 +1,57 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
+import { GET_USER_PROFILE, UPDATE_USER_INFO } from '../queries/index';
+import { profile } from '../pages/profile';
 
-const GET_USER_PROFILE = gql`
-  query GetUserProfile {
-    user {
-      name
-      picture
-    }
-  }
-`;
+const Settings = () => {
+  let [upload, setupload] = useState(null);
+  const [name, setName] = useState('')
+  const [picture, setPicture] = useState('')
+  const [birthdate, setBirthdate] = useState('')
+  const [gender, setgender] = useState('')
+  const [industry, setIndustry] = useState('')
+  const [jobtitle, setJobTitle] = useState('')
+  const [bio, setBio] = useState('')
+  const [email, setEmail] = useState('')
 
-const UPDATE_USER_INFO = gql`
-  mutation updateUser($id: ID!, $data: updateUserInput!) {
-    updateUser(id: $id, data: $data) {
-      id
-      data
-    }
-  }
-`;
-
-const Settings = ({ id }) => {
   let input;
-  const [updateUser] = useMutation(UPDATE_USER_INFO);
+  const [ updateUser, { id } ] = useMutation(UPDATE_USER_INFO);
 
   const { loading, error, data } = useQuery(GET_USER_PROFILE);
-  let [upload, setupload] = useState(null);
 
   if (loading || !data) return <div>Loading...</div>;
 
   if (error) return <p>There was an error: {error}</p>;
+
+  const handleChange = e => {
+    setName({ name: e.target.value })
+  }
 
   return (
     <div>
       <form
         onSubmit={e => {
           e.preventDefault();
-          updateUser({ variables: { id, data: input.value } });
+          updateUser({
+            refetchQueries: [{ query: GET_USER_PROFILE }], 
+            variables: { id, data: { 
+            name,
+            picture,
+            birthdate,
+            industry,
+            jobtitle,
+            bio,
+            email
+          }
+        }});
           input.value = '';
         }}
       >
         <div className="pt-32 pb-32 bg-gray-200">
           <div className="flex justify-between pl-10 pr-10 mb-8 text-xl">
             {/* CANCEL BTN */}
-            <button className="text-red-500 focus:outline-none hover:text-red-400">Cancel</button>
+            <button onClick={() => <profile />} className="text-red-500 focus:outline-none hover:text-red-400">Cancel</button>
             {/* SAVE BTN */}
             <button
               type="submit"
@@ -92,6 +99,8 @@ const Settings = ({ id }) => {
                 id="name"
                 type="text"
                 placeholder="Name"
+                value={name}
+                onChange={e => setName(e.target.value)}
               />
             </div>
             <div className="mb-6 w-2/3 m-auto">

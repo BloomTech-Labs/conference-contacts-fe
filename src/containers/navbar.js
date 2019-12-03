@@ -3,21 +3,12 @@ import { Link } from '@reach/router';
 import NavLink from '../components/navlink';
 import { useAuth0 } from '../react-auth0-spa';
 import { useQuery, useApolloClient } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
-
-const GET_USER_PROFILE = gql`
-  query GetUserProfile {
-    user {
-      name
-      picture
-    }
-  }
-`;
+import { NAVBAR_PROFILE } from '../queries/index';
 
 export default function NavBar() {
   const client = useApolloClient();
   const { logout } = useAuth0();
-  const { loading, error, data } = useQuery(GET_USER_PROFILE);
+  const { loading, error, data } = useQuery(NAVBAR_PROFILE);
   const [open, setOpen] = useState(false);
 
   if (loading || !data) return <div>Loading...</div>;
