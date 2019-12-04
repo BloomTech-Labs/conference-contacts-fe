@@ -113,21 +113,45 @@ const Landing = () => {
 {/* Features part 2 */}
       <div>
         <section className="container mx-auto px-6 p-10">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Features</h2>
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">The Heist Pullers</h2>
           <div className="flex items-center flex-wrap mb-20">
             <div className="w-full md:w-1/2">
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">A grocery List</h4>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
               <p className="text-gray-600 mb-8">
-                Check off items and easily keep tabs on the cost of your next grocery trip
+               Team Lead
               </p>
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">The "envelope" Budget</h4>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hill</h4>
               <p className="text-gray-600 mb-8">
-                Keep track of your budget and enter items throughout the week.
+                Full Stack Developer
               </p>
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Christmas or Birthday Lists</h4>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
               <p className="text-gray-600 mb-8">
-                Manage everyone's wants, and keep tabs on how much each person's gifts cost.
+                Full Stack Developer
               </p>
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasly</h4>
+              <p className="text-gray-600 mb-8">
+               Full Stack Developer
+				</p>  
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise billups-Brown</h4>
+              <p className="text-gray-600 mb-8">
+               Full Stack Developer
+				</p>  
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
+              <p className="text-gray-600 mb-8">
+               iOS Developer
+				</p>  
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Reding</h4>
+              <p className="text-gray-600 mb-8">
+               iOS Developer
+				</p>  
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
+              <p className="text-gray-600 mb-8">
+               UX Designer
+				</p>  
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>
+              <p className="text-gray-600 mb-8">
+               UX Designer
+				</p>  
             </div>
           </div>
         </section>
