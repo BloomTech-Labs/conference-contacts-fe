@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '../react-auth0-spa';
-import Button from '../components/button';
+// import Button from '../components/button';
 // import NavBar from '../containers/navbar'
 const Landing = () => {
   const { loginWithRedirect } = useAuth0();
