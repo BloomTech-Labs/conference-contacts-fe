@@ -7,8 +7,9 @@ const Landing = () => {
   return (
     <div>
       {/* <NavBar /> */}
+      <nav>
       <div className="container mx-auto px-6 py-2 flex justify-between items-center">
-        <a href class="font-bold text-2xl lg:text-4xl">
+       <a className="font-bold text-2xl lg:text-4xl" href="/">
           Swaap
         </a>
         <div className="block lg:hidden">
@@ -28,17 +29,17 @@ const Landing = () => {
                 </a>
               </li>
               <li>
-                <a href className="px-4 hover:text-gray-800">
+                <a className="px-4 hover:text-gray-800" href='/'>
                   Support
                 </a>
               </li>
               <li>
-                <a href className="px-4 hover:text-gray-800">
+                <a  className="px-4 hover:text-gray-800" href='/'>
                   Contact
                 </a>
               </li>
               <li>
-                <a href className="px-4 hover:text-gray-800">
+                <a  className="px-4 hover:text-gray-800" href='/'>
                   Twitter
                 </a>
               </li>
@@ -46,6 +47,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
+      </nav>
 
 
 {/* Title */}
@@ -73,8 +75,8 @@ const Landing = () => {
               <p className="text-gray-600 mb-8">
                 Check off items and easily keep tabs on the cost of your next grocery trip
               </p>
-              <h4 class="text-3xl text-gray-800 font-bold mb-3">The "envelope" Budget</h4>
-              <p class="text-gray-600 mb-8">
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">The "envelope" Budget</h4>
+              <p className="text-gray-600 mb-8">
                 Keep track of your budget and enter items throughout the week.
               </p>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Christmas or Birthday Lists</h4>
@@ -176,7 +178,7 @@ const Landing = () => {
           <h2 className="mb-6 text-4xl font-bold text-center text-black">
             Handle any list dealing with money on ios
           </h2>
-          <button class="bg-white font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider">
+          <button className="bg-white font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider">
             Download
           </button>
         </div>
@@ -187,7 +189,7 @@ const Landing = () => {
         <div className="text-center container mx-auto px-6 pt-10 pb-6">
           <div className="text-center flex flex-wrap">
             <div className=" text-center w-full ">
-              <p href="#" class="text-center hover:underline text-black-600 hover:text-blue-500">
+              <p href="#" className="text-center hover:underline text-black-600 hover:text-blue-500">
                 Built by ZAdas fa sdf in minn, mn and releaseed under his L.L.C
               </p>
             </div>
