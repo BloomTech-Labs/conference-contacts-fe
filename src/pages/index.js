@@ -4,7 +4,7 @@ import { Router } from '@reach/router';
 import NavBar from '../containers/navbar';
 import Profile from './profile';
 import Settings from './settings';
-
+import Landing from './landing';
 const Home = () => <p>Home Page</p>;
 
 export default function Pages() {
@@ -14,6 +14,7 @@ export default function Pages() {
       <Router>
         <Home path="/" />
         <Profile path="profile" />
+        <Landing path="landing" />
         <Settings path="settings" />
       </Router>
     </Fragment>
