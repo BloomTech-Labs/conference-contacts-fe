@@ -1,54 +1,37 @@
 import React from 'react';
 import { useAuth0 } from '../react-auth0-spa';
+import NavLink from '../components/navlink';
 // import Button from '../components/button';
 // import NavBar from '../containers/navbar'
+import Button from '../components/button';
 const Landing = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <div>
       {/* <NavBar /> */}
-      <nav>
-      <div className="container mx-auto px-6 py-2 flex justify-between items-center">
-       <a className="font-bold text-2xl lg:text-4xl" href="/">
-          Swaap
-        </a>
-        <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none" />
-          <svg
-            className="fill-current h-3 w-3"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          ></svg>
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          <div className="hidden lg:block">
-            <ul className="inline-flex">
-              <li>
-                <a className="px-4 font-bold" href="/">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a className="px-4 hover:text-gray-800" href='/'>
-                  Support
-                </a>
-              </li>
-              <li>
-                <a  className="px-4 hover:text-gray-800" href='/'>
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a  className="px-4 hover:text-gray-800" href='/'>
-                  Twitter
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </nav>
+      <div className="flex justify-end">
+            <div className="flex">
+            <ul className="desktop-nav flex items-center">
+                <li className="p-6 desktop-link text-lg">
+                <NavLink to="contacts">Contacts</NavLink>
+                </li>
+                <li className="p-6 desktop-link text-lg">
+                  <NavLink to="messages">Messages</NavLink>
+                </li>
+                <li className="p-6 desktop-link text-lg">
+                  <NavLink to="profile">Profile</NavLink>
+                </li>
+                <li className="p-6 desktop-link text-lg">
+                  <NavLink to="settings">Settings</NavLink>
+                  <li>
+                  
+                  
+                </li>
 
+                </li>
+              </ul>
+      </div>
+</div>
 
 {/* Title */}
       <div className="text-center container mx-auto px-20">
@@ -56,11 +39,8 @@ const Landing = () => {
         <h3 className="text-3xl mb-8 text-black-200">
           Smarter lists that calculate how much its items cost. And, to the penny.
         </h3>
-        <a href="https://www.espn.com/college-football/stats/player/_/view/offense/stat/rushing/season/2019/table/rushing/sort/rushingYards/dir/desc">
-          <button className="bg-white font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider">
-            Download
-          </button>
-        </a>
+        <Button onClick={loginWithRedirect}>Download</Button>
+        
       </div>
 
 

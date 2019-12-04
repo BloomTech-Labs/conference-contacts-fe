@@ -13,7 +13,7 @@ export default function Pages() {
       <NavBar />
       <Router>
         <Home path="/" />
-        <Profile path="profile" />
+        <Profile  path="profile" />
         <Landing path="landing" />
         <Settings path="settings" />
       </Router>
