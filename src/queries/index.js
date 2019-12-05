@@ -18,6 +18,23 @@ export const UPDATE_USER_INFO = gql`
   }
 `;
 
+export const CREATE_PROFILE_FIELD = gql`
+  mutation createProfileField($data: CreateProfileFieldInput!) {
+    createProfileField(data: $data){
+      code
+      success
+      message
+      profileField {
+        id
+        type
+        value
+        privacy
+        preferredContact
+      }
+    }
+  }
+`;
+
 export const GET_USER_PROFILE = gql`
   query GetUserProfile {
     user {
@@ -48,3 +65,4 @@ export const NAVBAR_PROFILE = gql`
     }
   }
 `;
+
