@@ -91,7 +91,7 @@ export default function NavBar() {
                     <img
                       className="mb-4 object-cover bg-center rounded-full"
                       src={data.user.picture}
-                      alt={`picture of ${data.user.name}`}
+                      alt={`profile for ${data.user.name}`}
                     />
                     <p className="pb-12 text-2xl pl-2">{data.user.name}</p>
                     <p className="pb-10">QR Code goes here</p>
@@ -124,6 +124,7 @@ export default function NavBar() {
               <li className="pl-6 pt-6 flex justify-center">
                 <div className="text-black-400 w-2/4 flex justify-center rounded-lg">
                   <button
+                    data-testid="logout-button"
                     className="bg-gray-200 shadow br-black text-xl pt-2 pb-2 pl-6 pr-6 rounded-lg hover:bg-black-400 hover:shadow-lg"
                     onClick={handleLogout}
                   >
