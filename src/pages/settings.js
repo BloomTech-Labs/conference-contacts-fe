@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { GET_USER_PROFILE, UPDATE_USER_INFO, CREATE_PROFILE_FIELD } from '../queries/index';
-import { navigate, Redirect } from '@reach/router';
+import { navigate } from '@reach/router';
 import Profile from '../pages/profile';
 import { Image } from 'cloudinary-react';
 import Dropzone from 'react-dropzone';
@@ -17,7 +17,7 @@ const Settings = () => {
   //   setUpload({ file: files[0] })
   // }
 
-  const { loading: queryLoading, error: queryError, data, refetch } = useQuery(GET_USER_PROFILE);
+  const { loading: queryLoading, error: queryError, data } = useQuery(GET_USER_PROFILE);
 
   const [updateUser, { loading: mutationLoading, error: mutationError }] = useMutation(
     UPDATE_USER_INFO
