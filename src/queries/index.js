@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 export const UPDATE_USER_INFO = gql`
-  mutation updateUser($id: ID!, $data: UpdateUserInput!) {
-    updateUser(id: $id, data: $data) {
+  mutation updateUser($data: UpdateUserInput!) {
+    updateUser(data: $data) {
       code
       success
       message
