@@ -20,7 +20,7 @@ export const UPDATE_USER_INFO = gql`
 
 export const CREATE_PROFILE_FIELD = gql`
   mutation createProfileField($data: CreateProfileFieldInput!) {
-    createProfileField(data: $data){
+    createProfileField(data: $data) {
       code
       success
       message
@@ -30,6 +30,19 @@ export const CREATE_PROFILE_FIELD = gql`
         value
         privacy
         preferredContact
+      }
+    }
+  }
+`;
+
+export const DELETE_PROFILE_FIELD = gql`
+  mutation deleteProfileField($id: ID!) {
+    deleteProfileField(id: $id) {
+      code
+      success
+      message
+      profileField {
+        id
       }
     }
   }
@@ -65,4 +78,3 @@ export const NAVBAR_PROFILE = gql`
     }
   }
 `;
-
