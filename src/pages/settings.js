@@ -1,17 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
-import { GET_USER_PROFILE, UPDATE_USER_INFO } from '../queries/index';
-import { navigate } from '@reach/router';
+import {
+  GET_USER_PROFILE,
+  UPDATE_USER_INFO,
+  CREATE_PROFILE_FIELD,
+  DELETE_PROFILE_FIELD
+} from '../queries/index';
 
-const Settings = () => {
-  const [fields, setFields] = useState({ bio: '', name: '' });
+const Settings = props => {
+  const [profileField, setProfileField] = useState({ email: '' });
+  const [fields, setFields] = useState({
+    name: '',
+    industry: '',
+    jobtitle: '',
+    gender: '',
+    bio: ''
+  });
 
   const { loading: queryLoading, error: queryError, data } = useQuery(GET_USER_PROFILE);
 
   const [updateUser, { loading: mutationLoading, error: mutationError }] = useMutation(
     UPDATE_USER_INFO
   );
+
+  const [createProfileField] = useMutation(CREATE_PROFILE_FIELD, {
+    update(cache, { data: { createProfileField } }) {
+      const { user } = cache.readQuery({ query: GET_USER_PROFILE });
+      const { profileField } = createProfileField;
+      cache.writeQuery({
+        query: GET_USER_PROFILE,
+        data: { user: { ...user, profile: user.profile.concat([profileField]) } }
+      });
+    }
+  });
+
+  const [deleteProfileField] = useMutation(DELETE_PROFILE_FIELD, {
+    update(cache, { data: { deleteProfileField } }) {
+      const { user } = cache.readQuery({ query: GET_USER_PROFILE });
+      const { profileField } = deleteProfileField;
+      cache.writeQuery({
+        query: GET_USER_PROFILE,
+        data: {
+          user: { ...user, profile: user.profile.filter(field => field.id !== profileField.id) }
+        }
+      });
+    }
+  });
 
   useEffect(() => {
     if (!queryLoading) setFields(data.user);
@@ -29,12 +64,68 @@ const Settings = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const { id, profile, __typename, ...changes } = fields;
+      const { id, profile, user, __typename, ...changes } = fields;
       await updateUser({ variables: { id, data: changes } });
-      navigate('profile');
+      props.navigate('/profile');
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleProfileField = e => {
+    e.preventDefault();
+    try {
+      const profileFieldContent = {
+        type: 'EMAIL',
+        value: profileField.email,
+        privacy: 'PUBLIC',
+        preferredContact: false
+      };
+
+      console.log('submitting profile field', profileFieldContent);
+
+      createProfileField({
+        variables: {
+          data: profileFieldContent
+        },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          createProfileField: {
+            __typename: 'ProfileMutationResponse',
+            code: 201,
+            success: true,
+            message: 'Profile field created successfully',
+            profileField: {
+              ...profileFieldContent,
+              __typename: 'ProfileField',
+              id: Math.random().toString()
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleProfileFieldUpdate = e => {
+    setProfileField({
+      ...data.profileField,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // let widget = window.cloudinary.applyUploadWidget('#upload_widget_opener',{
+  //   cloudName: 'swaap', uploadPreset: 'hat6weiu' },
+  //   (error, result) => { });
+
+  // let widget = window.cloudinary.createUploadWidget({
+  //   cloudName: "swaap",
+  //   uploadPreset: "hat6weiu"
+  // }, (error, result) => {})
+
+  const showWidget = widget => {
+    widget.open();
   };
 
   return (
@@ -46,7 +137,8 @@ const Settings = () => {
           <div className="flex justify-between pl-10 pr-10 mb-8 text-xl">
             {/* CANCEL BTN */}
             <button
-              onClick={() => <profile />}
+              type="button"
+              onClick={() => props.navigate('/profile')}
               className="text-red-500 focus:outline-none hover:text-red-400"
             >
               Cancel
@@ -54,18 +146,19 @@ const Settings = () => {
             {/* SAVE BTN */}
             <button
               type="submit"
-              className="text-blue-500 bg-gray-300 py-2 px-4 focus:outline-none rounded-lg hover:shadow-md"
+              className="text-blue-600 bg-gray-400 py-2 px-4 focus:outline-none rounded-lg hover:shadow-md"
             >
               Save
             </button>
           </div>
+          {/* PICTURE / UPLOAD */}
           <div className="flex items-center justify-center">
-            <button className="focus:outline-none" onClick={e => console.log('click')}>
+            <button className="focus:outline-none" type="button">
               <div className="relative flex items-center justify-center">
                 <img
                   className="shadow-lg w-56 m-auto mb-10 rounded-full"
                   src={data.user.picture}
-                  alt={`picture of ${data.user.name}`}
+                  alt={`avatar for ${data.user.name}`}
                 />
                 <svg
                   className="m-auto absolute ml-2 opacity-75 w-16 h-16 hover:opacity-100"
@@ -82,14 +175,12 @@ const Settings = () => {
               </div>
             </button>
           </div>
+          {/* NAME INPUT */}
           <div className="">
-            {/* INPUT DIV */}
             <div className="mb-6 w-2/3 m-auto">
-              {/* LABEL FOR INPUT */}
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                 Name
               </label>
-              {/* INPUT */}
               <input
                 name="name"
                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -100,6 +191,7 @@ const Settings = () => {
                 value={fields.name}
               />
             </div>
+            {/* INDUSTRY INPUT */}
             <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="industry">
                 Industry
@@ -114,6 +206,7 @@ const Settings = () => {
                 value={fields.industry}
               />
             </div>
+            {/* JOBTITLE INPUT */}
             <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="jobtitle">
                 Job Title
@@ -128,40 +221,239 @@ const Settings = () => {
                 value={fields.jobtitle}
               />
             </div>
-            {/* <div className="mb-6 w-2/3 m-auto">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                Email
+            {/* GENDER INPUT */}
+            <div className="relative mb-6 w-2/3 m-auto">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
+                Gender
               </label>
-              <input
-                name="email"
-                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="text"
-                placeholder="Email"
-              />
-            </div> */}
-            {/* <div className="mb-6 w-2/3 m-auto">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="preferred">
-                Preferred Form Of Contact
+              <select
+                name="gender"
+                onChange={handleFieldUpdate}
+                value={fields.gender}
+                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
+              >
+                <option defaultValue disabled>
+                  Your preference
+                </option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="NONBINARY">Non-Binary</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 pt-6 pr-4 flex items-center px-2 text-gray-700">
+                {/* CHEVERON SVG */}
+                <svg
+                  className="fill-current h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+            {/* BIO */}
+            <div className="mb-6 w-2/3 m-auto h-24">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bio">
+                Bio
               </label>
-              <input
-                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="preferred"
-                type="text"
-                placeholder="Preferred form of contact"
+              <textarea
+                name="bio"
+                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
+                id="bio"
+                type="textarea"
+                placeholder="Tell Me About Yourself..."
+                onChange={handleFieldUpdate}
+                value={fields.bio || ''}
               />
-            </div> */}
+            </div>
+            {/* EMAILS */}
+            <div className="mt-24 mb-6 w-2/3 m-auto">
+              <p className="block text-gray-700 text-sm font-bold mb-2">Emails:</p>
+              <div className="appearance-none rounded w-full bg-gray-200">
+                <div className="flex inline-block pl-4 pr-4 pt-4 pb-8 justify-between items-end">
+                  <div className="w-full mr-6">
+                    <input
+                      name="email"
+                      className="w-full shadow-md appearance-none border rounded text-gray-700 px-2 py-2 leading-tight focus:outline-none focus:shadow-outline"
+                      id="email"
+                      type="email"
+                      placeholder="Add Email"
+                      onChange={handleProfileFieldUpdate}
+                      value={profileField.email}
+                    />
+                  </div>
+                  <div className="self-start pt-3">
+                    <div className='flex justify-center'>
+                      <button className='' type="button" onClick={handleProfileField}>
+                        <svg
+                          className=""
+                          width="24"
+                          height="24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12.4167 5.91667C12.704 5.91667 12.9795 6.0308 13.1827 6.23397C13.3859 6.43713 13.5 6.71268 13.5 7C13.5 7.28732 13.3859 7.56287 13.1827 7.76603C12.9795 7.9692 12.704 8.08333 12.4167 8.08333H8.08333V12.4167C8.08333 12.704 7.9692 12.9795 7.76603 13.1827C7.56287 13.3859 7.28732 13.5 7 13.5C6.71268 13.5 6.43713 13.3859 6.23397 13.1827C6.0308 12.9795 5.91667 12.704 5.91667 12.4167V8.08333H1.58333C1.29602 8.08333 1.02047 7.9692 0.817301 7.76603C0.614137 7.56287 0.5 7.28732 0.5 7C0.5 6.71268 0.614137 6.43713 0.817301 6.23397C1.02047 6.0308 1.29602 5.91667 1.58333 5.91667H5.91667V1.58333C5.91667 1.29602 6.0308 1.02047 6.23397 0.817301C6.43713 0.614137 6.71268 0.5 7 0.5C7.28732 0.5 7.56287 0.614137 7.76603 0.817301C7.9692 1.02047 8.08333 1.29602 8.08333 1.58333V5.91667H12.4167Z"
+                            fill="#4A5568"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {data.user ? (
+                  data.user.profile
+                    .filter(field => field.type === 'EMAIL')
+                    .map(field => {
+                      return (
+                        <div
+                          key={field.id}
+                          className="flex items-start inline-block justify-between"
+                        >
+                          <h2 className="ml-6 mb-2">{field.value}</h2>
+                          {/* <span className=''> */}
+                          <svg
+                            className="mr-6"
+                            width="10"
+                            height="10"
+                            viewBox="0 0 10 10"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            onClick={() =>
+                              deleteProfileField({
+                                variables: { id: field.id },
+                                optimisticResponse: {
+                                  __typename: 'Mutation',
+                                  deleteProfileField: {
+                                    __typename: 'ProfileMutationResponse',
+                                    code: 204,
+                                    success: true,
+                                    message: 'User field deleted successfully.',
+                                    profileField: {
+                                      __typename: 'ProfileField',
+                                      id: field.id
+                                    }
+                                  }
+                                }
+                              })
+                            }
+                          >
+                            <path
+                              d="M9.53686 7.82999C9.70069 8.02129 9.7863 8.26737 9.77658 8.51904C9.76685 8.77072 9.66252 9.00946 9.48443 9.18755C9.30633 9.36565 9.06759 9.46998 8.81592 9.4797C8.56424 9.48942 8.31816 9.40381 8.12686 9.23999L5.29686 6.40999L2.46686 9.23999C2.27556 9.40381 2.02949 9.48942 1.77781 9.4797C1.52613 9.46998 1.28739 9.36565 1.1093 9.18755C0.931206 9.00946 0.826873 8.77072 0.817152 8.51904C0.807431 8.26737 0.893037 8.02129 1.05686 7.82999L3.88686 4.99999L1.05686 2.16999C0.893037 1.97869 0.807431 1.73261 0.817152 1.48094C0.826873 1.22926 0.931206 0.99052 1.1093 0.812425C1.28739 0.634331 1.52613 0.529998 1.77781 0.520277C2.02949 0.510556 2.27556 0.596162 2.46686 0.759989L5.29686 3.58999L8.12686 0.759989C8.31816 0.596162 8.56424 0.510556 8.81592 0.520277C9.06759 0.529998 9.30633 0.634331 9.48443 0.812425C9.66252 0.99052 9.76685 1.22926 9.77658 1.48094C9.7863 1.73261 9.70069 1.97869 9.53686 2.16999L6.70686 4.99999L9.53686 7.82999Z"
+                              fill="#4A5568"
+                            />
+                          </svg>
+                          {/* </span> */}
+                        </div>
+                      );
+                    })
+                ) : (
+                  <p className="ml-6 mb-2">no emails found</p>
+                )}
+              </div>
+            </div>
+            {/* SOCIAL LINKS */}
             {/* <div className="mb-6 w-2/3 m-auto">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="socialmedia">
-                Social Media
-              </label>
-              <input
-                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="socialmedia"
-                type="text"
-                placeholder="Social Media"
-              />
+              <p className="block text-gray-700 text-sm font-bold mb-2">Social Links:</p>
+              <div className="shadow-md appearance-none border rounded w-full bg-white">
+                <div className="flex inline-block pl-4 pr-4 pt-4 pb-20 justify-between items-end">
+                  <div className="w-full mr-6">
+                    <input
+                      name="email"
+                      className="w-full shadow-md appearance-none border rounded text-gray-700 px-2 py-2 leading-tight focus:outline-none focus:shadow-outline"
+                      id="email"
+                      type="text"
+                      placeholder="Enter Social Link"
+                      onChange={handleFieldUpdate}
+                      value={fields.jobtitle}
+                    />
+                  </div>
+                  <div className="self-start pt-3">
+                    <svg
+                      className=""
+                      width="24"
+                      height="24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12.4167 5.91667C12.704 5.91667 12.9795 6.0308 13.1827 6.23397C13.3859 6.43713 13.5 6.71268 13.5 7C13.5 7.28732 13.3859 7.56287 13.1827 7.76603C12.9795 7.9692 12.704 8.08333 12.4167 8.08333H8.08333V12.4167C8.08333 12.704 7.9692 12.9795 7.76603 13.1827C7.56287 13.3859 7.28732 13.5 7 13.5C6.71268 13.5 6.43713 13.3859 6.23397 13.1827C6.0308 12.9795 5.91667 12.704 5.91667 12.4167V8.08333H1.58333C1.29602 8.08333 1.02047 7.9692 0.817301 7.76603C0.614137 7.56287 0.5 7.28732 0.5 7C0.5 6.71268 0.614137 6.43713 0.817301 6.23397C1.02047 6.0308 1.29602 5.91667 1.58333 5.91667H5.91667V1.58333C5.91667 1.29602 6.0308 1.02047 6.23397 0.817301C6.43713 0.614137 6.71268 0.5 7 0.5C7.28732 0.5 7.56287 0.614137 7.76603 0.817301C7.9692 1.02047 8.08333 1.29602 8.08333 1.58333V5.91667H12.4167Z"
+                        fill="#4A5568"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {socialLinks && socialLinks.length > 0 && (
+                  <>
+                    <div>
+                      {socialLinks.map(link => {
+                        return (
+                          <div>
+                            <h2>{link.value}</h2>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+              </div>
             </div> */}
+            {/* PHONE NUMBERS */}
+            {/* <div className="mb-6 w-2/3 m-auto">
+              <p className="block text-gray-700 text-sm font-bold mb-2">Phone Numbers:</p>
+              <div className="shadow-md appearance-none border rounded w-full bg-white">
+                <div className="flex inline-block pl-4 pr-4 pt-4 pb-20 justify-between items-end">
+                  <div className="w-full mr-6">
+                    <input
+                      name="email"
+                      className="w-full shadow-md appearance-none border rounded text-gray-700 px-2 py-2 leading-tight focus:outline-none focus:shadow-outline"
+                      id="email"
+                      type="text"
+                      placeholder="Enter Phone Number"
+                      onChange={handleFieldUpdate}
+                      // value={fields.jobtitle}
+                    />
+                  </div>
+                  <div className="self-start pt-3">
+                    <svg
+                      className=""
+                      width="24"
+                      height="24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12.4167 5.91667C12.704 5.91667 12.9795 6.0308 13.1827 6.23397C13.3859 6.43713 13.5 6.71268 13.5 7C13.5 7.28732 13.3859 7.56287 13.1827 7.76603C12.9795 7.9692 12.704 8.08333 12.4167 8.08333H8.08333V12.4167C8.08333 12.704 7.9692 12.9795 7.76603 13.1827C7.56287 13.3859 7.28732 13.5 7 13.5C6.71268 13.5 6.43713 13.3859 6.23397 13.1827C6.0308 12.9795 5.91667 12.704 5.91667 12.4167V8.08333H1.58333C1.29602 8.08333 1.02047 7.9692 0.817301 7.76603C0.614137 7.56287 0.5 7.28732 0.5 7C0.5 6.71268 0.614137 6.43713 0.817301 6.23397C1.02047 6.0308 1.29602 5.91667 1.58333 5.91667H5.91667V1.58333C5.91667 1.29602 6.0308 1.02047 6.23397 0.817301C6.43713 0.614137 6.71268 0.5 7 0.5C7.28732 0.5 7.56287 0.614137 7.76603 0.817301C7.9692 1.02047 8.08333 1.29602 8.08333 1.58333V5.91667H12.4167Z"
+                        fill="#4A5568"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {phoneNumbers && phoneNumbers.length > 0 && (
+                  <>
+                    <div>
+                      {phoneNumbers.map(number => {
+                        return (
+                          <div>
+                            <h2>{number.value}</h2>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div> */}
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="text-blue-600 text-xl bg-gray-400 mt-6 py-2 px-16 focus:outline-none rounded-lg hover:shadow-md"
+              >
+                Save
+              </button>
+            </div>
+            {/* IMAGE UPLOAD / SECONDARY */}
             {/* <div className="mb-6 w-2/3 m-auto">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
                 Image
@@ -177,54 +469,13 @@ const Settings = () => {
                 name="pic"
                 accept="image/*"
                 placeholder="Upload Image"
+                value={fields.picture}
+                onChange={handleFieldUpdate}
               />
+              <Dropzone onDrop={onDrop}>
+                <p>Upload Files</p>
+              </Dropzone>            
             </div> */}
-            <div className="relative mb-6 w-2/3 m-auto">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
-                Gender
-              </label>
-              {/* SELECT INPUT */}
-              <select
-                name="gender"
-                onChange={handleFieldUpdate}
-                value={fields.gender}
-                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
-              >
-                <option defaultValue disabled>
-                  Your preference
-                </option>
-                <option value="MALE">Male</option>
-                <option value="FEMALE">Female</option>
-                <option value="NONBINARY">Non-Binary</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 pt-6 pr-4 flex items-center px-2 text-gray-700">
-                {/* ARROW SVG */}
-                <svg
-                  className="fill-current h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
-              </div>
-            </div>
-            {/* TEXTAREA DIV */}
-            <div className="mb-6 w-2/3 m-auto h-24">
-              {/* TEXTAREA LABEL */}
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bio">
-                Bio
-              </label>
-              {/* TEXTAREA */}
-              <textarea
-                name="bio"
-                className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
-                id="bio"
-                type="textarea"
-                placeholder="Tell Me About Yourself..."
-                onChange={handleFieldUpdate}
-                value={fields.bio}
-              ></textarea>
-            </div>
           </div>
         </div>
       </form>

@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 export const UPDATE_USER_INFO = gql`
-  mutation updateUser($id: ID!, $data: UpdateUserInput!) {
-    updateUser(id: $id, data: $data) {
+  mutation updateUser($data: UpdateUserInput!) {
+    updateUser(data: $data) {
       code
       success
       message
@@ -13,6 +13,36 @@ export const UPDATE_USER_INFO = gql`
         jobtitle
         gender
         bio
+      }
+    }
+  }
+`;
+
+export const CREATE_PROFILE_FIELD = gql`
+  mutation createProfileField($data: CreateProfileFieldInput!) {
+    createProfileField(data: $data) {
+      code
+      success
+      message
+      profileField {
+        id
+        type
+        value
+        privacy
+        preferredContact
+      }
+    }
+  }
+`;
+
+export const DELETE_PROFILE_FIELD = gql`
+  mutation deleteProfileField($id: ID!) {
+    deleteProfileField(id: $id) {
+      code
+      success
+      message
+      profileField {
+        id
       }
     }
   }
