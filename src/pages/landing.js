@@ -1,53 +1,50 @@
 import React from 'react';
 import { useAuth0 } from '../react-auth0-spa';
-import NavLink from '../components/navlink';
-// import Button from '../components/button';
-// import NavBar from '../containers/navbar'
 import Button from '../components/button';
 const Landing = () => {
   const { loginWithRedirect } = useAuth0();
+ 
   return (
     <div>
       {/* <NavBar /> */}
-      <div className="flex justify-end">
+      <section>
+        <nav>
+          <div className="flex justify-between items-center">
+            <a href className="font-bold text-2xl lg:text-4xl">
+              Swaap
+            </a>
             <div className="flex">
-            <ul className="desktop-nav flex items-center">
-                <li className="p-6 desktop-link text-lg">
-                <NavLink to="contacts">Contacts</NavLink>
-                </li>
-                <li className="p-6 desktop-link text-lg">
-                  <NavLink to="messages">Messages</NavLink>
-                </li>
-                <li className="p-6 desktop-link text-lg">
-                  <NavLink to="profile">Profile</NavLink>
-                </li>
-                <li className="p-6 desktop-link text-lg">
-                  <NavLink to="settings">Settings</NavLink>
-                  <li>
-                  
-                  
-                </li>
-
-                </li>
+              <ul className="desktop-nav flex items-center">
+                <a className="5px solid #007AFF 30px p-6 desktop-link text-lg" href="#features">
+                  Features
+                </a>
+                <a className="5px solid #007AFF 30px p-6 desktop-link text-lg" href="#demo">
+                  Demo
+                </a>
+                <a className="5px solid #007AFF 30px p-6 desktop-link text-lg" href="#team">
+                  Team
+                </a>
+                <a className="5px solid #007AFF 30px p-6 desktop-link text-lg" href="#reviews">
+                  Reviews
+                </a>
               </ul>
-      </div>
-</div>
-
-{/* Title */}
+            </div>
+          </div>
+        </nav>
+      </section>
+      {/* Title */}
       <div className="text-center container mx-auto px-20">
         <h2 className="text-6xl font-bold mb-2 text-black">Meet Spend Stack</h2>
         <h3 className="text-3xl mb-8 text-black-200">
           Smarter lists that calculate how much its items cost. And, to the penny.
         </h3>
         <Button onClick={loginWithRedirect}>Download</Button>
-        
+        <img src="https://i.ibb.co/NLCGt1Z/darkMode.png" alt="darkMode" border="0"></img>
       </div>
 
-
-
-{/* Features */}
+      {/* Features */}
       <div>
-        <section className="container mx-auto px-6 p-10">
+        <section className="container mx-auto px-6 p-10" id="features">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Features</h2>
           <div className="flex items-center flex-wrap mb-20">
             <div className="w-full md:w-1/2">
@@ -68,33 +65,41 @@ const Landing = () => {
         </section>
       </div>
 
-{/* DarkMode needs to be reviewed */}
-      <div className="flex-start bg-gray-200 p-5">
-        <div className="w-2/5 flex-none p-2"></div>
-        <div className="w-full md:w-1/2 pl-10">
-          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">Dark Mode</h4>
-          <p className="text-center text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
-            Turn out the lights with our gorgeous dark mode support
-          </p>
-          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">Dark Mode</h4>
-          <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
-            Turn out the lights with our gorgeous dark mode support
-          </p>
-          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">Dark Mode</h4>
-          <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
-            Turn out the lights with our gorgeous dark mode support
-          </p>
-          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">Dark Mode</h4>
-          <p className=" text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
-            Turn out the lights with our gorgeous dark mode support
-          </p>
+      {/* DarkMode needs to be reviewed */}
+      <div className="flex-start bg-gray-200 p-5" id="demo">
+        <div className="w-2/5 flex-none p-2">
+          <div className="w-full md:w-1/2 pl-10">
+            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+              Dark Mode
+            </h4>
+            <p className="text-center text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
+              Turn out the lights with our gorgeous dark mode support
+            </p>
+            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+              Dark Mode
+            </h4>
+            <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
+              Turn out the lights with our gorgeous dark mode support
+            </p>
+            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+              Dark Mode
+            </h4>
+            <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
+              Turn out the lights with our gorgeous dark mode support
+            </p>
+            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+              Dark Mode
+            </h4>
+            <p className=" text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
+              Turn out the lights with our gorgeous dark mode support
+            </p>
+          </div>
         </div>
       </div>
 
-
-{/* Features part 2 */}
+      {/* Features part 2 */}
       <div>
-        <section className="container mx-auto px-6 p-10">
+        <section className="container mx-auto px-6 p-10" id="team">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Features</h2>
           <div className="flex items-center flex-wrap mb-20">
             <div className="w-full md:w-1/2">
@@ -106,6 +111,7 @@ const Landing = () => {
               <p className="text-gray-600 mb-8">
                 Keep track of your budget and enter items throughout the week.
               </p>
+
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Christmas or Birthday Lists</h4>
               <p className="text-gray-600 mb-8">
                 Manage everyone's wants, and keep tabs on how much each person's gifts cost.
@@ -115,8 +121,7 @@ const Landing = () => {
         </section>
       </div>
 
-
-{/* Review */}
+      {/* Review */}
       <div className="bg-gray-100">
         <div className="container mx-auto px-6 py-20">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
@@ -145,7 +150,9 @@ const Landing = () => {
                 <p className="text-gray-800 text-base px-6 mb-5">
                   I don't regret buying this wearble gadget. One of the best gadgets I own!.
                 </p>
-                <p className="text-gray-500 text-xs md:text-sm px-6">James Doe</p>
+                <p className="text-gray-500 text-xs md:text-sm px-6" id="reviews">
+                  James Doe
+                </p>
               </div>
             </div>
           </div>
@@ -169,7 +176,10 @@ const Landing = () => {
         <div className="text-center container mx-auto px-6 pt-10 pb-6">
           <div className="text-center flex flex-wrap">
             <div className=" text-center w-full ">
-              <p href="#" className="text-center hover:underline text-black-600 hover:text-blue-500">
+              <p
+                href="#"
+                className="text-center hover:underline text-black-600 hover:text-blue-500"
+              >
                 Built by ZAdas fa sdf in minn, mn and releaseed under his L.L.C
               </p>
             </div>
