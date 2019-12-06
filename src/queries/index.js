@@ -9,9 +9,11 @@ export const UPDATE_USER_INFO = gql`
       user {
         id
         name
+        picture
+        birthdate
+        gender
         industry
         jobtitle
-        gender
         bio
       }
     }
