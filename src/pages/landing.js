@@ -50,13 +50,16 @@ const Landing = () => {
 
 {/* Title */}
       <div className="text-center container mx-auto px-20">
-        <h2 className="text-6xl font-bold mb-2 text-black">Meet Spend Stack</h2>
+        <h2 className="text-6xl font-bold mb-2 text-black">Go Scan Go</h2>
         <h3 className="text-3xl mb-8 text-black-200">
           Smarter lists that calculate how much its items cost. And, to the penny.
         </h3>
         <a href="https://www.espn.com/college-football/stats/player/_/view/offense/stat/rushing/season/2019/table/rushing/sort/rushingYards/dir/desc">
           <button className="bg-white font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider">
             Download
+          </button>
+			<button class="bg-white font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider">
+            Get Started
           </button>
         </a>
       </div>
@@ -69,13 +72,13 @@ const Landing = () => {
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Features</h2>
           <div className="flex items-center flex-wrap mb-20">
             <div className="w-full md:w-1/2">
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">A grocery List</h4>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Conference updates</h4>
               <p className="text-gray-600 mb-8">
-                Check off items and easily keep tabs on the cost of your next grocery trip
+                See up-to-date news on what is going on at any participation conferences
               </p>
-              <h4 class="text-3xl text-gray-800 font-bold mb-3">The "envelope" Budget</h4>
+              <h4 class="text-3xl text-gray-800 font-bold mb-3">QR Scans</h4>
               <p class="text-gray-600 mb-8">
-                Keep track of your budget and enter items throughout the week.
+                Scan QR codes from any users to receive contacts and references
               </p>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Christmas or Birthday Lists</h4>
               <p className="text-gray-600 mb-8">
@@ -110,56 +113,57 @@ const Landing = () => {
       </div>
 
 
-{/* Features part 2 */}
+{/* About Us */}
       <div>
         <section className="container mx-auto px-6 p-10">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">The Heist Pullers</h2>
-          <div className="flex items-center flex-wrap mb-20">
-            <div className="w-full md:w-1/2">
-				<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/6/6f/BTCG_Skull_Knight.png/revision/latest?cb=20170930084349"></img>
+          <div className="md:flex bg-white rounded-lg p-6">
+            <div className="flex-row">
+				   <img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6" 
+src="https://vignette.wikia.nocookie.net/berserk/images/6/6f/BTCG_Skull_Knight.png/revision/latest?cb=20170930084349"></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
               <p className="text-gray-600 mb-8">
-               Team Lead
+               Team Lead/Software Engineer
               </p>
-					<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038"></img>
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hill</h4>
+					<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6" src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038"></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
               <p className="text-gray-600 mb-8">
-                Full Stack Developer
+                Software Engineer
               </p>
-						<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"></img>
+						<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6" src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
               <p className="text-gray-600 mb-8">
-                Full Stack Developer
+                Software Engineer
               </p>
-							<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"></img>
+							<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6" src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"></img>
 				<h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasly</h4>
               <p className="text-gray-600 mb-8">
-               Full Stack Developer
+               Software Engineer
 				</p> 
-						<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357"></img>
-				<h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise billups-Brown</h4>
+						<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6" src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357"></img>
+				<h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise Billups-Brown</h4>
               <p className="text-gray-600 mb-8">
-               Full Stack Developer
+               Software Engineer
 				</p>  
-						<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/b/b0/BTCG_Griffith_Holding_Sabre.png/revision/latest?cb=20170930052614"></img>
+						<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"  src="https://vignette.wikia.nocookie.net/berserk/images/b/b0/BTCG_Griffith_Holding_Sabre.png/revision/latest?cb=20170930052614"></img>
 				<h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
               <p className="text-gray-600 mb-8">
-               iOS Developer
+               Software Engineer
 				</p>  
-						<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/e/e4/Pippin_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/49/window-width/990/window-height/743?cb=20150810011043"></img>
+						<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"  src="https://vignette.wikia.nocookie.net/berserk/images/e/e4/Pippin_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/49/window-width/990/window-height/743?cb=20150810011043"></img>
 				<h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Reding</h4>
               <p className="text-gray-600 mb-8">
-               iOS Developer
+               Software Engineer
 				</p>  
-							<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/1/10/Rickert_Profile.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/49/window-width/998/window-height/749?cb=20160830163701"></img>
+							<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"  src="https://vignette.wikia.nocookie.net/berserk/images/1/10/Rickert_Profile.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/49/window-width/998/window-height/749?cb=20160830163701"></img>
 				<h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
               <p className="text-gray-600 mb-8">
-               UX Designer
+               Software Engineer
 				</p>  
-						<img className="h-16 w-16 rounded-full" src="https://vignette.wikia.nocookie.net/berserk/images/9/9e/Farnese_de_Vandimion_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2016/window-height/1512?cb=20160918013313"></img>
+						<img className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"  src="https://vignette.wikia.nocookie.net/berserk/images/9/9e/Farnese_de_Vandimion_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2016/window-height/1512?cb=20160918013313"></img>
 				<h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>
               <p className="text-gray-600 mb-8">
-               UX Designer
+               Software Engineer
 				</p>  
             </div>
           </div>
@@ -207,11 +211,12 @@ const Landing = () => {
       <section className="background-color: #FFFFFF">
         <div className="container mx-auto px-6 text-center py-20">
           <h2 className="mb-6 text-4xl font-bold text-center text-black">
-            Handle any list dealing with money on ios
+            Download our iOS app for free!
           </h2>
           <button class="bg-white font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider">
             Download
           </button>
+			
         </div>
       </section>
 
