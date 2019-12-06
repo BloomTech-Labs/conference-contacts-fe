@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
+import { Link } from '@reach/router';
 import Button from '../components/button';
 const Landing = () => {
   const { loginWithRedirect } = useAuth0();
- 
+  const [open, setOpen] = useState(false);
   return (
     <div>
       {/* <NavBar /> */}
@@ -44,58 +45,76 @@ const Landing = () => {
 
       {/* Features */}
       <div>
-        <section className="container mx-auto px-6 p-10" id="features">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Features</h2>
-          <div className="flex items-center flex-wrap mb-20">
-            <div className="w-full md:w-1/2">
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">A grocery List</h4>
-              <p className="text-gray-600 mb-8">
-                Check off items and easily keep tabs on the cost of your next grocery trip
-              </p>
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">The "envelope" Budget</h4>
-              <p className="text-gray-600 mb-8">
-                Keep track of your budget and enter items throughout the week.
-              </p>
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Christmas or Birthday Lists</h4>
-              <p className="text-gray-600 mb-8">
-                Manage everyone's wants, and keep tabs on how much each person's gifts cost.
-              </p>
+          <section className="container mx-auto px-6 p-10" id="features">
+            <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Features</h2>
+            <div className="flex items-center flex-wrap mb-20">
+              <div className="w-full md:w-1/2">
+                <h4 className="text-3xl text-gray-800 font-bold mb-3">A grocery List</h4>
+                <p className="text-gray-600 mb-8">
+                  Check off items and easily keep tabs on the cost of your next grocery trip
+                </p>
+                <h4 className="text-3xl text-gray-800 font-bold mb-3">The "envelope" Budget</h4>
+                <p className="text-gray-600 mb-8">
+                  Keep track of your budget and enter items throughout the week.
+                </p>
+                <h4 className="text-3xl text-gray-800 font-bold mb-3">
+                  Christmas or Birthday Lists
+                </h4>
+                <p className="text-gray-600 mb-8">
+                  Manage everyone's wants, and keep tabs on how much each person's gifts cost.
+                </p>
+
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
       </div>
 
       {/* DarkMode needs to be reviewed */}
       <div className="flex-start bg-gray-200 p-5" id="demo">
         <div className="w-2/5 flex-none p-2">
-          <div className="w-full md:w-1/2 pl-10">
-            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
-              Dark Mode
-            </h4>
-            <p className="text-center text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
-              Turn out the lights with our gorgeous dark mode support
-            </p>
-            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
-              Dark Mode
-            </h4>
-            <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
-              Turn out the lights with our gorgeous dark mode support
-            </p>
-            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
-              Dark Mode
-            </h4>
-            <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
-              Turn out the lights with our gorgeous dark mode support
-            </p>
-            <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
-              Dark Mode
-            </h4>
-            <p className=" text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
-              Turn out the lights with our gorgeous dark mode support
-            </p>
+        <div className="w-full md:w-1/2 pl-10">
+          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+            Dark Mode
+          </h4>
+          <p className="text-center text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
+            Turn out the lights with our gorgeous dark mode support
+          </p>
+          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+            Dark Mode
+          </h4>
+          <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
+            Turn out the lights with our gorgeous dark mode support
+          </p>
+          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+            Dark Mode
+          </h4>
+          <p className="text-center text-gray-600 mb-8 w-2/5 flex-none p-2">
+            Turn out the lights with our gorgeous dark mode support
+          </p>
+          <h4 className="text-gray-700 text-center bg-gray-400 p-2 w-2/5 flex-none p-2">
+            Dark Mode
+          </h4>
+          <p className=" text-center text-gray-600 mb-8 w-2/5 flex-none p-2 ">
+            Turn out the lights with our gorgeous dark mode support
+          </p>
           </div>
         </div>
       </div>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
 
       {/* Features part 2 */}
       <div>
@@ -150,9 +169,7 @@ const Landing = () => {
                 <p className="text-gray-800 text-base px-6 mb-5">
                   I don't regret buying this wearble gadget. One of the best gadgets I own!.
                 </p>
-                <p className="text-gray-500 text-xs md:text-sm px-6" id="reviews">
-                  James Doe
-                </p>
+                <p className="text-gray-500 text-xs md:text-sm px-6" id="reviews">James Doe</p>
               </div>
             </div>
           </div>
@@ -187,6 +204,8 @@ const Landing = () => {
         </div>
       </footer>
     </div>
+  
+   
   );
 };
 
