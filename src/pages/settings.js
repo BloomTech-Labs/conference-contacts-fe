@@ -283,7 +283,7 @@ const Settings = props => {
                   </div>
                   <div className="self-start pt-3">
                     <div className='flex justify-center'>
-                      <button className='' type="button" onClick={handleProfileField}>
+                      <button type="button" onClick={handleProfileField}>
                         <svg
                           className=""
                           width="24"
