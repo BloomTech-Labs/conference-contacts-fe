@@ -10,7 +10,7 @@ import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 import './styles/tailwind.css';
 
 export const client = new ApolloClient({
-  uri: 'https://lambda-labs-swaap-staging.herokuapp.com/',
+  uri: process.env.REACT_APP_APOLLO_URI,
   request: operation => {
     const token = localStorage.getItem('token');
     operation.setContext({
