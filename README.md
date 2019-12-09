@@ -6,7 +6,7 @@
 
 The contributors for the Swaap.
 
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Bobby Hall](https://github.com/bobbyhalljr)                                        |                                       [Tyler Quinn](https://github.com/)                                        |                                       [Jonathan Picazo](https://github.com/)                                        |                                       [Zachary Peasley](https://github.com/)                                        |                                       [Jarvise Billups-Brown](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
@@ -54,9 +54,13 @@ Front end deployed to `Netlify` and built using:
 
 ### Apollo 
 
+https://www.apollographql.com/
+
 - The Apollo platform is an implementation of GraphQL that can transfer data between the cloud (server) to the UI of your app. In fact, Apollo builds its environment in such a way that we can use it to handle GraphQL on the client as well as the server side of the application. 
 
 ### Prisma 
+
+https://www.prisma.io/
 
 - Prisma is the perfect tool for building GraphQL servers. The Prisma client is compatible with the Apollo ecosystem, has default support for GraphQL subscriptions and Relay-style pagination, provides end-to-end type safety and comes with a built-in dataloader to solve the N+1 problem.
 
@@ -64,7 +68,7 @@ Front end deployed to `Netlify` and built using:
 
 in the project directory, you can run: 
 
-`npm start`
+### `npm start`
 
 Runs the app in development mode. 
 open http://localhost:3000 to view in the browser.
@@ -72,28 +76,22 @@ open http://localhost:3000 to view in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-`npm test`
+### `npm test`
 
 Launches test runner, and runs tests.
 
-`npm build`
+### `npm build`
 
 Builds the app for production to the build folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-`npm eject`
+### `npm eject`
 
 Note: this is a one-way operation. Once you eject, you can’t go back!
 
 If you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
 You don’t have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-
-
-
 
 # APIs
 
@@ -101,11 +99,13 @@ You don’t have to ever use eject. The curated feature set is suitable for smal
 
 Auth0 provides authentication and authorization as a service.
 
+https://auth0.com/
+
 You can connect any application (written in any language or on any stack) to Auth0 and define the identity providers you want to use (how you want your users to log in).
 
 ## Environment Variables
 
-In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
+In order for the app to function correctly, you must set up your own environment variables. There should be a .env file containing the following:
 
 #### Variables:
 
@@ -116,6 +116,8 @@ In order for the app to function correctly, the user must set up their own envir
 ## Cypress
 
 We use cypress to for end to end tests on the frontend.
+
+https://www.cypress.io/
 
 Writing end-to-end tests takes a lot of different tools to work together. With Cypress you get multiple tools in one.
 
