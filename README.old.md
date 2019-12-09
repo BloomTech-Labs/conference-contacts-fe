@@ -1,10 +1,10 @@
 # Swaap
 
-You can find the deployed project at https://staging.swaap.co
+### You can find the deployed project at https://staging.swaap.co
 
 ## Contributors
 
-The contributors for the Swaap App
+The contributors for the Swaap.
 
 |                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
@@ -17,29 +17,29 @@ The contributors for the Swaap App
 
 ## Project Overview
 
-### Trello Board: 
+#### Trello Board: 
 https://trello.com/b/Jh8cS46t/conference-contacts
 
-### Product Canvas: 
+#### Product Canvas: 
 https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615
 
-### Design Files:
+#### Design Files:
 https://www.figma.com/file/CkvwWMzxcI4lI4udHm8QiH/Labs18_Conference-Contacts%2C-Emily%2CTylerr?node-id=877%3A72346
 
-## Project Description
+# Project Description
 
 A way for people to gather, collect and stay in contact with people that you meet.
 
 To make the social and connecting aspect of events effortless, seamless and fun to do. To give courage and ability to less outgoing people to connect and network more comfortably. To unify the social and personal networking aspect of events and put that in the hands of participants instead of vendors.
 
-### Key Features
+## Key Features
 
 - Give users the ability to connect with each other     through the app.
 - Get and Store contacts in a fast and simple way.
 - The ability to message contacts.
 - Find out where you met the contacts.
 
-### Tech Stack
+## Tech Stack
 
 Front end built using:
 
@@ -60,15 +60,15 @@ Front end deployed to `Netlify` and built using:
 
 - Prisma is the perfect tool for building GraphQL servers. The Prisma client is compatible with the Apollo ecosystem, has default support for GraphQL subscriptions and Relay-style pagination, provides end-to-end type safety and comes with a built-in dataloader to solve the N+1 problem.
 
-## APIs
+# APIs
 
-### Auth0 authentication API 
+## Auth0 authentication API 
 
 Auth0 provides authentication and authorization as a service.
 
 You can connect any application (written in any language or on any stack) to Auth0 and define the identity providers you want to use (how you want your users to log in).
 
-### Environment Variables
+## Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
@@ -76,9 +76,9 @@ In order for the app to function correctly, the user must set up their own envir
 
 - REACT_APP_APOLLO_URI="This is the backend url"
 
-## Testing
+# Testing
 
-### Cypress
+## Cypress
 
 We use cypress to for end to end tests on the frontend.
 
@@ -86,13 +86,13 @@ Writing end-to-end tests takes a lot of different tools to work together. With C
 
 Cypress provides in browser end to end testing and works with any framework all in the browser.
 
-## Contributing
+# Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
-### Issue/Bug Request
+## Issue/Bug Request
    
  **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
  - Check first to see if your issue has already been reported.
@@ -100,17 +100,17 @@ Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it 
  - Create a live example of the problem.
  - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
 
-### Feature Requests
+## Feature Requests
 
 We would love to hear from you about new features which would improve this app and further the aims of our project. Please provide as much detail and information as possible to show us why you think your new feature should be implemented.
 
-### Pull Requests
+## Pull Requests
 
 If you have developed a patch, bug fix, or new feature that would improve this app, please submit a pull request. It is best to communicate your ideas with the developers first before investing a great deal of time into a pull request to ensure that it will mesh smoothly with the project.
 
 Remember that this project is licensed under the MIT license, and by submitting a pull request, you agree that your work will be, too.
 
-#### Pull Request Guidelines
+### Pull Request Guidelines
 
 - Ensure any install or build dependencies are removed before the end of the layer when doing a build.
 - Update the README.md with details of changes to the interface, including new plist variables, exposed ports, useful file locations and container parameters.
@@ -118,7 +118,7 @@ Remember that this project is licensed under the MIT license, and by submitting 
 - Include the relevant issue number, if applicable.
 - You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
-### Attribution
+## Attribution
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
