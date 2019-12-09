@@ -17,9 +17,11 @@ The contributors for the Swaap App
 
 ## Project Overview
 
-### [Trello Board] https://trello.com/b/Jh8cS46t/conference-contacts
+## Trello Board: 
+### https://trello.com/b/Jh8cS46t/conference-contacts
 
-### [Product Canvas] https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615
+### Product Canvas: 
+### https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615
 
 1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
 
@@ -61,8 +63,8 @@ The contributors for the Swaap App
 
 ### Front end deployed to `Netlify`
 
-## [Back end]
-### (https://github.com/Lambda-School-Labs/conference-contacts-be) 
+## Back end
+### https://github.com/Lambda-School-Labs/conference-contacts-be
 
 #### built using:
 
