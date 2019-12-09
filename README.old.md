@@ -1,6 +1,6 @@
-# Swaap App
+# Swaap
 
-## You can find the deployed project at https://staging.swaap.co
+You can find the deployed project at https://staging.swaap.co
 
 ## Contributors
 
@@ -15,7 +15,7 @@ The contributors for the Swaap App
 <br>
 <br>
 
-# Project Overview
+## Project Overview
 
 ### Trello Board: 
 https://trello.com/b/Jh8cS46t/conference-contacts
@@ -23,7 +23,8 @@ https://trello.com/b/Jh8cS46t/conference-contacts
 ### Product Canvas: 
 https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+### Design Files:
+https://www.figma.com/file/CkvwWMzxcI4lI4udHm8QiH/Labs18_Conference-Contacts%2C-Emily%2CTylerr?node-id=877%3A72346
 
 ## Project Description
 
@@ -31,16 +32,16 @@ A way for people to gather, collect and stay in contact with people that you mee
 
 To make the social and connecting aspect of events effortless, seamless and fun to do. To give courage and ability to less outgoing people to connect and network more comfortably. To unify the social and personal networking aspect of events and put that in the hands of participants instead of vendors.
 
-## Key Features
+### Key Features
 
 - Give users the ability to connect with each other     through the app.
 - Get and Store contacts in a fast and simple way.
 - The ability to message contacts.
 - Find out where you met the contacts.
 
-# Tech Stack
+### Tech Stack
 
-## Front end built using:
+Front end built using:
 
 - React
 - Auth0
@@ -49,42 +50,35 @@ To make the social and connecting aspect of events effortless, seamless and fun 
 - Graphql
 - Tailwind css
 
-### Front end deployed to `Netlify` built using: 
+Front end deployed to `Netlify` and built using: 
 
 ### Apollo 
 
 - The Apollo platform is an implementation of GraphQL that can transfer data between the cloud (server) to the UI of your app. In fact, Apollo builds its environment in such a way that we can use it to handle GraphQL on the client as well as the server side of the application. 
 
-#### Prisma 
+### Prisma 
 
 - Prisma is the perfect tool for building GraphQL servers. The Prisma client is compatible with the Apollo ecosystem, has default support for GraphQL subscriptions and Relay-style pagination, provides end-to-end type safety and comes with a built-in dataloader to solve the N+1 problem.
 
-# APIs
+## APIs
 
-## Auth0 authentication API 
+### Auth0 authentication API 
 
 Auth0 provides authentication and authorization as a service.
 
 You can connect any application (written in any language or on any stack) to Auth0 and define the identity providers you want to use (how you want your users to log in).
 
-# Environment Variables
+### Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-REACT_APP_APOLLO_URI="This is the backend url"
+#### Variables:
 
-# Content Licenses
+- REACT_APP_APOLLO_URI="This is the backend url"
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+## Testing
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
-
-# Testing
-
-## Cypress
+### Cypress
 
 We use cypress to for end to end tests on the frontend.
 
@@ -92,13 +86,13 @@ Writing end-to-end tests takes a lot of different tools to work together. With C
 
 Cypress provides in browser end to end testing and works with any framework all in the browser.
 
-# Contributing
+## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
-## Issue/Bug Request
+### Issue/Bug Request
    
  **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
  - Check first to see if your issue has already been reported.
@@ -130,6 +124,6 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-see for https://github.com/Lambda-School-Labs/conference-contacts-ios details on the IOS version of our project.
+For details on the IOS version of our project see https://github.com/Lambda-School-Labs/conference-contacts-ios
 
-See https://github.com/Lambda-School-Labs/conference-contacts-be for details on the backend of our project.
+For details on the backend of our project see https://github.com/Lambda-School-Labs/conference-contacts-be
