@@ -11,9 +11,9 @@ export default function Landing() {
     <div>
       <section>
         <nav>
-          <div className="px-16 flex justify-between items-center">
+          <div className="px-16 flex justify-between items-center container mx-auto">
             <svg
-              className="ml-4"
+              className="ml-4 container mx-auto"
               width="70"
               height="30"
               fill="none"
@@ -96,11 +96,12 @@ export default function Landing() {
                   </h2>
                 </div>
                 <div>
-                  <h2 className="border-b-2 border-pink-500 w-2/12"></h2>
+                  {/* <h2 className="border-b-2 border-pink-500 w-2/12"></h2> */}
                 </div>
               </div>
             </div>
           </div>
+
           <div className="flex justify-between text-center p-5" id="demo">
             <div className="col-12 col-sm-6 col-lg-4">
               <h4 className="p-2 font-sembold text-purple-500">
@@ -164,6 +165,8 @@ export default function Landing() {
             </div>
           </div>
         </section>
+
+
 
         <section className="container mx-auto bg-white p-5">
           <div className="flex justify-between text-center p-5" id="demo">
@@ -231,98 +234,142 @@ export default function Landing() {
         </section>
       </section>
       {/* Features part 2 */}
-      {/* <div>
-        <section className="container mx-auto px-6 p-10" id="team">
-          <section className="flex flex-row container mx-auto px-6 p-10">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">The Heist Pullers</h2>
 
-          <div className="md:flex bg-white rounded-lg p-6">
-            <div className="flex-row">
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/6/6f/BTCG_Skull_Knight.png/revision/latest?cb=20170930084349" alt=""
-              ></img>
 
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
-
-              <p className="text-gray-600 mb-8">Team Lead/Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasly</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise Billups-Brown</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/b/b0/BTCG_Griffith_Holding_Sabre.png/revision/latest?cb=20170930052614" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/e/e4/Pippin_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/49/window-width/990/window-height/743?cb=20150810011043" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Reding</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/1/10/Rickert_Profile.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/49/window-width/998/window-height/749?cb=20160830163701" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
-
-              <img
-                className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-                src="https://vignette.wikia.nocookie.net/berserk/images/9/9e/Farnese_de_Vandimion_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2016/window-height/1512?cb=20160918013313" alt=""
-              ></img>
-
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>
-
-              <p className="text-gray-600 mb-8">Software Engineer</p>
+      <section className="container mx-auto bg-white p-5 ">
+        <section className="container mx-auto bg-white p-5">
+          <div classname="container">
+            <div classname="row">
+              <div className="col-12">
+                <div classname="section-heading text-center">
+                  <h2 className="text-4xl flex justify-center font-sembold text-purple-600 ">
+                    Our Team
+                  </h2>
+                </div>
+                <div>
+                  {/* <h2 className="border-b-2 border-pink-500 w-2/12"></h2> */}
+                </div>
+              </div>
             </div>
           </div>
+
+
+          <div className="justify-center p-5">
+            <div className="col-12 col-sm-6 col-lg-4">
+            <div className="justify-center md:flex bg-white rounded-lg p-6">
+              <div className="flex-row">
+                    <img
+                      className="md:w-48  mx-auto"
+                      src="https://vignette.wikia.nocookie.net/berserk/images/6/6f/BTCG_Skull_Knight.png/revision/latest?cb=20170930084349"
+                      alt=""
+                    ></img>
+                    <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
+                    <p className="text-gray-600 mb-8">Team Lead/Software Engineer</p>
+               </div>
+               </div>
+
+
+
+
+
+
+
+              
+               <section className="container mx-auto bg-white p-5">
+               <div className="flex justify-between text-center p-5">
+            <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48 mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038"
+                    alt=""
+                  ></img>
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
+                  <p className="text-gray-600 mb-8">Software Engineer</p>
+                  </div>
+                  <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48  mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                    alt=""
+                  ></img>
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
+                  <p className="text-gray-600 mb-8">Software Engineer</p>
+                  </div>
+                  <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48  mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"
+                    alt=""
+                  ></img>       
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasly</h4>
+                  <p className="text-gray-600 mb-8">Software Engineer</p>
+                  </div>
+                  <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48  mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357"
+                    alt=""
+                  ></img>
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise Billups-Brown</h4>
+                  <p className="text-gray-600 mb-8">Software Engineer</p>
+                  </div>
+                  </div>
+           </section>
+     
+              
+
+
+
+
+
+
+           <section className="container mx-auto bg-white p-5">
+               <div className="flex justify-between text-center p-5">
+            <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48 mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038"
+                    alt=""
+                  ></img>
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Redig</h4>
+                  <p className="text-gray-600 mb-8">ISO Developer</p>
+                  </div>
+                  <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48  mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                    alt=""
+                  ></img>
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
+                  <p className="text-gray-600 mb-8">ISO Developer</p>
+                  </div>
+                  <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48  mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"
+                    alt=""
+                  ></img>       
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
+                  <p className="text-gray-600 mb-8">UX Desinger</p>
+                  </div>
+                  <div className="col-12 col-sm-6 col-lg-4">
+                  <img
+                    className="md:w-48  mx-auto"
+                    src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357"
+                    alt=""
+                  ></img>
+                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>
+                  <p className="text-gray-600 mb-8">UX Desinger</p>
+                  </div>
+                  </div>
+           </section>
+     
+              
+              </div>
+            </div>
+          </section>
         </section>
-        </section>
-      </div> */}
+
 
       {/* Review */}
       <div className="bg-gray-100">
