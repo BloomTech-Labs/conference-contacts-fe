@@ -14,24 +14,30 @@ const mockUser = {
   jobtitle: 'Nutrition Specialist',
   gender: 'NONBINARY',
   industry: 'Food & Service ;)',
-  profile: [{
-    __typename: 'ProfileField',
-    id: 1,
-    value: 'tasha.salad@lifesum.com',
-    type: 'EMAIL',
-    privacy: 'PUBLIC',
-    preferredContact: true
-  }]
+  profile: [
+    {
+      __typename: 'ProfileField',
+      id: 1,
+      value: 'tasha.salad@lifesum.com',
+      type: 'EMAIL',
+      privacy: 'PUBLIC',
+      preferredContact: true
+    }
+  ]
 };
 
 describe('Settings Page', () => {
   afterEach(cleanup);
 
   it('renders settings', async () => {
-    const mocks = [{
-      request: { query: GET_USER_PROFILE },
-      result: { data: { user: mockUser } }
-    }];
+    const mocks = [
+      {
+        request: { query: GET_USER_PROFILE },
+        result: { data: { user: mockUser } }
+      }
+    ];
+
+    window.cloudinary = { createUploadWidget: jest.fn() };
 
     const { getByDisplayValue } = await renderApollo(<Settings />, { mocks });
 
