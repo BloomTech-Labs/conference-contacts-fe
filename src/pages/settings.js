@@ -10,16 +10,7 @@ import {
 
 const Settings = props => {
   const forms = { email: useRef() };
-  const [fields, setFields] = useState({
-    name: '',
-    industry: '',
-    jobtitle: '',
-    gender: '',
-    bio: '',
-    email: '',
-    social: '',
-    phone: ''
-  });
+  const [fields, setFields] = useState({});
 
   const { loading: queryLoading, error: queryError, data } = useQuery(GET_USER_PROFILE);
 
@@ -202,7 +193,7 @@ const Settings = props => {
             type="text"
             placeholder="Name"
             onChange={handleFieldUpdate}
-            value={fields.name}
+            value={fields.name || ''}
           />
         </div>
         {/* INDUSTRY INPUT */}
@@ -217,7 +208,7 @@ const Settings = props => {
             type="text"
             placeholder="Industry"
             onChange={handleFieldUpdate}
-            value={fields.industry}
+            value={fields.industry || ''}
           />
         </div>
         {/* JOBTITLE INPUT */}
@@ -232,7 +223,7 @@ const Settings = props => {
             type="text"
             placeholder="Job Title"
             onChange={handleFieldUpdate}
-            value={fields.jobtitle}
+            value={fields.jobtitle || ''}
           />
         </div>
         {/* GENDER INPUT */}
@@ -243,7 +234,7 @@ const Settings = props => {
           <select
             name="gender"
             onChange={handleFieldUpdate}
-            value={fields.gender}
+            value={fields.gender || ''}
             className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
           >
             <option defaultValue disabled>
@@ -341,7 +332,7 @@ const Settings = props => {
               name="email"
               id="email"
               placeholder="bob@cob.com"
-              value={fields.email}
+              value={fields.email || ''}
               onChange={handleFieldUpdate}
             />
           </form>
