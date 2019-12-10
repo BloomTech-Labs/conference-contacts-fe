@@ -18,9 +18,9 @@ const Profile = () => {
         {/* IMG ROUNG LARGE */}
         <img
           className="rounded-br-full rounded-tr-full
-        rounded-bl-full round-tl-lg mt-16 -ml-12 left-2 top-0 max-w-sm shadow-md"
-          src={picture}
-          alt={`profile picuture of ${name}`}
+        rounded-bl-full round-tl-lg mt-16 -ml-12 left-2 top-0 max-w-sm shadow-md profile-picture object-cover"
+          src={data.user.picture}
+          alt={`profile picuture of ${data.user.name}`}
         />
 
         <Link to="/settings" className="flex justify-end mr-12">

@@ -48,7 +48,6 @@ export const Auth0Provider = ({
           `,
           variables: {
             user: {
-              sub: user.sub,
               name: user.name,
               picture: user.picture,
               email: user.email

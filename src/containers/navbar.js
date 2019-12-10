@@ -91,7 +91,7 @@ export default function NavBar() {
                     <img
                       className="mb-4 object-cover bg-center rounded-full"
                       src={data.user.picture}
-                      alt={`profile for ${data.user.name}`}
+                      alt={`avatar of ${data.user.name}`}
                     />
                     <p className="pb-12 text-2xl pl-2">{data.user.name}</p>
                     <p className="pb-10">QR Code goes here</p>
