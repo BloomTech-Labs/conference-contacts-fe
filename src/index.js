@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
 import { Auth0Provider } from './react-auth0-spa';
 import config from './auth_config.json';
 import history from './utils/history';
@@ -8,6 +9,12 @@ import ApolloClient, { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 
 import './styles/tailwind.css';
+
+
+
+
+
+
 
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_APOLLO_URI,
@@ -40,6 +47,8 @@ const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
+
+Sentry.init({ dsn: "https://fc80a5275503499ca0fd7f2e93ca9b3b@sentry.io/1826956" });
 
 const render = () => {
   const Pages = require('./pages').default;
