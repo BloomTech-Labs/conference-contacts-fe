@@ -2,33 +2,56 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/browser';
 import { Auth0Provider } from './react-auth0-spa';
-import { Router } from 'react-router-dom';
 import config from './auth_config.json';
 import history from './utils/history';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
-import './index.css';
+
+import ApolloClient, { gql } from 'apollo-boost';
+import { ApolloProvider, useQuery } from '@apollo/react-hooks';
+
+import './styles/tailwind.css';
 
 export const client = new ApolloClient({
-  uri: 'https://lambda-labs-swaap-staging.herokuapp.com/',
+  uri: process.env.REACT_APP_APOLLO_URI,
   request: operation => {
     const token = localStorage.getItem('token');
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ''
+        authorization: token || ''
       }
     });
   }
 });
 
+client.cache.writeData({
+  data: {
+    isLoggedIn: Boolean(localStorage.getItem('token'))
+  }
+});
+
 const onRedirectCallback = appState => {
-  history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
+  history.navigate(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
 };
 
-Sentry.init({ dsn: 'https://fc80a5275503499ca0fd7f2e93ca9b3b@sentry.io/1826956' });
+const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client
+  }
+`;
+
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN });
 
 const render = () => {
-  const App = require('./app/App').default;
+  const Pages = require('./pages').default;
+  const Landing = require('./pages/landing').default;
+
+  function IsLoggedIn() {
+    const { data } = useQuery(IS_LOGGED_IN);
+    return data.isLoggedIn ? <Pages /> : <Landing />;
+  }
 
   ReactDOM.render(
     <Auth0Provider
@@ -39,9 +62,7 @@ const render = () => {
       onRedirectCallback={onRedirectCallback}
     >
       <ApolloProvider client={client}>
-        <Router history={history}>
-          <App />
-        </Router>
+        <IsLoggedIn />
       </ApolloProvider>
     </Auth0Provider>,
     document.getElementById('root')
@@ -51,5 +72,5 @@ const render = () => {
 render();
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./app/App', render);
+  module.hot.accept('./pages', render);
 }

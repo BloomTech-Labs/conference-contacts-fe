@@ -34,24 +34,31 @@ export const Auth0Provider = ({
       setIsAuthenticated(isAuthenticated);
 
       if (isAuthenticated) {
-        const user = await auth0FromHook.getUser();
-        const token = await auth0FromHook.getTokenSilently();
-        localStorage.setItem('token', token);
-        client.mutate({
+        let user = await auth0FromHook.getUser();
+
+        localStorage.setItem('token', await auth0FromHook.getTokenSilently());
+        client.writeData({ data: { isLoggedIn: true } });
+
+        await client.mutate({
           mutation: gql`
-            mutation CreateUser($data: CreateUserInput!) {
-              createUser(data: $data) {
-                id
+            mutation CreateUser($user: CreateUserInput!) {
+              createUser(data: $user) {
+                success
               }
             }
           `,
-          variables: { data: user }
+          variables: {
+            user: {
+              name: user.name,
+              picture: user.picture,
+              email: user.email
+            }
+          }
         });
-        setUser(user);
       }
-
       setLoading(false);
     };
+
     initAuth0();
     // eslint-disable-next-line
   }, []);
