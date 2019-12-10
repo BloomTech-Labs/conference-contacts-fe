@@ -10,12 +10,6 @@ import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 
 import './styles/tailwind.css';
 
-
-
-
-
-
-
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_APOLLO_URI,
   request: operation => {
@@ -48,7 +42,7 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-Sentry.init({ dsn: "https://fc80a5275503499ca0fd7f2e93ca9b3b@sentry.io/1826956" });
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN });
 
 const render = () => {
   const Pages = require('./pages').default;
