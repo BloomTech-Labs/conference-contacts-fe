@@ -1,7 +1,6 @@
-/* Edit icon */
-.padding-edit-icon {
-  padding: 15px;
-}
+/* body {
+  @apply bg-gray-100;
+} */
 
 /* navbar and sidenav */
 .header {
@@ -20,8 +19,6 @@
 .header .navContainer {
   display: flex;
   justify-content: space-between;
-  /* padding: 0 15px; */
-  /* max-width: 1230px; */
   margin: 0 auto;
 }
 .navToggle {
@@ -98,6 +95,7 @@
   height: 120%;
 }
 
+/* DESKTOP */
 .desktop-active {
   border-bottom: 5px solid #007aff;
   padding-bottom: 30px;
@@ -107,14 +105,27 @@
   color: #007aff;
 }
 
-.social-tag {
-  color: #007aff;
+/* SOCIAL TAG */
+.gray-text {
+  color: #9A99A2;;
 }
 
+/* PROFILE PIC */
 .profile-picture {
   width: 22rem;
   height: 22rem;
 }
+
+/* MAIN CONTAINER */
+.main-container {
+  border-radius: 1.5rem;
+}
+
+.box {
+  border-radius: 1rem;
+}
+
+/* ********* MEDIA QUERIES ********* */
 
 @media (max-width: 700px) {
   .desktop-nav {
