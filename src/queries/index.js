@@ -77,6 +77,7 @@ export const NAVBAR_PROFILE = gql`
     user {
       name
       picture
+      id
     }
   }
 `;

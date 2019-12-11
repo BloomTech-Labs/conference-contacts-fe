@@ -5,11 +5,15 @@ import { useAuth0 } from '../react-auth0-spa';
 import { useQuery, useApolloClient } from '@apollo/react-hooks';
 import { NAVBAR_PROFILE } from '../queries/index';
 
+const QRCode = require('qrcode.react');
+
+
 export default function NavBar() {
   const client = useApolloClient();
   const { logout } = useAuth0();
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
   const [open, setOpen] = useState(false);
+  
 
   if (loading || !data) return <div>Loading...</div>;
   if (error) return <p>There was an error: {error}</p>;
@@ -94,7 +98,7 @@ export default function NavBar() {
                       alt={`avatar of ${data.user.name}`}
                     />
                     <p className="pb-12 text-2xl pl-2">{data.user.name}</p>
-                    <p className="pb-10">QR Code goes here</p>
+                    {data && data.user && data.user.id && <QRCode value={data.user.id.split('').reverse().join('')} />}
                   </div>
                 </div>
               </div>
