@@ -65,10 +65,26 @@ Front end built using:
 - Auth0
 - Reach Router
 - Apollo
-- Graphql
 - Tailwind css
 
-Front end deployed to `Netlify` and built using: 
+Front end deployed to `Netlify` and built using:
+### React
+
+https://www.apollographql.com/
+
+- ReactJS is an open-source JavaScript library which is used for building user interfaces specifically for single page applications. It's used for handling view layer for web and mobile apps. React also allows us to create reusable UI components.
+
+### Auth0 
+
+https://auth0.com/
+
+- Auth0 provides authentication and authorization as a service. We are here to give developers and companies the building blocks they need to secure their applications without having to become security experts.
+
+### Reach Router 
+
+https://reach.tech/router
+
+- The structure of Reach Router is really simple. Routers select a child to render based on the child's path. You as the developer simply specify your desired slug (a slug is the part of a URL which identifies a page using human-readable keywords).
 
 ### Apollo 
 
@@ -76,11 +92,11 @@ https://www.apollographql.com/
 
 - The Apollo platform is an implementation of GraphQL that can transfer data between the cloud (server) to the UI of your app. In fact, Apollo builds its environment in such a way that we can use it to handle GraphQL on the client as well as the server side of the application. 
 
-### Prisma 
+### Tailwind css
 
-https://www.prisma.io/
+https://tailwindcss.com/
 
-- Prisma is the perfect tool for building GraphQL servers. The Prisma client is compatible with the Apollo ecosystem, has default support for GraphQL subscriptions and Relay-style pagination, provides end-to-end type safety and comes with a built-in dataloader to solve the N+1 problem.
+- Tailwind is a collection of low-level utility classes. They can be used like lego bricks to build any kind of component. The collection covers the most important CSS properties, but it can be easily extended in a variety of ways. With Tailwind, customization isn’t pain in the neck anymore. The framework has great documentation, covering every class utility in detail and showing the ways it can be customized. All modern browsers, and IE11+, are supported.
 
 ## Extensions
 
@@ -135,7 +151,18 @@ In order for the app to function correctly, you must set up your own environment
 
 #### Variables:
 
-- REACT_APP_APOLLO_URI="This is the backend url"
+REACT_APP_AUTH0_DOMAIN
+   - Domain at which the application is set accordingly with Auth0, for proper authentication.
+REACT_APP_AUTH0_CLIENT_ID
+   - Unique ID provided by Auth0 to be used with the applicaiton.
+REACT_APP_APOLLO_URI
+   - The location at which the application's backend server is located.
+REACT_APP_CLOUDINARY_NAME
+   - The name of the cloud, being used on Cloudinary.
+REACT_APP_CLOUDINARY_PRESET
+   - The preset of the cloud, being used on Cloudinary.
+   
+
 
 # Testing
 
