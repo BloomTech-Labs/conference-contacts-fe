@@ -301,6 +301,7 @@ const Settings = props => {
               Emails
             </label>
             <svg
+              data-testid="email"
               className="w-4 h-4"
               viewBox="0 0 15 15"
               fill="none"
@@ -318,6 +319,7 @@ const Settings = props => {
               <div key={field.id} className="flex justify-between items-center mb-2">
                 <h2>{field.value}</h2>
                 <svg
+                  data-testid="email-delete"
                   className="w-4 h-4"
                   viewBox="0 0 12 12"
                   fill="none"
@@ -349,7 +351,7 @@ const Settings = props => {
               </div>
             );
           }) ?? <p className="ml-6 mb-2">You have no emails.</p>}
-          <form className="hidden" ref={forms.email} onSubmit={handleProfileSubmit('email')}>
+          <form className="hidden" ref={forms.email} onSubmit={handleProfileSubmit('email')} data-testid="email-form">
             <input
               className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"

@@ -15,7 +15,6 @@ context('Profile form input updates', () => {
       .contains('Settings')
       .click();
     cy.url().should('include', '/settings');
-
     cy.get('form').within($form => {
       // cy.get() will only search for elements within form,
       // not within the entire document
@@ -24,12 +23,18 @@ context('Profile form input updates', () => {
       cy.get('input[name="name"]').type('John Wick');
       cy.get('input[name="industry"]').type('Finance');
       cy.get('input[name="jobtitle"]').type('Marketing Associate');
-      cy.get('select[name="gender"]').select('Male');
+      cy.get('input[name="location"]').type('Raleigh, NC');
       cy.get('textarea[name="bio"]').type('Testing is phenomenal!');
       cy.get('input[name="email"]').type('jonboi@gmail.com');
-      cy.get('[data-id="emailBtn"]').click();
-      cy.get('[test-id="deleteEmail"]')
-        .first()
+      cy.get('[data-testid="email"]').click();
+      cy.get('[data-testid="email-form"]').within($form => {
+        cy.get('input[name="email"]')
+          .type('test@user.com')
+          .root()
+          .submit();
+      });
+      cy.get('[data-testid="email-delete"]')
+        .last()
         .click();
       cy.root().submit();
     });
