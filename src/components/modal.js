@@ -1,5 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import QRCode from 'qrcode.react';
 
 export default () => (
   <Popup trigger={
@@ -11,12 +12,12 @@ export default () => (
     } modal>
     {close => (
       <div className="modal">
-        <a className="close" onClick={close}>
+        <a className="flex justify-end text-2xl mr-4" onClick={close}>
           &times;
         </a>
         <div className="header"> Modal Title </div>
-        <div className="content">
-          hello
+        <div className="flex justify-center m-8">
+          <QRCode value={`http://staging.swaap.co/profile`} />
         </div>
       </div>
     )}
