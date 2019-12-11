@@ -14,11 +14,16 @@ const Settings = props => {
     name: '',
     industry: '',
     jobtitle: '',
+    birthdate: '',
     location: '',
     bio: '',
     email: '',
-    social: '',
-    phone: ''
+    phone: '',
+    sms: '',
+    instagram: '',
+    facebook: '',
+    linkedin: '',
+    twitter: '',
   });
 
   const { loading: queryLoading, error: queryError, data } = useQuery(GET_USER_PROFILE);
@@ -122,8 +127,18 @@ const Settings = props => {
       ...acc,
       [cur.type]: acc[cur.type].concat(cur)
     }),
-    { EMAIL: [], SOCIAL: [], PHONE: [] }
+    { 
+      EMAIL: [], 
+      SMS: [], 
+      PHONE: [], 
+      INSTAGRAM: [], 
+      FACEBOOK: [], 
+      LINKEDIN: [],
+      TWITTER: [],
+    }
   );
+
+  console.log(profile)
 
   // cloudinary upload widget
   const widget = window.cloudinary.createUploadWidget(
@@ -250,35 +265,6 @@ const Settings = props => {
             value={fields.location}
           />
         </div>
-        {/* GENDER INPUT */}
-        {/* <div className="relative mb-6 w-2/3 m-auto">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
-            Gender
-          </label>
-          <select
-            name="gender"
-            onChange={handleFieldUpdate}
-            value={fields.gender}
-            className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
-          >
-            <option defaultValue disabled>
-              Your preference
-            </option>
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
-            <option value="NONBINARY">Non-Binary</option>
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 pt-6 pr-4 flex items-center px-2 text-gray-700">
-            CHEVERON SVG 
-            <svg
-              className="fill-current h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-            </svg>
-          </div>
-        </div> */}
         {/* BIO */}
         <div className="mb-6 w-2/3 m-auto h-24">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bio">
