@@ -11,9 +11,9 @@ export default function Landing() {
     <div>
       <section>
         <nav>
-          <div className="px-16 flex justify-between items-center container mx-auto">
+          <div className="flex justify-between items-center container mx-auto">
             <svg
-              className="ml-4 container mx-auto"
+              className="ml-4 container"
               width="70"
               height="30"
               fill="none"
@@ -43,8 +43,32 @@ export default function Landing() {
             </svg>
 
             <div className="flex">
-              <ul className="desktop-nav flex items-center">
-                <Button onClick={loginWithRedirect}>Sign Up</Button>
+              <ul className="flex items-center ml-24">
+              <a
+                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
+                  href="#features"
+                >
+                  Features
+                </a>
+                <a
+                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white mr-6"
+                  href="#demo"
+                >
+                  Demo
+                </a>
+                <a
+                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white mr-6"
+                  href="#team"
+                >
+                  Team
+                </a>
+                <a
+                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white"
+                  href="#reviews"
+                >
+                  Reviews
+                </a>
+                <Button className="ml-12" onClick={loginWithRedirect}>Sign Up</Button>
               </ul>
             </div>
           </div>
@@ -57,7 +81,6 @@ export default function Landing() {
         <h3 className="text-3xl mb-8 text-black-200">
           Smarter lists that calculate how much its items cost. And, to the penny.
         </h3>
-        <Button onClick={loginWithRedirect}>Download</Button>
         <img src="https://i.ibb.co/NLCGt1Z/darkMode.png" alt="darkMode" border="0"></img>
       </div>
 
@@ -85,28 +108,106 @@ export default function Landing() {
       </div>
 
       {/* DarkMode needs to be reviewed */}
-      <section className="container mx-auto bg-white p-5 ">
-        <section className="container mx-auto bg-white p-5">
-          <div classname="container">
-            <div classname="row">
-              <div className="col-12">
-                <div classname="section-heading text-center">
-                  <h2 className="text-4xl flex justify-center font-sembold text-purple-600 ">
-                    Awesome Features
-                  </h2>
-                </div>
-                <div>
-                  {/* <h2 className="border-b-2 border-pink-500 w-2/12"></h2> */}
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="container mx-auto px-12 py-32">
+        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12">
+          Features
+        </h2>
 
           <div className="flex justify-between text-center p-5" id="demo">
-            <div className="col-12 col-sm-6 col-lg-4">
+          <div className="flex flex-wrap">
+          <div className="w-full md:w-1/3 px-2 mb-6">
+            <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
-                  className="w-8 ml-32"
+                  className="w-8 m-auto"
+                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  alt="smartphone"
+                  border="0"
+                />
+                Make friends
+              </h4>
+              <p className="mb-8">
+                Scan a qr code with someone and get there information
+              </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-6">
+            <div className="col-12 col-sm-6 col-lg-6">
+              <h4 className="p-2 font-sembold text-purple-500">
+                <img
+                  className="w-8 m-auto"
+                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  alt="smartphone"
+                  border="0"
+                />
+                Any size
+              </h4>
+              <p className="mb-8 p-2 ">
+              We support every device orientation and size for multitasking.
+              </p>
+              </div>
+              </div>
+              <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+              <h4 className="p-2 font-sembold text-purple-500">
+                <img
+                  className="w-8 m-auto"
+                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  alt="smartphone"
+                  border="0"
+                />
+                Import
+              </h4>
+              <p className="mb-8 p-2 ">
+                Inport any picture you want on the app.
+              </p>
+              </div>
+              </div>
+            </div>
+</div>
+
+
+
+          <div className="flex justify-between text-center p-5" id="demo">
+          <div className="flex flex-wrap">
+          <div className="w-full md:w-1/3 px-2 mb-6">
+            <div className="col-12 col-sm-6 col-lg-6">
+              <h4 className="p-2 font-sembold text-purple-500">
+                <img
+                  className="w-8 m-auto"
+                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  alt="smartphone"
+                  border="0"
+                />
+                Fast and Simple 
+              </h4>
+              <p className="mb-8 p-2 ">
+                I only takes 5 minutes to set up ancount by going to auth0 and login with an email 
+                of your choice 
+              </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-6">
+            <div className="col-12 col-sm-6 col-lg-6">
+              <h4 className="p-2 font-sembold text-purple-500">
+                <img
+                  className="w-8 m-auto"
+                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  alt="smartphone"
+                  border="0"
+                />
+                Editing 
+              </h4>
+              <p className="mb-8 p-2 ">
+              Simply two finger drag down to bulk edit lists or items.
+              </p>
+              </div>
+              </div>
+              <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+              <h4 className="p-2 font-sembold text-purple-500">
+                <img
+                  className="w-8 m-auto"
                   src="https://i.ibb.co/XzktDZK/smartphone.png"
                   alt="smartphone"
                   border="0"
@@ -114,262 +215,129 @@ export default function Landing() {
                 DarkMode
               </h4>
               <p className="mb-8 p-2 ">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+              Turn out the lights with our gorgeous dark mode support.
               </p>
+              </div>
+              </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="mb-8 p-2">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="text-start mb-8 p-2">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="mb-8 p-2 ">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-        </section>
-
-
-
-        <section className="container mx-auto bg-white p-5">
-          <div className="flex justify-between text-center p-5" id="demo">
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="mb-8 p-2 ">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="mb-8 p-2">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className=" p-2">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="text-start mb-8 p-2">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2">
-                <img
-                  className="w-8 ml-32"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
-                  alt="smartphone"
-                  border="0"
-                />
-                Dark Mode
-              </h4>
-              <p className="mb-8 p-2 ">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-        </section>
-      </section>
+</div>
+</div>
       {/* Features part 2 */}
 
 
-      <section className="container mx-auto bg-white p-5 ">
-        <section className="container mx-auto bg-white p-5">
-          <div classname="container">
-            <div classname="row">
-              <div className="col-12">
-                <div classname="section-heading text-center">
-                  <h2 className="text-4xl flex justify-center font-sembold text-purple-600 ">
-                    Our Team
-                  </h2>
-                </div>
-                <div>
-                  {/* <h2 className="border-b-2 border-pink-500 w-2/12"></h2> */}
-                </div>
-              </div>
+
+
+
+
+
+
+
+      <div className="container mx-auto px-12 py-32 text-center">
+        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12">
+          Team
+        </h2>
+        <div className="flex flex-wrap">
+          <div className="w-full md:w-1/3 px-2 mb-6">
+            <div className="col-12 col-sm-6 col-lg-6">
+              <img
+                className="md:w-64  mx-auto"
+                src="https://i.ibb.co/cNtktWF/profile.jpg" alt="profile" border="0"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
+              <p className="text-gray-600 mb-8">Team Leader/Software Engineer</p>
             </div>
           </div>
-
-
-          <div className="justify-center p-5">
+          <div className="w-full md:w-1/3 px-2 mb-4">
             <div className="col-12 col-sm-6 col-lg-4">
-            <div className="justify-center md:flex bg-white rounded-lg p-6">
-              <div className="flex-row">
-                    <img
-                      className="md:w-48  mx-auto"
-                      src="https://vignette.wikia.nocookie.net/berserk/images/6/6f/BTCG_Skull_Knight.png/revision/latest?cb=20170930084349"
-                      alt=""
-                    ></img>
-                    <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
-                    <p className="text-gray-600 mb-8">Team Lead/Software Engineer</p>
-               </div>
-               </div>
-
-
-
-
-
-
-
-              
-               <section className="container mx-auto bg-white p-5">
-               <div className="flex justify-between text-center p-5">
-            <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48 mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038"
-                    alt=""
-                  ></img>
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
-                  <p className="text-gray-600 mb-8">Software Engineer</p>
-                  </div>
-                  <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48  mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
-                    alt=""
-                  ></img>
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
-                  <p className="text-gray-600 mb-8">Software Engineer</p>
-                  </div>
-                  <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48  mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"
-                    alt=""
-                  ></img>       
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasly</h4>
-                  <p className="text-gray-600 mb-8">Software Engineer</p>
-                  </div>
-                  <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48  mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357"
-                    alt=""
-                  ></img>
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise Billups-Brown</h4>
-                  <p className="text-gray-600 mb-8">Software Engineer</p>
-                  </div>
-                  </div>
-           </section>
-     
-              
-
-
-
-
-
-
-           <section className="container mx-auto bg-white p-5">
-               <div className="flex justify-between text-center p-5">
-            <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48 mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/7/7b/Serpico_wind.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/99/window-width/2032/window-height/1524?cb=20160828173038"
-                    alt=""
-                  ></img>
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Redig</h4>
-                  <p className="text-gray-600 mb-8">ISO Developer</p>
-                  </div>
-                  <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48  mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
-                    alt=""
-                  ></img>
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
-                  <p className="text-gray-600 mb-8">ISO Developer</p>
-                  </div>
-                  <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48  mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"
-                    alt=""
-                  ></img>       
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
-                  <p className="text-gray-600 mb-8">UX Desinger</p>
-                  </div>
-                  <div className="col-12 col-sm-6 col-lg-4">
-                  <img
-                    className="md:w-48  mx-auto"
-                    src="https://vignette.wikia.nocookie.net/berserk/images/4/40/Manga_V38_Guts.png/revision/latest/window-crop/width/40/x-offset/0/y-offset/19/window-width/400/window-height/300?cb=20170919104357"
-                    alt=""
-                  ></img>
-                  <h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>
-                  <p className="text-gray-600 mb-8">UX Desinger</p>
-                  </div>
-                  </div>
-           </section>
-     
-              
-              </div>
+              <img
+                className="md:w-64  mx-auto"
+                src="https://i.ibb.co/3vZ5kB2/headshot.jpg" alt="headshot" border="0"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
+              <p className="text-gray-600 mb-8">Software Engineer</p>
             </div>
-          </section>
-        </section>
-
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-48  mx-auto"
+                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
+              <p className="text-gray-600 mb-8">Software Engineer</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-64 mx-auto"
+                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasley</h4>
+              <p className="text-gray-600 mb-8">Software Engineer</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-64 mx-auto"
+                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise Billups-Brown</h4>
+              <p className="text-gray-600 mb-8">Software Engineer</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-64 mx-auto"
+                src="https://i.ibb.co/0Xfz8G3/T4-JUEB3-ME-UHF67-A9-T9-a3fb05aba2cd-512.jpg" alt="T4-JUEB3-ME-UHF67-A9-T9-a3fb05aba2cd-512" border="0"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Raskin</h4>
+              <p className="text-gray-600 mb-8">ISO Developer</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-64  mx-auto"
+                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
+              <p className="text-gray-600 mb-8">ISO Developer</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-64 mx-auto"
+                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
+              <p className="text-gray-600 mb-8">UX Designer</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/3 px-2 mb-4">
+            <div className="col-12 col-sm-6 col-lg-4">
+              <img
+                className="md:w-64  mx-auto"
+                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                alt=""
+              ></img>
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>
+              <p className="text-gray-600 mb-8">UX Designer</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Review */}
       <div className="bg-gray-100">
