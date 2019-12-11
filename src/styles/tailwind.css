@@ -8346,6 +8346,10 @@ video {
   z-index: auto;
 }
 
+body {
+  background-color: #edf2f7
+}
+
 /* Edit icon */
 
 .padding-edit-icon {
@@ -8461,6 +8465,8 @@ video {
   height: 120%;
 }
 
+/* DESKTOP */
+
 .desktop-active {
   border-bottom: 5px solid #007aff;
   padding-bottom: 30px;
@@ -8470,14 +8476,28 @@ video {
   color: #007aff;
 }
 
-.social-tag {
-  color: #007aff;
+/* SOCIAL TAG */
+
+.gray-text {
+  color: #9A99A2;
 }
+
+/* PROFILE PIC */
 
 .profile-picture {
   width: 22rem;
   height: 22rem;
 }
+
+/* MAIN CONTAINER */
+
+.main-container {
+  border-radius: 1.5rem;
+  margin-top: 7.5rem;
+  /* margin-bottom: 6rem; */
+}
+
+/* ********* MEDIA QUERIES ********* */
 
 @media (max-width: 700px) {
   .desktop-nav {
