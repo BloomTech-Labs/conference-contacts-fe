@@ -10,6 +10,7 @@ export default function NavBar() {
   const { logout } = useAuth0();
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
   const [open, setOpen] = useState(false);
+  const QRCode = require('qrcode.react');
 
   if (loading || !data) return <div>Loading...</div>;
   if (error) return <p>There was an error: {error}</p>;
@@ -94,7 +95,7 @@ export default function NavBar() {
                       alt={`avatar of ${data.user.name}`}
                     />
                     <p className="pb-12 text-2xl pl-2">{data.user.name}</p>
-                    <p className="pb-10">QR Code goes here</p>
+                    {data && data.user && data.user.id && <QRCode value={`https://staging.swaap.co/${data.user.id.split('').reverse().join('')}`} />}
                   </div>
                 </div>
               </div>
