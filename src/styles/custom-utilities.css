@@ -1,11 +1,6 @@
-body {
-  @apply bg-gray-200
-}
-
-/* Edit icon */
-.padding-edit-icon {
-  padding: 15px;
-}
+/* body {
+  @apply bg-gray-100;
+} */
 
 /* navbar and sidenav */
 .header {
@@ -24,8 +19,6 @@ body {
 .header .navContainer {
   display: flex;
   justify-content: space-between;
-  /* padding: 0 15px; */
-  /* max-width: 1230px; */
   margin: 0 auto;
 }
 .navToggle {
@@ -126,10 +119,11 @@ body {
 /* MAIN CONTAINER */
 .main-container {
   border-radius: 1.5rem;
-  margin-top: 7.5rem;
-  /* margin-bottom: 6rem; */
 }
 
+.box {
+  border-radius: 1rem;
+}
 
 /* ********* MEDIA QUERIES ********* */
 

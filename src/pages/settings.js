@@ -235,6 +235,21 @@ const Settings = props => {
             value={fields.jobtitle}
           />
         </div>
+        {/* LOCATION INPUT */}
+        <div className="mb-6 w-2/3 m-auto">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
+            Location
+          </label>
+          <input
+            name="location"
+            className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="location"
+            type="text"
+            placeholder="Location"
+            onChange={handleFieldUpdate}
+            value={fields.location}
+          />
+        </div>
         {/* GENDER INPUT */}
         {/* <div className="relative mb-6 w-2/3 m-auto">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
