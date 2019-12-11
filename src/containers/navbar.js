@@ -25,7 +25,7 @@ export default function NavBar() {
       <header className="header">
         <div className="navContainer flex items-center pl-4 pr-4 pb-2 pt-2 shadow">
           {/* LOGO */}
-          <Link to="profile">
+          <Link to="/">
             <svg
               className="ml-4"
               width="70"
@@ -61,16 +61,16 @@ export default function NavBar() {
               {/* DESKTOP NAV */}
               <ul className="desktop-nav flex items-center">
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="contacts">Contacts</NavLink>
+                  <Link to="contacts">Contacts</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="messages">Messages</NavLink>
+                  <Link to="messages">Messages</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="profile">Profile</NavLink>
+                  <Link to="profile">Profile</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="settings">Settings</NavLink>
+                  <Link to="settings">Settings</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
                   <div className="">
@@ -99,6 +99,11 @@ export default function NavBar() {
                 </div>
               </div>
               <div className="mt-8">
+                <li className="hover:bg-gray-200 pl-6">
+                  <Link onClick={() => setOpen(!open)} to="/" className="mainNavLink">
+                    Home
+                  </Link>
+                </li>
                 <li className="hover:bg-gray-200 pl-6">
                   <Link onClick={() => setOpen(!open)} to="contacts" className="mainNavLink">
                     Contacts

@@ -11,7 +11,7 @@ export const UPDATE_USER_INFO = gql`
         name
         picture
         birthdate
-        gender
+        location
         industry
         jobtitle
         bio
@@ -59,7 +59,7 @@ export const GET_USER_PROFILE = gql`
       bio
       birthdate
       jobtitle
-      gender
+      location
       industry
       profile {
         id

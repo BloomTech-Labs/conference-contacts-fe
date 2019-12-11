@@ -10,7 +10,16 @@ import {
 
 const Settings = props => {
   const forms = { email: useRef() };
-  const [fields, setFields] = useState({});
+  const [fields, setFields] = useState({
+    name: '',
+    industry: '',
+    jobtitle: '',
+    location: '',
+    bio: '',
+    email: '',
+    social: '',
+    phone: ''
+  });
 
   const { loading: queryLoading, error: queryError, data } = useQuery(GET_USER_PROFILE);
 
@@ -193,7 +202,7 @@ const Settings = props => {
             type="text"
             placeholder="Name"
             onChange={handleFieldUpdate}
-            value={fields.name || ''}
+            value={fields.name}
           />
         </div>
         {/* INDUSTRY INPUT */}
@@ -208,7 +217,7 @@ const Settings = props => {
             type="text"
             placeholder="Industry"
             onChange={handleFieldUpdate}
-            value={fields.industry || ''}
+            value={fields.industry}
           />
         </div>
         {/* JOBTITLE INPUT */}
@@ -223,18 +232,33 @@ const Settings = props => {
             type="text"
             placeholder="Job Title"
             onChange={handleFieldUpdate}
-            value={fields.jobtitle || ''}
+            value={fields.jobtitle}
+          />
+        </div>
+        {/* LOCATION INPUT */}
+        <div className="mb-6 w-2/3 m-auto">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
+            Location
+          </label>
+          <input
+            name="location"
+            className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="location"
+            type="text"
+            placeholder="Location"
+            onChange={handleFieldUpdate}
+            value={fields.location}
           />
         </div>
         {/* GENDER INPUT */}
-        <div className="relative mb-6 w-2/3 m-auto">
+        {/* <div className="relative mb-6 w-2/3 m-auto">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
             Gender
           </label>
           <select
             name="gender"
             onChange={handleFieldUpdate}
-            value={fields.gender || ''}
+            value={fields.gender}
             className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
           >
             <option defaultValue disabled>
@@ -245,7 +269,7 @@ const Settings = props => {
             <option value="NONBINARY">Non-Binary</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 pt-6 pr-4 flex items-center px-2 text-gray-700">
-            {/* CHEVERON SVG */}
+            CHEVERON SVG 
             <svg
               className="fill-current h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +278,7 @@ const Settings = props => {
               <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
             </svg>
           </div>
-        </div>
+        </div> */}
         {/* BIO */}
         <div className="mb-6 w-2/3 m-auto h-24">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bio">
@@ -269,7 +293,7 @@ const Settings = props => {
             onChange={handleFieldUpdate}
             value={fields.bio || ''}
           />
-        </div>
+        </div>       
         {/* EMAILS */}
         <div className="mb-6 w-2/3 m-auto h-24">
           <div className="flex justify-between items-center mb-3">
@@ -332,13 +356,14 @@ const Settings = props => {
               name="email"
               id="email"
               placeholder="bob@cob.com"
-              value={fields.email || ''}
+              value={fields.email}
               onChange={handleFieldUpdate}
             />
           </form>
         </div>
       </div>
     </div>
+    
   );
 };
 
