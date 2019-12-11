@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
 import { Auth0Provider } from './react-auth0-spa';
 import config from './auth_config.json';
 import history from './utils/history';
@@ -10,7 +11,7 @@ import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 import './styles/tailwind.css';
 
 export const client = new ApolloClient({
-  uri: 'https://lambda-labs-swaap-staging.herokuapp.com/',
+  uri: process.env.REACT_APP_APOLLO_URI,
   request: operation => {
     const token = localStorage.getItem('token');
     operation.setContext({
@@ -40,6 +41,8 @@ const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
+
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN });
 
 const render = () => {
   const Pages = require('./pages').default;
