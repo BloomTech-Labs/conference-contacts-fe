@@ -129,6 +129,7 @@ export default function NavBar() {
               <li className="pl-6 pt-6 flex justify-center">
                 <div className="text-black-400 w-2/4 flex justify-center rounded-lg">
                   <button
+                    data-testid="logout-button"
                     className="bg-gray-200 shadow br-black text-xl pt-2 pb-2 pl-6 pr-6 rounded-lg hover:bg-black-400 hover:shadow-lg"
                     onClick={handleLogout}
                   >

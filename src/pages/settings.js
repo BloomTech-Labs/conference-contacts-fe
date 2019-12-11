@@ -217,7 +217,7 @@ const Settings = props => {
             type="text"
             placeholder="Name"
             onChange={handleFieldUpdate}
-            value={fields.name}
+            value={fields.name || ''}
           />
         </div>
         {/* INDUSTRY INPUT */}
@@ -232,7 +232,7 @@ const Settings = props => {
             type="text"
             placeholder="Industry"
             onChange={handleFieldUpdate}
-            value={fields.industry}
+            value={fields.industry || ''}
           />
         </div>
         {/* JOBTITLE INPUT */}
@@ -247,7 +247,7 @@ const Settings = props => {
             type="text"
             placeholder="Job Title"
             onChange={handleFieldUpdate}
-            value={fields.jobtitle}
+            value={fields.jobtitle || ''}
           />
         </div>
         {/* LOCATION INPUT */}
@@ -342,7 +342,7 @@ const Settings = props => {
               name="email"
               id="email"
               placeholder="bob@cob.com"
-              value={fields.email}
+              value={fields.email || ''}
               onChange={handleFieldUpdate}
             />
           </form>
