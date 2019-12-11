@@ -151,16 +151,17 @@ In order for the app to function correctly, you must set up your own environment
 
 #### Variables:
 
-REACT_APP_AUTH0_DOMAIN
-   - Domain at which the application is set accordingly with Auth0, for proper authentication.
-REACT_APP_AUTH0_CLIENT_ID
-   - Unique ID provided by Auth0 to be used with the applicaiton.
-REACT_APP_APOLLO_URI
-   - The location at which the application's backend server is located.
-REACT_APP_CLOUDINARY_NAME
-   - The name of the cloud, being used on Cloudinary.
-REACT_APP_CLOUDINARY_PRESET
-   - The preset of the cloud, being used on Cloudinary.
+REACT_APP_AUTH0_DOMAIN - 
+   Domain at which the application is set accordingly with Auth0, for proper authentication.
+   
+REACT_APP_AUTH0_CLIENT_ID -
+   Unique ID provided by Auth0 to be used with the applicaiton.
+REACT_APP_APOLLO_URI -
+   The location at which the application's backend server is located.
+REACT_APP_CLOUDINARY_NAME -
+   The name of the cloud, being used on Cloudinary.
+REACT_APP_CLOUDINARY_PRESET -
+   The preset of the cloud, being used on Cloudinary.
    
 
 
