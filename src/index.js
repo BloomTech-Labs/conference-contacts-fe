@@ -5,21 +5,62 @@ import { Auth0Provider } from './react-auth0-spa';
 import config from './auth_config.json';
 import history from './utils/history';
 
-import ApolloClient, { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery } from '@apollo/react-hooks';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { ApolloLink, Observable } from 'apollo-link';
+import gql from 'graphql-tag'
+
+
 
 import './styles/tailwind.css';
 
+
+
+const request = operation => {
+  const token = localStorage.getItem('token');
+  operation.setContext({
+    headers: {
+      authorization: token
+    }
+  });
+};
+const requestLink = new ApolloLink(
+  (operation, forward) =>
+    new Observable(observer => {
+      let handle;
+      Promise.resolve(operation)
+        .then(oper => request(oper))
+        .then(() => {
+          handle = forward(operation).subscribe({
+            next: observer.next.bind(observer),
+            error: observer.error.bind(observer),
+            complete: observer.complete.bind(observer)
+          });
+        })
+        .catch(observer.error.bind(observer));
+      return () => {
+        if (handle) handle.unsubscribe();
+      };
+    })
+);
 export const client = new ApolloClient({
-  uri: process.env.REACT_APP_APOLLO_URI,
-  request: operation => {
-    const token = localStorage.getItem('token');
-    operation.setContext({
-      headers: {
-        authorization: token || ''
-      }
-    });
-  }
+  link: ApolloLink.from([
+    onError(({ graphQLErrors, networkError }) => {
+      if (graphQLErrors)
+        graphQLErrors.forEach(({ message, locations, path }) =>
+          console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
+        );
+      if (networkError) console.log(`[Network error]: ${networkError}`);
+    }),
+    requestLink,
+    new HttpLink({
+      uri: process.env.REACT_APP_APOLLO_URI,
+    })
+  ]),
+  cache: new InMemoryCache()
 });
 
 client.cache.writeData({
