@@ -11,13 +11,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ApolloLink, Observable } from 'apollo-link';
-import gql from 'graphql-tag'
-
-
+import gql from 'graphql-tag';
 
 import './styles/tailwind.css';
-
-
 
 const request = operation => {
   const token = localStorage.getItem('token');
@@ -57,7 +53,7 @@ export const client = new ApolloClient({
     }),
     requestLink,
     new HttpLink({
-      uri: process.env.REACT_APP_APOLLO_URI,
+      uri: process.env.REACT_APP_APOLLO_URI
     })
   ]),
   cache: new InMemoryCache()
@@ -70,11 +66,7 @@ client.cache.writeData({
 });
 
 const onRedirectCallback = appState => {
-  history.navigate(
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname
-  );
+  history.navigate(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
 };
 
 const IS_LOGGED_IN = gql`
