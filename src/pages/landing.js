@@ -4,16 +4,19 @@ import Button from '../components/button';
 import { Link } from '@reach/router';
 
 export default function Landing() {
-  const { loginWithRedirect } = useAuth0();
   const [open, setOpen] = useState(false);
+  const { loginWithRedirect } = useAuth0();
+
 
   return (
     <div>
-      <section>
-        <nav>
-          <div className="flex justify-between items-center container mx-auto">
+       <body class="antialiased bg-gray-200">
+  <div class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
+    <div class="flex-1 flex justify-between items-center">
+
+          <div className="px-6 flex justify-between items-center">
             <svg
-              className="ml-4 container"
+              className="ml-4"
               width="70"
               height="30"
               fill="none"
@@ -41,39 +44,29 @@ export default function Landing() {
                 </linearGradient>
               </defs>
             </svg>
-
-            <div className="flex">
-              <ul className="flex items-center ml-24">
-              <a
-                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
-                  href="#features"
-                >
-                  Features
-                </a>
-                <a
-                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white mr-6"
-                  href="#demo"
-                >
-                  Demo
-                </a>
-                <a
-                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white mr-6"
-                  href="#team"
-                >
-                  Team
-                </a>
-                <a
-                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white"
-                  href="#reviews"
-                >
-                  Reviews
-                </a>
-                <Button className="ml-12" onClick={loginWithRedirect}>Sign Up</Button>
-              </ul>
+            </div>
+            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
             </div>
           </div>
-        </nav>
-      </section>
+ 
+
+   <label for="menu-toggle" class="pointer-cursor lg:hidden block"><svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><title>menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg></label>
+  <input class="hidden" type="checkbox" id="menu-toggle" />
+
+  <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+    <nav>
+      <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#features">Features</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#demo">Demo</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#team">Team</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#reviews">Reviews</a></li>
+        <li><a><Button className="ml-12" onClick={loginWithRedirect}>Sign Up</Button></a></li>
+      </ul>
+    </nav>
+  </div>
+
+</div>
+</body>
 
       {/* Title */}
       <div className="text-center container mx-auto px-20">
@@ -109,18 +102,18 @@ export default function Landing() {
 
       {/* DarkMode needs to be reviewed */}
       <div className="container mx-auto px-12 py-32">
-        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12">
+        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="demo">
           Features
         </h2>
 
-          <div className="flex justify-between text-center p-5" id="demo">
+          <div className="flex justify-between text-center p-5">
           <div className="flex flex-wrap">
           <div className="w-full md:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
                   className="w-8 m-auto"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  src="https://i.ibb.co/HDm2vxV/icon.png" alt="icon" border="0"
                   alt="smartphone"
                   border="0"
                 />
@@ -136,7 +129,7 @@ export default function Landing() {
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
                   className="w-8 m-auto"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  src="https://i.ibb.co/X7VGNtY/responsive-design.png" alt="responsive-design" border="0"
                   alt="smartphone"
                   border="0"
                 />
@@ -152,7 +145,7 @@ export default function Landing() {
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
                   className="w-8 m-auto"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  src="https://i.ibb.co/Jqszh60/import.png" alt="import" border="0"
                   alt="smartphone"
                   border="0"
                 />
@@ -175,7 +168,7 @@ export default function Landing() {
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
                   className="w-8 m-auto"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  src="https://i.ibb.co/4sJpbQx/runer-silhouette-running-fast.png" alt="runer-silhouette-running-fast" border="0"
                   alt="smartphone"
                   border="0"
                 />
@@ -192,7 +185,7 @@ export default function Landing() {
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
                   className="w-8 m-auto"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  src="https://i.ibb.co/BZJLDG3/two-fingers.png" alt="two-fingers" border="0"
                   alt="smartphone"
                   border="0"
                 />
@@ -208,7 +201,7 @@ export default function Landing() {
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
                   className="w-8 m-auto"
-                  src="https://i.ibb.co/XzktDZK/smartphone.png"
+                  src="https://i.ibb.co/Ptq1sVZ/moon-phase-symbol.png" alt="moon-phase-symbol" border="0"
                   alt="smartphone"
                   border="0"
                 />
@@ -226,14 +219,8 @@ export default function Landing() {
 
 
 
-
-
-
-
-
-
       <div className="container mx-auto px-12 py-32 text-center">
-        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12">
+        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="team">
           Team
         </h2>
         <div className="flex flex-wrap">
@@ -248,11 +235,11 @@ export default function Landing() {
               <p className="text-gray-600 mb-8">Team Leader/Software Engineer</p>
             </div>
           </div>
-          <div className="w-full md:w-1/3 px-2 mb-4">
-            <div className="col-12 col-sm-6 col-lg-4">
+          <div className="w-full md:w-1/3 px-2 mb-6">
+            <div className="col-12 col-sm-6 col-lg-6">
               <img
                 className="md:w-64  mx-auto"
-                src="https://i.ibb.co/3vZ5kB2/headshot.jpg" alt="headshot" border="0"
+                src="https://i.ibb.co/3vZ5kB2/headshot.jpg" alt="profile" border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
@@ -262,7 +249,7 @@ export default function Landing() {
           <div className="w-full md:w-1/3 px-2 mb-4">
             <div className="col-12 col-sm-6 col-lg-4">
               <img
-                className="md:w-48  mx-auto"
+                className="md:w-64  mx-auto"
                 src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
                 alt=""
               ></img>
@@ -274,7 +261,7 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="md:w-64 mx-auto"
-                src="https://vignette.wikia.nocookie.net/berserk/images/a/a9/Corkus_Manga.jpg/revision/latest?cb=20150810010522"
+                src="https://i.ibb.co/G3LMpss/canva-photo-editor-1.png"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasley</h4>
@@ -340,7 +327,7 @@ export default function Landing() {
       </div>
 
       {/* Review */}
-      <div className="bg-gray-100">
+      <div className="bg-gray-100" id="reviews">
         <div className="container mx-auto px-6 py-20">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
             Don't take our word for it.
@@ -399,11 +386,11 @@ export default function Landing() {
         </div>
       </footer>
 
-      <section>
+<section>
         <nav>
-          <div className="px-6 flex justify-between items-center">
+          <div className="flex justify-between items-center container mx-auto">
             <svg
-              className="ml-4"
+              className="ml-4 container"
               width="70"
               height="30"
               fill="none"
@@ -431,49 +418,63 @@ export default function Landing() {
                 </linearGradient>
               </defs>
             </svg>
+        
 
-            <nav>
-              <ul className="mainNav" style={open ? { transform: 'translateX(0)' } : null}>
-                <div className="">
-                  <div className="bg-gray-200 pt-10 shadow-sm">
-                    <div className="w-32 m-auto flex-col justify-center items-center"></div>
-                  </div>
-                </div>
-                <div className="mt-8"></div>
-              </ul>
-            </nav>
 
+
+
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
+				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
+					<li class="mr-6 my-2 md:my-0">
+
+            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
             <div className="flex">
-              <ul className="desktop-nav flex items-center">
-                <a
+              <ul className="flex items-center ml-24">
+              <a
                   className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
                   href="#features"
                 >
                   Features
                 </a>
                 <a
-                  className="p-6 desktop-link text-lg mr-6 border-b-2 30px hover:border-blue-600 mr-6"
+                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
                   href="#demo"
                 >
                   Demo
                 </a>
                 <a
-                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white mr-6"
+                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
                   href="#team"
                 >
                   Team
                 </a>
                 <a
-                  className="px-6 ml-5 solid  p-6 desktop-link text-lg bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white"
+                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
                   href="#reviews"
                 >
                   Reviews
                 </a>
+                <Button className="ml-12" onClick={loginWithRedirect}>Sign Up</Button>
               </ul>
+            </div>
+            </div>
+            </li>
+            </ul>
             </div>
           </div>
         </nav>
       </section>
+
+
     </div>
+
+
+
+
+
+
+
+
+
   );
 }
