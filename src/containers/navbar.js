@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from '@reach/router';
-import NavLink from '../components/navlink';
 import { useAuth0 } from '../react-auth0-spa';
 import { useQuery, useApolloClient } from '@apollo/react-hooks';
 import { NAVBAR_PROFILE } from '../queries/index';
+
+const QRCode = require('qrcode.react');
 
 export default function NavBar() {
   const client = useApolloClient();
@@ -25,7 +26,7 @@ export default function NavBar() {
       <header className="header">
         <div className="navContainer flex items-center pl-4 pr-4 pb-2 pt-2 shadow">
           {/* LOGO */}
-          <Link to="profile">
+          <Link to="/">
             <svg
               className="ml-4"
               width="70"
@@ -61,16 +62,16 @@ export default function NavBar() {
               {/* DESKTOP NAV */}
               <ul className="desktop-nav flex items-center">
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="contacts">Contacts</NavLink>
+                  <Link to="contacts">Contacts</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="messages">Messages</NavLink>
+                  <Link to="messages">Messages</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="profile">Profile</NavLink>
+                  <Link to="profile">Profile</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
-                  <NavLink to="settings">Settings</NavLink>
+                  <Link to="settings">Settings</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
                   <div className="">
@@ -91,14 +92,21 @@ export default function NavBar() {
                     <img
                       className="mb-4 object-cover bg-center rounded-full"
                       src={data.user.picture}
-                      alt={`picture of ${data.user.name}`}
+                      alt={`avatar of ${data.user.name}`}
                     />
-                    <p className="pb-12 text-2xl pl-2">{data.user.name}</p>
-                    <p className="pb-10">QR Code goes here</p>
+                    <p className="pb-6 text-2xl pl-2">{data.user.name}</p>
+                    <div className="pb-6">
+                      {data?.user?.id && <QRCode value={[...data.user.id].reverse().join('')} />}
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="mt-8">
+                <li className="hover:bg-gray-200 pl-6">
+                  <Link onClick={() => setOpen(!open)} to="/" className="mainNavLink">
+                    Home
+                  </Link>
+                </li>
                 <li className="hover:bg-gray-200 pl-6">
                   <Link onClick={() => setOpen(!open)} to="contacts" className="mainNavLink">
                     Contacts
@@ -124,6 +132,7 @@ export default function NavBar() {
               <li className="pl-6 pt-6 flex justify-center">
                 <div className="text-black-400 w-2/4 flex justify-center rounded-lg">
                   <button
+                    data-testid="logout-button"
                     className="bg-gray-200 shadow br-black text-xl pt-2 pb-2 pl-6 pr-6 rounded-lg hover:bg-black-400 hover:shadow-lg"
                     onClick={handleLogout}
                   >

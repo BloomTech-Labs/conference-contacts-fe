@@ -1,18 +1,50 @@
 import { gql } from 'apollo-boost';
 
 export const UPDATE_USER_INFO = gql`
-  mutation updateUser($id: ID!, $data: UpdateUserInput!) {
-    updateUser(id: $id, data: $data) {
+  mutation updateUser($data: UpdateUserInput!) {
+    updateUser(data: $data) {
       code
       success
       message
       user {
         id
         name
+        picture
+        birthdate
+        location
         industry
         jobtitle
-        gender
         bio
+      }
+    }
+  }
+`;
+
+export const CREATE_PROFILE_FIELD = gql`
+  mutation createProfileField($data: CreateProfileFieldInput!) {
+    createProfileField(data: $data) {
+      code
+      success
+      message
+      profileField {
+        id
+        type
+        value
+        privacy
+        preferredContact
+      }
+    }
+  }
+`;
+
+export const DELETE_PROFILE_FIELD = gql`
+  mutation deleteProfileField($id: ID!) {
+    deleteProfileField(id: $id) {
+      code
+      success
+      message
+      profileField {
+        id
       }
     }
   }
@@ -27,7 +59,7 @@ export const GET_USER_PROFILE = gql`
       bio
       birthdate
       jobtitle
-      gender
+      location
       industry
       profile {
         id
@@ -45,6 +77,7 @@ export const NAVBAR_PROFILE = gql`
     user {
       name
       picture
+      id
     }
   }
 `;
