@@ -4,6 +4,7 @@ import NavBar from '../containers/navbar';
 import Profile from './profile';
 import Settings from './settings';
 import Home from './home';
+import Landing from './landing'
 
 // const Home = () => <p>Home Page</p>;
 
