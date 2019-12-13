@@ -348,10 +348,12 @@ export default function Landing() {
                     className="md:w-48  mx-auto"
                     src="https://vignette.wikia.nocookie.net/berserk/images/c/ca/Roderick_Manga.jpg/revision/latest/window-crop/width/40/x-offset/0/y-offset/24/window-width/410/window-height/308?cb=20150809233216"
                     alt=""
-                  ></img>       
+                  ></img>
+	
                   <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
                   <p className="text-gray-600 mb-8">UX Desinger</p>
                   </div>
+				   
                   <div className="col-12 col-sm-6 col-lg-4">
                   <img
                     className="md:w-48  mx-auto"
