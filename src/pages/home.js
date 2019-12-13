@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USER_PROFILE } from '../queries/index';
-import QrCodeGenerator from '../components/QrCodeGenerator'; 
+import QrCodeGenerator from '../components/qrCodeGenerator'; 
 import QrCodeReader from '../components/qrCodeReader';
 
 const Home = () => {
@@ -10,8 +10,6 @@ const Home = () => {
     if (loading || !data) return <div>Loading...</div>;
     if (error) return <p>There was an error: {error}</p>;
   
-    console.log(data.user);
-
     return (
         <div className='pt-24 pb-6 bg-gray-100'>
             <div className='main-container pb-4 bg-white mx-6 shadow-xl overflow-hidden'>

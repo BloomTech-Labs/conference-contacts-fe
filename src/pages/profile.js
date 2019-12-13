@@ -9,8 +9,6 @@ const Profile = () => {
   if (loading || !data) return <div>Loading...</div>;
   if (error) return <p>There was an error: {error}</p>;
 
-  console.log(data.user);
-
   return (
     <>
       <div className='bg-gray-100 pt-24 pb-6'>
@@ -19,7 +17,7 @@ const Profile = () => {
             <div className='relative'>
               <Link to='/'>
                 <svg className='absolute top-0 left-0 ml-6 mt-8' width="12" height="18" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 15L1 8L8 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
             </div>
@@ -38,7 +36,7 @@ const Profile = () => {
               <Link to="/settings" className="mr-8">
               {/* EDIT ICON */}
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
             </div>
