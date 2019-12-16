@@ -1,13 +1,20 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import QRCode from 'qrcode.react';
+import { NAVBAR_PROFILE } from '../queries/index';
+import { useQuery } from '@apollo/react-hooks';
 
 const contentStyle = {
-  width: '80%',
-  height: '50%'
+  width: '90%',
+  height: '80%',
+  borderRadius: '0.9rem',
 }
 
 const QrCodeGenerator = () => {
+  const { loading, error, data } = useQuery(NAVBAR_PROFILE);
+
+  if (loading || !data) return <div>Loading...</div>;
+  if (error) return <p>There was an error: {error}</p>;
   
   return (
     <Popup 
@@ -23,14 +30,21 @@ const QrCodeGenerator = () => {
       >
         {close => (
           <div className=''>
-            <div className='flex justify-end mr-4'>
-              <button className="text-4xl focus:outline-none" onClick={close}>
-                &times;
+            <div className='flex justify-end items-center mr-2 mt-2'>
+              <button className="focus:outline-none p-2 bg-gray-300 rounded-full" onClick={close}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M17.9117 18.674C18.3022 19.0646 18.9354 19.0646 19.3259 18.674C19.7164 18.2835 19.7164 17.6503 19.3259 17.2598L13.6798 11.6138L19.6304 5.66316C20.021 5.27264 20.021 4.63947 19.6304 4.24895C19.2399 3.85842 18.6068 3.85842 18.2162 4.24895L12.2656 10.1996L6.31502 4.24895C5.92449 3.85842 5.29133 3.85842 4.9008 4.24895C4.51028 4.63947 4.51028 5.27264 4.9008 5.66316L10.8514 11.6138L5.20537 17.2598C4.81484 17.6503 4.81484 18.2835 5.20537 18.674C5.59589 19.0646 6.22906 19.0646 6.61958 18.674L12.2656 13.028L17.9117 18.674Z" fill="black"/>
+                </svg>
               </button>
             </div>
             <div className='flex flex-col justify-center items-center'>
-                <p className='text-xl mb-16'>Your personal QR code</p>
-                <QRCode includeMargin={false} level='Q' renderAs='svg' value={`http://staging.swaap.co/profile`} />
+                <div className='flex justify-center align-center my-24'>
+                {data?.user?.id && 
+                  <QRCode includeMargin={false} level='Q' width='60%' height='40%' renderAs='svg' 
+                  value={[...data.user.id].reverse().join('')} />
+                }
+                </div>
+                <p className='text-3xl text-center border-t-4 mt-6 pt-10 mx-2'>Scan QR code to swaap information </p>
             </div>
           </div>
         )}

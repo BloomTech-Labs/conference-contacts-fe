@@ -11,7 +11,7 @@ const Home = () => {
     if (error) return <p>There was an error: {error}</p>;
   
     return (
-        <div className='pt-24 pb-6 bg-gray-100'>
+        <div className='pt-24 pb-6'>
             <div className='main-container pb-4 bg-white mx-6 shadow-xl overflow-hidden'>
                 <img
                 className=" profile-picture rounded-bl-full rounded-tl-full

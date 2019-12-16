@@ -8494,6 +8494,12 @@ video {
   border-radius: 1rem;
 }
 
+/* QR ICON BLUE */
+
+.qr-icon-blue {
+  background: #007AFF;
+}
+
 /* ********* MEDIA QUERIES ********* */
 
 @media (max-width: 700px) {
