@@ -4,21 +4,20 @@ import Button from '../components/button';
 import { Link } from '@reach/router';
 import Screenshot from './screenshot';
 
+
 export default function Landing() {
   const [open, setOpen] = useState(false);
   const { loginWithRedirect } = useAuth0();
 
-
   return (
     <div>
-      
-       <body class="antialiased bg-gray-200">
-  <div class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
-    <div class="flex-1 flex justify-between items-center">
-
+      <section class="antialiased bg-gray-200 mx-auto">
+        <div class="lg:px-16 px-2 bg-white flex flex-wrap items-center lg:py-0 py-2 mx-auto">
+          <div class="flex-1 flex justify-between items-center mx-auto">
+          <nav>
           <div className="flex justify-between items-center container mx-auto">
-          <svg
-              className="ml-4 container"
+            <svg
+              className=" container"
               width="70"
               height="30"
               fill="none"
@@ -46,27 +45,78 @@ export default function Landing() {
                 </linearGradient>
               </defs>
             </svg>
-            </div>
           </div>
- 
+        </nav>
+          </div>
 
-   <label for="menu-toggle" class="pointer-cursor lg:hidden block"><svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><title>menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg></label>
-  <input class="hidden" type="checkbox" id="menu-toggle" />
+          <label for="menu-toggle" class="pointer-cursor lg:hidden block">
+            <svg
+              class="fill-current text-gray-900"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+            >
+              <title>menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+          </label>
+          <input class="hidden" type="checkbox" id="menu-toggle" />
+          
+          <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+            <nav>
+              <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+                <li>
+                  <a
+                    class="lg:p-12 py-4 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    href="#features"
+                  >
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    href="#demo"
+                  >
+                    Demo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                    href="#team"
+                  >
+                    Team
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2"
+                    href="#reviews"
+                  >
+                    Reviews
+                  </a>
+                </li>
+                <li>
+                  <div>
+                  <li>
+                  <a href>
+                    <Button className="lg:p-6 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" onClick={loginWithRedirect}>
+                      Sign Up
+                    </Button>
+                  </a>
+                  </li>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </section>
 
-  <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-    <nav>
-      <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#features">Features</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#demo">Demo</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#team">Team</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#reviews">Reviews</a></li>
-        <li><a><Button className="ml-12" onClick={loginWithRedirect}>Sign Up</Button></a></li>
-      </ul>
-    </nav>
-  </div>
 
-</div>
-</body>
+      
 
       {/* Title */}
       <div className="text-center container mx-auto px-20">
@@ -100,128 +150,154 @@ export default function Landing() {
         </section>
       </div>
 
-      {/* DarkMode needs to be reviewed */}
-      <div className="container mx-auto px-12 py-32">
-        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="demo">
-          Features
-        </h2>
-
-          <div className="flex justify-between text-center p-5">
-          <div className="flex flex-wrap">
-          <div className="w-full md:w-1/3 px-2 mb-6">
-            <div className="col-12 col-sm-6 col-lg-6">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 m-auto"
-                  src="https://i.ibb.co/HDm2vxV/icon.png" alt="icon" border="0"
-                  alt="smartphone"
-                  border="0"
-                />
-                Make friends
-              </h4>
-              <p className="mb-8">
-                Scan a qr code with someone and get there information
-              </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 px-2 mb-6">
-            <div className="col-12 col-sm-6 col-lg-6">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 m-auto"
-                  src="https://i.ibb.co/X7VGNtY/responsive-design.png" alt="responsive-design" border="0"
-                  alt="smartphone"
-                  border="0"
-                />
-                Any size
-              </h4>
-              <p className="mb-8 p-2 ">
-              We support every device orientation and size for multitasking.
-              </p>
-              </div>
-              </div>
-              <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 m-auto"
-                  src="https://i.ibb.co/Jqszh60/import.png" alt="import" border="0"
-                  alt="smartphone"
-                  border="0"
-                />
-                Import
-              </h4>
-              <p className="mb-8 p-2 ">
-                Inport any picture you want on the app.
-              </p>
-              </div>
-              </div>
-            </div>
-</div>
 
 
 
-          <div className="flex justify-between text-center p-5" id="demo">
-          <div className="flex flex-wrap">
-          <div className="w-full md:w-1/3 px-2 mb-6">
-            <div className="col-12 col-sm-6 col-lg-6">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 m-auto"
-                  src="https://i.ibb.co/4sJpbQx/runer-silhouette-running-fast.png" alt="runer-silhouette-running-fast" border="0"
-                  alt="smartphone"
-                  border="0"
-                />
-                Fast and Simple 
-              </h4>
-              <p className="mb-8 p-2 ">
-                I only takes 5 minutes to set up ancount by going to auth0 and login with an email 
-                of your choice 
-              </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 px-2 mb-6">
-            <div className="col-12 col-sm-6 col-lg-6">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 m-auto"
-                  src="https://i.ibb.co/BZJLDG3/two-fingers.png" alt="two-fingers" border="0"
-                  alt="smartphone"
-                  border="0"
-                />
-                Editing 
-              </h4>
-              <p className="mb-8 p-2 ">
-              Simply two finger drag down to bulk edit lists or items.
-              </p>
-              </div>
-              </div>
-              <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img
-                  className="w-8 m-auto"
-                  src="https://i.ibb.co/Ptq1sVZ/moon-phase-symbol.png" alt="moon-phase-symbol" border="0"
-                  alt="smartphone"
-                  border="0"
-                />
-                DarkMode
-              </h4>
-              <p className="mb-8 p-2 ">
-              Turn out the lights with our gorgeous dark mode support.
-              </p>
-              </div>
-              </div>
-            </div>
-</div>
-</div>
-      {/* Features part 2 */}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
       
 
-      <Screenshot />
+      {/* DarkMode needs to be reviewed */}
+      <div className="container mx-auto px-12 py-2">
+        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="demo">
+          Features
+        </h2>
+
+        <div className="flex justify-between text-center p-5">
+          <div className="flex flex-wrap">
+            <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/HDm2vxV/icon.png"
+                    alt="icon"
+                    border="0"
+                  
+                  />
+                  Make friends
+                </h4>
+                <p className="mb-8">Scan a qr code with someone and get there information</p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/X7VGNtY/responsive-design.png"
+                    alt="responsive-design"
+                    border="0"
+                 
+                  />
+                  Any size
+                </h4>
+                <p className="mb-8 p-2 ">
+                  We support every device orientation and size for multitasking.
+                </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/Jqszh60/import.png"
+                    alt="import"
+                    border="0"
+                 
+                  />
+                  Import
+                </h4>
+                <p className="mb-8 p-2 ">Inport any picture you want on the app.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between text-center p-5" id="demo">
+          <div className="flex flex-wrap">
+            <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/4sJpbQx/runer-silhouette-running-fast.png"
+                    alt="runer-silhouette-running-fast"
+                    border="0"
+                
+                  />
+                  Fast and Simple
+                </h4>
+                <p className="mb-8 p-2 ">
+                  I only takes 5 minutes to set up ancount by going to auth0 and login with an email
+                  of your choice
+                </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/BZJLDG3/two-fingers.png"
+                    alt="two-fingers"
+                    border="0"
+                  
+                  />
+                  Editing
+                </h4>
+                <p className="mb-8 p-2 ">
+                  Simply two finger drag down to bulk edit lists or items.
+                </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/Ptq1sVZ/moon-phase-symbol.png"
+                    alt="moon-phase-symbol"
+                    border="0"
+               
+                  />
+                  DarkMode
+                </h4>
+                <p className="mb-8 p-2 ">
+                  Turn out the lights with our gorgeous dark mode support.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Features part 2 */}
+
+
+
+      <Screenshot/>
+
+      
+
+
+
+
+
+
 
 
       {/* Review */}
@@ -262,8 +338,7 @@ export default function Landing() {
         </div>
       </div>
 
-
-      <div className="container mx-auto px-12 py-32 text-center">
+      <div className="container mx-auto px-12 py-12 text-center">
         <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="team">
           Team
         </h2>
@@ -272,7 +347,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-6">
               <img
                 className="md:w-64  mx-auto"
-                src="https://i.ibb.co/cNtktWF/profile.jpg" alt="profile" border="0"
+                src="https://i.ibb.co/cNtktWF/profile.jpg"
+                alt="profile"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
@@ -283,7 +360,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-6">
               <img
                 className="md:w-64  mx-auto"
-                src="https://i.ibb.co/3vZ5kB2/headshot.jpg" alt="profile" border="0"
+                src="https://i.ibb.co/3vZ5kB2/headshot.jpg"
+                alt="profile"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
@@ -327,7 +406,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="md:w-64 mx-auto"
-                src="https://i.ibb.co/0Xfz8G3/T4-JUEB3-ME-UHF67-A9-T9-a3fb05aba2cd-512.jpg" alt="T4-JUEB3-ME-UHF67-A9-T9-a3fb05aba2cd-512" border="0"
+                src="https://i.ibb.co/0Xfz8G3/T4-JUEB3-ME-UHF67-A9-T9-a3fb05aba2cd-512.jpg"
+                alt="T4-JUEB3-ME-UHF67-A9-T9-a3fb05aba2cd-512"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Raskin</h4>
@@ -371,13 +452,13 @@ export default function Landing() {
       </div>
 
       {/* Download */}
-      <section className="background-color: #FFFFFF">
+      {/* <section className="background-color: #FFFFFF">
         <div className="container mx-auto px-6 text-center py-20">
           <h2 className="mb-6 text-4xl font-bold text-center text-black">
             Handle any list dealing with money on ios
           </h2>
         </div>
-      </section>
+      </section> */}
 
       {/* footer */}
       <footer className="text-center bg-green-100">
@@ -392,7 +473,7 @@ export default function Landing() {
         </div>
       </footer>
 
-<section>
+      {/* <section>
         <nav>
           <div className="flex justify-between items-center container mx-auto">
             <svg
@@ -424,12 +505,8 @@ export default function Landing() {
                 </linearGradient>
               </defs>
             </svg>
-        
 
-        
-
-
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
 
@@ -469,7 +546,7 @@ export default function Landing() {
             </div>
           </div>
         </nav>
-      </section>
+      </section> */}
     </div>
   );
 }
