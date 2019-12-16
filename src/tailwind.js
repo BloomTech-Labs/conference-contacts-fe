@@ -471,6 +471,4 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive']
   },
-  corePlugins: {},
-  plugins: []
-};
+}
