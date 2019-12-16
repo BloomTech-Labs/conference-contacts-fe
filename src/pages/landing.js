@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
 import Button from '../components/button';
 import { Link } from '@reach/router';
+import Screenshot from './screenshot';
 
 export default function Landing() {
   const [open, setOpen] = useState(false);
@@ -10,13 +11,14 @@ export default function Landing() {
 
   return (
     <div>
+      
        <body class="antialiased bg-gray-200">
   <div class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
     <div class="flex-1 flex justify-between items-center">
 
-          <div className="px-6 flex justify-between items-center">
-            <svg
-              className="ml-4"
+          <div className="flex justify-between items-center container mx-auto">
+          <svg
+              className="ml-4 container"
               width="70"
               height="30"
               fill="none"
@@ -44,8 +46,6 @@ export default function Landing() {
                 </linearGradient>
               </defs>
             </svg>
-            </div>
-            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
             </div>
           </div>
  
@@ -219,6 +219,50 @@ export default function Landing() {
 
 
 
+      
+
+      <Screenshot />
+
+
+      {/* Review */}
+      <div className="bg-gray-100" id="reviews">
+        <div className="container mx-auto px-6 py-20">
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+            Don't take our word for it.
+          </h2>
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Reviews</h2>
+          <div className="flex flex-wrap">
+            <div className="w-full md:w-1/3 px-2 mb-4">
+              <div className="bg-white rounded shadow py-2">
+                <p className="text-gray-800 text-base px-6 mb-5">
+                  "Spend Stack is a truly high-quality, well designed new app."
+                </p>
+                <p className="text-gray-500 text-xs md:text-sm px-6">Ryan Christoffel</p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-4">
+              <div className="bg-white rounded shadow py-2">
+                <p className="text-gray-800 text-base px-6 mb-5">
+                  "The app syncs across devices and makes it easy to share lists and more."
+                </p>
+                <p className="text-gray-500 text-xs md:text-sm px-6">chance Miller</p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 px-2 mb-4">
+              <div className="bg-white rounded shadow py-2">
+                <p className="text-gray-800 text-base px-6 mb-5">
+                  I don't regret buying this wearble gadget. One of the best gadgets I own!.
+                </p>
+                <p className="text-gray-500 text-xs md:text-sm px-6" id="reviews">
+                  James Doe
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <div className="container mx-auto px-12 py-32 text-center">
         <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="team">
           Team
@@ -326,44 +370,6 @@ export default function Landing() {
         </div>
       </div>
 
-      {/* Review */}
-      <div className="bg-gray-100" id="reviews">
-        <div className="container mx-auto px-6 py-20">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
-            Don't take our word for it.
-          </h2>
-          <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Reviews</h2>
-          <div className="flex flex-wrap">
-            <div className="w-full md:w-1/3 px-2 mb-4">
-              <div className="bg-white rounded shadow py-2">
-                <p className="text-gray-800 text-base px-6 mb-5">
-                  "Spend Stack is a truly high-quality, well designed new app."
-                </p>
-                <p className="text-gray-500 text-xs md:text-sm px-6">Ryan Christoffel</p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 px-2 mb-4">
-              <div className="bg-white rounded shadow py-2">
-                <p className="text-gray-800 text-base px-6 mb-5">
-                  "The app syncs across devices and makes it easy to share lists and more."
-                </p>
-                <p className="text-gray-500 text-xs md:text-sm px-6">chance Miller</p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 px-2 mb-4">
-              <div className="bg-white rounded shadow py-2">
-                <p className="text-gray-800 text-base px-6 mb-5">
-                  I don't regret buying this wearble gadget. One of the best gadgets I own!.
-                </p>
-                <p className="text-gray-500 text-xs md:text-sm px-6" id="reviews">
-                  James Doe
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Download */}
       <section className="background-color: #FFFFFF">
         <div className="container mx-auto px-6 text-center py-20">
@@ -420,7 +426,7 @@ export default function Landing() {
             </svg>
         
 
-
+        
 
 
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
@@ -464,17 +470,6 @@ export default function Landing() {
           </div>
         </nav>
       </section>
-
-
     </div>
-
-
-
-
-
-
-
-
-
   );
 }
