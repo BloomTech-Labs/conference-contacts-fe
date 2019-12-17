@@ -3,10 +3,8 @@ import { Router } from '@reach/router';
 
 import NavBar from '../containers/navbar';
 import Profile from './profile';
-import Settings from './settings';
+import ProfileEdit from './profile-edit';
 import Home from './home';
-
-// const Home = () => <p>Home Page</p>;
 
 export default function Pages() {
   return (
@@ -15,7 +13,7 @@ export default function Pages() {
       <Router>
         <Home path="/" />
         <Profile path="profile" />
-        <Settings path="settings" />
+        <ProfileEdit path="profile/edit" />
       </Router>
     </Fragment>
   );
