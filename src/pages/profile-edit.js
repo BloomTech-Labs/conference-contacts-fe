@@ -196,6 +196,9 @@ export default function ProfileEdit(props) {
     }
   );
 
+  // track preferred contact for validation
+  const preferredContact = fields?.profile?.find(field => field.preferredContact);
+
   return (
     <div className="pt-24 p-6">
       <div>
@@ -319,9 +322,16 @@ export default function ProfileEdit(props) {
                 type="MORE"
                 size={24}
                 classes="mr-3 relative"
-                onClick={() =>
-                  document.getElementById(`link-privacy-${idx}`).classList.toggle('hidden')
-                }
+                onClick={() => {
+                  for (let i = 0; i < fields.profile.length; i++) {
+                    const element = document.getElementById(`link-privacy-${i}`);
+                    if (i !== idx && !element.classList.contains('hidden')) {
+                      element.classList.add('hidden');
+                    }
+                  }
+
+                  document.getElementById(`link-privacy-${idx}`).classList.toggle('hidden');
+                }}
               />
               <div
                 id={`link-privacy-${idx}`}
@@ -356,7 +366,7 @@ export default function ProfileEdit(props) {
                   </span>
                 </div>
                 <div
-                  className="flex items-center mb-3"
+                  className="flex items-center"
                   onClick={() => updateLink(field, { privacy: 'CONNECTED' })}
                 >
                   <Icon
@@ -369,21 +379,27 @@ export default function ProfileEdit(props) {
                     Connected
                   </span>
                 </div>
-                <hr className="my-3" />
-                <div
-                  className="flex items-center"
-                  onClick={() => updateLink(field, { preferredContact: true })}
-                >
-                  <Icon
-                    classes="mr-3"
-                    type="CHECK"
-                    size={24}
-                    fill={field.preferredContact && '#007AFF'}
-                  />
-                  <span style={{ color: field.preferredContact ? '#007AFF' : 'unset' }}>
-                    Main contact
-                  </span>
-                </div>
+                {(!preferredContact || preferredContact.id === field.id) && (
+                  <>
+                    <hr className="my-3" />
+                    <div
+                      className="flex items-center mt-3"
+                      onClick={() =>
+                        updateLink(field, { preferredContact: !field.preferredContact })
+                      }
+                    >
+                      <Icon
+                        classes="mr-3"
+                        type="CHECK"
+                        size={24}
+                        fill={field.preferredContact && '#007AFF'}
+                      />
+                      <span style={{ color: field.preferredContact ? '#007AFF' : 'unset' }}>
+                        Main contact
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
               <Icon onClick={() => removeLink(field.id)} type="MINUS-CIRCLE" size={24} />
             </li>

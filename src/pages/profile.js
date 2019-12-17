@@ -18,7 +18,9 @@ const Profile = props => {
   if (error) return <p>There was an error: {error}</p>;
 
   const preferredContact = data.user.profile.find(field => field.preferredContact);
-  const contacts = data.user.profile.filter(field => field.id !== preferredContact.id);
+  const contacts = preferredContact
+    ? data.user.profile.filter(field => field.id !== preferredContact.id)
+    : data.user.profile;
 
   return (
     <div className="pt-5 overflow-hidden">
@@ -74,15 +76,17 @@ const Profile = props => {
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
         </section>
+        {preferredContact && (
+          <section className="mt-10">
+            <h2 className="uppercase text-xs text-gray-900 tracking-widest">Preferred Contact</h2>
+            <div className="flex mt-3">
+              <Icon type={preferredContact.type} size={24} />
+              <span className="ml-4 text-blue-500">{preferredContact.value}</span>
+            </div>
+          </section>
+        )}
         <section className="mt-10">
-          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Preferred Contact</h2>
-          <div className="flex mt-3">
-            <Icon type={preferredContact.type} size={24} />
-            <span className="ml-4 text-blue-500">{preferredContact.value}</span>
-          </div>
-        </section>
-        <section className="mt-10">
-          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contacts</h2>
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
           <ul className="mt-3">
             {contacts.map(field => (
               <li key={field.id} className="flex mb-3">
