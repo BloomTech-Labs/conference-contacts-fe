@@ -126,6 +126,10 @@
   background: #6640FF;
 }
 
+.main-nav-link:hover {
+  color: #fff;
+}
+
 /* NAV-LIST ITEM */
 .nav-list-item:hover {
   background: #A9A8FF;

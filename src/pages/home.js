@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USER_PROFILE } from '../queries/index';
-import Popup from '../components/modal';
+import Popup from 'reactjs-popup';
 import HashLoader from 'react-spinners/HashLoader';
 
 const Home = () => {
