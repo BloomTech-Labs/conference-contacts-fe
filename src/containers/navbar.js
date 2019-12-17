@@ -12,7 +12,7 @@ export default function NavBar() {
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
   const [open, setOpen] = useState(false);
 
-  if (loading || !data) return <div>Loading...</div>;
+  if (loading || !data) return null;
   if (error) return <p>There was an error: {error}</p>;
 
   const handleLogout = () => {
@@ -24,11 +24,10 @@ export default function NavBar() {
   return (
     <>
       <header className="header">
-        <div className="navContainer flex items-center pl-4 pr-4 pb-2 pt-2 shadow">
+        <div className="navContainer flex items-center px-4 py-2 shadow">
           {/* LOGO */}
           <Link to="/">
             <svg
-              className="ml-4"
               width="70"
               height="30"
               fill="none"
@@ -94,35 +93,35 @@ export default function NavBar() {
                       src={data.user.picture}
                       alt={`avatar of ${data.user.name}`}
                     />
-                    <p className="pb-6 text-2xl pl-2">{data.user.name}</p>
+                    <p className="pb-6 text-2xl text-center">{data.user.name}</p>
                     <div className="pb-6">
                       {data?.user?.id && <QRCode value={[...data.user.id].reverse().join('')} />}
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-8">
-                <li className="hover:bg-gray-200 pl-6">
+              <div className="mt-8 pl-6">
+                <li className="hover:bg-gray-200">
                   <Link onClick={() => setOpen(!open)} to="/" className="mainNavLink">
                     Home
                   </Link>
                 </li>
-                <li className="hover:bg-gray-200 pl-6">
+                <li className="hover:bg-gray-200">
                   <Link onClick={() => setOpen(!open)} to="contacts" className="mainNavLink">
                     Contacts
                   </Link>
                 </li>
-                <li className="hover:bg-gray-200 pl-6">
+                <li className="hover:bg-gray-200">
                   <Link onClick={() => setOpen(!open)} to="messages" className="mainNavLink">
                     Messages
                   </Link>
                 </li>
-                <li className="hover:bg-gray-200 pl-6">
+                <li className="hover:bg-gray-200">
                   <Link onClick={() => setOpen(!open)} to="profile" className="mainNavLink">
                     Profile
                   </Link>
                 </li>
-                <li className="hover:bg-gray-200 pl-6">
+                <li className="hover:bg-gray-200">
                   <Link onClick={() => setOpen(!open)} to="settings" className="mainNavLink">
                     Settings
                   </Link>

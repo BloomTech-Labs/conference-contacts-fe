@@ -37,6 +37,23 @@ export const CREATE_PROFILE_FIELD = gql`
   }
 `;
 
+export const UPDATE_PROFILE_FIELD = gql`
+  mutation updateProfileField($id: ID!, $data: UpdateProfileFieldInput!) {
+    updateProfileField(id: $id, data: $data) {
+      code
+      success
+      message
+      profileField {
+        id
+        type
+        value
+        privacy
+        preferredContact
+      }
+    }
+  }
+`;
+
 export const DELETE_PROFILE_FIELD = gql`
   mutation deleteProfileField($id: ID!) {
     deleteProfileField(id: $id) {
