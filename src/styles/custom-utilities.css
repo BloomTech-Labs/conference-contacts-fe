@@ -108,7 +108,7 @@
 
 /* SOCIAL TAG */
 .gray-text {
-  color: #9A99A2;;
+  color: #9A99A2;
 }
 
 /* PROFILE PIC */
@@ -127,9 +127,16 @@
   border-radius: 1rem;
 }
 
-/* QR ICON BLUE */
-.qr-icon-blue {
-  background: #007AFF;
+/* PURPLE */
+.purple {
+  background: #6640FF;
+}
+
+/* NAV-LIST ITEM */
+.nav-list-item:hover {
+  background: #A9A8FF;
+  color: #fff;
+  border-width: 90%;
 }
 
 /* ********* MEDIA QUERIES ********* */

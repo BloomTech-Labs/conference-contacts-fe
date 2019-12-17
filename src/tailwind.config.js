@@ -4,6 +4,9 @@ module.exports = {
       display: ['Roboto', 'sans-serif'],
       body: ['Roboto', 'sans-serif'],
     },
+    colors: {
+      lightPurple: '#A9A8FF',
+    },
     extend: {},
   },
   variants: {},
