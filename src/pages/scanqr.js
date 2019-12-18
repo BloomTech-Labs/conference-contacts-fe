@@ -23,9 +23,9 @@ const ScanQr = () => {
                 // delay={100}
                 onError={handleError}
                 onScan={handleScan}
-                facingMode='user'
+                facingMode='environment'
                 style={{ width: '100%' }}
-                className='my-6'
+                className='mt-12 mb-6'
                 showViewFinder={true}
             /> 
             <p className='text-lg text-center mx-2'>Align QR code to swaap information</p> 

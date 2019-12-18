@@ -6,6 +6,7 @@ module.exports = {
     },
     colors: {
       lightPurple: '#A9A8FF',
+      white: '#fff',
     },
     extend: {},
   },

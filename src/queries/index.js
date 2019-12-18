@@ -14,6 +14,7 @@ export const UPDATE_USER_INFO = gql`
         location
         industry
         jobtitle
+        tagline
         bio
       }
     }
@@ -73,11 +74,12 @@ export const GET_USER_PROFILE = gql`
       id
       name
       picture
-      bio
       birthdate
-      jobtitle
       location
       industry
+      jobtitle
+      tagline
+      bio
       profile {
         id
         value

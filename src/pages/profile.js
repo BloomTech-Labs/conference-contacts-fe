@@ -54,7 +54,7 @@ const Profile = props => {
         <section>
           <div className="flex justify-between items-center">
             <h5 className="text-2xl font-bold">{data.user.name}</h5>
-            <Link to="edit">
+            <Link to="/profile/edit">
               {/* EDIT ICON */}
               <svg
                 className="mr-3"

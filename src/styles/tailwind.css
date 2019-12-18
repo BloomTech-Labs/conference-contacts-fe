@@ -8461,12 +8461,16 @@ video {
 /* DESKTOP */
 
 .desktop-active {
-  border-bottom: 5px solid #007aff;
+  border-bottom: 5px solid #6640FF;
   padding-bottom: 30px;
 }
 
 .desktop-link {
-  color: #007aff;
+  color: #6640FF;
+}
+
+.desktop-link:hover {
+  color: #A9A8FF;
 }
 
 /* SOCIAL TAG */
@@ -8503,6 +8507,14 @@ video {
   background: #A9A8FF;
   color: #fff;
   border-width: 90%;
+}
+
+.black-svg {
+  fill: #000;
+}
+
+li svg #white-svg:hover {
+  fill: #fff;
 }
 
 /* ********* MEDIA QUERIES ********* */
