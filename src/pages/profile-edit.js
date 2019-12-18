@@ -87,7 +87,7 @@ export default function ProfileEdit(props) {
   const handleCancel = () => props.navigate('/profile');
 
   const handleNewLink = async event => {
-    if (event.key !== 'Enter') return;
+    if (event.key !== 'Enter' || link === 'GLOBAL') return;
 
     const profileData = {
       value: fields.link,
