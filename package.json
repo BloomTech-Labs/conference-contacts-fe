@@ -12,6 +12,7 @@
     "apollo-boost": "^0.4.4",
     "auth0": "^2.20.0",
     "axios": "^0.19.0",
+    "glhd-tailwindcss-transitions": "^0.3.0",
     "graphql": "^14.5.8",
     "mixpanel-browser": "^2.31.0",
     "qrcode.react": "^1.0.0",
