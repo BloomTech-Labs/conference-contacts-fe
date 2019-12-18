@@ -203,10 +203,10 @@ export default function ProfileEdit(props) {
     <div className="pt-24 p-6">
       <div>
         <div className="flex justify-between">
-          <button type="button" className="text-red-600" onClick={handleCancel}>
+          <button type="button" className="text-red-600 focus:outline-none" onClick={handleCancel}>
             Cancel
           </button>
-          <button type="submit" className="text-blue-700" onClick={handleSave}>
+          <button type="submit" className="text-blue-700 focus:outline-none" onClick={handleSave}>
             Save
           </button>
         </div>
@@ -316,7 +316,7 @@ export default function ProfileEdit(props) {
           <label className="block text-sm mb-1">Links</label>
           <button
             type="button"
-            className="text-xs text-blue-500"
+            className="text-xs text-blue-500 focus:outline-none"
             onClick={() => document.getElementById('new-link').classList.toggle('hidden')}
           >
             &#43; add link
@@ -327,14 +327,15 @@ export default function ProfileEdit(props) {
             <li key={field.id} className="flex mb-3">
               <Icon type={field.type} size={24} />
               <span
-                className={field.preferredContact ? 'ml-4 mr-auto text-blue-500' : 'ml-4 mr-auto'}
+                className={field.preferredContact ? 'ml-4 mr-auto text-blue-500 truncate' : 'ml-4 mr-auto truncate'}
+                title={field.value}
               >
                 {field.value}
               </span>
               <Icon
                 type="MORE"
                 size={24}
-                classes="mr-3 relative"
+                classes="mr-3 relative flex-shrink-0"
                 onClick={() => {
                   for (let i = 0; i < fields.profile.length; i++) {
                     const element = document.getElementById(`link-privacy-${i}`);
@@ -342,7 +343,6 @@ export default function ProfileEdit(props) {
                       element.classList.add('hidden');
                     }
                   }
-
                   document.getElementById(`link-privacy-${idx}`).classList.toggle('hidden');
                 }}
               />
@@ -414,7 +414,7 @@ export default function ProfileEdit(props) {
                   </>
                 )}
               </div>
-              <Icon onClick={() => removeLink(field.id)} type="MINUS-CIRCLE" size={24} />
+              <Icon classes="flex-shrink-0" type="MINUS-CIRCLE" size={24} onClick={() => removeLink(field.id)} />
             </li>
           ))}
         </ul>
@@ -457,7 +457,7 @@ export default function ProfileEdit(props) {
       <div className="mt-4">
         <div className="flex justify-between items-center">
           <label className="block text-sm mb-1">Interests</label>
-          <button type="button" className="text-xs text-blue-500">
+          <button type="button" className="text-xs text-blue-500 focus:outline-none">
             &#43; add interest
           </button>
         </div>
