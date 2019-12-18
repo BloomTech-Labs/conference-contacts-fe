@@ -286,6 +286,19 @@ export default function ProfileEdit(props) {
         />
       </div>
       <div className="mt-4">
+        <label className="block text-sm mb-1" htmlFor="tagline">
+          Tagline
+        </label>
+        <input
+          type="text"
+          name="tagline"
+          id="tagline"
+          className="w-full border border-gray-900 rounded p-2"
+          onChange={handleFieldChange}
+          value={fields.tagline || ''}
+        />
+      </div>
+      <div className="mt-4">
         <label className="block text-sm mb-1" htmlFor="bio">
           Bio
         </label>
