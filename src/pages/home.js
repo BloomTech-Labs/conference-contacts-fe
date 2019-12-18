@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USER_PROFILE } from '../queries/index';
-import QrCodeGenerator from '../components/qrCodeGenerator';
-import QRCodeReader from '../components/qrCodeReader'
+// import QrCodeGenerator from '../components/qrCodeGenerator';
+// import QRCodeReader from '../components/qrCodeReader'
 import HashLoader from 'react-spinners/HashLoader';
 import { Link } from '@reach/router';
 
