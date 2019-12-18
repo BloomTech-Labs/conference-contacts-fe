@@ -11,6 +11,7 @@
   background: #fff;
   color: #292a2a;
   z-index: 4;
+  margin-bottom: 9.5rem;
 }
 .header a {
   color: inherit;
@@ -97,17 +98,21 @@
 
 /* DESKTOP */
 .desktop-active {
-  border-bottom: 5px solid #007aff;
+  border-bottom: 5px solid #6640FF;
   padding-bottom: 30px;
 }
 
 .desktop-link {
-  color: #007aff;
+  color: #6640FF;
+}
+
+.desktop-link:hover {
+  color: #A9A8FF;
 }
 
 /* SOCIAL TAG */
 .gray-text {
-  color: #9A99A2;;
+  color: #9A99A2;
 }
 
 /* MAIN CONTAINER */
@@ -115,8 +120,33 @@
   border-radius: 1.5rem;
 }
 
+/* GRAY BOX */
 .box {
   border-radius: 1rem;
+}
+
+/* PURPLE */
+.purple {
+  background: #6640FF;
+}
+
+.main-nav-link:hover {
+  color: #fff;
+}
+
+/* NAV-LIST ITEM */
+.nav-list-item:hover {
+  background: #A9A8FF;
+  color: #fff;
+  border-width: 90%;
+}
+
+.black-svg {
+  fill: #000;
+}
+
+li svg #white-svg:hover {
+  fill: #fff;
 }
 
 /* ********* MEDIA QUERIES ********* */
