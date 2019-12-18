@@ -23,7 +23,7 @@ const ScanQr = () => {
                 // delay={100}
                 onError={handleError}
                 onScan={handleScan}
-                facingMode='user'
+                facingMode='environment'
                 style={{ width: '100%' }}
                 className='my-6'
                 showViewFinder={true}
