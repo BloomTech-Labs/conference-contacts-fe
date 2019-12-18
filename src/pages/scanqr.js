@@ -17,7 +17,7 @@ const ScanQr = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center my-6">
+        <div className="flex flex-col justify-center items-center mt-6">
             <QrReader
                 // delay={100}
                 onError={handleError}
@@ -27,7 +27,7 @@ const ScanQr = () => {
                 className='mt-12 mb-6'
                 showViewFinder={true}
             /> 
-            <p className='text-xl m-auto w-3/4 border-t-2 mt-8 pt-10 text-center mx-2'>Align QR code to swaap information</p> 
+            <p className='text-xl m-auto w-3/4 border-b-4 mt-2 pb-4 text-center mx-2'>Align QR code to swaap information</p> 
             <div className='mt-12 flex flex-col justify-center items-center'>
                 <button onClick={() => navigate('readqr')}>
                     <svg width="32" height="32" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
