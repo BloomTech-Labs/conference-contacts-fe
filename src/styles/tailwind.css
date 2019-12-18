@@ -8360,6 +8360,7 @@ video {
   background: #fff;
   color: #292a2a;
   z-index: 4;
+  margin-bottom: 9.5rem;
 }
 
 .header a {
@@ -8480,8 +8481,28 @@ video {
   border-radius: 1.5rem;
 }
 
+/* GRAY BOX */
+
 .box {
   border-radius: 1rem;
+}
+
+/* PURPLE */
+
+.purple {
+  background: #6640FF;
+}
+
+.main-nav-link:hover {
+  color: #fff;
+}
+
+/* NAV-LIST ITEM */
+
+.nav-list-item:hover {
+  background: #A9A8FF;
+  color: #fff;
+  border-width: 90%;
 }
 
 /* ********* MEDIA QUERIES ********* */

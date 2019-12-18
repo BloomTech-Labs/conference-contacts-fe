@@ -20,8 +20,10 @@
     "react-dropzone": "^10.2.1",
     "react-ga": "^2.7.0",
     "react-mixpanel": "^1.0.5",
+    "react-qr-reader": "^2.2.1",
     "react-scripts": "3.3.0",
     "react-spinners": "^0.6.1",
+    "reactive-qr": "^0.1.8",
     "reactjs-popup": "^1.5.0"
   },
   "devDependencies": {
