@@ -98,21 +98,21 @@
 
 /* DESKTOP */
 .desktop-active {
-  border-bottom: 5px solid #6640FF;
+  border-bottom: 5px solid #6640ff;
   padding-bottom: 30px;
 }
 
 .desktop-link {
-  color: #6640FF;
+  color: #6640ff;
 }
 
 .desktop-link:hover {
-  color: #A9A8FF;
+  color: #a9a8ff;
 }
 
 /* SOCIAL TAG */
 .gray-text {
-  color: #9A99A2;
+  color: #9a99a2;
 }
 
 /* PROFILE CARD */
@@ -131,7 +131,7 @@
 
 /* PURPLE */
 .purple {
-  background: #6640FF;
+  background: #6640ff;
 }
 
 .main-nav-link:hover {
@@ -140,7 +140,7 @@
 
 /* NAV-LIST ITEM */
 .nav-list-item:hover {
-  background: #A9A8FF;
+  background: #a9a8ff;
   color: #fff;
   border-width: 90%;
 }
