@@ -10,17 +10,16 @@ const images = [
 function App() {
   const [index, setIndex] = React.useState(0);
 
-  
   React.useEffect(() => {
-  const timer = setInterval(() => {
-    if (index === 2) {
-      setIndex(0);
-    } else {
-      setIndex(prev => prev + 1);
-    }
-  }, 3000);
-  return () => clearInterval(timer);
-}, [index]);
+    const timer = setInterval(() => {
+      if (index === 2) {
+        setIndex(0);
+      } else {
+        setIndex(prev => prev + 1);
+      }
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [index]);
 
   return (
     <Gallery
