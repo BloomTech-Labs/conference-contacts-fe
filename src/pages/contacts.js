@@ -1,4 +1,6 @@
 import React from 'react';
+import { NAVBAR_PROFILE } from '../queries/index';
+import { useQuery } from '@apollo/react-hooks';
 
 const Contacts = () => {
     return (
