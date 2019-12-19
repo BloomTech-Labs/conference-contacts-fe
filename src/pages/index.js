@@ -7,6 +7,7 @@ import ProfileEdit from './profile-edit';
 // import Home from './home';
 import ScanQr from './scanqr';
 import ReadQr from './readqr';
+import Settings from './settings';
 
 export default function Pages() {
   return (
@@ -16,6 +17,7 @@ export default function Pages() {
         <Profile path="/" />
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
+        <Settings path="settings" />
         <ScanQr path="scanqr" />
         <ReadQr path="readqr" />
       </Router>
