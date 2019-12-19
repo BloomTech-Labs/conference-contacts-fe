@@ -1,2 +1,2 @@
-import { createBrowserHistory } from "history";
-export default createBrowserHistory();
+import { createHistory } from '@reach/router';
+export default createHistory(window);
