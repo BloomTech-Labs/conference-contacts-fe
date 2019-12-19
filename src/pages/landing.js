@@ -82,19 +82,19 @@ export default function Landing() {
                   </a>
                 </li>
                 <li>
-                  <a
+                <a
                     class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
-                    href="#team"
+                    href="#reviews"
                   >
-                    Team
+                    Reviews
                   </a>
                 </li>
                 <li>
                   <a
                     class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 text-blue-600"
-                    href="#reviews"
+                    href="#team"
                   >
-                    Reviews
+                    Team
                   </a>
                 </li>
                 <li>
@@ -119,12 +119,17 @@ export default function Landing() {
 
       {/* Title */}
       <div className="text-center container mx-auto px-20">
-        <h2 className="text-6xl font-bold mb-2 text-black">Go Scan Go</h2>
+        <h2 className="text-6xl font-bold mb-2 text-black">Leave the business cards at home</h2>
         <h3 className="text-3xl mb-8 text-black-200">
-          A Smarter contact and conference managment that makes the conference experience more
-          amusing..
+          Business cards get thrown in the trash. Swaap makes trading business information
+          effortless
         </h3>
-        <img src="https://i.ibb.co/NLCGt1Z/darkMode.png" alt="darkMode" border="0"></img>
+        <img
+          className="m-auto"
+          src="https://i.ibb.co/TgYq6kk/Hero-Image.png"
+          alt="Hero-Image"
+          border="0"
+        ></img>
       </div>
 
       {/* Features */}
@@ -153,10 +158,203 @@ export default function Landing() {
         </section>
       </div> */}
 
+      {/* <div class="max-w-sm rounded overflow-hidden shadow-lg p-5"> */}
+
+      {/* </div> */}
+
+      {/* <div class="max-w-sm rounded overflow-hidden shadow-lg p-5"> */}
+
+      {/* </div> */}
+
+      <section class="container mx-auto px-6 p-10" id="features">
+        <div class="flex items-center flex-wrap mb-20">
+          <div class="w-full md:w-1/2">
+            <h4 class="text-3xl text-gray-800 font-bold mb-3">Connect Seamlessly</h4>
+            <p class="text-gray-600 mb-8">
+              Adding contacts had never been easier. Search by name, scan QR code or download the
+              app and "Swaap" with bluetooth.
+            </p>
+          </div>
+          <div class="ml-24">
+            <img
+              src="https://i.ibb.co/ckBNHs6/Connect-Seamlessly.png"
+              alt="Connect-Seamlessly"
+              border="0"
+            />
+          </div>
+        </div>
+        <div class="flex items-center flex-wrap mb-20">
+          <img src="https://i.ibb.co/qBrvpvL/undraw-online-chat-d7ek-1.png" alt="undraw-online-chat-d7ek-1" border="0"></img>
+          <div class="w-full md:w-1/2 pl-10">
+            <h4 class="text-3xl text-gray-800 font-bold mb-3">Stay in touch</h4>
+            <p class="text-gray-600 mb-8">
+              Keep all your business contacts in one place with all their important information and
+              preferred form of contact.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center flex-wrap mb-20">
+          <div class="w-full md:w-1/2">
+            <h4 class="text-3xl text-gray-800 font-bold mb-3">Never forget a meeting</h4>
+            <p class="text-gray-600 mb-8">
+              Remember when and where you met someone, keep track of events, and take notes of
+              meetings so that you can look professional in follow ups.
+            </p>
+          </div>
+          <div class="ml-24">
+            <img
+              src="https://i.ibb.co/RhdWXbB/Never-Forget-a-Meeting.png"
+              alt="Never-Forget-a-Meeting"
+              border="0"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* DarkMode needs to be reviewed */}
       <div className="container mx-auto px-12 py-2">
+        <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-12">
+          Food
+        </h2>
+
+        <div className="flex justify-between text-center p-5">
+          <div className="flex flex-wrap">
+            <div className="single-special w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <svg
+                    className="w-8 m-auto"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 12C7.67392 12 6.40215 11.4732 5.46447 10.5355C4.52678 9.59785 4 8.32608 4 7C4 5.67392 4.52678 4.40215 5.46447 3.46447C6.40215 2.52678 7.67392 2 9 2C10.3261 2 11.5979 2.52678 12.5355 3.46447C13.4732 4.40215 14 5.67392 14 7C14 8.32608 13.4732 9.59785 12.5355 10.5355C11.5979 11.4732 10.3261 12 9 12ZM9 10C9.39397 10 9.78407 9.9224 10.1481 9.77164C10.512 9.62087 10.8427 9.3999 11.1213 9.12132C11.3999 8.84274 11.6209 8.51203 11.7716 8.14805C11.9224 7.78407 12 7.39397 12 7C12 6.60603 11.9224 6.21593 11.7716 5.85195C11.6209 5.48797 11.3999 5.15726 11.1213 4.87868C10.8427 4.6001 10.512 4.37913 10.1481 4.22836C9.78407 4.0776 9.39397 4 9 4C8.20435 4 7.44129 4.31607 6.87868 4.87868C6.31607 5.44129 6 6.20435 6 7C6 7.79565 6.31607 8.55871 6.87868 9.12132C7.44129 9.68393 8.20435 10 9 10ZM16 21C16 21.2652 15.8946 21.5196 15.7071 21.7071C15.5196 21.8946 15.2652 22 15 22C14.7348 22 14.4804 21.8946 14.2929 21.7071C14.1054 21.5196 14 21.2652 14 21V19C14 18.2044 13.6839 17.4413 13.1213 16.8787C12.5587 16.3161 11.7956 16 11 16H7C6.20435 16 5.44129 16.3161 4.87868 16.8787C4.31607 17.4413 4 18.2044 4 19V21C4 21.2652 3.89464 21.5196 3.70711 21.7071C3.51957 21.8946 3.26522 22 3 22C2.73478 22 2.48043 21.8946 2.29289 21.7071C2.10536 21.5196 2 21.2652 2 21V19C2 17.6739 2.52678 16.4021 3.46447 15.4645C4.40215 14.5268 5.67392 14 7 14H11C12.3261 14 13.5979 14.5268 14.5355 15.4645C15.4732 16.4021 16 17.6739 16 19V21ZM17 16C16.7348 16 16.4804 15.8946 16.2929 15.7071C16.1054 15.5196 16 15.2652 16 15C16 14.7348 16.1054 14.4804 16.2929 14.2929C16.4804 14.1054 16.7348 14 17 14C18.3261 14 19.5979 14.5268 20.5355 15.4645C21.4732 16.4021 22 17.6739 22 19V21C22 21.2652 21.8946 21.5196 21.7071 21.7071C21.5196 21.8946 21.2652 22 21 22C20.7348 22 20.4804 21.8946 20.2929 21.7071C20.1054 21.5196 20 21.2652 20 21V19C20 18.2044 19.6839 17.4413 19.1213 16.8787C18.5587 16.3161 17.7956 16 17 16ZM15 12C14.7348 12 14.4804 11.8946 14.2929 11.7071C14.1054 11.5196 14 11.2652 14 11C14 10.7348 14.1054 10.4804 14.2929 10.2929C14.4804 10.1054 14.7348 10 15 10C15.7956 10 16.5587 9.68393 17.1213 9.12132C17.6839 8.55871 18 7.79565 18 7C18 6.20435 17.6839 5.44129 17.1213 4.87868C16.5587 4.31607 15.7956 4 15 4C14.7348 4 14.4804 3.89464 14.2929 3.70711C14.1054 3.51957 14 3.26522 14 3C14 2.73478 14.1054 2.48043 14.2929 2.29289C14.4804 2.10536 14.7348 2 15 2C16.3261 2 17.5979 2.52678 18.5355 3.46447C19.4732 4.40215 20 5.67392 20 7C20 8.32608 19.4732 9.59785 18.5355 10.5355C17.5979 11.4732 16.3261 12 15 12Z"
+                      fill="#4A5568"
+                    />
+                  </svg>
+                  Make friends
+                </h4>
+
+                <p className="mb-8">Scan a qr code with someone and get there information</p>
+              </div>
+            </div>
+
+            <div className="single-special w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/X7VGNtY/responsive-design.png"
+                    alt="responsive-design"
+                    border="0"
+                  />
+                  Any size
+                </h4>
+
+                <p className="mb-8 p-2 ">
+                  We support every device orientation and size for multitasking.
+                </p>
+              </div>
+            </div>
+
+            <div className="single-special w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <svg
+                    className="w-8 m-auto"
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.3 12.2995L16.3 2.29953C16.4869 2.1163 16.7382 2.01367 17 2.01367C17.2618 2.01367 17.5131 2.1163 17.7 2.29953L21.7 6.29953C21.8832 6.48646 21.9859 6.73778 21.9859 6.99953C21.9859 7.26128 21.8832 7.5126 21.7 7.69953L11.7 17.6995C11.5154 17.8879 11.2638 17.9958 11 17.9995H7C6.73478 17.9995 6.48043 17.8942 6.29289 17.7066C6.10536 17.5191 6 17.2647 6 16.9995V12.9995C6.00376 12.7358 6.11159 12.4842 6.3 12.2995ZM8 15.9995H10.59L19.59 6.99953L17 4.40953L8 13.4095V15.9995ZM18 13.9995C18 13.7343 18.1054 13.48 18.2929 13.2924C18.4804 13.1049 18.7348 12.9995 19 12.9995C19.2652 12.9995 19.5196 13.1049 19.7071 13.2924C19.8946 13.48 20 13.7343 20 13.9995V19.9995C20 20.53 19.7893 21.0387 19.4142 21.4137C19.0391 21.7888 18.5304 21.9995 18 21.9995H4C3.46957 21.9995 2.96086 21.7888 2.58579 21.4137C2.21071 21.0387 2 20.53 2 19.9995V5.99953C2 4.89953 2.9 3.99953 4 3.99953H10C10.2652 3.99953 10.5196 4.10489 10.7071 4.29242C10.8946 4.47996 11 4.73431 11 4.99953C11 5.26475 10.8946 5.5191 10.7071 5.70664C10.5196 5.89417 10.2652 5.99953 10 5.99953H4V19.9995H18V13.9995Z"
+                      fill="#4A5568"
+                    />
+                  </svg>
+                  Import
+                </h4>
+
+                <p className="mb-8 p-2 ">Inport any picture you want on the app.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between text-center p-5">
+          <div className="flex flex-wrap">
+            <div className="single-special w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/4sJpbQx/runer-silhouette-running-fast.png"
+                    alt="runer-silhouette-running-fast"
+                    border="0"
+                  />
+                  Fast and Simple
+                </h4>
+
+                <p className="mb-8 p-2 ">
+                  I only takes 5 minutes to set up account by going to auth0 and login with an email
+                  of your choice
+                </p>
+              </div>
+            </div>
+
+            <div className="single-special w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <img
+                    className="w-8 m-auto"
+                    src="https://i.ibb.co/BZJLDG3/two-fingers.png"
+                    alt="two-fingers"
+                    border="0"
+                  />
+                  Editing
+                </h4>
+
+                <p className="mb-8 p-2 ">
+                  Simply two finger drag down to bulk edit lists or items.
+                </p>
+              </div>
+            </div>
+
+            <div className="single-special w-full md:w-1/3 px-2 mb-6">
+              <div className="col-12 col-sm-6 col-lg-6">
+                <h4 className="p-2 font-sembold text-purple-500">
+                  <svg
+                    className="w-8 m-auto"
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.56998 3.3804C8.98805 4.83422 8.84559 6.42687 9.16027 7.96089C9.47495 9.49491 10.2329 10.9028 11.3402 12.0101C12.4475 13.1175 13.8555 13.8754 15.3895 14.1901C16.9235 14.5048 18.5162 14.3623 19.97 13.7804C20.1522 13.7047 20.3527 13.6846 20.5463 13.7227C20.7399 13.7607 20.9179 13.8551 21.0579 13.9941C21.198 14.1331 21.2938 14.3104 21.3333 14.5037C21.3728 14.697 21.3543 14.8976 21.28 15.0804C20.6651 16.6165 19.6787 17.9761 18.4091 19.0372C17.1395 20.0983 15.6265 20.8278 14.0056 21.1603C12.3847 21.4928 10.7067 21.4179 9.12186 20.9423C7.53706 20.4667 6.09502 19.6053 4.92503 18.4354C3.75503 17.2654 2.89364 15.8233 2.41806 14.2385C1.94248 12.6537 1.86758 10.9757 2.20008 9.35479C2.53257 7.73392 3.26207 6.22088 4.32318 4.9513C5.38429 3.68172 6.74384 2.69528 8.27998 2.0804C8.4617 2.00766 8.66079 1.98985 8.85254 2.02919C9.04429 2.06852 9.22028 2.16327 9.3587 2.30168C9.49711 2.4401 9.59186 2.61609 9.63119 2.80784C9.67052 2.99959 9.65272 3.19867 9.57998 3.3804H9.56998ZM7.09998 5.0404C6.19403 5.73179 5.44626 6.60875 4.90673 7.61258C4.3672 8.6164 4.04837 9.72391 3.97158 10.8609C3.89479 11.998 4.06182 13.1383 4.46149 14.2056C4.86115 15.2728 5.48423 16.2423 6.28899 17.0493C7.09375 17.8562 8.06162 18.4818 9.1278 18.8844C10.194 19.2869 11.3338 19.457 12.4711 19.3832C13.6083 19.3095 14.7167 18.9936 15.7219 18.4568C16.7272 17.9199 17.6062 17.1745 18.3 16.2704C16.7782 16.471 15.2307 16.3186 13.7773 15.825C12.3239 15.3314 11.0037 14.5099 9.91882 13.4241C8.83395 12.3383 8.01361 11.0173 7.52132 9.56344C7.02903 8.10961 6.87802 6.56197 7.07998 5.0404H7.09998Z"
+                      fill="#4A5568"
+                    />
+                  </svg>
+                  DarkMode
+                </h4>
+
+                <p className="mb-8 p-2 ">
+                  Turn out the lights with our gorgeous dark mode support.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="container mx-auto px-12 py-2">
         <div className="flex justify-around text-center p-5">
           <div className="flex flex-wrap">
-            {/* <div class="text-center max-w-sm shadow-lg p-5"> */}
             <div className="single-special updates w-full md:w-1/3 px-2 mb-6">
               <div className="col-12 col-sm-6 col-lg-6">
                 <h4 className="p-2 font-sembold text-purple-500">
@@ -172,11 +370,10 @@ export default function Landing() {
                   See up-to-date news on what is going on at any participation conferences.
                 </p>
               </div>
-            </div>
-            {/* </div> */}
+            </div> */}
 
             {/* <div class="max-w-sm rounded overflow-hidden shadow-lg p-5"> */}
-            <div className="single-special qr w-full md:w-1/3 px-2 mb-6">
+            {/* <div className="single-special qr w-full md:w-1/3 px-2 mb-6">
               <div className="col-12 col-sm-6 col-lg-6">
                 <h4 className="p-2 font-sembold text-purple-500">
                   <svg
@@ -198,16 +395,16 @@ export default function Landing() {
                   Scan QR codes from any users to receive contacts and references
                 </p>
               </div>
-            </div>
+            </div> */}
             {/* </div> */}
 
             {/* <div class="max-w-sm rounded overflow-hidden shadow-lg p-5"> */}
-            <div className="single-special lists w-full md:w-1/3 px-2 mb-6">
+            {/* <div className="single-special lists w-full md:w-1/3 px-2 mb-6">
               <div className="col-12 col-sm-6 col-lg-6">
                 <h4 className="p-2 font-sembold text-purple-500">
                   <svg
                     className="w-8 m-auto"
-                    width="65"
+                    width="72"
                     height="65"
                     viewBox="0 0 65 65"
                     fill="none"
@@ -228,290 +425,17 @@ export default function Landing() {
             </div>
           </div>
         </div>
-        {/* </div> */}
-      </div>
+      </div> */}
 
-      {/* <div classname="container mx-auto px-12 py-2">
-                  <h2 className="text-4xl flex justify-center font-sembold text-purple-600 ">
-                    Our Philosophy
-                  </h2>
-             
-                
-                  <div className="flex justify-between text-center p-5">
-          <div className="flex flex-wrap">
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-          <img className="w-8 m-auto" 
-          src="https://d33wubrfki0l68.cloudfront.net/8ae959457496f14932ca6872d8270a03c2956237/df151/assets/images/about/simple.svg" 
-          width="80px" class="center-block img-responsive b-margin-sm" alt="Simple"/>
-                Simple</h4>
-              <p className="mb-8">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            </div>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img src="https://d33wubrfki0l68.cloudfront.net/00a2b651d6529b8199b3ed3ab2e54f082e03d06e/c4384/assets/images/about/collab.svg" width="80px" class="center-block img-responsive b-margin-sm" alt="Collab"/>
-                Collaborative
-              </h4>
-              <p className="mb-8 p-2">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-            <div className="col-12 col-sm-6 col-lg-4">
-              <h4 className="p-2 font-sembold text-purple-500">
-                <img src="https://d33wubrfki0l68.cloudfront.net/795341c07b32512c1608995a27c85ac0d5bfc2d2/bb140/assets/images/about/comprehensive.svg" width="80px" class="center-block img-responsive b-margin-sm" alt="Comprehensive"/>
-                Comprehensive
-              </h4>
-              <p className="text-start mb-8 p-2">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-          </div> */}
-
-      
-
-
-<section class="container mx-auto px-6 p-10">
-      <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
-        Features
-      </h2>
-      <div class="flex items-center flex-wrap mb-20">
-        <div class="w-full md:w-1/2">
-          <h4 class="text-3xl text-gray-800 font-bold mb-3">
-            Exercise Metrics
-          </h4>
-          <p class="text-gray-600 mb-8">
-            Our Smart Health Monitoring Wristwatch is able to capture you vitals
-            while you exercise. You can create different category of exercises
-            and can track your vitals on the go.
-          </p>
-        </div>
-        <div class="w-full md:w-1/2">
-          <img
-            src="https://www.dropbox.com/s/mimcvn6zxtoruis/health.svg?raw=1"
-            alt="Monitoring"
-          />
-        </div>
-      </div>
-      <div class="flex items-center flex-wrap mb-20">
-        <div class="w-full md:w-1/2">
-          <img
-            src="https://www.dropbox.com/s/hllo2ueo8zgi2tt/report.svg?raw=1"
-            alt="Reporting"
-          />
-        </div>
-        <div class="w-full md:w-1/2 pl-10">
-          <h4 class="text-3xl text-gray-800 font-bold mb-3">
-            Reporting
-          </h4>
-          <p class="text-gray-600 mb-8">
-            Our Smart Health Monitoring Wristwatch can generate a comprehensive
-            report on your vitals depending on your settings either daily,
-            weekly, monthly, quarterly or yearly.
-          </p>
-        </div>
-      </div>
-      <div class="flex items-center flex-wrap mb-20">
-        <div class="w-full md:w-1/2">
-          <h4 class="text-3xl text-gray-800 font-bold mb-3">
-            Syncing
-          </h4>
-          <p class="text-gray-600 mb-8">
-            Our Smart Health Monitoring Wristwatch allows you to sync data
-            across all your mobile devices whether iOS, Android or Windows OS
-            and also to your laptop whether MacOS, GNU/LInux or Windows OS.
-          </p>
-        </div>
-        <div class="w-full md:w-1/2">
-          <img
-            src="https://www.dropbox.com/s/v0x0ywlvgmw04z6/sync.svg?raw=1"
-            alt="Syncing"
-          />
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-      {/* DarkMode needs to be reviewed */}
-      <div className="container mx-auto px-12 py-2">
-        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="demo">
-          Features
-        </h2>
-
-        <div className="flex justify-between text-center p-5">
-          <div className="flex flex-wrap">
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-                  <img
-                    className="w-8 m-auto"
-                    src="https://i.ibb.co/HDm2vxV/icon.png"
-                    alt="icon"
-                    border="0"
-                  />
-                  Make friends
-                </h4>
-
-                <p className="mb-8">Scan a qr code with someone and get there information</p>
-              </div>
-            </div>
-
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-                  <img
-                    className="w-8 m-auto"
-                    src="https://i.ibb.co/X7VGNtY/responsive-design.png"
-                    alt="responsive-design"
-                    border="0"
-                  />
-                  Any size
-                </h4>
-
-                <p className="mb-8 p-2 ">
-                  We support every device orientation and size for multitasking.
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-                  <img
-                    className="w-8 m-auto"
-                    src="https://i.ibb.co/Jqszh60/import.png"
-                    alt="import"
-                    border="0"
-                  />
-                  Import
-                </h4>
-
-                <p className="mb-8 p-2 ">Inport any picture you want on the app.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-between text-center p-5" id="demo">
-          <div className="flex flex-wrap">
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-                  <img
-                    className="w-8 m-auto"
-                    src="https://i.ibb.co/4sJpbQx/runer-silhouette-running-fast.png"
-                    alt="runer-silhouette-running-fast"
-                    border="0"
-                  />
-                  Fast and Simple
-                </h4>
-
-                <p className="mb-8 p-2 ">
-                  I only takes 5 minutes to set up ancount by going to auth0 and login with an email
-                  of your choice
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-                  <img
-                    className="w-8 m-auto"
-                    src="https://i.ibb.co/BZJLDG3/two-fingers.png"
-                    alt="two-fingers"
-                    border="0"
-                  />
-                  Editing
-                </h4>
-
-                <p className="mb-8 p-2 ">
-                  Simply two finger drag down to bulk edit lists or items.
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full md:w-1/3 px-2 mb-6">
-              <div className="col-12 col-sm-6 col-lg-6">
-                <h4 className="p-2 font-sembold text-purple-500">
-                  <img
-                    className="w-8 m-auto"
-                    src="https://i.ibb.co/Ptq1sVZ/moon-phase-symbol.png"
-                    alt="moon-phase-symbol"
-                    border="0"
-                  />
-                  DarkMode
-                </h4>
-
-                <p className="mb-8 p-2 ">
-                  Turn out the lights with our gorgeous dark mode support.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {/* Features part 2 */}
 
+      <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-12" id="demo">
+        App Screenshots
+      </h2>
       <Screenshot />
 
       {/* Review */}
-      <div className="bg-gray-100" id="reviews">
+      <div className="" id="reviews">
         <div className="container mx-auto px-6 py-20">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
             Don't take our word for it.
@@ -549,38 +473,40 @@ export default function Landing() {
       </div>
 
       <div className="container mx-auto px-12 py-12 text-center">
-        <h2 className="text-4xl flex justify-center font-sembold text-purple-600 p-12" id="team">
+        <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-12" id="team">
           Team
         </h2>
         <div className="flex flex-wrap">
           <div className="w-full md:w-1/3 px-2 mb-6">
             {/* <div className="col-12 col-sm-6 col-lg-6"> */}
-              <div class="container">
-                <img
-                  className="hover-photo rounded-r-lg ease md:w-56 md:w-64 mx-auto"
-                  src="https://i.ibb.co/cNtktWF/profile.jpg"
-                  alt="profile"
-                  border="0"
-                  alt=""
-                ></img>
-              </div>
+            <div class="container">
+              <img
+                className="hover-photo rounded-r-lg ease md:w-56 md:w-64 mx-auto"
+                src="https://i.ibb.co/cNtktWF/profile.jpg"
+                alt="profile"
+                border="0"
+                alt=""
+              ></img>
+            </div>
 
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
-              <p className="text-gray-500 mb-8">Team Leader/Software Engineer</p>
+            <h4 className="text-3xl text-gray-800 font-bold mb-3">Jonathan Picazo</h4>
+            <p className="text-gray-500 mb-8">Team Leader/Software Engineer</p>
             {/* </div> */}
           </div>
 
           <div className="w-full md:w-1/3 px-2 mb-6">
             {/* <div className="col-12 col-sm-6 col-lg-6"> */}
-              <img
-                className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64  mx-auto"
-                src="https://i.ibb.co/3vZ5kB2/headshot.jpg"
-                alt="profile"
-                border="0"
-                alt=""
-              ></img>
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
-              <p className="text-gray-500 mb-8">Software Engineer</p>
+            <img
+              className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64 mx-auto"
+              src="https://i.ibb.co/yqZpTgq/T4-JUEB3-ME-UJ11-F1-S13-799843608d4e-512.png"
+              alt="T4-JUEB3-ME-UJ11-F1-S13-799843608d4e-512"
+              border="0"
+              alt="profile"
+              border="0"
+              alt=""
+            ></img>
+            <h4 className="text-3xl text-gray-800 font-bold mb-3">Bobby Hall</h4>
+            <p className="text-gray-500 mb-8">Software Engineer</p>
             {/* </div> */}
           </div>
 
@@ -588,7 +514,8 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64  mx-auto"
-                src="https://i.ibb.co/WfqQd49/T4-JUEB3-ME-UL03-FJADB-b54ed5bc71f5-512.png" alt="T4-JUEB3-ME-UL03-FJADB-b54ed5bc71f5-512"
+                src="https://i.ibb.co/WfqQd49/T4-JUEB3-ME-UL03-FJADB-b54ed5bc71f5-512.png"
+                alt="T4-JUEB3-ME-UL03-FJADB-b54ed5bc71f5-512"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Quinn</h4>
@@ -600,7 +527,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64 mx-auto"
-              src="https://i.ibb.co/f0tsXRk/T4-JUEB3-ME-UJG8-RLWKG-3766d295008c-512.png" alt="T4-JUEB3-ME-UJG8-RLWKG-3766d295008c-512" border="0"
+                src="https://i.ibb.co/f0tsXRk/T4-JUEB3-ME-UJG8-RLWKG-3766d295008c-512.png"
+                alt="T4-JUEB3-ME-UJG8-RLWKG-3766d295008c-512"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Zachary Peasley</h4>
@@ -612,7 +541,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64 mx-auto"
-                src="https://i.ibb.co/9bMB6H5/T4-JUEB3-ME-UHV013-MQF-3a9d77644b52-512.jpg" alt="T4-JUEB3-ME-UHV013-MQF-3a9d77644b52-512" border="0"
+                src="https://i.ibb.co/9bMB6H5/T4-JUEB3-ME-UHV013-MQF-3a9d77644b52-512.jpg"
+                alt="T4-JUEB3-ME-UHV013-MQF-3a9d77644b52-512"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Jarvise Billups-Brown</h4>
@@ -636,7 +567,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64  mx-auto"
-                src="https://i.ibb.co/XDpNQJz/T4-JUEB3-ME-UHUR873-EV-d88881406d1d-512.jpg" alt="T4-JUEB3-ME-UHUR873-EV-d88881406d1d-512" border="0"
+                src="https://i.ibb.co/XDpNQJz/T4-JUEB3-ME-UHUR873-EV-d88881406d1d-512.jpg"
+                alt="T4-JUEB3-ME-UHUR873-EV-d88881406d1d-512"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
@@ -647,7 +580,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64 mx-auto"
-                src="https://i.ibb.co/D78c7Jp/T4-JUEB3-ME-UJWG6-UZG8-b02f88fab9ce-512.jpg" alt="T4-JUEB3-ME-UJWG6-UZG8-b02f88fab9ce-512" border="0"
+                src="https://i.ibb.co/D78c7Jp/T4-JUEB3-ME-UJWG6-UZG8-b02f88fab9ce-512.jpg"
+                alt="T4-JUEB3-ME-UJWG6-UZG8-b02f88fab9ce-512"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Tyler Nishida</h4>
@@ -658,7 +593,9 @@ export default function Landing() {
             <div className="col-12 col-sm-6 col-lg-4">
               <img
                 className="hover-photo rounded-r-lg rounded-tl-lg md:w-56 md:w-64  mx-auto"
-                src="https://i.ibb.co/vLwBkbX/T4-JUEB3-ME-UGVBY5-QK0-0322eb799fbf-512.jpg" alt="T4-JUEB3-ME-UGVBY5-QK0-0322eb799fbf-512" border="0"
+                src="https://i.ibb.co/vLwBkbX/T4-JUEB3-ME-UGVBY5-QK0-0322eb799fbf-512.jpg"
+                alt="T4-JUEB3-ME-UGVBY5-QK0-0322eb799fbf-512"
+                border="0"
                 alt=""
               ></img>
               <h4 className="text-3xl text-gray-800 font-bold mb-3">Emily Arias</h4>

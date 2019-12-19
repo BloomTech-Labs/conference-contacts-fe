@@ -171,13 +171,13 @@
 }
 
 .single-special {
-  border: 1px solid #eff2f6;
-  padding: 40px;
+  /* border: 1px solid #eff2f6; */
+  padding: 20px;
   border-radius: 40px 40px 40px 0px;
   -webkit-transition-duration: 800ms;
   -o-transition-duration: 800ms;
   transition-duration: 800ms;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .updates {
