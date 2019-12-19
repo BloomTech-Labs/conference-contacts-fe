@@ -210,12 +210,11 @@ export default function ProfileEdit(props) {
             Save
           </button>
         </div>
-        <div className="flex justify-center items-center mt-2">
+        <div className="flex justify-center items-center mt-2" onClick={() => widget.open()}>
           <img
             src={data.user.picture}
             alt="profile"
-            className="rounded-full object-cover w-1/2"
-            onClick={() => widget.open()}
+            className="rounded-full shadow-md w-56 h-56 object-cover"
           />
           <Icon type="CAMERA" classes="absolute" size={34} />
         </div>

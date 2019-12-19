@@ -20,16 +20,13 @@ const Home = () => {
 
   return (
     <div className="pt-24 pb-6 bg-gray-100">
-      <div className="main-container pb-4 bg-white mx-6 shadow-xl overflow-hidden">
+      <div className="main-container flex flex-col items-center py-4 bg-white mx-6 shadow-xl overflow-hidden">
         <img
-          className="rounded-bl-full rounded-tl-full
-                rounded-br-full ml-8 rounded-tr-lg shadow-md object-cover object-center"
+          className="rounded-full shadow-md w-96 h-96 object-cover"
           src={data.user.picture}
           alt={`profile picuture of ${data.user.name}`}
         />
-        <div className="flex justify-center">
-          <h1 className="text-3xl pt-10">{data.user.name}</h1>
-        </div>
+        <h1 className="text-3xl mt-6">{data.user.name}</h1>
       </div>
       <div className="flex justify-around mt-24 m-8">
         <Link to='readqr'>
