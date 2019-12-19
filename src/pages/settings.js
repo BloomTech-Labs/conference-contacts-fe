@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_USER_PROFILE } from '../queries';
 import Icon from '../components/icon';
 import { Link } from '@reach/router';
 
 export default function Settings(props) {
   const [fields, setFields] = useState({});
-  const [toggleState, setToggleState] = useState('off');
 
-  const { data } = useQuery(GET_USER_PROFILE);
-
-  useEffect(() => {
-    setFields(data?.user || {});
-  }, [data]);
-
-  const handleToggle = () => {
-    setToggleState(toggleState === 'off' ? 'on' : 'off');
+  const handleToggle = setting => {
+    return () => {
+      setFields({
+        ...fields,
+        [setting]: !fields[setting]
+      });
+    };
   };
 
   return (
@@ -49,7 +45,7 @@ export default function Settings(props) {
         <label className="block font-medium text-xs mb-1" htmlFor="email">
           EMAIL
         </label>
-        <span classname="text-gray-600">{fields.name || ''}</span>
+        <span classname="text-gray-600">good@try.com</span>
       </div>
       <div className="mt-4">
         <label className="block font-medium text-xs mb-1" htmlFor="password">
@@ -84,20 +80,20 @@ export default function Settings(props) {
         <label className="block font-bold text-xl mb-4" htmlFor="Display">
           Display
         </label>
-        <div className="flex justify-between items-center ">
-          <button className={`toggle switch ${toggleState}`} onClick={handleToggle}>
-            {toggleState === 'off' ? (
+        <div className=" mt-4 flex justify-start items-center ">
+          <button onClick={handleToggle('autoconnect')}>
+            {!fields.autoconnect ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
               <Icon type="TOGGLE ON" size="30" />
             )}
           </button>
-          <p className="mr-12">Send connection requests on scan</p>
+          <p className="ml-2">Automatically connect after scan</p>
         </div>
       </div>
-      <div className="mt-4 flex items-center">
-        <button className={`toggle switch ${toggleState}`} onClick={handleToggle}>
-          {toggleState === 'off' ? (
+      <div className=" flex items-center">
+        <button className={`toggle switch `} onClick={handleToggle('darkmode')}>
+          {!fields.darkmode ? (
             <Icon type="TOGGLE OFF" size="30" />
           ) : (
             <Icon type="TOGGLE ON" size="30" />
@@ -110,8 +106,8 @@ export default function Settings(props) {
           Notifications
         </label>
         <div className="flex justify-start items-center ">
-          <button className={`toggle switch ${toggleState}`} onClick={handleToggle}>
-            {toggleState === 'off' ? (
+          <button onClick={handleToggle('browser')}>
+            {!fields.browser ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
               <Icon type="TOGGLE ON" size="30" />
@@ -120,8 +116,8 @@ export default function Settings(props) {
           <p className="ml-2">Browser</p>
         </div>
         <div className="flex justify-start items-center ">
-          <button className={`toggle switch ${toggleState}`} onClick={handleToggle}>
-            {toggleState === 'off' ? (
+          <button onClick={handleToggle('email')}>
+            {!fields.email ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
               <Icon type="TOGGLE ON" size="30" />
@@ -130,8 +126,8 @@ export default function Settings(props) {
           <p className="ml-2">Email</p>
         </div>
         <div className="flex justify-start items-center ">
-          <button className={`toggle switch ${toggleState}`} onClick={handleToggle}>
-            {toggleState === 'off' ? (
+          <button onClick={handleToggle('sms')}>
+            {!fields.sms ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
               <Icon type="TOGGLE ON" size="30" />
