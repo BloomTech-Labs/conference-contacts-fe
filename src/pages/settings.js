@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import {
-  GET_USER_PROFILE
-} from '../queries';
+import { GET_USER_PROFILE } from '../queries';
 import Icon from '../components/icon';
 import { Link } from '@reach/router';
 
