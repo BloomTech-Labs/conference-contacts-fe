@@ -1,7 +1,3 @@
-.font-body {
-  @apply font-Roboto;
-}
-
 /* navbar and sidenav */
 .header {
   position: fixed;
@@ -151,6 +147,10 @@
 
 li svg #white-svg:hover {
   fill: #fff;
+}
+
+.clip-circle {
+  clip-path: circle(11rem at center);
 }
 
 /* ********* MEDIA QUERIES ********* */

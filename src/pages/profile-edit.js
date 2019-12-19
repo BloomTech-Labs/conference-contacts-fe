@@ -214,7 +214,7 @@ export default function ProfileEdit(props) {
           <img
             src={data.user.picture}
             alt="profile"
-            className="rounded-full shadow-md w-56 h-56 object-cover"
+            className="rounded-full shadow-lg w-56 h-56 object-cover"
           />
           <Icon type="CAMERA" classes="absolute" size={34} />
         </div>

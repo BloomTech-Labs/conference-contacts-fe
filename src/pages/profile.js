@@ -23,11 +23,11 @@ const Profile = props => {
     : data.user.profile;
 
   return (
-    <div className="pt-5 overflow-hidden">
+    <div className="pt-5 flex flex-col overflow-hidden">
       {/* IMG ROUNG LARGE */}
-      <div className="flex justify-end">
+      <div className="self-end mt-6 -mr-20 w-full">
         <img
-          className="rounded-full shadow-md w-128 h-128 object-cover mt-3 -mr-32"
+          className="rounded-full shadow-lg object-cover"
           src={data.user.picture}
           alt={`profile picuture of ${data.user.name}`}
         />
