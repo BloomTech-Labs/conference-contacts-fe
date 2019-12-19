@@ -8,7 +8,7 @@ import history from './utils/history';
 import ApolloClient, { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 
-import './styles/tailwind.css';
+import './styles/index.css';
 
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_APOLLO_URI,
