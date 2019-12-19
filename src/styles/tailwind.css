@@ -8346,9 +8346,9 @@ video {
   z-index: auto;
 }
 
-/* body {
-  @apply bg-gray-100;
-} */
+body {
+  /* @apply font-Roboto; */
+}
 
 /* navbar and sidenav */
 
@@ -8481,8 +8481,16 @@ video {
 
 /* MAIN CONTAINER */
 
-.main-container {
-  border-radius: 1.5rem;
+.profile-card{
+  border-radius: 16px;
+}
+
+.qr-box {
+  background: #FFFFFF;
+  border: 1px solid #BFBFBF;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 /* GRAY BOX */

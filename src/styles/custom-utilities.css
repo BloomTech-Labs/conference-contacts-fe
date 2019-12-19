@@ -1,6 +1,6 @@
-/* body {
-  @apply bg-gray-100;
-} */
+.font-body {
+  @apply font-Roboto;
+}
 
 /* navbar and sidenav */
 .header {
@@ -115,15 +115,19 @@
   color: #9A99A2;
 }
 
-/* MAIN CONTAINER */
-.main-container {
-  border-radius: 1.5rem;
+/* PROFILE CARD */
+.profile-card {
+  border-radius: 16px;
 }
 
-/* GRAY BOX */
-.box {
-  border-radius: 1rem;
+.qr-box {
+  background: #FFFFFF;
+  border: 1px solid #BFBFBF;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
+
 
 /* PURPLE */
 .purple {
