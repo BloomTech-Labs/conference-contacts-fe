@@ -8538,10 +8538,6 @@ video {
   z-index: auto;
 }
 
-/* body {
-  @apply bg-gray-100;
-} */
-
 /* navbar and sidenav */
 
 .header {
@@ -8671,16 +8667,18 @@ video {
   color: #9a99a2;
 }
 
-/* MAIN CONTAINER */
+/* PROFILE CARD */
 
-.main-container {
-  border-radius: 1.5rem;
+.profile-card {
+  border-radius: 16px;
 }
 
-/* GRAY BOX */
-
-.box {
-  border-radius: 1rem;
+.qr-box {
+  background: #FFFFFF;
+  border: 1px solid #BFBFBF;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 /* PURPLE */
@@ -8707,6 +8705,11 @@ video {
 
 li svg #white-svg:hover {
   fill: #fff;
+}
+
+.clip-circle {
+  -webkit-clip-path: circle(11rem at center);
+          clip-path: circle(11rem at center);
 }
 
 /* ********* MEDIA QUERIES ********* */
