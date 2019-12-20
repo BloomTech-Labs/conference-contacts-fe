@@ -4,7 +4,8 @@ import { Router } from '@reach/router';
 import NavBar from '../containers/navbar';
 import Profile from './profile';
 import ProfileEdit from './profile-edit';
-// import Home from './home';
+import Home from './home';
+// import Contacts from './contacts'
 import ScanQr from './scanqr';
 import ReadQr from './readqr';
 import Settings from './settings';
@@ -14,10 +15,11 @@ export default function Pages() {
     <Fragment>
       <NavBar />
       <Router>
-        <Profile path="/" />
+        <Home path="/" />
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
         <Settings path="settings" />
+        <Contacts path='contacts' />
         <ScanQr path="scanqr" />
         <ReadQr path="readqr" />
       </Router>

@@ -5,8 +5,8 @@ import { NAVBAR_PROFILE } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 
 const contentStyle = {
-  width: '90%',
-  height: '80%',
+  width: '80%',
+  height: '70%',
   borderRadius: '0.9rem',
 }
 
@@ -37,14 +37,14 @@ const QrCodeGenerator = () => {
                 </svg>
               </button>
             </div>
-            <div className='flex flex-col justify-center items-center'>
-                <div className='flex justify-center align-center my-24'>
+            <div className='flex flex-col justify-center items-center w-3/4 m-auto'>
+              <div className='flex justify-center align-center mt-16 mb-16'>
                 {data?.user?.id && 
-                  <QRCode includeMargin={false} level='Q' width='60%' height='40%' renderAs='svg' 
+                  <QRCode includeMargin={false} level='Q' renderAs='svg' 
                   value={[...data.user.id].reverse().join('')} />
                 }
-                </div>
-                <p className='text-3xl text-center border-t-4 mt-6 pt-10 mx-2'>Scan QR code to swaap information </p>
+              </div>
+                <p className='text-xl text-center border-t-4 mt-6 pt-10 mx-2'>Scan QR code to swaap information </p>
             </div>
           </div>
         )}

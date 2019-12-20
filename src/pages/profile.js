@@ -23,38 +23,21 @@ const Profile = props => {
     : data.user.profile;
 
   return (
-    <div className="pt-5 overflow-hidden">
-      {props.contact && (
-        <Link to="/contacts" className="absolute left-0 ml-6">
-          <svg
-            width="12"
-            height="18"
-            viewBox="0 0 9 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 15L1 8L8 1"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
-      )}
+    <div className="pt-5 flex flex-col overflow-hidden">
       {/* IMG ROUNG LARGE */}
-      <img
-        className="rounded-full shadow-md object-cover ml-auto -mr-16"
-        src={data.user.picture}
-        alt={`profile picuture of ${data.user.name}`}
-      />
+      <div className="self-end mt-6 -mr-20 w-full">
+        <img
+          className="rounded-full shadow-lg object-cover"
+          src={data.user.picture}
+          alt={`profile picuture of ${data.user.name}`}
+        />
+      </div>
       {/* BLACK TEXT XL-4XL */}
       <div className="mt-12 mx-6 mb-8">
         <section>
           <div className="flex justify-between items-center">
             <h5 className="text-2xl font-bold">{data.user.name}</h5>
-            <Link to="/profile/edit">
+            <Link to="edit">
               {/* EDIT ICON */}
               <svg
                 className="mr-3"
