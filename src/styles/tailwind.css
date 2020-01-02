@@ -8569,6 +8569,15 @@ video {
   margin-right: -20px;
 }
 
+.padding-title {
+  padding-left: 0.5rem;
+  padding-right: 3.5rem;
+}
+
+.img-size {
+  width: 23rem;
+}
+
 /* ********* MEDIA QUERIES ********* */
 
 @media (max-width: 700px) {

@@ -4,10 +4,9 @@ export default function Title() {
   return (
     <div className="" id="reviews">
       <div className="container mx-auto px-6 py-20">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-4xl font-bold text-center text-black-600 mb-8">
           Don't take our word for it.
         </h2>
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Reviews</h2>
         <div className="flex flex-wrap">
           <div className="w-full md:w-1/3 px-2 mb-4">
             <div className="bg-white rounded shadow py-2">

@@ -63,7 +63,7 @@ export default function NavBarLanding() {
             <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
               <li>
                 <a
-                  class="lg:p-12 py-4 px-0 block border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  class="lg:p-12 py-4 px-0 flex justify-center border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#features"
                 >
                   Features
@@ -71,7 +71,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  class="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#demo"
                 >
                   Demo
@@ -79,7 +79,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  class="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#reviews"
                 >
                   Reviews
@@ -87,7 +87,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  class="lg:p-12 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 text-blue-600"
+                  class="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 text-blue-600"
                   href="#team"
                 >
                   Team
@@ -96,9 +96,9 @@ export default function NavBarLanding() {
               <li>
                 <div>
                   <li>
-                    <a href>
+                    <a href="" className="lg:p-12 py-3 px-0 flex justify-center ">
                       <Button
-                        className="lg:p-6 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2"
+                        className="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 text-blue-600"
                         onClick={loginWithRedirect}
                       >
                         Sign Up
