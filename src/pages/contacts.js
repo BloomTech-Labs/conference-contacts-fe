@@ -41,16 +41,16 @@ const Contacts = () => {
 
                 </div>
             </div>
-            <div className='flex justify-start items-center my-6 ml-4 pb-2 border-b-2 w-11/12'>
+            <div className=''>
                 {data.user.connections.map(connection => (
-                    <>
+                    <button onClick={() => console.log(`staging.swaap.co/profile`)} className='flex justify-start items-center my-6 ml-4 pb-2 border-b-2 w-11/12'>
                         <div>
-                            <img className='rounded-full w-10 mr-6' src={connection.sender.picture} alt={connection.sender.name} />
+                            <img className='rounded-full w-12 mr-6' src={connection.sender.picture} alt={connection.sender.name} />
                         </div>
                         <div>
                             {connection.sender.name}
                         </div>
-                    </>
+                    </button>
                 ))}
             </div>
         </div>
