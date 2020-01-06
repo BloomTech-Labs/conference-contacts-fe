@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 import HashLoader from 'react-spinners/HashLoader';
 
 const Contacts = () => {
-    const { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+    let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+    const [ name, setName ] = useState('');
+
+const handleSearch = (e) => {
+    setName(e.target.value);
+}
 
     if (loading || !data)
     return (
@@ -15,7 +20,11 @@ const Contacts = () => {
 
     if (error) return <p>There was an error: {error}</p>;
 
-    console.log(data)
+    let connections = data.user.connections;
+
+    if ( name?.length > 0)
+        connections = connections.filter(c=>c.sender.name.toLowerCase().includes(name.toLowerCase()))
+
 
     return (
         <div>
@@ -33,6 +42,8 @@ const Contacts = () => {
                 <input
                     className='relative border border-gray-500 rounded-lg text-left p-2 pl-10 text-xl w-full'
                     placeHolder='Search'
+                    value={name}
+                    onChange={handleSearch}
                 />
                 <div className='absolute pr-6 top-20 right-0'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,9 +52,9 @@ const Contacts = () => {
 
                 </div>
             </div>
-            <div className=''>
-                {data.user.connections.map(connection => (
-                    <button onClick={() => console.log(`staging.swaap.co/profile`)} className='flex justify-start items-center my-6 ml-4 pb-2 border-b-2 w-11/12'>
+            <div className='mt-10'>
+                {connections.map(connection => (
+                    <button onClick={() => console.log(`staging.swaap.co/profile`)} className='flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12'>
                         <div>
                             <img className='rounded-full w-12 mr-6' src={connection.sender.picture} alt={connection.sender.name} />
                         </div>
