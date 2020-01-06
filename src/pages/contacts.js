@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 import HashLoader from 'react-spinners/HashLoader';
 
 const Contacts = () => {
-    const { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+    let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+    const [ name, setName ] = useState('');
+
+const handleSearch = (e) => {
+    setName(e.target.value);
+}
 
     if (loading || !data)
     return (
@@ -15,7 +20,9 @@ const Contacts = () => {
 
     if (error) return <p>There was an error: {error}</p>;
 
-    console.log(data)
+    if ( name?.length > 0)
+        data.user.connections = data.user.connections.filter(c=>c.name.includes('name'))
+
 
     return (
         <div>
@@ -33,6 +40,8 @@ const Contacts = () => {
                 <input
                     className='relative border border-gray-500 rounded-lg text-left p-2 pl-10 text-xl w-full'
                     placeHolder='Search'
+                    value={name}
+                    onChange={handleSearch}
                 />
                 <div className='absolute pr-6 top-20 right-0'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
