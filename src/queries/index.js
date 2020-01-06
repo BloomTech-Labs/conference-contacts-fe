@@ -192,3 +192,16 @@ export const NAVBAR_PROFILE = gql`
     }
   }
 `;
+
+export const GET_USER_CONNECTIONS = gql`
+  query getUserConnections($id: ID) {
+    user(id: $id) {
+      connections {
+        sender {
+          name
+          picture
+        }
+      }
+    }
+  }
+`;
