@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAuth0 } from '../react-auth0-spa';
-import Button from '../components/button';
+
+
 
 export default function NavBarLanding() {
-  const { loginWithRedirect } = useAuth0();
+  
 
   return (
     <div className="text-center container mx-auto px-20">
@@ -18,7 +18,7 @@ export default function NavBarLanding() {
         border="0"
       ></img>
 
-      <section class="container padding-title mx-auto px-5 p-10" id="features">
+      <section class="container padding-title mx-auto px-5 p-10">
         <div class="flex items-center justify-center flex-wrap mb-20">
           <div class="w-full md:w-1/2 pl-10">
             <h4 class="text-3xl text-gray-800 font-bold mb-3">Connect Seamlessly</h4>

@@ -3,7 +3,7 @@ import React from 'react';
 export default function Features() {
   return (
     <div className="container mx-auto px-12">
-      <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-6">Features</h2>
+      <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-6" id="features">Features</h2>
 
       <div className="flex justify-between text-center p-5">
         <div className="flex flex-wrap">
