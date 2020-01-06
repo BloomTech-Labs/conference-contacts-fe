@@ -2,13 +2,14 @@ module.exports = {
   theme: {
     fontFamily: {
       display: ['Roboto', 'sans-serif'],
-      body: ['Roboto', 'sans-serif'],
+      body: ['Roboto', 'sans-serif']
     },
-    colors: {
-      lightPurple: '#A9A8FF',
-      white: '#fff',
-    },
-    extend: {},
+    extend: {
+      spacing: {
+        '96': '24rem',
+        '128': '32rem'
+      }
+    }
   },
   variants: {},
   plugins: []
