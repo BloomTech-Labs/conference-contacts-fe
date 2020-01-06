@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import {
-  GET_USER_PROFILE,
+  FETCH_USER_PROFILE,
   UPDATE_USER_INFO,
   CREATE_PROFILE_FIELD,
   UPDATE_PROFILE_FIELD,
@@ -13,7 +13,7 @@ import HashLoader from 'react-spinners/HashLoader';
 export default function ProfileEdit(props) {
   const [fields, setFields] = useState({});
   const [link, setLink] = useState('GLOBAL');
-  const { loading, error, data } = useQuery(GET_USER_PROFILE);
+  const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
 
   const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
 
@@ -28,9 +28,9 @@ export default function ProfileEdit(props) {
         }
       }
     ) {
-      const { user } = cache.readQuery({ query: GET_USER_PROFILE });
+      const { user } = cache.readQuery({ query: FETCH_USER_PROFILE });
       cache.writeQuery({
-        query: GET_USER_PROFILE,
+        query: FETCH_USER_PROFILE,
         data: {
           user: {
             ...user,
@@ -50,9 +50,9 @@ export default function ProfileEdit(props) {
         }
       }
     ) {
-      const { user } = cache.readQuery({ query: GET_USER_PROFILE });
+      const { user } = cache.readQuery({ query: FETCH_USER_PROFILE });
       cache.writeQuery({
-        query: GET_USER_PROFILE,
+        query: FETCH_USER_PROFILE,
         data: {
           user: {
             ...user,

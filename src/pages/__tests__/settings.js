@@ -2,7 +2,7 @@ import React from 'react';
 
 import { renderApollo, cleanup, waitForElement } from '../../test-utils';
 import Settings from '../settings';
-import { GET_USER_PROFILE } from '../../queries/index';
+import { FETCH_USER_PROFILE } from '../../queries/index';
 
 const mockUser = {
   __typename: 'User',
@@ -32,7 +32,7 @@ describe('Settings Page', () => {
   it('renders settings', async () => {
     const mocks = [
       {
-        request: { query: GET_USER_PROFILE },
+        request: { query: FETCH_USER_PROFILE },
         result: { data: { user: mockUser } }
       }
     ];
