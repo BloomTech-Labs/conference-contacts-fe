@@ -13,7 +13,7 @@ export default function TeamPage() {
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="container hovereffect hover-photo">
               <img
-                className="rounded-r-lg ease img-size mx-auto"
+                className="rounded-r-lg rounded-tl-lg ease img-size mx-auto"
                 src="https://i.ibb.co/cNtktWF/profile.jpg"
                 alt="Jonathan"
                 border="0"
