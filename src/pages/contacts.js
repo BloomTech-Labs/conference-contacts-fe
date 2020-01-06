@@ -1,19 +1,27 @@
 import React from 'react';
-import { NAVBAR_PROFILE } from '../queries/index';
+import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
+import HashLoader from 'react-spinners/HashLoader';
 
 const Contacts = () => {
+    const { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+
+    if (loading || !data)
+    return (
+      <div className="flex justify-center h-screen items-center">
+        <HashLoader size={150} loading={!loading} color="#136FE7" />
+      </div>
+    );
+
+    if (error) return <p>There was an error: {error}</p>;
+
+    console.log(data)
+
     return (
         <div>
-            <div className='flex justify-between items-center mt-24 mb-6'>
+            <div className='flex justify-center items-center mt-24 mb-6'>
                 <div className='pl-10 m-auto'>
                     <p className='text-2xl'>Contacts</p>
-                </div>
-                <div>
-                    <svg className='mr-6' width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.0039 5.04688H17.9961C18.1731 5.04688 18.2617 5.13542 18.2617 5.3125V28.6875C18.2617 28.8646 18.1731 28.9531 17.9961 28.9531H16.0039C15.8268 28.9531 15.7383 28.8646 15.7383 28.6875V5.3125C15.7383 5.13542 15.8268 5.04688 16.0039 5.04688Z" fill="black"/>
-                        <path d="M5.84372 15.7383H28.1562C28.3333 15.7383 28.4218 15.8268 28.4218 16.0039V17.9961C28.4218 18.1732 28.3333 18.2617 28.1562 18.2617H5.84372C5.66664 18.2617 5.57809 18.1732 5.57809 17.9961V16.0039C5.57809 15.8268 5.66664 15.7383 5.84372 15.7383Z" fill="black"/>
-                    </svg>
                 </div>
             </div>
             <div className='mx-4 flex items-center border-black'>
@@ -26,12 +34,24 @@ const Contacts = () => {
                     className='relative border border-gray-500 rounded-lg text-left p-2 pl-10 text-xl w-full'
                     placeHolder='Search'
                 />
-                <div className='absolute pr-6 top-20 right-0 z-20'>
+                <div className='absolute pr-6 top-20 right-0'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.9688 3H3.75C3.33516 3 3 3.33516 3 3.75V10.9688C3 11.0719 3.08437 11.1562 3.1875 11.1562H10.9688C11.0719 11.1562 11.1562 11.0719 11.1562 10.9688V3.1875C11.1562 3.08437 11.0719 3 10.9688 3ZM9.65625 9.65625H4.5V4.5H9.65625V9.65625ZM6.42188 7.92188H7.73438C7.8375 7.92188 7.92188 7.8375 7.92188 7.73438V6.42188C7.92188 6.31875 7.8375 6.23438 7.73438 6.23438H6.42188C6.31875 6.23438 6.23438 6.31875 6.23438 6.42188V7.73438C6.23438 7.8375 6.31875 7.92188 6.42188 7.92188ZM10.9688 12.8438H3.1875C3.08437 12.8438 3 12.9281 3 13.0312V20.25C3 20.6648 3.33516 21 3.75 21H10.9688C11.0719 21 11.1562 20.9156 11.1562 20.8125V13.0312C11.1562 12.9281 11.0719 12.8438 10.9688 12.8438ZM9.65625 19.5H4.5V14.3438H9.65625V19.5ZM6.42188 17.7656H7.73438C7.8375 17.7656 7.92188 17.6812 7.92188 17.5781V16.2656C7.92188 16.1625 7.8375 16.0781 7.73438 16.0781H6.42188C6.31875 16.0781 6.23438 16.1625 6.23438 16.2656V17.5781C6.23438 17.6812 6.31875 17.7656 6.42188 17.7656ZM20.25 3H13.0312C12.9281 3 12.8438 3.08437 12.8438 3.1875V10.9688C12.8438 11.0719 12.9281 11.1562 13.0312 11.1562H20.8125C20.9156 11.1562 21 11.0719 21 10.9688V3.75C21 3.33516 20.6648 3 20.25 3ZM19.5 9.65625H14.3438V4.5H19.5V9.65625ZM16.2656 7.92188H17.5781C17.6812 7.92188 17.7656 7.8375 17.7656 7.73438V6.42188C17.7656 6.31875 17.6812 6.23438 17.5781 6.23438H16.2656C16.1625 6.23438 16.0781 6.31875 16.0781 6.42188V7.73438C16.0781 7.8375 16.1625 7.92188 16.2656 7.92188ZM20.8125 12.8438H19.6875C19.5844 12.8438 19.5 12.9281 19.5 13.0312V16.1719H17.6719V13.0312C17.6719 12.9281 17.5875 12.8438 17.4844 12.8438H13.0312C12.9281 12.8438 12.8438 12.9281 12.8438 13.0312V20.8125C12.8438 20.9156 12.9281 21 13.0312 21H14.1562C14.2594 21 14.3438 20.9156 14.3438 20.8125V15.0938H16.1719V17.4844C16.1719 17.5875 16.2563 17.6719 16.3594 17.6719H20.8125C20.9156 17.6719 21 17.5875 21 17.4844V13.0312C21 12.9281 20.9156 12.8438 20.8125 12.8438ZM17.4844 19.5H16.3594C16.2563 19.5 16.1719 19.5844 16.1719 19.6875V20.8125C16.1719 20.9156 16.2563 21 16.3594 21H17.4844C17.5875 21 17.6719 20.9156 17.6719 20.8125V19.6875C17.6719 19.5844 17.5875 19.5 17.4844 19.5ZM20.8125 19.5H19.6875C19.5844 19.5 19.5 19.5844 19.5 19.6875V20.8125C19.5 20.9156 19.5844 21 19.6875 21H20.8125C20.9156 21 21 20.9156 21 20.8125V19.6875C21 19.5844 20.9156 19.5 20.8125 19.5Z" fill="black"/>
                     </svg>
 
                 </div>
+            </div>
+            <div className='flex justify-start items-center my-6 ml-4 pb-2 border-b-2 w-11/12'>
+                {data.user.connections.map(connection => (
+                    <>
+                        <div>
+                            <img className='rounded-full w-10 mr-6' src={connection.sender.picture} alt={connection.sender.name} />
+                        </div>
+                        <div>
+                            {connection.sender.name}
+                        </div>
+                    </>
+                ))}
             </div>
         </div>
     )
