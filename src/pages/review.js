@@ -19,16 +19,15 @@ export default function Title() {
           <div className="w-full md:w-1/3 px-2 mb-4">
             <div className="bg-white rounded shadow py-2">
               <p className="text-gray-800 text-base px-6 mb-5">
-                "The app syncs across devices and makes it easy to conect to another person at 
-                a conference."
+                "Makes it easy to sync and connect to another person at a conference."
               </p>
-              <p className="text-gray-500 text-xs md:text-sm px-6">chance Miller</p>
+              <p className="text-gray-500 text-xs md:text-sm px-6">Chance Miller</p>
             </div>
           </div>
           <div className="w-full md:w-1/3 px-2 mb-4">
             <div className="bg-white rounded shadow py-2">
               <p className="text-gray-800 text-base px-6 mb-5">
-                I don't regret buying this wearble gadget. One of the best gadgets I own!.
+                "A Swaap app is quick and easy to use and understand."
               </p>
               <p className="text-gray-500 text-xs md:text-sm px-6" id="reviews">
                 James Doe

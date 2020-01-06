@@ -1,10 +1,7 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 
-
-
 export default function NavBarLanding() {
-  
-
   return (
     <div className="text-center container mx-auto px-20">
       <h2 className="text-6xl font-bold mb-2 text-black">Leave the business cards at home</h2>
@@ -17,7 +14,6 @@ export default function NavBarLanding() {
         alt="Hero-Image"
         border="0"
       ></img>
-
       <section class="container padding-title mx-auto px-5 p-10">
         <div class="flex items-center justify-center flex-wrap mb-20">
           <div class="w-full md:w-1/2 pl-10">

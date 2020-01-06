@@ -10,9 +10,6 @@ const images = [
 function App() {
   const [index, setIndex] = React.useState(0);
 
-
-
-
   React.useEffect(() => {
     const timer = setInterval(() => {
       if (index === 2) {
@@ -44,4 +41,3 @@ function App() {
 }
 
 export default App;
-
