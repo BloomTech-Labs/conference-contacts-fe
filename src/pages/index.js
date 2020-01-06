@@ -4,8 +4,6 @@ import NavBar from '../containers/navbar';
 import Profile from './profile';
 import ProfileEdit from './profile-edit';
 import Home from './home';
-import Landing from './landing'
-// import Settings from './settings'
 import Contacts from './contacts'
 import ScanQr from './scanqr';
 import ReadQr from './readqr';
@@ -17,8 +15,6 @@ export default function Pages() {
       <Router>
         <Home path="/" />
         <Profile  path="profile" />
-        <Landing path="landing" />
-        {/* <Settings path="settings" /> */}
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
         <Contacts path='contacts' />
