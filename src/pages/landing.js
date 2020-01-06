@@ -32,45 +32,6 @@ export default function Landing() {
 
       {/* footer */}
       <Footer />
-
-      {/* <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
-				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
-					<li class="mr-6 my-2 md:my-0">
-
-            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-            <div className="flex">
-              <ul className="flex items-center ml-24">
-              <a
-                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
-                  href="#features"
-                >
-                  Features
-                </a>
-                <a
-                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
-                  href="#demo"
-                >
-                  Demo
-                </a>
-                <a
-                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
-                  href="#team"
-                >
-                  Team
-                </a>
-                <a
-                  className="p-6 desktop-link text-lg mr-6 border-b-2 hover:border-blue-600"
-                  href="#reviews"
-                >
-                  Reviews
-                </a>
-                <Button className="ml-12" onClick={loginWithRedirect}>Sign Up</Button>
-              </ul>
-            </div>
-            </div>
-            </li>
-            </ul>
-            </div> */}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '../react-auth0-spa';
-import Button from '../components/button';
+// import Button from '../components/button';
 
 export default function NavBarLanding() {
   const { loginWithRedirect } = useAuth0();
@@ -96,13 +96,13 @@ export default function NavBarLanding() {
               <li>
                 <div>
                   <li>
-                    <a href="" className="lg:p-12 py-3 px-0 flex justify-center ">
-                      <Button
-                        className="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 text-blue-600"
+                    <a href="" className="lg:p-12 py-3 px-0 flex justify-center">
+                      <button
+                        className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         onClick={loginWithRedirect}
                       >
                         Sign Up
-                      </Button>
+                      </button>
                     </a>
                   </li>
                 </div>

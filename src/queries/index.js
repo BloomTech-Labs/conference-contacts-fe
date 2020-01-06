@@ -14,6 +14,7 @@ export const UPDATE_USER_INFO = gql`
         location
         industry
         jobtitle
+        tagline
         bio
       }
     }
@@ -23,6 +24,23 @@ export const UPDATE_USER_INFO = gql`
 export const CREATE_PROFILE_FIELD = gql`
   mutation createProfileField($data: CreateProfileFieldInput!) {
     createProfileField(data: $data) {
+      code
+      success
+      message
+      profileField {
+        id
+        type
+        value
+        privacy
+        preferredContact
+      }
+    }
+  }
+`;
+
+export const UPDATE_PROFILE_FIELD = gql`
+  mutation updateProfileField($id: ID!, $data: UpdateProfileFieldInput!) {
+    updateProfileField(id: $id, data: $data) {
       code
       success
       message
@@ -56,11 +74,12 @@ export const GET_USER_PROFILE = gql`
       id
       name
       picture
-      bio
       birthdate
-      jobtitle
       location
       industry
+      jobtitle
+      tagline
+      bio
       profile {
         id
         value
