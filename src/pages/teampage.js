@@ -19,7 +19,7 @@ export default function TeamPage() {
                 alt="Jonathan"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/macjabeth">
                   <svg
                     className="mr-8"
@@ -65,7 +65,7 @@ export default function TeamPage() {
                 alt="Bobby"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/bobbyhalljr">
                   <svg
                     className="mr-8"
@@ -110,7 +110,7 @@ export default function TeamPage() {
                 src="https://i.ibb.co/WfqQd49/T4-JUEB3-ME-UL03-FJADB-b54ed5bc71f5-512.png"
                 alt="Tyler"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/Bangstry">
                   <svg
                     className="mr-8"
@@ -156,7 +156,7 @@ export default function TeamPage() {
                 alt="Zachary"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/zpallday">
                   <svg
                     className="mr-8"
@@ -202,7 +202,7 @@ export default function TeamPage() {
                 alt="Jarvise"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/Fullmetal235">
                   <svg
                     className="mr-8"
@@ -247,7 +247,7 @@ export default function TeamPage() {
                 alt="Michael"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/mredig">
                   <svg
                     className="mr-8"
@@ -292,7 +292,7 @@ export default function TeamPage() {
                 alt="Marlon"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/marlonjames71">
                   <svg
                     className="mr-8"
@@ -338,7 +338,7 @@ export default function TeamPage() {
                 alt="Tylers"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/tylernishida">
                   <svg
                     className="mr-8"
@@ -383,7 +383,7 @@ export default function TeamPage() {
                 alt="Emily"
                 border="0"
               ></img>
-              <div class="middle flex">
+              <div className="middle flex">
                 <a href="https://github.com/Ehuntwork">
                   <svg
                     className="mr-8"

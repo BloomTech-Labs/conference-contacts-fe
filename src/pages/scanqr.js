@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
 import QrReader from 'react-qr-reader';
-import { navigate } from '@reach/router';
-import { useMutation } from '@apollo/react-hooks';
-import { CREATE_CONNECTION } from '../queries';
+import { useLazyQuery, useMutation } from '@apollo/react-hooks';
+import { CREATE_CONNECTION, FETCH_QRCODE_DATA } from '../queries';
 
 const ScanQr = ({ location }) => {
   const [createConnection, { loading: connectLoading, called }] = useMutation(CREATE_CONNECTION);
   const [connections, setConnections] = useState([]);
+  const [fetchQRCode, { data }] = useLazyQuery(FETCH_QRCODE_DATA);
 
-  const handleScan = data => {
-    if (!connectLoading && data && data !== location?.state?.userId && !connections.includes(data)) {
-      setConnections([...connections, data]);
-      navigator.geolocation.getCurrentPosition(async position => {
-        const { latitude, longitude } = position.coords;
-        await createConnection({
-          variables: {
-            userID: data,
-            senderCoords: { latitude, longitude }
-          }
+  const handleScan = async scan => {
+    if (!scan) return;
+    const [, qrCode] = scan.match(/swaap.co\/qrLink\/(.+)/);
+    if (!connectLoading && !connections.includes(qrCode)) {
+      await fetchQRCode({ variables: { id: qrCode } });
+      if (data) {
+        setConnections([...connections, qrCode]);
+        navigator.geolocation.getCurrentPosition(async position => {
+          const { latitude, longitude } = position.coords;
+          await createConnection({
+            variables: {
+              userID: data.qrcode.user.id,
+              senderCoords: { latitude, longitude }
+            }
+          });
         });
-      });
+      }
     }
   };
 
@@ -42,7 +47,7 @@ const ScanQr = ({ location }) => {
       <p className="text-xl m-auto w-3/4 border-b-4 mt-2 pb-4 text-center mx-2">
         Align QR code to swaap information
       </p>
-      <div className="mt-12 flex flex-col justify-center items-center">
+      {/* <div className="mt-12 flex flex-col justify-center items-center">
         <button onClick={() => navigate('readqr')}>
           <svg
             width="32"
@@ -58,7 +63,7 @@ const ScanQr = ({ location }) => {
           </svg>
         </button>
         <p className="text-sm mt-2">My QR code</p>
-      </div>
+      </div> */}
     </div>
   );
 };
