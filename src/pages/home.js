@@ -17,16 +17,26 @@ const Home = () => {
   const [qrCode, setQRCode] = useState();
   const [createQRCode] = useMutation(CREATE_QRCODE);
 
+  const [position, setPosition] = useState({});
+
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      setPosition(position);
+    });
+
     (async () => {
+      const qrCode = localStorage.getItem('qrCode');
+      if (qrCode) return setQRCode(qrCode);
       const { data } = await createQRCode({ variables: { label: 'homepage' } });
-      setQRCode(data.createQRCode.qrcode.id);
+      const { id } = data.createQRCode.qrcode;
+      localStorage.setItem('qrCode', id);
+      setQRCode(id);
     })();
   }, [createQRCode])
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
     update(cache, { data: { deleteNotification: { notification } } }) {
-      const { user } = cache.readQuery(FETCH_HOME_USER);
+      const { user } = cache.readQuery({ query: FETCH_HOME_USER });
       cache.writeQuery({
         query: FETCH_HOME_USER,
         data: {
@@ -233,7 +243,7 @@ const Home = () => {
                   key={n.id}
                   className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
                 >
-                  <span>{n.message}</span>
+                  <span className="mr-1">{n.message}</span>
                   <button
                     onClick={() => dismissNotification({ variables: { id: n.id } })}
                     disabled={dismissLoading}
@@ -318,19 +328,30 @@ const Home = () => {
                     alt="what they look like"
                     className="rounded-full w-16"
                   />
-                  <h3 className="font-bold">{c.sender.name}</h3>
+                  <h3 className="font-bold truncate w-1/3">{c.sender.name}</h3>
                   <div>
                     <button
                       className="rounded-lg px-3 py-2 bg-purple-500 mr-3 text-white"
                       onClick={() => {
-                        navigator.geolocation.getCurrentPosition(position => {
-                          const { latitude, longitude } = position.coords;
-                          acceptConnection({
-                            variables: {
-                              id: c.id,
-                              receiverCoords: { latitude, longitude }
+                        const { latitude, longitude } = position.coords;
+                        acceptConnection({
+                          variables: {
+                            id: c.id,
+                            receiverCoords: { latitude, longitude }
+                          },
+                          optimisticResponse: {
+                            __typename: 'Mutation',
+                            acceptConnection: {
+                              __typename: 'ProfileMutationResponse',
+                              code: 200,
+                              success: true,
+                              message: 'Connection request accepted',
+                              connection: {
+                                __typename: 'Connection',
+                                id: c.id
+                              }
                             }
-                          });
+                          }
                         });
                       }}
                       disabled={connectLoading}
@@ -339,7 +360,22 @@ const Home = () => {
                     </button>
                     <button
                       className="rounded-lg text-red-500"
-                      onClick={() => deleteConnection({ variables: { id: c.id } })}
+                      onClick={() => deleteConnection({
+                        variables: { id: c.id },
+                        optimisticResponse: {
+                          __typename: 'Mutation',
+                          deleteConnection: {
+                            __typename: 'ProfileMutationResponse',
+                            code: 200,
+                            success: true,
+                            message: 'Connection deleted successfully',
+                            connection: {
+                              __typename: 'Connection',
+                              id: c.id
+                            }
+                          }
+                        }
+                      })}
                       disabled={deleteLoading}
                     >
                       <p className="text-2xl">
