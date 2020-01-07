@@ -7,9 +7,9 @@ const Contacts = () => {
     let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
     const [ name, setName ] = useState('');
 
-const handleSearch = (e) => {
-    setName(e.target.value);
-}
+    const handleSearch = (e) => {
+        setName(e.target.value);
+    }
 
     if (loading || !data)
     return (
@@ -23,13 +23,13 @@ const handleSearch = (e) => {
     let connections = data.user.connections;
 
     if ( name?.length > 0)
-        connections = connections.filter(c=>c.sender.name.toLowerCase().includes(name.toLowerCase()))
+        connections = connections.filter(c => c.sender.name.toLowerCase().includes(name.toLowerCase()))
 
 
     return (
         <div>
             <div className='flex justify-center items-center mt-24 mb-6'>
-                <div className='pl-10 m-auto'>
+                <div className='m-auto'>
                     <p className='text-2xl'>Contacts</p>
                 </div>
             </div>

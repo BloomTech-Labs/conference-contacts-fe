@@ -8,6 +8,7 @@ import Home from './home';
 import Contacts from './contacts'
 import ScanQr from './scanqr';
 import ReadQr from './readqr';
+import Messages from './messages';
 
 export default function Pages() {
   return (
@@ -18,6 +19,7 @@ export default function Pages() {
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
         <Contacts path='contacts' />
+        <Messages path='messages' />
         <ScanQr path="scanqr" />
         <ReadQr path="readqr" />
       </Router>
