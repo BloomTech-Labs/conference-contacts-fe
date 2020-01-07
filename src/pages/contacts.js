@@ -61,7 +61,7 @@ const Contacts = ({ navigate }) => {
               className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
             >
               <div>
-                <img className="rounded-full w-12 mr-6" src={contact.picture} alt={contact.name} />
+                <img className="rounded-full w-12 h-12 object-cover mr-6" src={contact.picture} alt={contact.name} />
               </div>
               <div>{contact.name}</div>
             </button>
