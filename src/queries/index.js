@@ -1,5 +1,40 @@
 import { gql } from 'apollo-boost';
 
+// TODO: eventually we would want to include QRCode ids as the QRCode value instead of user IDs for added security.
+// export const FETCH_QRCODE_DATA = gql`
+//   query FetchQRCodeData($id: ID!) {
+//     qrcode(id: $id) {
+//       user {
+//         id
+//         name
+//         picture
+//         tagline
+//       }
+//     }
+//   }
+// `;
+
+// export const CREATE_QRCODE = gql`
+//   mutation createQRCode($label: String!) {
+//     createQRCode(label: $label) {
+//       id
+//       label
+//     }
+//   }
+// `;
+
+export const CREATE_CONNECTION = gql`
+  mutation createConnection($userID: ID!, $senderCoords: CoordinatesInput!) {
+    createConnection(userID: $userID, senderCoords: $senderCoords) {
+      success
+      message
+      connection {
+        id
+      }
+    }
+  }
+`;
+
 export const UPDATE_USER_INFO = gql`
   mutation updateUser($data: UpdateUserInput!) {
     updateUser(data: $data) {
@@ -68,9 +103,66 @@ export const DELETE_PROFILE_FIELD = gql`
   }
 `;
 
-export const GET_USER_PROFILE = gql`
-  query GetUserProfile {
+export const FETCH_HOME_USER = gql`
+  query FetchHomeUser {
     user {
+      id
+      name
+      picture
+      notifications {
+        id
+        message
+      }
+      receivedConnections {
+        id
+        sender {
+          name
+          picture
+        }
+      }
+    }
+  }
+`;
+
+export const DISMISS_NOTIFICATION = gql`
+  mutation DismissNotification($id: ID!) {
+    deleteNotification(id: $id) {
+      success
+      message
+      notification {
+        id
+      }
+    }
+  }
+`;
+
+export const ACCEPT_CONNECTION = gql`
+  mutation AcceptConnection($id: ID!, $receiverCoords: CoordinatesInput!) {
+    acceptConnection(id: $id, receiverCoords: $receiverCoords) {
+      success
+      message
+      connection {
+        id
+      }
+    }
+  }
+`;
+
+export const BLOCK_CONNECTION = gql`
+  mutation BlockConnection($id: ID!) {
+    blockConnection(id: $id) {
+      success
+      message
+      connection {
+        id
+      }
+    }
+  }
+`;
+
+export const FETCH_USER_PROFILE = gql`
+  query FetchUserProfile($id: ID) {
+    user(id: $id) {
       id
       name
       picture
@@ -92,7 +184,7 @@ export const GET_USER_PROFILE = gql`
 `;
 
 export const NAVBAR_PROFILE = gql`
-  query GetUserProfile {
+  query FetchNavbarProfile {
     user {
       name
       picture
@@ -104,8 +196,16 @@ export const NAVBAR_PROFILE = gql`
 export const GET_USER_CONNECTIONS = gql`
   query getUserConnections($id: ID) {
     user(id: $id) {
+      id
       connections {
+        id
         sender {
+          id
+          name
+          picture
+        }
+        receiver {
+          id
           name
           picture
         }
