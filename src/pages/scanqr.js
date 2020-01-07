@@ -9,6 +9,7 @@ const ScanQr = ({ location }) => {
   const [fetchQRCode] = useLazyQuery(FETCH_QRCODE_DATA);
 
   const handleScan = scan => {
+    if (!scan) return;
     const qrCode = scan.match(/swaap.co\/qrLink\/(.+)/)[1];
     if (!connectLoading && !connections.includes(qrCode)) {
       const { data } = fetchQRCode({ variables: { id: qrCode } })
