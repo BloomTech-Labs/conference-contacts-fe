@@ -114,6 +114,7 @@ export const FETCH_HOME_USER = gql`
       }
       receivedConnections {
         id
+        status
         sender {
           name
           picture
