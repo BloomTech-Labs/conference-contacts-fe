@@ -8628,6 +8628,10 @@ video {
   font-size: 16px;
 }
 
+.toggle:focus {
+  outline: none;
+}
+
 .overlay {
   position: fixed;
   left: 0;
