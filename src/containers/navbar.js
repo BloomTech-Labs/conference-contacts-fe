@@ -17,15 +17,20 @@ export default function NavBar() {
   if (error) return <p>There was an error: {error}</p>;
 
   const handleLogout = () => {
+    const hosts = {
+      ['localhost:3000']: 'http://localhost:3000',
+      ['swaap.co']: 'https://swaap.co',
+      ['staging.swaap.co']: 'https://staging.swaap.co'
+    };
     client.writeData({ data: { isLoggedIn: false } });
     localStorage.clear();
-    logout();
+    logout({ returnTo: hosts[window.location.host] });
   };
 
-  const showQrCode = () => {
-    navigate('scanqr')
-    setOpen(!open);
-  }
+  // const showQrCode = () => {
+  //   navigate('scanqr')
+  //   setOpen(!open);
+  // }
 
   return (
     <>
@@ -66,7 +71,7 @@ export default function NavBar() {
             <div className="flex">
               {/* DESKTOP NAV */}
               <ul className="desktop-nav flex items-center">
-              <li className="p-6 desktop-link text-lg">
+                <li className="p-6 desktop-link text-lg">
                   <Link to="/">Home</Link>
                 </li>
                 <li className="p-6 desktop-link text-lg">
@@ -118,9 +123,9 @@ export default function NavBar() {
                 </div>
               </div>
               <div>
-              <li className="flex hover:text-white border-b-2 items-center nav-list-item pl-6 border-b-0 pb-2">
+                <li className="flex hover:text-white border-b-2 items-center nav-list-item pl-6 border-b-0 pb-2">
                   <svg className='mr-4' width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.8079 9.87311L11.7517 0.821543L11.1446 0.214512C11.0063 0.0771135 10.8193 0 10.6243 0C10.4294 0 10.2423 0.0771135 10.104 0.214512L0.440722 9.87311C0.298998 10.0143 0.186991 10.1824 0.111313 10.3676C0.0356348 10.5528 -0.00218116 10.7512 9.71477e-05 10.9512C0.00947215 11.7762 0.696191 12.4348 1.52119 12.4348H2.51728V20.0684H18.7313V12.4348H19.7485C20.1493 12.4348 20.5267 12.2778 20.8103 11.9942C20.9499 11.855 21.0605 11.6895 21.1358 11.5072C21.211 11.325 21.2493 11.1296 21.2485 10.9325C21.2485 10.534 21.0915 10.1567 20.8079 9.87311ZM11.9368 18.3809H9.31182V13.5997H11.9368V18.3809ZM17.0438 10.7473V18.3809H13.4368V13.0372C13.4368 12.5192 13.0173 12.0997 12.4993 12.0997H8.74932C8.23135 12.0997 7.81182 12.5192 7.81182 13.0372V18.3809H4.20478V10.7473H1.95478L10.6267 2.08248L11.1681 2.62389L19.2962 10.7473H17.0438Z" fill="#1A202C"/>
+                    <path d="M20.8079 9.87311L11.7517 0.821543L11.1446 0.214512C11.0063 0.0771135 10.8193 0 10.6243 0C10.4294 0 10.2423 0.0771135 10.104 0.214512L0.440722 9.87311C0.298998 10.0143 0.186991 10.1824 0.111313 10.3676C0.0356348 10.5528 -0.00218116 10.7512 9.71477e-05 10.9512C0.00947215 11.7762 0.696191 12.4348 1.52119 12.4348H2.51728V20.0684H18.7313V12.4348H19.7485C20.1493 12.4348 20.5267 12.2778 20.8103 11.9942C20.9499 11.855 21.0605 11.6895 21.1358 11.5072C21.211 11.325 21.2493 11.1296 21.2485 10.9325C21.2485 10.534 21.0915 10.1567 20.8079 9.87311ZM11.9368 18.3809H9.31182V13.5997H11.9368V18.3809ZM17.0438 10.7473V18.3809H13.4368V13.0372C13.4368 12.5192 13.0173 12.0997 12.4993 12.0997H8.74932C8.23135 12.0997 7.81182 12.5192 7.81182 13.0372V18.3809H4.20478V10.7473H1.95478L10.6267 2.08248L11.1681 2.62389L19.2962 10.7473H17.0438Z" fill="#1A202C" />
                   </svg>
                   <Link onClick={() => setOpen(!open)} to="/" className="mainNavLink text-base">
                     Home

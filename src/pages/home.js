@@ -130,7 +130,7 @@ const Home = () => {
             <p className="text-lg">231</p>
           </div>
           <img
-            className="rounded-full shadow-lg w-11/12 object-cover -mt-8 ml-3"
+            className="rounded-full shadow-lg w-96 h-96 object-cover -mt-8 ml-2"
             src={data.user.picture}
             alt={`profile picuture of ${data.user.name}`}
           />
@@ -326,7 +326,7 @@ const Home = () => {
                   <img
                     src={c.sender.picture}
                     alt="what they look like"
-                    className="rounded-full w-16"
+                    className="rounded-full w-16 h-16 object-cover"
                   />
                   <h3 className="font-bold truncate w-1/3">{c.sender.name}</h3>
                   <div>
