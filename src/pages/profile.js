@@ -1,12 +1,30 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
-import { FETCH_USER_PROFILE } from '../queries/index';
+import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
 import HashLoader from 'react-spinners/HashLoader';
 
 const Profile = props => {
-  const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
+  const viewingContact = Boolean(props.location.state.userId);
+  const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
+    variables: { id: props.location.state.userId }
+  });
+
+  const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
+    update(cache, { data: { deleteConnection: { connection } } }) {
+      const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      cache.writeQuery({
+        query: GET_USER_CONNECTIONS,
+        data: {
+          user: {
+            ...user,
+            connections: user.connections.filter(c => c.id !== connection.id)
+          }
+        },
+      });
+    }
+  });
 
   if (loading || !data)
     return (
@@ -37,25 +55,41 @@ const Profile = props => {
         <section>
           <div className="flex justify-between items-center">
             <h5 className="text-2xl font-bold">{data.user.name}</h5>
-            <Link to="edit">
-              {/* EDIT ICON */}
-              <svg
-                className="mr-3"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z"
-                  stroke="black"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+            {!viewingContact ? (
+              <Link to="edit">
+                {/* EDIT ICON */}
+                <svg
+                  className="mr-3"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z"
+                    stroke="black"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            ) : (
+                <Icon
+                  size={24}
+                  type="TRASH"
+                  onClick={async () => {
+                    if (deleteLoading) return;
+                    await deleteConnection({
+                      variables: {
+                        id: props.location.state.connectionId
+                      }
+                    });
+                    props.navigate('/contacts');
+                  }}
                 />
-              </svg>
-            </Link>
+              )}
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
         </section>

@@ -1,27 +1,26 @@
 import { gql } from 'apollo-boost';
 
-// TODO: eventually we would want to include QRCode ids as the QRCode value instead of user IDs for added security.
-// export const FETCH_QRCODE_DATA = gql`
-//   query FetchQRCodeData($id: ID!) {
-//     qrcode(id: $id) {
-//       user {
-//         id
-//         name
-//         picture
-//         tagline
-//       }
-//     }
-//   }
-// `;
+export const FETCH_QRCODE_DATA = gql`
+  query FetchQRCodeData($id: ID!) {
+    qrcode(id: $id) {
+      id
+      user {
+        id
+      }
+    }
+  }
+`;
 
-// export const CREATE_QRCODE = gql`
-//   mutation createQRCode($label: String!) {
-//     createQRCode(label: $label) {
-//       id
-//       label
-//     }
-//   }
-// `;
+export const CREATE_QRCODE = gql`
+  mutation createQRCode($label: String!) {
+    createQRCode(label: $label) {
+      qrcode {
+        id
+        label
+      }
+    }
+  }
+`;
 
 export const CREATE_CONNECTION = gql`
   mutation createConnection($userID: ID!, $senderCoords: CoordinatesInput!) {
@@ -148,9 +147,9 @@ export const ACCEPT_CONNECTION = gql`
   }
 `;
 
-export const BLOCK_CONNECTION = gql`
-  mutation BlockConnection($id: ID!) {
-    blockConnection(id: $id) {
+export const DELETE_CONNECTION = gql`
+  mutation DeleteConnection($id: ID!) {
+    deleteConnection(id: $id) {
       success
       message
       connection {

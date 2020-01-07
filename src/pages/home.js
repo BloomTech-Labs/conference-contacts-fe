@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import {
   FETCH_HOME_USER,
   DISMISS_NOTIFICATION,
-  ACCEPT_CONNECTION
-  // BLOCK_CONNECTION
+  ACCEPT_CONNECTION,
+  DELETE_CONNECTION,
+  CREATE_QRCODE
 } from '../queries/index';
 import HashLoader from 'react-spinners/HashLoader';
 import { Link } from '@reach/router';
@@ -13,15 +14,18 @@ import QRCode from 'qrcode.react';
 const Home = () => {
   const { loading, error, data } = useQuery(FETCH_HOME_USER);
 
+  const [qrCode, setQRCode] = useState();
+  const [createQRCode] = useMutation(CREATE_QRCODE);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await createQRCode({ variables: { label: 'homepage' } });
+      setQRCode(data.createQRCode.qrcode.id);
+    })();
+  }, [createQRCode])
+
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
-    update(
-      cache,
-      {
-        data: {
-          deleteNotification: { notification }
-        }
-      }
-    ) {
+    update(cache, { data: { deleteNotification: { notification } } }) {
       const { user } = cache.readQuery(FETCH_HOME_USER);
       cache.writeQuery({
         query: FETCH_HOME_USER,
@@ -36,15 +40,8 @@ const Home = () => {
   });
 
   const [acceptConnection, { loading: connectLoading }] = useMutation(ACCEPT_CONNECTION, {
-    update(
-      cache,
-      {
-        data: {
-          acceptConnection: { connection }
-        }
-      }
-    ) {
-      const { user } = cache.readQuery(FETCH_HOME_USER);
+    update(cache, { data: { acceptConnection: { connection } } }) {
+      const { user } = cache.readQuery({ query: FETCH_HOME_USER });
       cache.writeQuery({
         query: FETCH_HOME_USER,
         data: {
@@ -52,12 +49,25 @@ const Home = () => {
             ...user,
             receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id)
           }
-        }
+        },
       });
     }
   });
 
-  // const [blockConnection, { loading: blockLoading }] = useMutation(BLOCK_CONNECTION);
+  const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
+    update(cache, { data: { deleteConnection: { connection } } }) {
+      const { user } = cache.readQuery({ query: FETCH_HOME_USER });
+      cache.writeQuery({
+        query: FETCH_HOME_USER,
+        data: {
+          user: {
+            ...user,
+            receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id)
+          }
+        },
+      });
+    }
+  });
 
   if (loading || !data)
     return (
@@ -116,19 +126,18 @@ const Home = () => {
         <div className="flex justify-center">
           <h1 className="text-3xl pt-10">{data.user.name}</h1>
         </div>
-        <div className="flex justify-center my-6">
-          <span className="qr-box p-4">
-            {data?.user?.id && (
+        {qrCode && (
+          <div className="flex justify-center my-6">
+            <span className="qr-box p-4">
               <QRCode
-                className=""
                 includeMargin={false}
                 level="Q"
                 renderAs="svg"
-                value={data.user.id}
+                value={`https://swaap.co/qrLink/${qrCode}`}
               />
-            )}
-          </span>
-        </div>
+            </span>
+          </div>
+        )}
         {/* <div className="pt-24 pb-6 bg-gray-100">
       <div className="main-container flex flex-col items-center py-4 bg-white mx-6 shadow-xl overflow-hidden">
         <img
@@ -140,7 +149,7 @@ const Home = () => {
       </div>
       <div className="flex justify-center my-10">
         <div className="purple rounded-full p-6">
-          <Link to="scanqr" state={{ userId: data.user.id }}>
+          <Link to="scanqr">
             <svg
               width="41"
               height="41"
@@ -216,24 +225,24 @@ const Home = () => {
             <p className="text-xl mt-10 text-gray-500">You are all caught up!</p>
           </div>
         ) : (
-          <ul className="my-5">
-            {data.user.notifications.map(n => (
-              <li
-                key={n.id}
-                className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
-              >
-                <span>{n.message}</span>
-                <button
-                  onClick={() => dismissNotification({ variables: { id: n.id } })}
-                  disabled={dismissLoading}
-                  className="text-2xl focus:outline-none"
+            <ul className="my-5">
+              {data.user.notifications.map(n => (
+                <li
+                  key={n.id}
+                  className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
                 >
-                  &times;
+                  <span>{n.message}</span>
+                  <button
+                    onClick={() => dismissNotification({ variables: { id: n.id } })}
+                    disabled={dismissLoading}
+                    className="text-2xl focus:outline-none"
+                  >
+                    &times;
                 </button>
-              </li>
-            ))}
-          </ul>
-        )}
+                </li>
+              ))}
+            </ul>
+          )}
         <p className="ml-4 text-xl text-gray-500">New Requests</p>
         {!data.user.receivedConnections.length ? (
           <div className="flex flex-col items-center my-16">
@@ -296,26 +305,25 @@ const Home = () => {
             <p className="text-xl mt-10 text-gray-500">Go out and meet more people!</p>
           </div>
         ) : (
-          <ul className="my-5">
-            {data.user.receivedConnections.map(c => (
-              <li
-                key={c.id}
-                className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
-              >
-                <img
-                  src={c.sender.picture}
-                  alt="what they look like"
-                  className="rounded-full w-12"
-                />
-                <div>
-                  <h3>{c.sender.name}</h3>
-                  <div className="flex items-center">
+            <ul className="my-5">
+              {data.user.receivedConnections.map(c => (
+                <li
+                  key={c.id}
+                  className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg mt-3"
+                >
+                  <img
+                    src={c.sender.picture}
+                    alt="what they look like"
+                    className="rounded-full w-16"
+                  />
+                  <h3 className="font-bold">{c.sender.name}</h3>
+                  <div>
                     <button
-                      className="rounded-sm p-3 bg-green-500 mr-3"
+                      className="rounded-lg px-3 py-2 bg-purple-500 mr-3 text-white"
                       onClick={() => {
-                        navigator.geolocation.getCurrentPosition(async position => {
+                        navigator.geolocation.getCurrentPosition(position => {
                           const { latitude, longitude } = position.coords;
-                          await acceptConnection({
+                          acceptConnection({
                             variables: {
                               id: c.id,
                               receiverCoords: { latitude, longitude }
@@ -325,15 +333,22 @@ const Home = () => {
                       }}
                       disabled={connectLoading}
                     >
-                      accept
+                      Accept
                     </button>
-                    <button className="rounded-sm p-3 bg-red-500">block</button>
+                    <button
+                      className="rounded-lg text-red-500"
+                      onClick={() => deleteConnection({ variables: { id: c.id } })}
+                      disabled={deleteLoading}
+                    >
+                      <p className="text-2xl">
+                        &times;
+                      </p>
+                    </button>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+                </li>
+              ))}
+            </ul>
+          )}
       </div>
 
       <div className="profile-card bg-white w-11/12 pb-4 mx-auto">
