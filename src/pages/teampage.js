@@ -14,7 +14,7 @@ export default function TeamPage() {
             <div className="grid container hovereffect hover-photo">
               
               <img
-                className="rounded-r-lg ease img-size mx-auto"
+                className="rounded-r-lg rounded-tl-lg ease img-size mx-auto"
                 src="https://i.ibb.co/cNtktWF/profile.jpg"
                 alt="Jonathan"
                 border="0"

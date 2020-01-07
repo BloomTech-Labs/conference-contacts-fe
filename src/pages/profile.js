@@ -1,12 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
-import { GET_USER_PROFILE } from '../queries/index';
+import { FETCH_USER_PROFILE } from '../queries/index';
 import Icon from '../components/icon';
 import HashLoader from 'react-spinners/HashLoader';
 
 const Profile = props => {
-  const { loading, error, data } = useQuery(GET_USER_PROFILE);
+  const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
 
   if (loading || !data)
     return (

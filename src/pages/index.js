@@ -4,12 +4,11 @@ import NavBar from '../containers/navbar';
 import Profile from './profile';
 import ProfileEdit from './profile-edit';
 import Home from './home';
-import Landing from './landing'
-import Settings from './settings'
-// const Home = () => <p>Home Page</p>;
-// import Contacts from './contacts'
+import Contacts from './contacts'
 import ScanQr from './scanqr';
 import ReadQr from './readqr';
+import Messages from './messages';
+import Settings from './settings';
 
 export default function Pages() {
   return (
@@ -18,11 +17,11 @@ export default function Pages() {
       <Router>
         <Home path="/" />
         <Profile  path="profile" />
-        <Landing path="landing" />
-        <Settings path="settings" />
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
-        {/* <Contacts path='contacts' /> */}
+        <Settings path="settings" />
+        <Contacts path='contacts' />
+        <Messages path='messages' />
         <ScanQr path="scanqr" />
         <ReadQr path="readqr" />
       </Router>
