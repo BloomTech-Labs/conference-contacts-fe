@@ -8,6 +8,7 @@ import Contacts from './contacts'
 import ScanQr from './scanqr';
 import ReadQr from './readqr';
 import Messages from './messages';
+import Settings from './settings';
 
 export default function Pages() {
   return (
