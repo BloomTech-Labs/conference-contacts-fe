@@ -280,7 +280,7 @@ export default function TeamPage() {
               </div>
             </div>
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Michael Redig</h4>
-            <p className="text-gray-500 mb-8">ISO Developer</p>
+            <p className="text-gray-500 mb-8">IOS Developer</p>
           </div>
         </div>
         <div className="w-full md:w-1/3 px-2 mb-4">
@@ -325,7 +325,7 @@ export default function TeamPage() {
               </div>
             </div>
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Marlon Raskin</h4>
-            <p className="text-gray-500 mb-8">ISO Developer</p>
+            <p className="text-gray-500 mb-8">IOS Developer</p>
           </div>
         </div>
 
