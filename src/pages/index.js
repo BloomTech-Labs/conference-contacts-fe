@@ -18,6 +18,7 @@ export default function Pages() {
         <Profile  path="profile" />
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
+        <Settings path="settings" />
         <Contacts path='contacts' />
         <Messages path='messages' />
         <ScanQr path="scanqr" />
