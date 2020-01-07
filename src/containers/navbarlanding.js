@@ -6,7 +6,7 @@ export default function NavBarLanding() {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <section class="antialiased bg-gray-200 mx-auto">
+    <section class="antialiased bg-gray-200">
       <div class="lg:px-16 px-2 bg-white flex flex-wrap items-center lg:py-0 py-2 mx-auto">
         <div class="flex-1 flex justify-between items-center mx-auto">
           <nav>
@@ -35,6 +35,7 @@ export default function NavBarLanding() {
                     y2="37.337"
                     gradientUnits="userSpaceOnUse"
                   >
+                    
                     <stop stopColor="#933EFF" />
                     <stop offset="1" stopColor="#0047FF" />
                   </linearGradient>
@@ -103,6 +104,7 @@ export default function NavBarLanding() {
                       >
                         Sign Up
                       </button>
+                     
                     </div>
                   </li>
                 </div>
