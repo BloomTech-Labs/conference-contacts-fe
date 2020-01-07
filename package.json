@@ -19,6 +19,8 @@
     "react-dom": "^16.12.0",
     "react-dropzone": "^10.2.1",
     "react-ga": "^2.7.0",
+    "react-gesture-gallery": "^1.1.0",
+    "react-gesture-responder": "^2.1.0",
     "react-mixpanel": "^1.0.5",
     "react-qr-reader": "^2.2.1",
     "react-scripts": "3.3.0",
