@@ -6,23 +6,25 @@ import { CREATE_CONNECTION, FETCH_QRCODE_DATA } from '../queries';
 const ScanQr = ({ location }) => {
   const [createConnection, { loading: connectLoading, called }] = useMutation(CREATE_CONNECTION);
   const [connections, setConnections] = useState([]);
-  const [fetchQRCode] = useLazyQuery(FETCH_QRCODE_DATA);
+  const [fetchQRCode, { data }] = useLazyQuery(FETCH_QRCODE_DATA);
 
-  const handleScan = scan => {
+  const handleScan = async scan => {
     if (!scan) return;
-    const qrCode = scan.match(/swaap.co\/qrLink\/(.+)/)[1];
+    const [, qrCode] = scan.match(/swaap.co\/qrLink\/(.+)/);
     if (!connectLoading && !connections.includes(qrCode)) {
-      const { data } = fetchQRCode({ variables: { id: qrCode } })
-      setConnections([...connections, qrCode]);
-      navigator.geolocation.getCurrentPosition(async position => {
-        const { latitude, longitude } = position.coords;
-        await createConnection({
-          variables: {
-            userID: data.user.id,
-            senderCoords: { latitude, longitude }
-          }
+      await fetchQRCode({ variables: { id: qrCode } });
+      if (data) {
+        setConnections([...connections, qrCode]);
+        navigator.geolocation.getCurrentPosition(async position => {
+          const { latitude, longitude } = position.coords;
+          await createConnection({
+            variables: {
+              userID: data.qrcode.user.id,
+              senderCoords: { latitude, longitude }
+            }
+          });
         });
-      });
+      }
     }
   };
 
