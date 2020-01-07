@@ -10,7 +10,7 @@ const NavLink = props => (
       return (
         isCurrent && {
           style: {
-            borderBottom: '5px solid #007AFF',
+            borderBottom: '5px solid #007AFF ',
             paddingBottom: '30px'
           }
         }
