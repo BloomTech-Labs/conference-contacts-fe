@@ -9,7 +9,7 @@ import Review from './review';
 
 export default function Landing() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* LandpageNavBar */}
       <NavbarLanding />
 
