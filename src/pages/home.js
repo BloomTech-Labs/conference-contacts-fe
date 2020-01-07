@@ -78,7 +78,9 @@ const Home = () => {
 
   if (error) return <p>There was an error: {error}</p>;
 
-  const notificationCount = data.user.receivedConnections.length + data.user.notifications.length;
+  const receivedConnections = data.user.receivedConnections.filter(c => c.status === 'PENDING');
+
+  const notificationCount = receivedConnections.length + data.user.notifications.length;
 
   return (
     <div className="pt-24 pb-6 bg-gray-200">
@@ -244,7 +246,7 @@ const Home = () => {
             </ul>
           )}
         <p className="ml-4 text-xl text-gray-500">New Requests</p>
-        {!data.user.receivedConnections.length ? (
+        {!receivedConnections.length ? (
           <div className="flex flex-col items-center my-16">
             <svg
               width="124"
@@ -306,7 +308,7 @@ const Home = () => {
           </div>
         ) : (
             <ul className="my-5">
-              {data.user.receivedConnections.map(c => (
+              {receivedConnections.map(c => (
                 <li
                   key={c.id}
                   className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg mt-3"
