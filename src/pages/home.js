@@ -15,7 +15,9 @@ const Home = () => {
   const [qrCode, setQRCode] = useState();
   const [position, setPosition] = useState({});
 
-  const { loading, error, data } = useQuery(FETCH_HOME_USER);
+  const { loading, error, data } = useQuery(FETCH_HOME_USER, {
+    pollInterval: 3000
+  });
   const [createQRCode] = useMutation(CREATE_QRCODE);
 
   useEffect(() => {
