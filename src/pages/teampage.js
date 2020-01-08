@@ -22,7 +22,7 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/macjabeth">
                   <svg
-                    className="mr-8"
+                    className="mr-8 mx-auto"
                     width="65"
                     height="65"
                     viewBox="0 0 65 65"
@@ -37,6 +37,7 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/macjabeth/">
                   <svg
+                  className="mx-auto"
                     width="64"
                     height="65"
                     viewBox="0 0 64 65"

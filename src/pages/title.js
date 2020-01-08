@@ -9,7 +9,7 @@ export default function NavBarLanding() {
         Business cards get thrown in the trash. Swaap makes trading business information effortless
       </h3>
       <img
-        className="m-auto"
+        className="mx-auto"
         src="https://i.ibb.co/TgYq6kk/Hero-Image.png"
         alt="Hero-Image"
         border="0"
