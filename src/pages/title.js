@@ -3,13 +3,13 @@ import React from 'react';
 
 export default function NavBarLanding() {
   return (
-    <div className="text-center container mx-auto px-20">
-      <h2 className="text-6xl font-bold mb-2 text-black">Leave the business cards at home</h2>
-      <h3 className="text-3xl mb-8 text-black-200">
+    <div className="text-center container mx-auto">
+      <h2 className="mx-auto m-auto text-6xl font-bold mb-2 text-black">Leave the business cards at home</h2>
+      <h3 className="mx-auto m-auto text-3xl mb-8 text-black-200">
         Business cards get thrown in the trash. Swaap makes trading business information effortless
       </h3>
       <img
-        className="m-auto"
+        className="mx-auto"
         src="https://i.ibb.co/TgYq6kk/Hero-Image.png"
         alt="Hero-Image"
         border="0"

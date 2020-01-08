@@ -116,6 +116,7 @@ export const FETCH_HOME_USER = gql`
         id
         status
         sender {
+          id
           name
           picture
         }
@@ -203,11 +204,13 @@ export const GET_USER_CONNECTIONS = gql`
           id
           name
           picture
+          industry
         }
         receiver {
           id
           name
           picture
+          industry
         }
       }
     }

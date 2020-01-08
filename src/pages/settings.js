@@ -29,9 +29,9 @@ export default function Settings(props) {
               <path
                 d="M7 13L1 7L7 1"
                 stroke="#9A99A2"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -45,13 +45,13 @@ export default function Settings(props) {
         <label className="block font-medium text-xs mb-1" htmlFor="email">
           EMAIL
         </label>
-        <span classname="text-gray-600">good@try.com</span>
+        <span className="text-gray-600">good@try.com</span>
       </div>
       <div className="mt-4">
         <label className="block font-medium text-xs mb-1" htmlFor="password">
           PASSWORD
         </label>
-        <span classname="text-gray-600">***********</span>
+        <span className="text-gray-600">***********</span>
       </div>
       <div className="mt-4 flex flex-row-reverse justify-between">
         <Link to="" className="flex  ">
@@ -66,9 +66,9 @@ export default function Settings(props) {
               <path
                 d="M1 13L7 7L1 1"
                 stroke="#1A202C"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -85,8 +85,8 @@ export default function Settings(props) {
             {!fields.autoconnect ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-              <Icon type="TOGGLE ON" size="30" />
-            )}
+                <Icon type="TOGGLE ON" size="30" />
+              )}
           </button>
           <p className="ml-2">Automatically connect after scan</p>
         </div>
@@ -96,8 +96,8 @@ export default function Settings(props) {
           {!fields.darkmode ? (
             <Icon type="TOGGLE OFF" size="30" />
           ) : (
-            <Icon type="TOGGLE ON" size="30" />
-          )}
+              <Icon type="TOGGLE ON" size="30" />
+            )}
         </button>
         <p className="ml-2">Dark mode</p>
       </div>
@@ -110,8 +110,8 @@ export default function Settings(props) {
             {!fields.browser ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-              <Icon type="TOGGLE ON" size="30" />
-            )}
+                <Icon type="TOGGLE ON" size="30" />
+              )}
           </button>
           <p className="ml-2">Browser</p>
         </div>
@@ -120,8 +120,8 @@ export default function Settings(props) {
             {!fields.email ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-              <Icon type="TOGGLE ON" size="30" />
-            )}
+                <Icon type="TOGGLE ON" size="30" />
+              )}
           </button>
           <p className="ml-2">Email</p>
         </div>
@@ -130,8 +130,8 @@ export default function Settings(props) {
             {!fields.sms ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-              <Icon type="TOGGLE ON" size="30" />
-            )}
+                <Icon type="TOGGLE ON" size="30" />
+              )}
           </button>
           <p className="ml-2">SMS</p>
         </div>
@@ -153,9 +153,9 @@ export default function Settings(props) {
                 <path
                   d="M1 13L7 7L1 1"
                   stroke="#1A202C"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
@@ -175,9 +175,9 @@ export default function Settings(props) {
                 <path
                   d="M1 13L7 7L1 1"
                   stroke="#1A202C"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>

@@ -26,7 +26,14 @@ function App() {
       style={{
         background: 'white',
         height: '60vh',
-        width: '100vw'
+        width: '100vw',
+        transition: "opacity 0.5s ease",
+        transform: "translateX(-50%)",
+        display: 'flex',
+        flexDirection:'row',
+        marginLeft:'50%',
+        
+
       }}
       index={index}
       onRequestChange={i => {

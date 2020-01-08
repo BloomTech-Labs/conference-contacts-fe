@@ -12,12 +12,13 @@ import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
 
 const Home = () => {
-  const { loading, error, data } = useQuery(FETCH_HOME_USER);
-
   const [qrCode, setQRCode] = useState();
-  const [createQRCode] = useMutation(CREATE_QRCODE);
-
   const [position, setPosition] = useState({});
+
+  const { loading, error, data } = useQuery(FETCH_HOME_USER, {
+    pollInterval: 3000
+  });
+  const [createQRCode] = useMutation(CREATE_QRCODE);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -79,18 +80,20 @@ const Home = () => {
     }
   });
 
-  if (loading || !data)
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
-      </div>
-    );
+  if (loading) return (
+    <div className="flex justify-center h-screen items-center">
+      <HashLoader size={150} loading={!loading} color="#136FE7" />
+    </div>
+  );
 
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) {
+    console.error(error);
+    return <p>Something went wrong!</p>;
+  }
 
   const receivedConnections = data.user.receivedConnections.filter(c => c.status === 'PENDING');
 
-  const notificationCount = receivedConnections.length + data.user.notifications.length;
+  let notificationCount = receivedConnections.length + data.user.notifications.length;
 
   return (
     <div className="pt-24 pb-6 bg-gray-200">
@@ -189,7 +192,7 @@ const Home = () => {
       </div>
       <div className="profile-card bg-white w-11/12 pb-4 mx-auto">
         <div className="flex mx-4 pt-4 my-6 items-center">
-          <div className="relative">
+          <div className="relative flex-grow-0">
             <svg
               width="23"
               height="21"
@@ -203,12 +206,15 @@ const Home = () => {
               />
             </svg>
             {notificationCount > 0 && (
-              <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-purple-700 text-white w-5 h-5 text-xs rounded-full leading-none flex items-center justify-center">
-                {notificationCount}
+              <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-purple-700 text-white w-6 h-6 text-xs rounded-full leading-none flex items-center justify-center">
+                {notificationCount >= 1000
+                  ? notificationCount.toString()[0] + 'k'
+                  : notificationCount
+                }
               </div>
             )}
           </div>
-          <p className="text-xl ml-12">Notifications</p>
+          <p className="text-xl flex-1 text-center -ml-6">Notifications</p>
         </div>
         <p className="ml-4 mt-4 text-xl text-gray-500">New Messages</p>
         {!data.user.notifications.length ? (
