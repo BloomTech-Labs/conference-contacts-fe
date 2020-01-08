@@ -116,6 +116,7 @@ export const FETCH_HOME_USER = gql`
         id
         status
         sender {
+          id
           name
           picture
         }
