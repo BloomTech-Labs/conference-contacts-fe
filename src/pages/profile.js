@@ -43,10 +43,12 @@ const Profile = ({ location, navigate }) => {
   return (
     <div className="pt-5 flex flex-col overflow-hidden">
       {/* IMG ROUNG LARGE */}
-      <div className="absolute pt-20 pl-6">
-        <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
-      </div>
-      <div className="self-end mt-6 -mr-20 w-full">
+      {viewingContact && (
+        <div className="absolute pt-20 pl-6">
+          <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
+        </div>
+      )}
+      <div className="self-end mt-6 -mr-20">
         <img
           className="rounded-full shadow-lg w-96 h-96 object-cover"
           src={data.user.picture}
@@ -108,12 +110,12 @@ const Profile = ({ location, navigate }) => {
         <section className="mt-10">
           <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
           <ul className="mt-3">
-            {contacts.map(field => (
+            {contacts.length ? contacts.map(field => (
               <li key={field.id} className="flex mb-3">
                 <Icon type={field.type} size={24} />
                 <span className="ml-4">{field.value}</span>
               </li>
-            ))}
+            )) : <p>You must be connected to see more information.</p>}
           </ul>
         </section>
         <section className="mt-10">

@@ -198,6 +198,22 @@ export const GET_USER_CONNECTIONS = gql`
   query getUserConnections($id: ID) {
     user(id: $id) {
       id
+      pendingConnections {
+        id
+        location
+        sender {
+          id
+          name
+          picture
+          industry
+        }
+        receiver {
+          id
+          name
+          picture
+          industry
+        }
+      }
       connections {
         id
         location
