@@ -30,7 +30,7 @@ const Contacts = ({ navigate }) => {
   if (name?.length > 0) {
     const pattern = new RegExp(name, 'i');
     connections = connections.filter(
-      c => c.contact.name.match(pattern) || c.contact.industry.match(pattern)
+      c => c.contact.name?.match(pattern) || c.contact.industry?.match(pattern)
     );
   }
 
