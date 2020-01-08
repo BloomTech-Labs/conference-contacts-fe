@@ -203,11 +203,13 @@ export const GET_USER_CONNECTIONS = gql`
           id
           name
           picture
+          industry
         }
         receiver {
           id
           name
           picture
+          industry
         }
       }
     }

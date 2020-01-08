@@ -12,12 +12,11 @@ import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
 
 const Home = () => {
-  const { loading, error, data } = useQuery(FETCH_HOME_USER);
-
   const [qrCode, setQRCode] = useState();
-  const [createQRCode] = useMutation(CREATE_QRCODE);
-
   const [position, setPosition] = useState({});
+
+  const { loading, error, data } = useQuery(FETCH_HOME_USER);
+  const [createQRCode] = useMutation(CREATE_QRCODE);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {

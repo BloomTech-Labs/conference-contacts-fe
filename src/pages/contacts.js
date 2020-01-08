@@ -20,11 +20,19 @@ const Contacts = ({ navigate }) => {
 
   if (error) return <p>There was an error: {error}</p>;
 
-  let connections = data.user.connections;
+  let connections = data.user.connections.reduce((acc, cur) => {
+    const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
+    return acc.concat({ ...cur, contact });
+  }, []);
 
-  if (name?.length > 0)
-    connections = connections.filter(c => c.sender.name.toLowerCase().includes(name.toLowerCase()))
+  connections.sort((a, b) => a.contact.name > b.contact.name ? 1 : -1);
 
+  if (name?.length > 0) {
+    const pattern = new RegExp(name, 'i');
+    connections = connections.filter(
+      c => c.contact.name.match(pattern) || c.contact.industry.match(pattern)
+    );
+  }
 
   return (
     <div>
@@ -52,21 +60,22 @@ const Contacts = ({ navigate }) => {
         </div>
       </div>
       <div className='mt-10'>
-        {connections.map(connection => {
-          const contact = connection.sender.id === data.user.id ? connection.receiver : connection.sender;
-          return (
-            <button
-              key={connection.id}
-              onClick={() => navigate('/profile', { state: { userId: contact.id, connectionId: connection.id } })}
-              className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
-            >
-              <div>
-                <img className="rounded-full w-12 h-12 object-cover mr-6" src={contact.picture} alt={contact.name} />
-              </div>
-              <div>{contact.name}</div>
-            </button>
-          );
-        })}
+        {connections.map(connection => (
+          <button
+            key={connection.id}
+            onClick={() => navigate('/profile', { state: { userId: connection.contact.id, connectionId: connection.id } })}
+            className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
+          >
+            <div>
+              <img className="rounded-full w-12 h-12 object-cover mr-6" src={connection.contact.picture} alt={connection.contact.name} />
+            </div>
+            <div className="flex flex-col items-start">
+              <span>{connection.contact.name}</span>
+              <small>{connection.contact.industry}</small>
+            </div>
+          </button>
+        )
+        )}
       </div>
     </div>
   );
