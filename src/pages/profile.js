@@ -5,10 +5,10 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../components/icon';
 import HashLoader from 'react-spinners/HashLoader';
 
-const Profile = props => {
-  const viewingContact = Boolean(props.location.state.userId);
+const Profile = ({ location, navigate }) => {
+  const viewingContact = Boolean(location.state.userId);
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
-    variables: { id: props.location.state.userId }
+    variables: { id: location.state.userId }
   });
 
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
@@ -43,9 +43,12 @@ const Profile = props => {
   return (
     <div className="pt-5 flex flex-col overflow-hidden">
       {/* IMG ROUNG LARGE */}
+      <div className="absolute pt-20 pl-6">
+        <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
+      </div>
       <div className="self-end mt-6 -mr-20 w-full">
         <img
-          className="rounded-full shadow-lg object-cover"
+          className="rounded-full shadow-lg w-96 h-96 object-cover"
           src={data.user.picture}
           alt={`profile picuture of ${data.user.name}`}
         />
@@ -83,10 +86,10 @@ const Profile = props => {
                     if (deleteLoading) return;
                     await deleteConnection({
                       variables: {
-                        id: props.location.state.connectionId
+                        id: location.state.connectionId
                       }
                     });
-                    props.navigate('/contacts');
+                    navigate('/contacts');
                   }}
                 />
               )}
