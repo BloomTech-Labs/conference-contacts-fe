@@ -78,14 +78,16 @@ const Home = () => {
     }
   });
 
-  if (loading || !data)
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
-      </div>
-    );
+  if (loading) return (
+    <div className="flex justify-center h-screen items-center">
+      <HashLoader size={150} loading={!loading} color="#136FE7" />
+    </div>
+  );
 
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) {
+    console.error(error);
+    return <p>Something went wrong!</p>;
+  }
 
   const receivedConnections = data.user.receivedConnections.filter(c => c.status === 'PENDING');
 
