@@ -200,6 +200,7 @@ export const GET_USER_CONNECTIONS = gql`
       id
       connections {
         id
+        location
         sender {
           id
           name

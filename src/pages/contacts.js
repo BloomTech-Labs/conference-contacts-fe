@@ -63,7 +63,13 @@ const Contacts = ({ navigate }) => {
         {connections.map(connection => (
           <button
             key={connection.id}
-            onClick={() => navigate('/profile', { state: { userId: connection.contact.id, connectionId: connection.id } })}
+            onClick={() => navigate('/profile', {
+              state: {
+                userId: connection.contact.id,
+                connectionId: connection.id,
+                location: connection.location
+              }
+            })}
             className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
           >
             <div>
