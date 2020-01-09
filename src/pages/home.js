@@ -251,7 +251,22 @@ const Home = () => {
                 >
                   <span className="mr-1">{n.message}</span>
                   <button
-                    onClick={() => dismissNotification({ variables: { id: n.id } })}
+                    onClick={() => dismissNotification({
+                      variables: { id: n.id },
+                      optimisticResponse: {
+                        __typename: 'Mutation',
+                        deleteNotification: {
+                          __typename: 'ProfileMutationResponse',
+                          code: 200,
+                          success: true,
+                          message: 'Notification dismissed successfully',
+                          notification: {
+                            __typename: 'Notification',
+                            id: n.id
+                          }
+                        }
+                      }
+                    })}
                     disabled={dismissLoading}
                     className="text-2xl focus:outline-none"
                   >
