@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
@@ -29,7 +29,7 @@ const Profile = ({ location, navigate }) => {
   if (loading || !data)
     return (
       <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
+        <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
     );
 

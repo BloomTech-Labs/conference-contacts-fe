@@ -7,7 +7,7 @@ import {
   DELETE_CONNECTION,
   CREATE_QRCODE
 } from '../queries/index';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
 
@@ -82,7 +82,7 @@ const Home = () => {
 
   if (loading) return (
     <div className="flex justify-center h-screen items-center">
-      <HashLoader size={150} loading={!loading} color="#136FE7" />
+      <BeatLoader size={35} loading={loading} color="#7B41FF" />
     </div>
   );
 

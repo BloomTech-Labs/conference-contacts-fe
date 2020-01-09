@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 const Messages = () => {
     let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
-    const [ name, setName ] = useState('');
-    
+    const [name, setName] = useState('');
+
     if (loading || !data)
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
-      </div>
-    );
+        return (
+            <div className="flex justify-center h-screen items-center">
+                <BeatLoader size={35} loading={loading} color="#7B41FF" />
+            </div>
+        );
 
     const handleSearch = (e) => {
         setName(e.target.value);

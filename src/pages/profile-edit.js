@@ -8,7 +8,7 @@ import {
   DELETE_PROFILE_FIELD
 } from '../queries';
 import Icon from '../components/icon';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 export default function ProfileEdit(props) {
   const [fields, setFields] = useState({});
@@ -171,7 +171,7 @@ export default function ProfileEdit(props) {
   if (loading || !data)
     return (
       <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
+        <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
     );
 
