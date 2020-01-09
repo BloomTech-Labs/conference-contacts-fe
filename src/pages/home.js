@@ -15,7 +15,7 @@ const Home = () => {
   const [qrCode, setQRCode] = useState();
   const [position, setPosition] = useState({});
 
-  const { loading, error, data } = useQuery(FETCH_HOME_USER, {
+  const { loading, error, data, stopPolling } = useQuery(FETCH_HOME_USER, {
     pollInterval: 3000
   });
   const [createQRCode] = useMutation(CREATE_QRCODE);
@@ -33,7 +33,11 @@ const Home = () => {
       localStorage.setItem('qrCode', id);
       setQRCode(id);
     })();
-  }, [createQRCode])
+
+    return () => {
+      stopPolling();
+    }
+  }, [createQRCode, stopPolling]);
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
     update(cache, { data: { deleteNotification: { notification } } }) {
