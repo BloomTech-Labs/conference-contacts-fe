@@ -80,7 +80,8 @@ const Contacts = ({ navigate }) => {
               state: {
                 userId: connection.contact.id,
                 connectionId: connection.id,
-                location: connection.location
+                location: connection.location,
+                status: 'PENDING'
               }
             })}
             className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
@@ -104,7 +105,8 @@ const Contacts = ({ navigate }) => {
               state: {
                 userId: connection.contact.id,
                 connectionId: connection.id,
-                location: connection.location
+                location: connection.location,
+                status: 'CONNECTED'
               }
             })}
             className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
