@@ -115,7 +115,9 @@ const Profile = ({ location, navigate }) => {
                 <Icon type={field.type} size={24} />
                 <span className="ml-4">{field.value}</span>
               </li>
-            )) : <p>You must be connected to see more information.</p>}
+            )) : viewingContact ? (
+              <p>You must be connected to see more information.</p>
+            ) : <p>You have not added any other methods of contact.</p>}
           </ul>
         </section>
         <section className="mt-10">
