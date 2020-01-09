@@ -99,6 +99,10 @@ const Home = () => {
 
   let notificationCount = receivedConnections.length + data.user.notifications.length;
 
+  const qrLink = process.env.NODE_ENV === 'production'
+    ? `https://swaap.co/qrLink/${qrCode}`
+    : `https://staging.swaap.co/qrLink/${qrCode}`;
+
   return (
     <div className="pt-24 pb-6 bg-gray-200">
       <div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
@@ -152,7 +156,7 @@ const Home = () => {
                 includeMargin={false}
                 level="Q"
                 renderAs="svg"
-                value={`https://swaap.co/qrLink/${qrCode}`}
+                value={qrLink}
               />
             </span>
           </div>

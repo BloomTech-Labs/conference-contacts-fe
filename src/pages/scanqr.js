@@ -1,14 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import QrReader from 'react-qr-reader';
 import { useLazyQuery, useMutation } from '@apollo/react-hooks';
-import { CREATE_CONNECTION, FETCH_QRCODE_DATA } from '../queries';
+import { CREATE_CONNECTION, FETCH_QRCODE_DATA, GET_USER_CONNECTIONS } from '../queries';
+
+const qrRxp = /https:\/\/(staging.)?swaap.co\/qrLink\/(.+)/;
 
 const ScanQr = () => {
-  const [createConnection, { loading: connectLoading, called }] = useMutation(CREATE_CONNECTION);
   const [connections, setConnections] = useState([]);
   const [position, setPosition] = useState({});
   const [fetchQRCode, { data }] = useLazyQuery(FETCH_QRCODE_DATA);
   const [errors, setErrors] = useState([]);
+
+  const [createConnection, { loading: connectLoading, called }] = useMutation(CREATE_CONNECTION, {
+    update(cache, { data: { createConnection: { connection } } }) {
+      const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      cache.writeQuery({
+        query: GET_USER_CONNECTIONS,
+        data: {
+          user: {
+            ...user,
+            pendingConnections: user.pendingConnections.concat(connection)
+          }
+        }
+      });
+    }
+  });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async position => {
@@ -18,12 +34,27 @@ const ScanQr = () => {
 
   const handleScan = async scan => {
     if (!scan) return;
-    const [, qrCode] = scan.match(/swaap.co\/qrLink\/(.+)/);
+
+    const qrMatch = scan.match(qrRxp);
+
+    // ? do we have the right qrcode for our environment
+    if (
+      (process.env.NODE_ENV === 'production' && qrMatch[1]) ||
+      (process.env.NODE_ENV === 'development' && !qrMatch[1])
+    ) {
+      return setErrors([
+        'Environment Mismatch'
+      ]);
+    }
+
+    const qrCode = qrMatch[2];
+
     if (!connectLoading && !connections.includes(qrCode)) {
       await fetchQRCode({ variables: { id: qrCode } });
       if (data?.qrcode?.user && position) {
         setConnections([...connections, qrCode]);
         const { latitude, longitude } = position.coords;
+        setErrors([]);
         await createConnection({
           variables: {
             userID: data?.qrcode?.user.id,
