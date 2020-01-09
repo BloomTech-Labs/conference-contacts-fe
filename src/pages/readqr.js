@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { navigate } from '@reach/router';
 import QRCode from 'qrcode.react';
 import { useQuery } from '@apollo/react-hooks';
 import { NAVBAR_PROFILE } from '../queries/index';
 
-const imageSettings = {
-  width: 90,
-  height: 50
-};
-
+// ! deprecated component - not in use
 const ReadQr = () => {
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
 

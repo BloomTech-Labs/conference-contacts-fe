@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { Link, navigate } from '@reach/router';
+import { Link } from '@reach/router';
 import { useAuth0 } from '../react-auth0-spa';
 import { useQuery, useApolloClient } from '@apollo/react-hooks';
 import { NAVBAR_PROFILE } from '../queries/index';
-import ScanQr from '../pages/scanqr';
-
-const QRCode = require('qrcode.react');
 
 export default function NavBar() {
   const client = useApolloClient();
@@ -18,9 +15,9 @@ export default function NavBar() {
 
   const handleLogout = () => {
     const hosts = {
-      ['localhost:3000']: 'http://localhost:3000',
-      ['swaap.co']: 'https://swaap.co',
-      ['staging.swaap.co']: 'https://staging.swaap.co'
+      'localhost:3000': 'http://localhost:3000',
+      'swaap.co': 'https://swaap.co',
+      'staging.swaap.co': 'https://staging.swaap.co'
     };
     client.writeData({ data: { isLoggedIn: false } });
     localStorage.clear();
