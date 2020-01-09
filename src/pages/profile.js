@@ -14,14 +14,12 @@ const Profile = ({ location, navigate }) => {
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(cache, { data: { deleteConnection: { connection } } }) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      // ? is there a better way to differentiate deleting pending/connected users
+      const connections = user.connections.filter(c => c.id !== connection.id);
+      const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
-        data: {
-          user: {
-            ...user,
-            connections: user.connections.filter(c => c.id !== connection.id)
-          }
-        },
+        data: { user: { ...user, connections, pendingConnections } },
       });
     }
   });
