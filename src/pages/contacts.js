@@ -73,7 +73,7 @@ const Contacts = ({ navigate }) => {
         <div className="bg-gray-300 py-2">
           <strong className="ml-4">Pending</strong>
         </div>
-        {pendingConnections.map(connection => (
+        {pendingConnections.length ? pendingConnections.map(connection => (
           <button
             key={connection.id}
             onClick={() => navigate('/profile', {
@@ -93,11 +93,11 @@ const Contacts = ({ navigate }) => {
               <small>{connection.contact.industry}</small>
             </div>
           </button>
-        ))}
+        )) : <p className="ml-4 my-2">None</p>}
         <div className="bg-gray-300 py-2">
           <strong className="ml-4">Connected</strong>
         </div>
-        {connections.map(connection => (
+        {connections.length > 0 ? connections.map(connection => (
           <button
             key={connection.id}
             onClick={() => navigate('/profile', {
@@ -117,7 +117,7 @@ const Contacts = ({ navigate }) => {
               <small>{connection.contact.industry}</small>
             </div>
           </button>
-        ))}
+        )) : <p className="ml-4 my-2">None</p>}
       </div>
     </div>
   );
