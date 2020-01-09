@@ -3,7 +3,9 @@ import Icon from '../components/icon';
 import { Link } from '@reach/router';
 
 export default function Settings(props) {
-  const [fields, setFields] = useState({});
+  const [fields, setFields] = useState({
+    autoconnect: true
+  });
 
   const handleToggle = setting => {
     return () => {
