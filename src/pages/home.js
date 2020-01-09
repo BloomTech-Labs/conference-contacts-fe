@@ -103,6 +103,8 @@ const Home = () => {
     ? `https://staging.swaap.co/qrLink/${qrCode}`
     : `https://swaap.co/qrLink/${qrCode}`;
 
+  console.log('qrLink', qrLink);
+
   return (
     <div className="pt-24 pb-6 bg-gray-200">
       <div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
