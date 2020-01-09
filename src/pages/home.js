@@ -99,9 +99,9 @@ const Home = () => {
 
   let notificationCount = receivedConnections.length + data.user.notifications.length;
 
-  const qrLink = process.env.NODE_ENV === 'production'
-    ? `https://swaap.co/qrLink/${qrCode}`
-    : `https://staging.swaap.co/qrLink/${qrCode}`;
+  const qrLink = process.env.NODE_ENV === 'development'
+    ? `https://staging.swaap.co/qrLink/${qrCode}`
+    : `https://swaap.co/qrLink/${qrCode}`;
 
   return (
     <div className="pt-24 pb-6 bg-gray-200">
