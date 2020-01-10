@@ -188,7 +188,7 @@ export default function ProfileEdit(props) {
         updateUserInfo({
           variables: {
             data: {
-              picture: result.info.url
+              picture: result.info.secure_url
             }
           }
         });
