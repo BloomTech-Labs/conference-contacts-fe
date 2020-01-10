@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 const Contacts = ({ navigate }) => {
   let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
@@ -14,7 +14,7 @@ const Contacts = ({ navigate }) => {
   if (loading || !data)
     return (
       <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
+        <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
     );
 
@@ -73,14 +73,15 @@ const Contacts = ({ navigate }) => {
         <div className="bg-gray-300 py-2">
           <strong className="ml-4">Pending</strong>
         </div>
-        {pendingConnections.map(connection => (
+        {pendingConnections.length ? pendingConnections.map(connection => (
           <button
             key={connection.id}
             onClick={() => navigate('/profile', {
               state: {
                 userId: connection.contact.id,
                 connectionId: connection.id,
-                location: connection.location
+                location: connection.location,
+                status: 'PENDING'
               }
             })}
             className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
@@ -93,18 +94,19 @@ const Contacts = ({ navigate }) => {
               <small>{connection.contact.industry}</small>
             </div>
           </button>
-        ))}
+        )) : <p className="ml-4 my-2">None</p>}
         <div className="bg-gray-300 py-2">
           <strong className="ml-4">Connected</strong>
         </div>
-        {connections.map(connection => (
+        {connections.length > 0 ? connections.map(connection => (
           <button
             key={connection.id}
             onClick={() => navigate('/profile', {
               state: {
                 userId: connection.contact.id,
                 connectionId: connection.id,
-                location: connection.location
+                location: connection.location,
+                status: 'CONNECTED'
               }
             })}
             className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
@@ -117,7 +119,7 @@ const Contacts = ({ navigate }) => {
               <small>{connection.contact.industry}</small>
             </div>
           </button>
-        ))}
+        )) : <p className="ml-4 my-2">None</p>}
       </div>
     </div>
   );

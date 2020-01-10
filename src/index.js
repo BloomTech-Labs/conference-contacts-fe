@@ -71,6 +71,8 @@ const render = () => {
 
 render();
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
+const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+
+if (inDevelopment && module.hot) {
   module.hot.accept('./pages', render);
 }

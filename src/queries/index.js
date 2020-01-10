@@ -29,6 +29,19 @@ export const CREATE_CONNECTION = gql`
       message
       connection {
         id
+        location
+        sender {
+          id
+          name
+          picture
+          industry
+        }
+        receiver {
+          id
+          name
+          picture
+          industry
+        }
       }
     }
   }

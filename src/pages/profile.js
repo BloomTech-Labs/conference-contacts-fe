@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
@@ -14,13 +14,14 @@ const Profile = ({ location, navigate }) => {
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(cache, { data: { deleteConnection: { connection } } }) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      const connections = user.connections.filter(c => c.id !== connection.id);
+      const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
-          user: {
-            ...user,
-            connections: user.connections.filter(c => c.id !== connection.id)
-          }
+          user: location.state.status === 'PENDING'
+            ? { ...user, pendingConnections }
+            : { ...user, connections }
         },
       });
     }
@@ -29,7 +30,7 @@ const Profile = ({ location, navigate }) => {
   if (loading || !data)
     return (
       <div className="flex justify-center h-screen items-center">
-        <HashLoader size={150} loading={!loading} color="#136FE7" />
+        <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
     );
 
@@ -115,7 +116,9 @@ const Profile = ({ location, navigate }) => {
                 <Icon type={field.type} size={24} />
                 <span className="ml-4">{field.value}</span>
               </li>
-            )) : <p>You must be connected to see more information.</p>}
+            )) : viewingContact ? (
+              <p>They have not shared any other methods of contact.</p>
+            ) : <p>You have not added any other methods of contact.</p>}
           </ul>
         </section>
         <section className="mt-10">

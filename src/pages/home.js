@@ -7,7 +7,7 @@ import {
   DELETE_CONNECTION,
   CREATE_QRCODE
 } from '../queries/index';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
 
@@ -15,7 +15,7 @@ const Home = () => {
   const [qrCode, setQRCode] = useState();
   const [position, setPosition] = useState({});
 
-  const { loading, error, data } = useQuery(FETCH_HOME_USER, {
+  const { loading, error, data, stopPolling } = useQuery(FETCH_HOME_USER, {
     pollInterval: 3000
   });
   const [createQRCode] = useMutation(CREATE_QRCODE);
@@ -33,7 +33,11 @@ const Home = () => {
       localStorage.setItem('qrCode', id);
       setQRCode(id);
     })();
-  }, [createQRCode])
+
+    return () => {
+      stopPolling();
+    }
+  }, [createQRCode, stopPolling]);
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
     update(cache, { data: { deleteNotification: { notification } } }) {
@@ -82,7 +86,7 @@ const Home = () => {
 
   if (loading) return (
     <div className="flex justify-center h-screen items-center">
-      <HashLoader size={150} loading={!loading} color="#136FE7" />
+      <BeatLoader size={35} loading={loading} color="#7B41FF" />
     </div>
   );
 
@@ -94,6 +98,12 @@ const Home = () => {
   const receivedConnections = data.user.receivedConnections.filter(c => c.status === 'PENDING');
 
   let notificationCount = receivedConnections.length + data.user.notifications.length;
+
+  // note to future self: stop using netlify - this environment issue caused much grief
+  const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+  const qrLink = inDevelopment ? `https://staging.swaap.co/qrLink/${qrCode}` : `https://swaap.co/qrLink/${qrCode}`;
+
+  console.log('qrLink', qrLink);
 
   return (
     <div className="pt-24 pb-6 bg-gray-200">
@@ -148,7 +158,7 @@ const Home = () => {
                 includeMargin={false}
                 level="Q"
                 renderAs="svg"
-                value={`https://swaap.co/qrLink/${qrCode}`}
+                value={qrLink}
               />
             </span>
           </div>
