@@ -99,9 +99,9 @@ const Home = () => {
 
   let notificationCount = receivedConnections.length + data.user.notifications.length;
 
-  const qrLink = process.env.NODE_ENV === 'development'
-    ? `https://staging.swaap.co/qrLink/${qrCode}`
-    : `https://swaap.co/qrLink/${qrCode}`;
+  // note to future self: stop using netlify - this environment issue caused much grief
+  const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+  const qrLink = inDevelopment ? `https://staging.swaap.co/qrLink/${qrCode}` : `https://swaap.co/qrLink/${qrCode}`;
 
   console.log('qrLink', qrLink);
 

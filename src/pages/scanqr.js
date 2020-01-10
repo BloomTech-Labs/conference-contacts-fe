@@ -37,11 +37,10 @@ const ScanQr = () => {
 
     const qrMatch = scan.match(qrRxp);
 
+    const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+
     // ? do we have the right qrcode for our environment
-    if (
-      (process.env.NODE_ENV === 'production' && qrMatch[1]) ||
-      (process.env.NODE_ENV === 'development' && !qrMatch[1])
-    ) {
+    if ((!inDevelopment && qrMatch[1]) || (inDevelopment && !qrMatch[1])) {
       return setErrors([
         'Environment Mismatch'
       ]);
