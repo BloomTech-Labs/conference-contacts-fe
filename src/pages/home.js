@@ -11,6 +11,8 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
 
+const QRC = React.memo(QRCode);
+
 const Home = () => {
   const [qrCode, setQRCode] = useState();
   const [position, setPosition] = useState({});
@@ -18,6 +20,7 @@ const Home = () => {
   const { loading, error, data, stopPolling } = useQuery(FETCH_HOME_USER, {
     pollInterval: 3000
   });
+
   const [createQRCode] = useMutation(CREATE_QRCODE);
 
   useEffect(() => {
@@ -62,7 +65,8 @@ const Home = () => {
         data: {
           user: {
             ...user,
-            receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id)
+            receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id),
+            connections: user.connections.concat(connection)
           }
         },
       });
@@ -102,8 +106,6 @@ const Home = () => {
   // note to future self: stop using netlify - this environment issue caused much grief
   const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
   const qrLink = inDevelopment ? `https://staging.swaap.co/qrLink/${qrCode}` : `https://swaap.co/qrLink/${qrCode}`;
-
-  console.log('qrLink', qrLink);
 
   return (
     <div className="pt-24 pb-6 bg-gray-200">
@@ -154,7 +156,7 @@ const Home = () => {
         {qrCode && (
           <div className="flex justify-center my-6">
             <span className="qr-box p-4">
-              <QRCode
+              <QRC
                 includeMargin={false}
                 level="Q"
                 renderAs="svg"
@@ -379,7 +381,10 @@ const Home = () => {
                               message: 'Connection request accepted',
                               connection: {
                                 __typename: 'Connection',
-                                id: c.id
+                                id: c.id,
+                                location: c.location,
+                                sender: c.sender,
+                                receiver: c.receiver
                               }
                             }
                           }

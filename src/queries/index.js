@@ -127,11 +127,35 @@ export const FETCH_HOME_USER = gql`
       }
       receivedConnections {
         id
+        location
         status
         sender {
           id
           name
           picture
+          industry
+        }
+        receiver {
+          id
+          name
+          picture
+          industry
+        }
+      }
+      connections {
+        id
+        location
+        sender {
+          id
+          name
+          picture
+          industry
+        }
+        receiver {
+          id
+          name
+          picture
+          industry
         }
       }
     }
@@ -157,6 +181,19 @@ export const ACCEPT_CONNECTION = gql`
       message
       connection {
         id
+        location
+        sender {
+          id
+          name
+          picture
+          industry
+        }
+        receiver {
+          id
+          name
+          picture
+          industry
+        }
       }
     }
   }
