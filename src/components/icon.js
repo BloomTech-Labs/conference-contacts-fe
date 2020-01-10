@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Icon = ({ type, size, classes, onClick, fill }) => (
+const Icon = React.memo(({ type, size, classes, onClick, fill }) => (
   <svg
     onClick={onClick}
     className={classes}
@@ -175,6 +175,6 @@ const Icon = ({ type, size, classes, onClick, fill }) => (
       />
     ) : null}
   </svg>
-);
+));
 
 export default Icon;

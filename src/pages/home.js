@@ -5,11 +5,14 @@ import {
   DISMISS_NOTIFICATION,
   ACCEPT_CONNECTION,
   DELETE_CONNECTION,
-  CREATE_QRCODE
+  CREATE_QRCODE,
+  GET_USER_CONNECTIONS
 } from '../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
+
+const QRC = React.memo(QRCode);
 
 const Home = () => {
   const [qrCode, setQRCode] = useState();
@@ -56,14 +59,21 @@ const Home = () => {
 
   const [acceptConnection, { loading: connectLoading }] = useMutation(ACCEPT_CONNECTION, {
     update(cache, { data: { acceptConnection: { connection } } }) {
-      const { user } = cache.readQuery({ query: FETCH_HOME_USER });
+      const { user: homeUser } = cache.readQuery({ query: FETCH_HOME_USER });
+      const { user: contactUser } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       cache.writeQuery({
         query: FETCH_HOME_USER,
         data: {
           user: {
-            ...user,
-            receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id)
+            ...homeUser,
+            receivedConnections: homeUser.receivedConnections.filter(c => c.id !== connection.id)
           }
+        },
+      });
+      cache.writeQuery({
+        query: GET_USER_CONNECTIONS,
+        data: {
+          user: { ...contactUser, connections: contactUser.connections.concat(connection) }
         },
       });
     }
@@ -152,7 +162,7 @@ const Home = () => {
         {qrCode && (
           <div className="flex justify-center my-6">
             <span className="qr-box p-4">
-              <QRCode
+              <QRC
                 includeMargin={false}
                 level="Q"
                 renderAs="svg"

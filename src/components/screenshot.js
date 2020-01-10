@@ -7,7 +7,9 @@ const images = [
   'https://i.ibb.co/k9659RJ/image-6.png'
 ];
 
-function App() {
+const GalleryImg = React.memo(GalleryImage);
+
+function Screenshot() {
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
@@ -30,9 +32,9 @@ function App() {
         transition: "opacity 0.5s ease",
         transform: "translateX(-50%)",
         display: 'flex',
-        flexDirection:'row',
-        marginLeft:'50%',
-        
+        flexDirection: 'row',
+        marginLeft: '50%',
+
 
       }}
       index={index}
@@ -41,10 +43,10 @@ function App() {
       }}
     >
       {images.map(image => (
-        <GalleryImage objectFit="contain" key={image} src={image} />
+        <GalleryImg objectFit="contain" key={image} src={image} />
       ))}
     </Gallery>
   );
 }
 
-export default App;
+export default Screenshot;
