@@ -5,8 +5,7 @@ import {
   DISMISS_NOTIFICATION,
   ACCEPT_CONNECTION,
   DELETE_CONNECTION,
-  CREATE_QRCODE,
-  GET_USER_CONNECTIONS
+  CREATE_QRCODE
 } from '../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from '@reach/router';
@@ -21,6 +20,7 @@ const Home = () => {
   const { loading, error, data, stopPolling } = useQuery(FETCH_HOME_USER, {
     pollInterval: 3000
   });
+
   const [createQRCode] = useMutation(CREATE_QRCODE);
 
   useEffect(() => {
@@ -59,21 +59,15 @@ const Home = () => {
 
   const [acceptConnection, { loading: connectLoading }] = useMutation(ACCEPT_CONNECTION, {
     update(cache, { data: { acceptConnection: { connection } } }) {
-      const { user: homeUser } = cache.readQuery({ query: FETCH_HOME_USER });
-      const { user: contactUser } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      const { user } = cache.readQuery({ query: FETCH_HOME_USER });
       cache.writeQuery({
         query: FETCH_HOME_USER,
         data: {
           user: {
-            ...homeUser,
-            receivedConnections: homeUser.receivedConnections.filter(c => c.id !== connection.id)
+            ...user,
+            receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id),
+            connections: user.connections.concat(connection)
           }
-        },
-      });
-      cache.writeQuery({
-        query: GET_USER_CONNECTIONS,
-        data: {
-          user: { ...contactUser, connections: contactUser.connections.concat(connection) }
         },
       });
     }
@@ -387,7 +381,10 @@ const Home = () => {
                               message: 'Connection request accepted',
                               connection: {
                                 __typename: 'Connection',
-                                id: c.id
+                                id: c.id,
+                                location: c.location,
+                                sender: c.sender,
+                                receiver: c.receiver
                               }
                             }
                           }
