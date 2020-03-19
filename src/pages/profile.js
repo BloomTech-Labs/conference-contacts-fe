@@ -96,6 +96,7 @@ const Profile = ({ location, navigate }) => {
                   }}
                 />
               )}
+              {/* This is the delete button for a contact */}
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
         </section>
