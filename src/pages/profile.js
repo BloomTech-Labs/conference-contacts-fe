@@ -4,6 +4,7 @@ import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
+import * as moment from 'moment';
 
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
@@ -12,17 +13,25 @@ const Profile = ({ location, navigate }) => {
   });
 
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
-    update(cache, { data: { deleteConnection: { connection } } }) {
+    update(
+      cache,
+      {
+        data: {
+          deleteConnection: { connection }
+        }
+      }
+    ) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       const connections = user.connections.filter(c => c.id !== connection.id);
       const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
-          user: location.state.status === 'PENDING'
-            ? { ...user, pendingConnections }
-            : { ...user, connections }
-        },
+          user:
+            location.state.status === 'PENDING'
+              ? { ...user, pendingConnections }
+              : { ...user, connections }
+        }
       });
     }
   });
@@ -82,20 +91,20 @@ const Profile = ({ location, navigate }) => {
                 </svg>
               </Link>
             ) : (
-                <Icon
-                  size={24}
-                  type="TRASH"
-                  onClick={async () => {
-                    if (deleteLoading) return;
-                    await deleteConnection({
-                      variables: {
-                        id: location.state.connectionId
-                      }
-                    });
-                    navigate('/contacts');
-                  }}
-                />
-              )}
+              <Icon
+                size={24}
+                type="TRASH"
+                onClick={async () => {
+                  if (deleteLoading) return;
+                  await deleteConnection({
+                    variables: {
+                      id: location.state.connectionId
+                    }
+                  });
+                  navigate('/contacts');
+                }}
+              />
+            )}
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
         </section>
@@ -109,16 +118,42 @@ const Profile = ({ location, navigate }) => {
           </section>
         )}
         <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Job Title</h2>
+          <p className="mt-4">{data.user.jobtitle ? data.user.jobtitle : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Location</h2>
+          <p className="mt-4">{data.user.location ? data.user.location : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Birthdate</h2>
+          <p className="mt-4">
+            {data.user.birthdate ? moment(data.user.birthdate).format('L') : <span>None</span>}
+          </p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Tagline</h2>
+          <p className="mt-4">{data.user.tagline ? data.user.tagline : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Bio</h2>
+          <p className="mt-4">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
           <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
           <ul className="mt-3">
-            {contacts.length ? contacts.map(field => (
-              <li key={field.id} className="flex mb-3">
-                <Icon type={field.type} size={24} />
-                <span className="ml-4">{field.value}</span>
-              </li>
-            )) : viewingContact ? (
+            {contacts.length ? (
+              contacts.map(field => (
+                <li key={field.id} className="flex mb-3">
+                  <Icon type={field.type} size={24} />
+                  <span className="ml-4">{field.value}</span>
+                </li>
+              ))
+            ) : viewingContact ? (
               <p>They have not shared any other methods of contact.</p>
-            ) : <p>You have not added any other methods of contact.</p>}
+            ) : (
+              <p>You have not added any other methods of contact.</p>
+            )}
           </ul>
         </section>
         <section className="mt-10">

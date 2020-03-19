@@ -39,11 +39,18 @@ const Home = () => {
 
     return () => {
       stopPolling();
-    }
+    };
   }, [createQRCode, stopPolling]);
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
-    update(cache, { data: { deleteNotification: { notification } } }) {
+    update(
+      cache,
+      {
+        data: {
+          deleteNotification: { notification }
+        }
+      }
+    ) {
       const { user } = cache.readQuery({ query: FETCH_HOME_USER });
       cache.writeQuery({
         query: FETCH_HOME_USER,
@@ -58,7 +65,14 @@ const Home = () => {
   });
 
   const [acceptConnection, { loading: connectLoading }] = useMutation(ACCEPT_CONNECTION, {
-    update(cache, { data: { acceptConnection: { connection } } }) {
+    update(
+      cache,
+      {
+        data: {
+          acceptConnection: { connection }
+        }
+      }
+    ) {
       const { user } = cache.readQuery({ query: FETCH_HOME_USER });
       cache.writeQuery({
         query: FETCH_HOME_USER,
@@ -68,13 +82,20 @@ const Home = () => {
             receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id),
             connections: user.connections.concat(connection)
           }
-        },
+        }
       });
     }
   });
 
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
-    update(cache, { data: { deleteConnection: { connection } } }) {
+    update(
+      cache,
+      {
+        data: {
+          deleteConnection: { connection }
+        }
+      }
+    ) {
       const { user } = cache.readQuery({ query: FETCH_HOME_USER });
       cache.writeQuery({
         query: FETCH_HOME_USER,
@@ -83,16 +104,17 @@ const Home = () => {
             ...user,
             receivedConnections: user.receivedConnections.filter(c => c.id !== connection.id)
           }
-        },
+        }
       });
     }
   });
 
-  if (loading) return (
-    <div className="flex justify-center h-screen items-center">
-      <BeatLoader size={35} loading={loading} color="#7B41FF" />
-    </div>
-  );
+  if (loading)
+    return (
+      <div className="flex justify-center h-screen items-center">
+        <BeatLoader size={35} loading={loading} color="#7B41FF" />
+      </div>
+    );
 
   if (error) {
     console.error(error);
@@ -104,8 +126,11 @@ const Home = () => {
   let notificationCount = receivedConnections.length + data.user.notifications.length;
 
   // note to future self: stop using netlify - this environment issue caused much grief
-  const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
-  const qrLink = inDevelopment ? `https://staging.swaap.co/qrLink/${qrCode}` : `https://swaap.co/qrLink/${qrCode}`;
+  const inDevelopment =
+    process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+  const qrLink = inDevelopment
+    ? `https://staging.swaap.co/qrLink/${qrCode}`
+    : `https://swaap.co/qrLink/${qrCode}`;
 
   return (
     <div className="pt-24 pb-6 bg-gray-200">
@@ -156,12 +181,7 @@ const Home = () => {
         {qrCode && (
           <div className="flex justify-center my-6">
             <span className="qr-box p-4">
-              <QRC
-                includeMargin={false}
-                level="Q"
-                renderAs="svg"
-                value={qrLink}
-              />
+              <QRC includeMargin={false} level="Q" renderAs="svg" value={qrLink} />
             </span>
           </div>
         )}
@@ -221,8 +241,7 @@ const Home = () => {
               <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-purple-700 text-white w-6 h-6 text-xs rounded-full leading-none flex items-center justify-center">
                 {notificationCount >= 1000
                   ? notificationCount.toString()[0] + 'k'
-                  : notificationCount
-                }
+                  : notificationCount}
               </div>
             )}
           </div>
@@ -255,15 +274,16 @@ const Home = () => {
             <p className="text-xl mt-10 text-gray-500">You are all caught up!</p>
           </div>
         ) : (
-            <ul className="my-5">
-              {data.user.notifications.map(n => (
-                <li
-                  key={n.id}
-                  className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
-                >
-                  <span className="mr-1">{n.message}</span>
-                  <button
-                    onClick={() => dismissNotification({
+          <ul className="my-5">
+            {data.user.notifications.map(n => (
+              <li
+                key={n.id}
+                className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
+              >
+                <span className="mr-1">{n.message}</span>
+                <button
+                  onClick={() =>
+                    dismissNotification({
                       variables: { id: n.id },
                       optimisticResponse: {
                         __typename: 'Mutation',
@@ -278,16 +298,17 @@ const Home = () => {
                           }
                         }
                       }
-                    })}
-                    disabled={dismissLoading}
-                    className="text-2xl focus:outline-none"
-                  >
-                    &times;
+                    })
+                  }
+                  disabled={dismissLoading}
+                  className="text-2xl focus:outline-none"
+                >
+                  &times;
                 </button>
-                </li>
-              ))}
-            </ul>
-          )}
+              </li>
+            ))}
+          </ul>
+        )}
         <p className="ml-4 text-xl text-gray-500">New Requests</p>
         {!receivedConnections.length ? (
           <div className="flex flex-col items-center my-16">
@@ -350,53 +371,54 @@ const Home = () => {
             <p className="text-xl mt-10 text-gray-500">Go out and meet more people!</p>
           </div>
         ) : (
-            <ul className="my-5">
-              {receivedConnections.map(c => (
-                <li
-                  key={c.id}
-                  className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg mt-3"
-                >
-                  <img
-                    src={c.sender.picture}
-                    alt="what they look like"
-                    className="rounded-full w-16 h-16 object-cover"
-                  />
-                  <h3 className="font-bold truncate w-1/3">{c.sender.name}</h3>
-                  <div>
-                    <button
-                      className="rounded-lg px-3 py-2 bg-purple-500 mr-3 text-white"
-                      onClick={() => {
-                        const { latitude, longitude } = position.coords;
-                        acceptConnection({
-                          variables: {
-                            id: c.id,
-                            receiverCoords: { latitude, longitude }
-                          },
-                          optimisticResponse: {
-                            __typename: 'Mutation',
-                            acceptConnection: {
-                              __typename: 'ProfileMutationResponse',
-                              code: 200,
-                              success: true,
-                              message: 'Connection request accepted',
-                              connection: {
-                                __typename: 'Connection',
-                                id: c.id,
-                                location: c.location,
-                                sender: c.sender,
-                                receiver: c.receiver
-                              }
+          <ul className="my-5">
+            {receivedConnections.map(c => (
+              <li
+                key={c.id}
+                className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg mt-3"
+              >
+                <img
+                  src={c.sender.picture}
+                  alt="what they look like"
+                  className="rounded-full w-16 h-16 object-cover"
+                />
+                <h3 className="font-bold truncate w-1/3">{c.sender.name}</h3>
+                <div>
+                  <button
+                    className="rounded-lg px-3 py-2 bg-purple-500 mr-3 text-white"
+                    onClick={() => {
+                      const { latitude, longitude } = position.coords;
+                      acceptConnection({
+                        variables: {
+                          id: c.id,
+                          receiverCoords: { latitude, longitude }
+                        },
+                        optimisticResponse: {
+                          __typename: 'Mutation',
+                          acceptConnection: {
+                            __typename: 'ProfileMutationResponse',
+                            code: 200,
+                            success: true,
+                            message: 'Connection request accepted',
+                            connection: {
+                              __typename: 'Connection',
+                              id: c.id,
+                              location: c.location,
+                              sender: c.sender,
+                              receiver: c.receiver
                             }
                           }
-                        });
-                      }}
-                      disabled={connectLoading}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      className="rounded-lg text-red-500"
-                      onClick={() => deleteConnection({
+                        }
+                      });
+                    }}
+                    disabled={connectLoading}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="rounded-lg text-red-500"
+                    onClick={() =>
+                      deleteConnection({
                         variables: { id: c.id },
                         optimisticResponse: {
                           __typename: 'Mutation',
@@ -411,18 +433,17 @@ const Home = () => {
                             }
                           }
                         }
-                      })}
-                      disabled={deleteLoading}
-                    >
-                      <p className="text-2xl">
-                        &times;
-                      </p>
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+                      })
+                    }
+                    disabled={deleteLoading}
+                  >
+                    <p className="text-2xl">&times;</p>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="profile-card bg-white w-11/12 pb-4 mx-auto">
