@@ -1,4 +1,5 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
@@ -26,6 +27,38 @@ const Profile = ({ location, navigate }) => {
       });
     }
   });
+
+  const ConfirmDelete = () => (
+    <Popup trigger={<button>
+      <Icon size={24}
+      type="TRASH"/></button>} modal position="top left">
+        {close => (
+          <div className="modal">
+            Are you sure you won't to delete this contact?
+            <div>
+              <br />
+              <button className="button" onClick={async () => {
+                        if (deleteLoading) return;
+                        await deleteConnection({
+                          variables: {
+                            id: location.state.connectionId
+                          }
+                        });
+                        navigate('/contacts');
+                      }}>Delete</button>
+              <button className="button"
+                onClick={() => {
+                  console.log("modal closed");
+                  close();
+                }}>Cancel</button>
+            </div>
+            {/* <a className="close" onClick={close}>
+              &times;
+            </a> */}
+          </div>
+      )}
+    </Popup>
+  );
 
   if (loading || !data)
     return (
@@ -82,19 +115,20 @@ const Profile = ({ location, navigate }) => {
                 </svg>
               </Link>
             ) : (
-                <Icon
-                  size={24}
-                  type="TRASH"
-                  onClick={async () => {
-                    if (deleteLoading) return;
-                    await deleteConnection({
-                      variables: {
-                        id: location.state.connectionId
-                      }
-                    });
-                    navigate('/contacts');
-                  }}
-                />
+              <ConfirmDelete />
+                // <Icon
+                //   size={24}
+                //   type="TRASH"
+                //   onClick={async () => {
+                //     if (deleteLoading) return;
+                //     await deleteConnection({
+                //       variables: {
+                //         id: location.state.connectionId
+                //       }
+                //     });
+                //     navigate('/contacts');
+                //   }}
+                // />
               )}
               {/* This is the delete button for a contact */}
           </div>
