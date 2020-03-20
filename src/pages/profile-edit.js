@@ -452,6 +452,7 @@ export default function ProfileEdit(props) {
                     key={type}
                     type={type}
                     size={24}
+                    classes={'social-icons'}
                     onClick={() => {
                       setLink(type);
                       document.getElementById('link-types').classList.toggle('hidden');
@@ -461,7 +462,7 @@ export default function ProfileEdit(props) {
             )}
           </div>
           {/* End Social Media Icons */}
-          {/* Globe Icon within link input */}
+          {/* PLUS Icon within link input */}
           <Icon
             type={link}
             size={24}

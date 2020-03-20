@@ -116,6 +116,16 @@
   color: #9a99a2;
 }
 
+/*SOCIAL ICONS */
+
+.social-icons{
+  fill: black;
+}
+
+.social-icons:hover{
+  fill: red;
+}
+
 /* PROFILE CARD */
 .profile-card {
   border-radius: 16px;
