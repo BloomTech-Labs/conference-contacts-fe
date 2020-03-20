@@ -11,14 +11,20 @@ import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
 export default function ProfileEdit(props) {
+  //State
   const [fields, setFields] = useState({});
+
+  //Profile links type state
   const [link, setLink] = useState('GLOBAL');
+
+  //GraphQL Queries
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
 
   const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
 
   const [updateProfileField] = useMutation(UPDATE_PROFILE_FIELD);
 
+  //create profile link
   const [createProfileField] = useMutation(CREATE_PROFILE_FIELD, {
     update(
       cache,
@@ -41,6 +47,7 @@ export default function ProfileEdit(props) {
     }
   });
 
+  //Delete Profile link
   const [deleteProfileField] = useMutation(DELETE_PROFILE_FIELD, {
     update(
       cache,
@@ -310,6 +317,7 @@ export default function ProfileEdit(props) {
           value={fields.bio || ''}
         />
       </div>
+      {/* Link Section Starts */}
       <div className="mt-4">
         <div className="flex justify-between items-center">
           <label className="block text-sm mb-1">Links</label>
@@ -321,6 +329,7 @@ export default function ProfileEdit(props) {
             &#43; add link
           </button>
         </div>
+        {/* User privacy drop down menu */}
         <ul className="mt-3">
           {fields?.profile?.map((field, idx) => (
             <li key={field.id} className="flex mb-3">
@@ -417,9 +426,13 @@ export default function ProfileEdit(props) {
             </li>
           ))}
         </ul>
+        {/* User privacy drop down menu ends */}
       </div>
+      {/* Link Section ENDS */}
+      {/* Link Form Input Starts */}
       <div id="new-link" className="hidden">
         <div className="relative flex items-center">
+          {/* Link Input */}
           <input
             type="text"
             name="link"
@@ -429,6 +442,8 @@ export default function ProfileEdit(props) {
             value={fields.link || ''}
             onKeyPress={handleNewLink}
           />
+          {/* End Link Input */}
+          {/* Social Media Icons */}
           <div id="link-types" className="absolute flex items-center right-0 mr-10 hidden">
             {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map(
               type =>
@@ -445,6 +460,8 @@ export default function ProfileEdit(props) {
                 )
             )}
           </div>
+          {/* End Social Media Icons */}
+          {/* Globe Icon within link input */}
           <Icon
             type={link}
             size={24}
@@ -453,6 +470,7 @@ export default function ProfileEdit(props) {
           />
         </div>
       </div>
+      {/* End of Link Input Section*/}
       <div className="mt-4">
         <div className="flex justify-between items-center">
           <label className="block text-sm mb-1">Interests</label>
