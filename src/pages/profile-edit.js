@@ -15,7 +15,7 @@ export default function ProfileEdit(props) {
   const [fields, setFields] = useState({});
 
   //Profile links type state
-  const [link, setLink] = useState('GLOBAL');
+  const [link, setLink] = useState('PLUS');
 
   //GraphQL Queries
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
@@ -94,7 +94,7 @@ export default function ProfileEdit(props) {
   const handleCancel = () => props.navigate('/profile');
 
   const handleNewLink = async event => {
-    if (event.key !== 'Enter' || link === 'GLOBAL') return;
+    if (event.key !== 'Enter' || link === 'PLUS') return;
 
     const profileData = {
       value: fields.link,
