@@ -1,9 +1,11 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
+import * as moment from 'moment';
 
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
@@ -12,20 +14,62 @@ const Profile = ({ location, navigate }) => {
   });
 
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
-    update(cache, { data: { deleteConnection: { connection } } }) {
+    update(
+      cache,
+      {
+        data: {
+          deleteConnection: { connection }
+        }
+      }
+    ) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       const connections = user.connections.filter(c => c.id !== connection.id);
       const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
-          user: location.state.status === 'PENDING'
-            ? { ...user, pendingConnections }
-            : { ...user, connections }
-        },
+          user:
+            location.state.status === 'PENDING'
+              ? { ...user, pendingConnections }
+              : { ...user, connections }
+        }
       });
     }
   });
+
+  const ConfirmDelete = () => (
+    <Popup trigger={<button>
+      <Icon size={24}
+      type="TRASH"/></button>} modal position="top left">
+        {close => (
+          <div className="modal text-center font-bold my-4 w-full object-contain">
+            Are you sure you won't to delete this contact?
+            <div className="">
+              <br />
+              <div className="flex">
+                <button className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded" onClick={async () => {
+                          if (deleteLoading) return;
+                          await deleteConnection({
+                            variables: {
+                              id: location.state.connectionId
+                            }
+                          });
+                          navigate('/contacts');
+                        }}>Delete</button>
+                <button className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => {
+                    console.log("modal closed");
+                    close();
+                  }}>Cancel</button>
+              </div>
+            </div>
+            {/* <a className="close" onClick={close}>
+              &times;
+            </a> */}
+          </div>
+      )}
+    </Popup>
+  );
 
   if (loading || !data)
     return (
@@ -82,20 +126,22 @@ const Profile = ({ location, navigate }) => {
                 </svg>
               </Link>
             ) : (
-                <Icon
-                  size={24}
-                  type="TRASH"
-                  onClick={async () => {
-                    if (deleteLoading) return;
-                    await deleteConnection({
-                      variables: {
-                        id: location.state.connectionId
-                      }
-                    });
-                    navigate('/contacts');
-                  }}
-                />
+              <ConfirmDelete />
+                // <Icon
+                //   size={24}
+                //   type="TRASH"
+                //   onClick={async () => {
+                //     if (deleteLoading) return;
+                //     await deleteConnection({
+                //       variables: {
+                //         id: location.state.connectionId
+                //       }
+                //     });
+                //     navigate('/contacts');
+                //   }}
+                // />
               )}
+              {/* This is the delete button for a contact */}
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
         </section>
@@ -109,16 +155,42 @@ const Profile = ({ location, navigate }) => {
           </section>
         )}
         <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Job Title</h2>
+          <p className="mt-4">{data.user.jobtitle ? data.user.jobtitle : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Location</h2>
+          <p className="mt-4">{data.user.location ? data.user.location : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Birthdate</h2>
+          <p className="mt-4">
+            {data.user.birthdate ? moment(data.user.birthdate).format('L') : <span>None</span>}
+          </p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Tagline</h2>
+          <p className="mt-4">{data.user.tagline ? data.user.tagline : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Bio</h2>
+          <p className="mt-4">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
           <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
           <ul className="mt-3">
-            {contacts.length ? contacts.map(field => (
-              <li key={field.id} className="flex mb-3">
-                <Icon type={field.type} size={24} />
-                <span className="ml-4">{field.value}</span>
-              </li>
-            )) : viewingContact ? (
+            {contacts.length ? (
+              contacts.map(field => (
+                <li key={field.id} className="flex mb-3">
+                  <Icon type={field.type} size={24} />
+                  <span className="ml-4">{field.value}</span>
+                </li>
+              ))
+            ) : viewingContact ? (
               <p>They have not shared any other methods of contact.</p>
-            ) : <p>You have not added any other methods of contact.</p>}
+            ) : (
+              <p>You have not added any other methods of contact.</p>
+            )}
           </ul>
         </section>
         <section className="mt-10">
