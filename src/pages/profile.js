@@ -118,21 +118,7 @@ const Profile = ({ location, navigate }) => {
               </Link>
             ) : (
               <ConfirmDelete />
-                // <Icon
-                //   size={24}
-                //   type="TRASH"
-                //   onClick={async () => {
-                //     if (deleteLoading) return;
-                //     await deleteConnection({
-                //       variables: {
-                //         id: location.state.connectionId
-                //       }
-                //     });
-                //     navigate('/contacts');
-                //   }}
-                // />
               )}
-              {/* This is the delete button for a contact */}
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
         </section>
