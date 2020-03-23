@@ -13,6 +13,7 @@ import BeatLoader from 'react-spinners/BeatLoader';
 export default function ProfileEdit(props) {
   //State
   const [fields, setFields] = useState({});
+  const [hoverFill, setHoverFill] = useState('');
 
   //Profile links type state
   const [link, setLink] = useState('PLUS');
@@ -127,6 +128,14 @@ export default function ProfileEdit(props) {
       console.error('createProfileField', error);
     }
   };
+  
+  //handle Icon component svg color fill change
+  const handleHoverFill = (e, type, color) => {
+    if(e.target.id === type){
+      setHoverFill(color);
+      console.log(e.target);
+    }
+  }
 
   const updateLink = async (field, changes) => {
     try {
@@ -324,6 +333,7 @@ export default function ProfileEdit(props) {
           <button
             type="button"
             className="text-xs text-blue-500 focus:outline-none"
+            onMouseOver 
             onClick={() => document.getElementById('new-link').classList.toggle('hidden')}
           >
             &#43; add link
@@ -449,10 +459,14 @@ export default function ProfileEdit(props) {
               type =>
                 type !== link && (
                   <Icon
+                    id={type}
                     key={type}
                     type={type}
                     size={24}
                     classes={'social-icons'}
+                    onMouseEnter={(e) => handleHoverFill(e, type, 'red')}
+                    onMouseLeave={ () => setHoverFill('')}
+                    hoverFill={hoverFill}
                     onClick={() => {
                       setLink(type);
                       document.getElementById('link-types').classList.toggle('hidden');
