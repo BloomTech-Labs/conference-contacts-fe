@@ -167,7 +167,16 @@ const Home = () => {
                 </linearGradient>
               </defs>
             </svg>
-            <p className="text-lg">231</p>
+            {/* displays how many connections a user has - by tristan */}
+            <div className="text-lg">
+              {data.user.connections.length === 1 ? (
+                <p>{data.user.connections.length} Swaap!</p>
+              ) : data.user.connections.length === 0 ? (
+                <p>No Swaaps!</p>
+              ) : (
+                <p>{data.user.connections.length} Swaaps! </p>
+              )}
+            </div>
           </div>
           <img
             className="rounded-full shadow-lg w-96 h-96 object-cover -mt-8 ml-2"
