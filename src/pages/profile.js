@@ -5,76 +5,98 @@ import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
+import * as moment from 'moment';
 
 const Profile = ({ location, navigate }) => {
-  const viewingContact = Boolean(location.state.userId);
-  const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
-    variables: { id: location.state.userId }
-  });
+	const viewingContact = Boolean(location.state.userId);
+	const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
+		variables: { id: location.state.userId }
+	});
 
-  const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
-    update(cache, { data: { deleteConnection: { connection } } }) {
-      const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
-      const connections = user.connections.filter(c => c.id !== connection.id);
-      const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
-      cache.writeQuery({
-        query: GET_USER_CONNECTIONS,
-        data: {
-          user: location.state.status === 'PENDING'
-            ? { ...user, pendingConnections }
-            : { ...user, connections }
-        },
-      });
-    }
-  });
+	const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
+		update(
+			cache,
+			{
+				data: {
+					deleteConnection: { connection }
+				}
+			}
+		) {
+			const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+			const connections = user.connections.filter(c => c.id !== connection.id);
+			const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
+			cache.writeQuery({
+				query: GET_USER_CONNECTIONS,
+				data: {
+					user:
+						location.state.status === 'PENDING' ? { ...user, pendingConnections } : { ...user, connections }
+				}
+			});
+		}
+	});
 
-  const ConfirmDelete = () => (
-    <Popup trigger={<button>
-      <Icon size={24}
-      type="TRASH"/></button>} modal position="top left">
-        {close => (
-          <div className="modal text-center font-bold my-4 w-full object-contain">
-            Are you sure you won't to delete this contact?
-            <div className="">
-              <br />
-              <div className="flex">
-                <button className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded" onClick={async () => {
-                          if (deleteLoading) return;
-                          await deleteConnection({
-                            variables: {
-                              id: location.state.connectionId
-                            }
-                          });
-                          navigate('/contacts');
-                        }}>Delete</button>
-                <button className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => {
-                    console.log("modal closed");
-                    close();
-                  }}>Cancel</button>
-              </div>
-            </div>
-            {/* <a className="close" onClick={close}>
+	const ConfirmDelete = () => (
+		<Popup
+			trigger={
+				<button>
+					<Icon size={24} type="TRASH" />
+				</button>
+			}
+			modal
+			position="top left"
+		>
+			{close => (
+				<div className="modal text-center font-bold my-4 w-full object-contain">
+					Are you sure you won't to delete this contact?
+					<div className="">
+						<br />
+						<div className="flex">
+							<button
+								className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
+								onClick={async () => {
+									if (deleteLoading) return;
+									await deleteConnection({
+										variables: {
+											id: location.state.connectionId
+										}
+									});
+									navigate('/contacts');
+								}}
+							>
+								Delete
+							</button>
+							<button
+								className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
+								onClick={() => {
+									console.log('modal closed');
+									close();
+								}}
+							>
+								Cancel
+							</button>
+						</div>
+					</div>
+					{/* <a className="close" onClick={close}>
               &times;
             </a> */}
-          </div>
-      )}
-    </Popup>
-  );
+				</div>
+			)}
+		</Popup>
+	);
 
-  if (loading || !data)
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <BeatLoader size={35} loading={loading} color="#7B41FF" />
-      </div>
-    );
+	if (loading || !data)
+		return (
+			<div className="flex justify-center h-screen items-center">
+				<BeatLoader size={35} loading={loading} color="#7B41FF" />
+			</div>
+		);
 
-  if (error) return <p>There was an error: {error}</p>;
+	if (error) return <p>There was an error: {error}</p>;
 
-  const preferredContact = data.user.profile.find(field => field.preferredContact);
-  const contacts = preferredContact
-    ? data.user.profile.filter(field => field.id !== preferredContact.id)
-    : data.user.profile;
+	const preferredContact = data.user.profile.find(field => field.preferredContact);
+	const contacts = preferredContact
+		? data.user.profile.filter(field => field.id !== preferredContact.id)
+		: data.user.profile;
 
   return (
     <div className="pt-5 flex flex-col overflow-hidden">
