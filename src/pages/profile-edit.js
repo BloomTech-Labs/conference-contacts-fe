@@ -214,7 +214,7 @@ export default function ProfileEdit(props) {
   const preferredContact = fields?.profile?.find(field => field.preferredContact);
 
   return (
-    <div className="pt-24 p-6">
+    <div className="pt-24 p-6 smcustom:pt-24 mdcustom:pt-32">
       <div>
         <div className="flex justify-between">
           <button type="button" className="text-red-600 focus:outline-none" onClick={handleCancel}>
