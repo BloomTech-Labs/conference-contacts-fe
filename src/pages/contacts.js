@@ -45,7 +45,7 @@ const Contacts = ({ navigate }) => {
   }
 
   return (
-    <div className='pt-24 pb-6 bg-gray-200 smcustom:pt-24 mdcustom:pt-32'>
+    <div className='pt-24 pb-6 smcustom:pt-24 mdcustom:pt-32'>
       <div className='flex justify-center items-center mb-6'>
         <div className='m-auto'>
           <p className='text-2xl'>Contacts</p>
