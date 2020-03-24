@@ -52,7 +52,7 @@ const Profile = ({ location, navigate }) => {
 	return (
 		// following two divs add card style
 		// to profile page
-		<div className="pt-24 pb-6 bg-gray-200">
+		<div className="pt-24 pb-6 bg-gray-200 smcustom:pt-24 mdcustom:pt-32">
 			<div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
 				<div className="pt-5 flex flex-col overflow-hidden">
 					{/* IMG ROUND LARGE */}
