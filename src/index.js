@@ -28,6 +28,11 @@ client.cache.writeData({
   }
 });
 
+window.addEventListener('beforeunload', () => {
+  // ? is this a safe/clean way to renew the token
+  localStorage.removeItem('token');
+})
+
 const onRedirectCallback = appState => {
   history.navigate(
     appState && appState.targetUrl
