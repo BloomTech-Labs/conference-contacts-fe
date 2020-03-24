@@ -35,55 +35,6 @@ const Profile = ({ location, navigate }) => {
 		}
 	});
 
-	const ConfirmDelete = () => (
-		<Popup
-			trigger={
-				<button>
-					<Icon size={24} type="TRASH" />
-				</button>
-			}
-			modal
-			position="top left"
-		>
-			{close => (
-				<div className="modal text-center font-bold my-4 w-full object-contain">
-					Are you sure you won't to delete this contact?
-					<div className="">
-						<br />
-						<div className="flex">
-							<button
-								className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
-								onClick={async () => {
-									if (deleteLoading) return;
-									await deleteConnection({
-										variables: {
-											id: location.state.connectionId
-										}
-									});
-									navigate('/contacts');
-								}}
-							>
-								Delete
-							</button>
-							<button
-								className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
-								onClick={() => {
-									console.log('modal closed');
-									close();
-								}}
-							>
-								Cancel
-							</button>
-						</div>
-					</div>
-					{/* <a className="close" onClick={close}>
-              &times;
-            </a> */}
-				</div>
-			)}
-		</Popup>
-	);
-
 	if (loading || !data)
 		return (
 			<div className="flex justify-center h-screen items-center">
@@ -99,6 +50,10 @@ const Profile = ({ location, navigate }) => {
 		: data.user.profile;
 
   return (
+    // following two divs add card style
+    // to profile page
+    <div className="pt-24 pb-6 bg-gray-200">
+      <div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
     <div className="pt-5 flex flex-col overflow-hidden">
       {/* IMG ROUNG LARGE */}
       {viewingContact && (
@@ -106,7 +61,7 @@ const Profile = ({ location, navigate }) => {
           <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
         </div>
       )}
-      <div className="self-end mt-6 -mr-20">
+      <div className="self-end -mt-16 -mr-12">
         <img
           className="rounded-full shadow-lg w-96 h-96 object-cover"
           src={data.user.picture}
@@ -139,7 +94,49 @@ const Profile = ({ location, navigate }) => {
                 </svg>
               </Link>
             ) : (
-              <ConfirmDelete />
+				<Popup
+				trigger={
+				  <button>
+					<Icon size={24} type="TRASH" />
+				  </button>
+				}
+				modal
+				position="top left"
+			  >
+				{close => (
+				  <div className="modal text-center font-bold my-4 w-full object-contain">
+					Are you sure you want to delete this contact?
+					<div className="">
+					  <br />
+					  <div className="flex">
+						<button
+						  className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
+						  onClick={async () => {
+							if (deleteLoading) return;
+							await deleteConnection({
+							  variables: {
+								id: location.state.connectionId
+							  }
+							});
+							navigate('/contacts');
+						  }}
+						>
+						  Delete
+						</button>
+						<button
+						  className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
+						  onClick={() => {
+							console.log('modal closed');
+							close();
+						  }}
+						>
+						  Cancel
+						</button>
+					  </div>
+					</div>
+				  </div>
+				)}
+			  </Popup>
               )}
           </div>
           <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
@@ -217,6 +214,9 @@ const Profile = ({ location, navigate }) => {
           <p className="mt-4">None</p>
         </section>
       </div>
+    </div>
+    {/* <!-- closing the two card style divs: --> */}
+    </div>
     </div>
   );
 };
