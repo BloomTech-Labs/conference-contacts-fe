@@ -94,7 +94,49 @@ const Profile = ({ location, navigate }) => {
 										</svg>
 									</Link>
 								) : (
-									<ConfirmDelete />
+									<Popup
+										trigger={
+											<button>
+												<Icon size={24} type="TRASH" />
+											</button>
+										}
+										modal
+										position="top left"
+									>
+										{close => (
+											<div className="modal text-center font-bold my-4 w-full object-contain">
+												Are you sure you want to delete this contact?
+												<div className="">
+													<br />
+													<div className="flex">
+														<button
+															className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
+															onClick={async () => {
+																if (deleteLoading) return;
+																await deleteConnection({
+																	variables: {
+																		id: location.state.connectionId
+																	}
+																});
+																navigate('/contacts');
+															}}
+														>
+															Delete
+														</button>
+														<button
+															className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
+															onClick={() => {
+																console.log('modal closed');
+																close();
+															}}
+														>
+															Cancel
+														</button>
+													</div>
+												</div>
+											</div>
+										)}
+									</Popup>
 								)}
 							</div>
 							<p className="text-gray-700 tracking-wide">{data.user.industry}</p>
