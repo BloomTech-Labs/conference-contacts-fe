@@ -6,13 +6,11 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
-
 const Profile = ({ location, navigate }) => {
 	const viewingContact = Boolean(location.state.userId);
 	const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
 		variables: { id: location.state.userId }
 	});
-
 	const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
 		update(
 			cache,
@@ -34,26 +32,21 @@ const Profile = ({ location, navigate }) => {
 			});
 		}
 	});
-
 	if (loading || !data)
 		return (
 			<div className="flex justify-center h-screen items-center">
 				<BeatLoader size={35} loading={loading} color="#7B41FF" />
 			</div>
 		);
-
 	if (error) return <p>There was an error: {error}</p>;
-
 	const preferredContact = data.user.profile.find(field => field.preferredContact);
 	const contacts = preferredContact
 		? data.user.profile.filter(field => field.id !== preferredContact.id)
 		: data.user.profile;
-
 	return (
 		// following two divs add card style
 		// to profile page
-		<div className="pt-24 pb-6 bg-gray-200">
-			<div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
+			<div className="pt-24 pb-6 bg-gray-200 smcustom:pt-24 mdcustom:pt-32">			<div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
 				<div className="pt-5 flex flex-col overflow-hidden">
 					{/* IMG ROUND LARGE */}
 					{viewingContact && (
@@ -168,6 +161,28 @@ const Profile = ({ location, navigate }) => {
 							</ul>
 						</section>
 						<section className="mt-10">
+							<h2 className="uppercase text-xs text-gray-900 tracking-widest">Job Title</h2>
+							<p className="mt-4">{data.user.jobtitle ? data.user.jobtitle : <span>None</span>}</p>
+						</section>
+						<section className="mt-10">
+							<h2 className="uppercase text-xs text-gray-900 tracking-widest">Location</h2>
+							<p className="mt-4">{data.user.location ? data.user.location : <span>None</span>}</p>
+						</section>
+						<section className="mt-10">
+							<h2 className="uppercase text-xs text-gray-900 tracking-widest">Birthdate</h2>
+							<p className="mt-4">
+								{data.user.birthdate ? moment(data.user.birthdate).format('L') : <span>None</span>}
+							</p>
+						</section>
+						<section className="mt-10">
+							<h2 className="uppercase text-xs text-gray-900 tracking-widest">Tagline</h2>
+							<p className="mt-4">{data.user.tagline ? data.user.tagline : <span>None</span>}</p>
+						</section>
+						<section className="mt-10">
+							<h2 className="uppercase text-xs text-gray-900 tracking-widest">Bio</h2>
+							<p className="mt-4">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+						</section>
+						<section className="mt-10">
 							<h2 className="uppercase text-xs text-gray-900 tracking-widest">Interests</h2>
 							<div className="flex flex-wrap">
 								<div className="flex items-center bg-gray-200 text-gray-700 rounded-full py-1 px-4 mr-3 mt-3">
@@ -202,5 +217,4 @@ const Profile = ({ location, navigate }) => {
 		</div>
 	);
 };
-
 export default Profile;
