@@ -130,8 +130,8 @@ const Home = () => {
 	const qrLink = inDevelopment ? `https://staging.swaap.co/qrLink/${qrCode}` : `https://swaap.co/qrLink/${qrCode}`;
 
   return (
-		<div className="pt-24 pb-6 bg-gray-200">
-			<div className="profile-card pb-4 bg-white mx-6 shadow-md overflow-hidden">
+		<div className="pt-24 pb-6 bg-gray-200 smcustom:pt-24 mdcustom:pt-32">
+			<div className="profile-card pb-4 bg-white mx-6 shadow-md mt-0 overflow-hidden">
 				<div className="flex justify-between">
 					<div className="flex pl-2 pt-4">
 						<svg
