@@ -154,6 +154,10 @@ const Profile = ({ location, navigate }) => {
           </section>
         )}
         <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Bio</h2>
+          <p className="mt-4">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
           <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
           <ul className="mt-3">
             {contacts.length ? contacts.map(field => (
@@ -165,6 +169,24 @@ const Profile = ({ location, navigate }) => {
               <p>They have not shared any other methods of contact.</p>
             ) : <p>You have not added any other methods of contact.</p>}
           </ul>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Job Title</h2>
+          <p className="mt-4">{data.user.jobtitle ? data.user.jobtitle : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Location</h2>
+          <p className="mt-4">{data.user.location ? data.user.location : <span>None</span>}</p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Birthdate</h2>
+          <p className="mt-4">
+            {data.user.birthdate ? moment(data.user.birthdate).format('L') : <span>None</span>}
+          </p>
+        </section>
+        <section className="mt-10">
+          <h2 className="uppercase text-xs text-gray-900 tracking-widest">Tagline</h2>
+          <p className="mt-4">{data.user.tagline ? data.user.tagline : <span>None</span>}</p>
         </section>
         <section className="mt-10">
           <h2 className="uppercase text-xs text-gray-900 tracking-widest">Interests</h2>
