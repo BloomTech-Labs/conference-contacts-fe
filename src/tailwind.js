@@ -123,6 +123,8 @@ module.exports = {
 				800: '#97266d',
 				900: '#702459'
 			}
+
+	
 		},
 		spacing: {
 			px: '1px',
