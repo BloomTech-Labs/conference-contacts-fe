@@ -51,7 +51,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:styles": "postcss src/styles/tailwind.css -o src/styles/index.css",
-    "prebuild": "NODE_ENV=production npm run build:styles",
     "prestart": "npm run build:styles",
     "cypress:open": "cypress open"
   },
