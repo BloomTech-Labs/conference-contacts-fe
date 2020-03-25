@@ -355,23 +355,6 @@ template {
  */
 
 /**
- * 1. Prevent padding and border from affecting element width
- * https://goo.gl/pYtbK7
- * 2. Change the default font family in all browsers (opinionated)
- */
-
-html {
-  box-sizing: border-box; /* 1 */
-  font-family: sans-serif; /* 2 */
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-/**
  * Removes the default spacing and border for appropriate elements.
  */
 
@@ -392,7 +375,8 @@ pre {
 }
 
 button {
-  background: transparent;
+  background-color: transparent;
+  background-image: none;
   padding: 0;
 }
 
@@ -423,38 +407,50 @@ ul {
  */
 
 /**
- * 1. Use the system font stack as a sane default.
+ * 1. Use the user's configured `sans` font-family (with Tailwind's default
+ *    sans-serif font stack as a fallback) as a sane default.
  * 2. Use Tailwind's default "normal" line-height so the user isn't forced
- * to override it to ensure consistency even when using the default theme.
+ *    to override it to ensure consistency even when using the default theme.
  */
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
 /**
- * Allow adding a border to an element by just adding a border-width.
+ * 1. Prevent padding and border from affecting element width.
  *
- * By default, the way the browser specifies that an element should have no
- * border is by setting it's border-style to `none` in the user-agent
- * stylesheet.
+ *    We used to set this in the html element and inherit from
+ *    the parent element for everything else. This caused issues
+ *    in shadow-dom-enhanced elements like <details> where the content
+ *    is wrapped by a div with box-sizing set to `content-box`.
  *
- * In order to easily add borders to elements by just setting the `border-width`
- * property, we change the default border-style for all elements to `solid`, and
- * use border-width to hide them instead. This way our `border` utilities only
- * need to set the `border-width` property instead of the entire `border`
- * shorthand, making our border utilities much more straightforward to compose.
+ *    https://github.com/mozdevs/cssremedy/issues/4
  *
- * https://github.com/tailwindcss/tailwindcss/pull/116
+ *
+ * 2. Allow adding a border to an element by just adding a border-width.
+ *
+ *    By default, the way the browser specifies that an element should have no
+ *    border is by setting it's border-style to `none` in the user-agent
+ *    stylesheet.
+ *
+ *    In order to easily add borders to elements by just setting the `border-width`
+ *    property, we change the default border-style for all elements to `solid`, and
+ *    use border-width to hide them instead. This way our `border` utilities only
+ *    need to set the `border-width` property instead of the entire `border`
+ *    shorthand, making our border utilities much more straightforward to compose.
+ *
+ *    https://github.com/tailwindcss/tailwindcss/pull/116
  */
 
 *,
-*::before,
-*::after {
-  border-width: 0;
-  border-style: solid;
-  border-color: #e2e8f0;
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e2e8f0; /* 2 */
 }
 
 /*
@@ -2980,6 +2976,10 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -3046,6 +3046,26 @@ video {
 .rounded-l {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+}
+
+.rounded-t-md {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+.rounded-r-md {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+.rounded-b-md {
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.rounded-l-md {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
 }
 
 .rounded-t-lg {
@@ -3134,6 +3154,22 @@ video {
 
 .rounded-bl {
   border-bottom-left-radius: 0.25rem;
+}
+
+.rounded-tl-md {
+  border-top-left-radius: 0.375rem;
+}
+
+.rounded-tr-md {
+  border-top-right-radius: 0.375rem;
+}
+
+.rounded-br-md {
+  border-bottom-right-radius: 0.375rem;
+}
+
+.rounded-bl-md {
+  border-bottom-left-radius: 0.375rem;
 }
 
 .rounded-tl-lg {
@@ -3288,6 +3324,14 @@ video {
   border-left-width: 1px;
 }
 
+.box-border {
+  box-sizing: border-box;
+}
+
+.box-content {
+  box-sizing: content-box;
+}
+
 .cursor-auto {
   cursor: auto;
 }
@@ -3336,16 +3380,44 @@ video {
   display: inline-flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .table {
   display: table;
 }
 
-.table-row {
-  display: table-row;
+.table-caption {
+  display: table-caption;
 }
 
 .table-cell {
   display: table-cell;
+}
+
+.table-column {
+  display: table-column;
+}
+
+.table-column-group {
+  display: table-column-group;
+}
+
+.table-footer-group {
+  display: table-footer-group;
+}
+
+.table-header-group {
+  display: table-header-group;
+}
+
+.table-row-group {
+  display: table-row-group;
+}
+
+.table-row {
+  display: table-row;
 }
 
 .hidden {
@@ -3438,6 +3510,10 @@ video {
 
 .justify-around {
   justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .content-center {
@@ -3567,6 +3643,18 @@ video {
 .clearfix:after {
   content: "";
   display: table;
+  clear: both;
+}
+
+.clear-left {
+  clear: left;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.clear-both {
   clear: both;
 }
 
@@ -3780,6 +3868,38 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.leading-3 {
+  line-height: .75rem;
+}
+
+.leading-4 {
+  line-height: 1rem;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
+}
+
+.leading-8 {
+  line-height: 2rem;
+}
+
+.leading-9 {
+  line-height: 2.25rem;
+}
+
+.leading-10 {
+  line-height: 2.5rem;
 }
 
 .leading-none {
@@ -5092,6 +5212,10 @@ video {
 
 .max-h-screen {
   max-height: 100vh;
+}
+
+.max-w-none {
+  max-width: none;
 }
 
 .max-w-xs {
@@ -6823,6 +6947,14 @@ video {
   resize: both;
 }
 
+.shadow-xs {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
 .shadow {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
@@ -6855,6 +6987,14 @@ video {
   box-shadow: none;
 }
 
+.hover\:shadow-xs:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.hover\:shadow-sm:hover {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
 .hover\:shadow:hover {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
@@ -6885,6 +7025,14 @@ video {
 
 .hover\:shadow-none:hover {
   box-shadow: none;
+}
+
+.focus\:shadow-xs:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.focus\:shadow-sm:focus {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .focus\:shadow:focus {
@@ -6925,6 +7073,18 @@ video {
 
 .stroke-current {
   stroke: currentColor;
+}
+
+.stroke-0 {
+  stroke-width: 0;
+}
+
+.stroke-1 {
+  stroke-width: 1;
+}
+
+.stroke-2 {
+  stroke-width: 2;
 }
 
 .table-auto {
@@ -8518,6 +8678,2522 @@ video {
 
 .z-auto {
   z-index: auto;
+}
+
+.gap-0 {
+  grid-gap: 0;
+  gap: 0;
+}
+
+.gap-1 {
+  grid-gap: 0.25rem;
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  grid-gap: 0.5rem;
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  grid-gap: 0.75rem;
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.gap-5 {
+  grid-gap: 1.25rem;
+  gap: 1.25rem;
+}
+
+.gap-6 {
+  grid-gap: 1.5rem;
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  grid-gap: 2rem;
+  gap: 2rem;
+}
+
+.gap-10 {
+  grid-gap: 2.5rem;
+  gap: 2.5rem;
+}
+
+.gap-12 {
+  grid-gap: 3rem;
+  gap: 3rem;
+}
+
+.gap-16 {
+  grid-gap: 4rem;
+  gap: 4rem;
+}
+
+.gap-20 {
+  grid-gap: 5rem;
+  gap: 5rem;
+}
+
+.gap-24 {
+  grid-gap: 6rem;
+  gap: 6rem;
+}
+
+.gap-32 {
+  grid-gap: 8rem;
+  gap: 8rem;
+}
+
+.gap-40 {
+  grid-gap: 10rem;
+  gap: 10rem;
+}
+
+.gap-48 {
+  grid-gap: 12rem;
+  gap: 12rem;
+}
+
+.gap-56 {
+  grid-gap: 14rem;
+  gap: 14rem;
+}
+
+.gap-64 {
+  grid-gap: 16rem;
+  gap: 16rem;
+}
+
+.gap-96 {
+  grid-gap: 24rem;
+  gap: 24rem;
+}
+
+.gap-128 {
+  grid-gap: 32rem;
+  gap: 32rem;
+}
+
+.gap-px {
+  grid-gap: 1px;
+  gap: 1px;
+}
+
+.col-gap-0 {
+  grid-column-gap: 0;
+  column-gap: 0;
+}
+
+.col-gap-1 {
+  grid-column-gap: 0.25rem;
+  column-gap: 0.25rem;
+}
+
+.col-gap-2 {
+  grid-column-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+
+.col-gap-3 {
+  grid-column-gap: 0.75rem;
+  column-gap: 0.75rem;
+}
+
+.col-gap-4 {
+  grid-column-gap: 1rem;
+  column-gap: 1rem;
+}
+
+.col-gap-5 {
+  grid-column-gap: 1.25rem;
+  column-gap: 1.25rem;
+}
+
+.col-gap-6 {
+  grid-column-gap: 1.5rem;
+  column-gap: 1.5rem;
+}
+
+.col-gap-8 {
+  grid-column-gap: 2rem;
+  column-gap: 2rem;
+}
+
+.col-gap-10 {
+  grid-column-gap: 2.5rem;
+  column-gap: 2.5rem;
+}
+
+.col-gap-12 {
+  grid-column-gap: 3rem;
+  column-gap: 3rem;
+}
+
+.col-gap-16 {
+  grid-column-gap: 4rem;
+  column-gap: 4rem;
+}
+
+.col-gap-20 {
+  grid-column-gap: 5rem;
+  column-gap: 5rem;
+}
+
+.col-gap-24 {
+  grid-column-gap: 6rem;
+  column-gap: 6rem;
+}
+
+.col-gap-32 {
+  grid-column-gap: 8rem;
+  column-gap: 8rem;
+}
+
+.col-gap-40 {
+  grid-column-gap: 10rem;
+  column-gap: 10rem;
+}
+
+.col-gap-48 {
+  grid-column-gap: 12rem;
+  column-gap: 12rem;
+}
+
+.col-gap-56 {
+  grid-column-gap: 14rem;
+  column-gap: 14rem;
+}
+
+.col-gap-64 {
+  grid-column-gap: 16rem;
+  column-gap: 16rem;
+}
+
+.col-gap-96 {
+  grid-column-gap: 24rem;
+  column-gap: 24rem;
+}
+
+.col-gap-128 {
+  grid-column-gap: 32rem;
+  column-gap: 32rem;
+}
+
+.col-gap-px {
+  grid-column-gap: 1px;
+  column-gap: 1px;
+}
+
+.row-gap-0 {
+  grid-row-gap: 0;
+  row-gap: 0;
+}
+
+.row-gap-1 {
+  grid-row-gap: 0.25rem;
+  row-gap: 0.25rem;
+}
+
+.row-gap-2 {
+  grid-row-gap: 0.5rem;
+  row-gap: 0.5rem;
+}
+
+.row-gap-3 {
+  grid-row-gap: 0.75rem;
+  row-gap: 0.75rem;
+}
+
+.row-gap-4 {
+  grid-row-gap: 1rem;
+  row-gap: 1rem;
+}
+
+.row-gap-5 {
+  grid-row-gap: 1.25rem;
+  row-gap: 1.25rem;
+}
+
+.row-gap-6 {
+  grid-row-gap: 1.5rem;
+  row-gap: 1.5rem;
+}
+
+.row-gap-8 {
+  grid-row-gap: 2rem;
+  row-gap: 2rem;
+}
+
+.row-gap-10 {
+  grid-row-gap: 2.5rem;
+  row-gap: 2.5rem;
+}
+
+.row-gap-12 {
+  grid-row-gap: 3rem;
+  row-gap: 3rem;
+}
+
+.row-gap-16 {
+  grid-row-gap: 4rem;
+  row-gap: 4rem;
+}
+
+.row-gap-20 {
+  grid-row-gap: 5rem;
+  row-gap: 5rem;
+}
+
+.row-gap-24 {
+  grid-row-gap: 6rem;
+  row-gap: 6rem;
+}
+
+.row-gap-32 {
+  grid-row-gap: 8rem;
+  row-gap: 8rem;
+}
+
+.row-gap-40 {
+  grid-row-gap: 10rem;
+  row-gap: 10rem;
+}
+
+.row-gap-48 {
+  grid-row-gap: 12rem;
+  row-gap: 12rem;
+}
+
+.row-gap-56 {
+  grid-row-gap: 14rem;
+  row-gap: 14rem;
+}
+
+.row-gap-64 {
+  grid-row-gap: 16rem;
+  row-gap: 16rem;
+}
+
+.row-gap-96 {
+  grid-row-gap: 24rem;
+  row-gap: 24rem;
+}
+
+.row-gap-128 {
+  grid-row-gap: 32rem;
+  row-gap: 32rem;
+}
+
+.row-gap-px {
+  grid-row-gap: 1px;
+  row-gap: 1px;
+}
+
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.grid-flow-row-dense {
+  grid-auto-flow: row dense;
+}
+
+.grid-flow-col-dense {
+  grid-auto-flow: column dense;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-cols-7 {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-cols-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-cols-9 {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.grid-cols-10 {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-cols-11 {
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-cols-none {
+  grid-template-columns: none;
+}
+
+.col-auto {
+  grid-column: auto;
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-5 {
+  grid-column: span 5 / span 5;
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
+.col-span-7 {
+  grid-column: span 7 / span 7;
+}
+
+.col-span-8 {
+  grid-column: span 8 / span 8;
+}
+
+.col-span-9 {
+  grid-column: span 9 / span 9;
+}
+
+.col-span-10 {
+  grid-column: span 10 / span 10;
+}
+
+.col-span-11 {
+  grid-column: span 11 / span 11;
+}
+
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
+.col-start-1 {
+  grid-column-start: 1;
+}
+
+.col-start-2 {
+  grid-column-start: 2;
+}
+
+.col-start-3 {
+  grid-column-start: 3;
+}
+
+.col-start-4 {
+  grid-column-start: 4;
+}
+
+.col-start-5 {
+  grid-column-start: 5;
+}
+
+.col-start-6 {
+  grid-column-start: 6;
+}
+
+.col-start-7 {
+  grid-column-start: 7;
+}
+
+.col-start-8 {
+  grid-column-start: 8;
+}
+
+.col-start-9 {
+  grid-column-start: 9;
+}
+
+.col-start-10 {
+  grid-column-start: 10;
+}
+
+.col-start-11 {
+  grid-column-start: 11;
+}
+
+.col-start-12 {
+  grid-column-start: 12;
+}
+
+.col-start-13 {
+  grid-column-start: 13;
+}
+
+.col-start-auto {
+  grid-column-start: auto;
+}
+
+.col-end-1 {
+  grid-column-end: 1;
+}
+
+.col-end-2 {
+  grid-column-end: 2;
+}
+
+.col-end-3 {
+  grid-column-end: 3;
+}
+
+.col-end-4 {
+  grid-column-end: 4;
+}
+
+.col-end-5 {
+  grid-column-end: 5;
+}
+
+.col-end-6 {
+  grid-column-end: 6;
+}
+
+.col-end-7 {
+  grid-column-end: 7;
+}
+
+.col-end-8 {
+  grid-column-end: 8;
+}
+
+.col-end-9 {
+  grid-column-end: 9;
+}
+
+.col-end-10 {
+  grid-column-end: 10;
+}
+
+.col-end-11 {
+  grid-column-end: 11;
+}
+
+.col-end-12 {
+  grid-column-end: 12;
+}
+
+.col-end-13 {
+  grid-column-end: 13;
+}
+
+.col-end-auto {
+  grid-column-end: auto;
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+.grid-rows-5 {
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+
+.grid-rows-6 {
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+.grid-rows-none {
+  grid-template-rows: none;
+}
+
+.row-auto {
+  grid-row: auto;
+}
+
+.row-span-1 {
+  grid-row: span 1 / span 1;
+}
+
+.row-span-2 {
+  grid-row: span 2 / span 2;
+}
+
+.row-span-3 {
+  grid-row: span 3 / span 3;
+}
+
+.row-span-4 {
+  grid-row: span 4 / span 4;
+}
+
+.row-span-5 {
+  grid-row: span 5 / span 5;
+}
+
+.row-span-6 {
+  grid-row: span 6 / span 6;
+}
+
+.row-start-1 {
+  grid-row-start: 1;
+}
+
+.row-start-2 {
+  grid-row-start: 2;
+}
+
+.row-start-3 {
+  grid-row-start: 3;
+}
+
+.row-start-4 {
+  grid-row-start: 4;
+}
+
+.row-start-5 {
+  grid-row-start: 5;
+}
+
+.row-start-6 {
+  grid-row-start: 6;
+}
+
+.row-start-7 {
+  grid-row-start: 7;
+}
+
+.row-start-auto {
+  grid-row-start: auto;
+}
+
+.row-end-1 {
+  grid-row-end: 1;
+}
+
+.row-end-2 {
+  grid-row-end: 2;
+}
+
+.row-end-3 {
+  grid-row-end: 3;
+}
+
+.row-end-4 {
+  grid-row-end: 4;
+}
+
+.row-end-5 {
+  grid-row-end: 5;
+}
+
+.row-end-6 {
+  grid-row-end: 6;
+}
+
+.row-end-7 {
+  grid-row-end: 7;
+}
+
+.row-end-auto {
+  grid-row-end: auto;
+}
+
+.transform {
+  --transform-translate-x: 0;
+  --transform-translate-y: 0;
+  --transform-rotate: 0;
+  --transform-skew-x: 0;
+  --transform-skew-y: 0;
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+  transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+}
+
+.transform-none {
+  transform: none;
+}
+
+.origin-center {
+  transform-origin: center;
+}
+
+.origin-top {
+  transform-origin: top;
+}
+
+.origin-top-right {
+  transform-origin: top right;
+}
+
+.origin-right {
+  transform-origin: right;
+}
+
+.origin-bottom-right {
+  transform-origin: bottom right;
+}
+
+.origin-bottom {
+  transform-origin: bottom;
+}
+
+.origin-bottom-left {
+  transform-origin: bottom left;
+}
+
+.origin-left {
+  transform-origin: left;
+}
+
+.origin-top-left {
+  transform-origin: top left;
+}
+
+.scale-0 {
+  --transform-scale-x: 0;
+  --transform-scale-y: 0;
+}
+
+.scale-50 {
+  --transform-scale-x: .5;
+  --transform-scale-y: .5;
+}
+
+.scale-75 {
+  --transform-scale-x: .75;
+  --transform-scale-y: .75;
+}
+
+.scale-90 {
+  --transform-scale-x: .9;
+  --transform-scale-y: .9;
+}
+
+.scale-95 {
+  --transform-scale-x: .95;
+  --transform-scale-y: .95;
+}
+
+.scale-100 {
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+}
+
+.scale-105 {
+  --transform-scale-x: 1.05;
+  --transform-scale-y: 1.05;
+}
+
+.scale-110 {
+  --transform-scale-x: 1.1;
+  --transform-scale-y: 1.1;
+}
+
+.scale-125 {
+  --transform-scale-x: 1.25;
+  --transform-scale-y: 1.25;
+}
+
+.scale-150 {
+  --transform-scale-x: 1.5;
+  --transform-scale-y: 1.5;
+}
+
+.scale-x-0 {
+  --transform-scale-x: 0;
+}
+
+.scale-x-50 {
+  --transform-scale-x: .5;
+}
+
+.scale-x-75 {
+  --transform-scale-x: .75;
+}
+
+.scale-x-90 {
+  --transform-scale-x: .9;
+}
+
+.scale-x-95 {
+  --transform-scale-x: .95;
+}
+
+.scale-x-100 {
+  --transform-scale-x: 1;
+}
+
+.scale-x-105 {
+  --transform-scale-x: 1.05;
+}
+
+.scale-x-110 {
+  --transform-scale-x: 1.1;
+}
+
+.scale-x-125 {
+  --transform-scale-x: 1.25;
+}
+
+.scale-x-150 {
+  --transform-scale-x: 1.5;
+}
+
+.scale-y-0 {
+  --transform-scale-y: 0;
+}
+
+.scale-y-50 {
+  --transform-scale-y: .5;
+}
+
+.scale-y-75 {
+  --transform-scale-y: .75;
+}
+
+.scale-y-90 {
+  --transform-scale-y: .9;
+}
+
+.scale-y-95 {
+  --transform-scale-y: .95;
+}
+
+.scale-y-100 {
+  --transform-scale-y: 1;
+}
+
+.scale-y-105 {
+  --transform-scale-y: 1.05;
+}
+
+.scale-y-110 {
+  --transform-scale-y: 1.1;
+}
+
+.scale-y-125 {
+  --transform-scale-y: 1.25;
+}
+
+.scale-y-150 {
+  --transform-scale-y: 1.5;
+}
+
+.hover\:scale-0:hover {
+  --transform-scale-x: 0;
+  --transform-scale-y: 0;
+}
+
+.hover\:scale-50:hover {
+  --transform-scale-x: .5;
+  --transform-scale-y: .5;
+}
+
+.hover\:scale-75:hover {
+  --transform-scale-x: .75;
+  --transform-scale-y: .75;
+}
+
+.hover\:scale-90:hover {
+  --transform-scale-x: .9;
+  --transform-scale-y: .9;
+}
+
+.hover\:scale-95:hover {
+  --transform-scale-x: .95;
+  --transform-scale-y: .95;
+}
+
+.hover\:scale-100:hover {
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+}
+
+.hover\:scale-105:hover {
+  --transform-scale-x: 1.05;
+  --transform-scale-y: 1.05;
+}
+
+.hover\:scale-110:hover {
+  --transform-scale-x: 1.1;
+  --transform-scale-y: 1.1;
+}
+
+.hover\:scale-125:hover {
+  --transform-scale-x: 1.25;
+  --transform-scale-y: 1.25;
+}
+
+.hover\:scale-150:hover {
+  --transform-scale-x: 1.5;
+  --transform-scale-y: 1.5;
+}
+
+.hover\:scale-x-0:hover {
+  --transform-scale-x: 0;
+}
+
+.hover\:scale-x-50:hover {
+  --transform-scale-x: .5;
+}
+
+.hover\:scale-x-75:hover {
+  --transform-scale-x: .75;
+}
+
+.hover\:scale-x-90:hover {
+  --transform-scale-x: .9;
+}
+
+.hover\:scale-x-95:hover {
+  --transform-scale-x: .95;
+}
+
+.hover\:scale-x-100:hover {
+  --transform-scale-x: 1;
+}
+
+.hover\:scale-x-105:hover {
+  --transform-scale-x: 1.05;
+}
+
+.hover\:scale-x-110:hover {
+  --transform-scale-x: 1.1;
+}
+
+.hover\:scale-x-125:hover {
+  --transform-scale-x: 1.25;
+}
+
+.hover\:scale-x-150:hover {
+  --transform-scale-x: 1.5;
+}
+
+.hover\:scale-y-0:hover {
+  --transform-scale-y: 0;
+}
+
+.hover\:scale-y-50:hover {
+  --transform-scale-y: .5;
+}
+
+.hover\:scale-y-75:hover {
+  --transform-scale-y: .75;
+}
+
+.hover\:scale-y-90:hover {
+  --transform-scale-y: .9;
+}
+
+.hover\:scale-y-95:hover {
+  --transform-scale-y: .95;
+}
+
+.hover\:scale-y-100:hover {
+  --transform-scale-y: 1;
+}
+
+.hover\:scale-y-105:hover {
+  --transform-scale-y: 1.05;
+}
+
+.hover\:scale-y-110:hover {
+  --transform-scale-y: 1.1;
+}
+
+.hover\:scale-y-125:hover {
+  --transform-scale-y: 1.25;
+}
+
+.hover\:scale-y-150:hover {
+  --transform-scale-y: 1.5;
+}
+
+.focus\:scale-0:focus {
+  --transform-scale-x: 0;
+  --transform-scale-y: 0;
+}
+
+.focus\:scale-50:focus {
+  --transform-scale-x: .5;
+  --transform-scale-y: .5;
+}
+
+.focus\:scale-75:focus {
+  --transform-scale-x: .75;
+  --transform-scale-y: .75;
+}
+
+.focus\:scale-90:focus {
+  --transform-scale-x: .9;
+  --transform-scale-y: .9;
+}
+
+.focus\:scale-95:focus {
+  --transform-scale-x: .95;
+  --transform-scale-y: .95;
+}
+
+.focus\:scale-100:focus {
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+}
+
+.focus\:scale-105:focus {
+  --transform-scale-x: 1.05;
+  --transform-scale-y: 1.05;
+}
+
+.focus\:scale-110:focus {
+  --transform-scale-x: 1.1;
+  --transform-scale-y: 1.1;
+}
+
+.focus\:scale-125:focus {
+  --transform-scale-x: 1.25;
+  --transform-scale-y: 1.25;
+}
+
+.focus\:scale-150:focus {
+  --transform-scale-x: 1.5;
+  --transform-scale-y: 1.5;
+}
+
+.focus\:scale-x-0:focus {
+  --transform-scale-x: 0;
+}
+
+.focus\:scale-x-50:focus {
+  --transform-scale-x: .5;
+}
+
+.focus\:scale-x-75:focus {
+  --transform-scale-x: .75;
+}
+
+.focus\:scale-x-90:focus {
+  --transform-scale-x: .9;
+}
+
+.focus\:scale-x-95:focus {
+  --transform-scale-x: .95;
+}
+
+.focus\:scale-x-100:focus {
+  --transform-scale-x: 1;
+}
+
+.focus\:scale-x-105:focus {
+  --transform-scale-x: 1.05;
+}
+
+.focus\:scale-x-110:focus {
+  --transform-scale-x: 1.1;
+}
+
+.focus\:scale-x-125:focus {
+  --transform-scale-x: 1.25;
+}
+
+.focus\:scale-x-150:focus {
+  --transform-scale-x: 1.5;
+}
+
+.focus\:scale-y-0:focus {
+  --transform-scale-y: 0;
+}
+
+.focus\:scale-y-50:focus {
+  --transform-scale-y: .5;
+}
+
+.focus\:scale-y-75:focus {
+  --transform-scale-y: .75;
+}
+
+.focus\:scale-y-90:focus {
+  --transform-scale-y: .9;
+}
+
+.focus\:scale-y-95:focus {
+  --transform-scale-y: .95;
+}
+
+.focus\:scale-y-100:focus {
+  --transform-scale-y: 1;
+}
+
+.focus\:scale-y-105:focus {
+  --transform-scale-y: 1.05;
+}
+
+.focus\:scale-y-110:focus {
+  --transform-scale-y: 1.1;
+}
+
+.focus\:scale-y-125:focus {
+  --transform-scale-y: 1.25;
+}
+
+.focus\:scale-y-150:focus {
+  --transform-scale-y: 1.5;
+}
+
+.rotate-0 {
+  --transform-rotate: 0;
+}
+
+.rotate-45 {
+  --transform-rotate: 45deg;
+}
+
+.rotate-90 {
+  --transform-rotate: 90deg;
+}
+
+.rotate-180 {
+  --transform-rotate: 180deg;
+}
+
+.-rotate-180 {
+  --transform-rotate: -180deg;
+}
+
+.-rotate-90 {
+  --transform-rotate: -90deg;
+}
+
+.-rotate-45 {
+  --transform-rotate: -45deg;
+}
+
+.hover\:rotate-0:hover {
+  --transform-rotate: 0;
+}
+
+.hover\:rotate-45:hover {
+  --transform-rotate: 45deg;
+}
+
+.hover\:rotate-90:hover {
+  --transform-rotate: 90deg;
+}
+
+.hover\:rotate-180:hover {
+  --transform-rotate: 180deg;
+}
+
+.hover\:-rotate-180:hover {
+  --transform-rotate: -180deg;
+}
+
+.hover\:-rotate-90:hover {
+  --transform-rotate: -90deg;
+}
+
+.hover\:-rotate-45:hover {
+  --transform-rotate: -45deg;
+}
+
+.focus\:rotate-0:focus {
+  --transform-rotate: 0;
+}
+
+.focus\:rotate-45:focus {
+  --transform-rotate: 45deg;
+}
+
+.focus\:rotate-90:focus {
+  --transform-rotate: 90deg;
+}
+
+.focus\:rotate-180:focus {
+  --transform-rotate: 180deg;
+}
+
+.focus\:-rotate-180:focus {
+  --transform-rotate: -180deg;
+}
+
+.focus\:-rotate-90:focus {
+  --transform-rotate: -90deg;
+}
+
+.focus\:-rotate-45:focus {
+  --transform-rotate: -45deg;
+}
+
+.translate-x-0 {
+  --transform-translate-x: 0;
+}
+
+.translate-x-1 {
+  --transform-translate-x: 0.25rem;
+}
+
+.translate-x-2 {
+  --transform-translate-x: 0.5rem;
+}
+
+.translate-x-3 {
+  --transform-translate-x: 0.75rem;
+}
+
+.translate-x-4 {
+  --transform-translate-x: 1rem;
+}
+
+.translate-x-5 {
+  --transform-translate-x: 1.25rem;
+}
+
+.translate-x-6 {
+  --transform-translate-x: 1.5rem;
+}
+
+.translate-x-8 {
+  --transform-translate-x: 2rem;
+}
+
+.translate-x-10 {
+  --transform-translate-x: 2.5rem;
+}
+
+.translate-x-12 {
+  --transform-translate-x: 3rem;
+}
+
+.translate-x-16 {
+  --transform-translate-x: 4rem;
+}
+
+.translate-x-20 {
+  --transform-translate-x: 5rem;
+}
+
+.translate-x-24 {
+  --transform-translate-x: 6rem;
+}
+
+.translate-x-32 {
+  --transform-translate-x: 8rem;
+}
+
+.translate-x-40 {
+  --transform-translate-x: 10rem;
+}
+
+.translate-x-48 {
+  --transform-translate-x: 12rem;
+}
+
+.translate-x-56 {
+  --transform-translate-x: 14rem;
+}
+
+.translate-x-64 {
+  --transform-translate-x: 16rem;
+}
+
+.translate-x-96 {
+  --transform-translate-x: 24rem;
+}
+
+.translate-x-128 {
+  --transform-translate-x: 32rem;
+}
+
+.translate-x-px {
+  --transform-translate-x: 1px;
+}
+
+.-translate-x-1 {
+  --transform-translate-x: -0.25rem;
+}
+
+.-translate-x-2 {
+  --transform-translate-x: -0.5rem;
+}
+
+.-translate-x-3 {
+  --transform-translate-x: -0.75rem;
+}
+
+.-translate-x-4 {
+  --transform-translate-x: -1rem;
+}
+
+.-translate-x-5 {
+  --transform-translate-x: -1.25rem;
+}
+
+.-translate-x-6 {
+  --transform-translate-x: -1.5rem;
+}
+
+.-translate-x-8 {
+  --transform-translate-x: -2rem;
+}
+
+.-translate-x-10 {
+  --transform-translate-x: -2.5rem;
+}
+
+.-translate-x-12 {
+  --transform-translate-x: -3rem;
+}
+
+.-translate-x-16 {
+  --transform-translate-x: -4rem;
+}
+
+.-translate-x-20 {
+  --transform-translate-x: -5rem;
+}
+
+.-translate-x-24 {
+  --transform-translate-x: -6rem;
+}
+
+.-translate-x-32 {
+  --transform-translate-x: -8rem;
+}
+
+.-translate-x-40 {
+  --transform-translate-x: -10rem;
+}
+
+.-translate-x-48 {
+  --transform-translate-x: -12rem;
+}
+
+.-translate-x-56 {
+  --transform-translate-x: -14rem;
+}
+
+.-translate-x-64 {
+  --transform-translate-x: -16rem;
+}
+
+.-translate-x-96 {
+  --transform-translate-x: -24rem;
+}
+
+.-translate-x-128 {
+  --transform-translate-x: -32rem;
+}
+
+.-translate-x-px {
+  --transform-translate-x: -1px;
+}
+
+.-translate-x-full {
+  --transform-translate-x: -100%;
+}
+
+.-translate-x-1\/2 {
+  --transform-translate-x: -50%;
+}
+
+.translate-x-1\/2 {
+  --transform-translate-x: 50%;
+}
+
+.translate-x-full {
+  --transform-translate-x: 100%;
+}
+
+.translate-y-0 {
+  --transform-translate-y: 0;
+}
+
+.translate-y-1 {
+  --transform-translate-y: 0.25rem;
+}
+
+.translate-y-2 {
+  --transform-translate-y: 0.5rem;
+}
+
+.translate-y-3 {
+  --transform-translate-y: 0.75rem;
+}
+
+.translate-y-4 {
+  --transform-translate-y: 1rem;
+}
+
+.translate-y-5 {
+  --transform-translate-y: 1.25rem;
+}
+
+.translate-y-6 {
+  --transform-translate-y: 1.5rem;
+}
+
+.translate-y-8 {
+  --transform-translate-y: 2rem;
+}
+
+.translate-y-10 {
+  --transform-translate-y: 2.5rem;
+}
+
+.translate-y-12 {
+  --transform-translate-y: 3rem;
+}
+
+.translate-y-16 {
+  --transform-translate-y: 4rem;
+}
+
+.translate-y-20 {
+  --transform-translate-y: 5rem;
+}
+
+.translate-y-24 {
+  --transform-translate-y: 6rem;
+}
+
+.translate-y-32 {
+  --transform-translate-y: 8rem;
+}
+
+.translate-y-40 {
+  --transform-translate-y: 10rem;
+}
+
+.translate-y-48 {
+  --transform-translate-y: 12rem;
+}
+
+.translate-y-56 {
+  --transform-translate-y: 14rem;
+}
+
+.translate-y-64 {
+  --transform-translate-y: 16rem;
+}
+
+.translate-y-96 {
+  --transform-translate-y: 24rem;
+}
+
+.translate-y-128 {
+  --transform-translate-y: 32rem;
+}
+
+.translate-y-px {
+  --transform-translate-y: 1px;
+}
+
+.-translate-y-1 {
+  --transform-translate-y: -0.25rem;
+}
+
+.-translate-y-2 {
+  --transform-translate-y: -0.5rem;
+}
+
+.-translate-y-3 {
+  --transform-translate-y: -0.75rem;
+}
+
+.-translate-y-4 {
+  --transform-translate-y: -1rem;
+}
+
+.-translate-y-5 {
+  --transform-translate-y: -1.25rem;
+}
+
+.-translate-y-6 {
+  --transform-translate-y: -1.5rem;
+}
+
+.-translate-y-8 {
+  --transform-translate-y: -2rem;
+}
+
+.-translate-y-10 {
+  --transform-translate-y: -2.5rem;
+}
+
+.-translate-y-12 {
+  --transform-translate-y: -3rem;
+}
+
+.-translate-y-16 {
+  --transform-translate-y: -4rem;
+}
+
+.-translate-y-20 {
+  --transform-translate-y: -5rem;
+}
+
+.-translate-y-24 {
+  --transform-translate-y: -6rem;
+}
+
+.-translate-y-32 {
+  --transform-translate-y: -8rem;
+}
+
+.-translate-y-40 {
+  --transform-translate-y: -10rem;
+}
+
+.-translate-y-48 {
+  --transform-translate-y: -12rem;
+}
+
+.-translate-y-56 {
+  --transform-translate-y: -14rem;
+}
+
+.-translate-y-64 {
+  --transform-translate-y: -16rem;
+}
+
+.-translate-y-96 {
+  --transform-translate-y: -24rem;
+}
+
+.-translate-y-128 {
+  --transform-translate-y: -32rem;
+}
+
+.-translate-y-px {
+  --transform-translate-y: -1px;
+}
+
+.-translate-y-full {
+  --transform-translate-y: -100%;
+}
+
+.-translate-y-1\/2 {
+  --transform-translate-y: -50%;
+}
+
+.translate-y-1\/2 {
+  --transform-translate-y: 50%;
+}
+
+.translate-y-full {
+  --transform-translate-y: 100%;
+}
+
+.hover\:translate-x-0:hover {
+  --transform-translate-x: 0;
+}
+
+.hover\:translate-x-1:hover {
+  --transform-translate-x: 0.25rem;
+}
+
+.hover\:translate-x-2:hover {
+  --transform-translate-x: 0.5rem;
+}
+
+.hover\:translate-x-3:hover {
+  --transform-translate-x: 0.75rem;
+}
+
+.hover\:translate-x-4:hover {
+  --transform-translate-x: 1rem;
+}
+
+.hover\:translate-x-5:hover {
+  --transform-translate-x: 1.25rem;
+}
+
+.hover\:translate-x-6:hover {
+  --transform-translate-x: 1.5rem;
+}
+
+.hover\:translate-x-8:hover {
+  --transform-translate-x: 2rem;
+}
+
+.hover\:translate-x-10:hover {
+  --transform-translate-x: 2.5rem;
+}
+
+.hover\:translate-x-12:hover {
+  --transform-translate-x: 3rem;
+}
+
+.hover\:translate-x-16:hover {
+  --transform-translate-x: 4rem;
+}
+
+.hover\:translate-x-20:hover {
+  --transform-translate-x: 5rem;
+}
+
+.hover\:translate-x-24:hover {
+  --transform-translate-x: 6rem;
+}
+
+.hover\:translate-x-32:hover {
+  --transform-translate-x: 8rem;
+}
+
+.hover\:translate-x-40:hover {
+  --transform-translate-x: 10rem;
+}
+
+.hover\:translate-x-48:hover {
+  --transform-translate-x: 12rem;
+}
+
+.hover\:translate-x-56:hover {
+  --transform-translate-x: 14rem;
+}
+
+.hover\:translate-x-64:hover {
+  --transform-translate-x: 16rem;
+}
+
+.hover\:translate-x-96:hover {
+  --transform-translate-x: 24rem;
+}
+
+.hover\:translate-x-128:hover {
+  --transform-translate-x: 32rem;
+}
+
+.hover\:translate-x-px:hover {
+  --transform-translate-x: 1px;
+}
+
+.hover\:-translate-x-1:hover {
+  --transform-translate-x: -0.25rem;
+}
+
+.hover\:-translate-x-2:hover {
+  --transform-translate-x: -0.5rem;
+}
+
+.hover\:-translate-x-3:hover {
+  --transform-translate-x: -0.75rem;
+}
+
+.hover\:-translate-x-4:hover {
+  --transform-translate-x: -1rem;
+}
+
+.hover\:-translate-x-5:hover {
+  --transform-translate-x: -1.25rem;
+}
+
+.hover\:-translate-x-6:hover {
+  --transform-translate-x: -1.5rem;
+}
+
+.hover\:-translate-x-8:hover {
+  --transform-translate-x: -2rem;
+}
+
+.hover\:-translate-x-10:hover {
+  --transform-translate-x: -2.5rem;
+}
+
+.hover\:-translate-x-12:hover {
+  --transform-translate-x: -3rem;
+}
+
+.hover\:-translate-x-16:hover {
+  --transform-translate-x: -4rem;
+}
+
+.hover\:-translate-x-20:hover {
+  --transform-translate-x: -5rem;
+}
+
+.hover\:-translate-x-24:hover {
+  --transform-translate-x: -6rem;
+}
+
+.hover\:-translate-x-32:hover {
+  --transform-translate-x: -8rem;
+}
+
+.hover\:-translate-x-40:hover {
+  --transform-translate-x: -10rem;
+}
+
+.hover\:-translate-x-48:hover {
+  --transform-translate-x: -12rem;
+}
+
+.hover\:-translate-x-56:hover {
+  --transform-translate-x: -14rem;
+}
+
+.hover\:-translate-x-64:hover {
+  --transform-translate-x: -16rem;
+}
+
+.hover\:-translate-x-96:hover {
+  --transform-translate-x: -24rem;
+}
+
+.hover\:-translate-x-128:hover {
+  --transform-translate-x: -32rem;
+}
+
+.hover\:-translate-x-px:hover {
+  --transform-translate-x: -1px;
+}
+
+.hover\:-translate-x-full:hover {
+  --transform-translate-x: -100%;
+}
+
+.hover\:-translate-x-1\/2:hover {
+  --transform-translate-x: -50%;
+}
+
+.hover\:translate-x-1\/2:hover {
+  --transform-translate-x: 50%;
+}
+
+.hover\:translate-x-full:hover {
+  --transform-translate-x: 100%;
+}
+
+.hover\:translate-y-0:hover {
+  --transform-translate-y: 0;
+}
+
+.hover\:translate-y-1:hover {
+  --transform-translate-y: 0.25rem;
+}
+
+.hover\:translate-y-2:hover {
+  --transform-translate-y: 0.5rem;
+}
+
+.hover\:translate-y-3:hover {
+  --transform-translate-y: 0.75rem;
+}
+
+.hover\:translate-y-4:hover {
+  --transform-translate-y: 1rem;
+}
+
+.hover\:translate-y-5:hover {
+  --transform-translate-y: 1.25rem;
+}
+
+.hover\:translate-y-6:hover {
+  --transform-translate-y: 1.5rem;
+}
+
+.hover\:translate-y-8:hover {
+  --transform-translate-y: 2rem;
+}
+
+.hover\:translate-y-10:hover {
+  --transform-translate-y: 2.5rem;
+}
+
+.hover\:translate-y-12:hover {
+  --transform-translate-y: 3rem;
+}
+
+.hover\:translate-y-16:hover {
+  --transform-translate-y: 4rem;
+}
+
+.hover\:translate-y-20:hover {
+  --transform-translate-y: 5rem;
+}
+
+.hover\:translate-y-24:hover {
+  --transform-translate-y: 6rem;
+}
+
+.hover\:translate-y-32:hover {
+  --transform-translate-y: 8rem;
+}
+
+.hover\:translate-y-40:hover {
+  --transform-translate-y: 10rem;
+}
+
+.hover\:translate-y-48:hover {
+  --transform-translate-y: 12rem;
+}
+
+.hover\:translate-y-56:hover {
+  --transform-translate-y: 14rem;
+}
+
+.hover\:translate-y-64:hover {
+  --transform-translate-y: 16rem;
+}
+
+.hover\:translate-y-96:hover {
+  --transform-translate-y: 24rem;
+}
+
+.hover\:translate-y-128:hover {
+  --transform-translate-y: 32rem;
+}
+
+.hover\:translate-y-px:hover {
+  --transform-translate-y: 1px;
+}
+
+.hover\:-translate-y-1:hover {
+  --transform-translate-y: -0.25rem;
+}
+
+.hover\:-translate-y-2:hover {
+  --transform-translate-y: -0.5rem;
+}
+
+.hover\:-translate-y-3:hover {
+  --transform-translate-y: -0.75rem;
+}
+
+.hover\:-translate-y-4:hover {
+  --transform-translate-y: -1rem;
+}
+
+.hover\:-translate-y-5:hover {
+  --transform-translate-y: -1.25rem;
+}
+
+.hover\:-translate-y-6:hover {
+  --transform-translate-y: -1.5rem;
+}
+
+.hover\:-translate-y-8:hover {
+  --transform-translate-y: -2rem;
+}
+
+.hover\:-translate-y-10:hover {
+  --transform-translate-y: -2.5rem;
+}
+
+.hover\:-translate-y-12:hover {
+  --transform-translate-y: -3rem;
+}
+
+.hover\:-translate-y-16:hover {
+  --transform-translate-y: -4rem;
+}
+
+.hover\:-translate-y-20:hover {
+  --transform-translate-y: -5rem;
+}
+
+.hover\:-translate-y-24:hover {
+  --transform-translate-y: -6rem;
+}
+
+.hover\:-translate-y-32:hover {
+  --transform-translate-y: -8rem;
+}
+
+.hover\:-translate-y-40:hover {
+  --transform-translate-y: -10rem;
+}
+
+.hover\:-translate-y-48:hover {
+  --transform-translate-y: -12rem;
+}
+
+.hover\:-translate-y-56:hover {
+  --transform-translate-y: -14rem;
+}
+
+.hover\:-translate-y-64:hover {
+  --transform-translate-y: -16rem;
+}
+
+.hover\:-translate-y-96:hover {
+  --transform-translate-y: -24rem;
+}
+
+.hover\:-translate-y-128:hover {
+  --transform-translate-y: -32rem;
+}
+
+.hover\:-translate-y-px:hover {
+  --transform-translate-y: -1px;
+}
+
+.hover\:-translate-y-full:hover {
+  --transform-translate-y: -100%;
+}
+
+.hover\:-translate-y-1\/2:hover {
+  --transform-translate-y: -50%;
+}
+
+.hover\:translate-y-1\/2:hover {
+  --transform-translate-y: 50%;
+}
+
+.hover\:translate-y-full:hover {
+  --transform-translate-y: 100%;
+}
+
+.focus\:translate-x-0:focus {
+  --transform-translate-x: 0;
+}
+
+.focus\:translate-x-1:focus {
+  --transform-translate-x: 0.25rem;
+}
+
+.focus\:translate-x-2:focus {
+  --transform-translate-x: 0.5rem;
+}
+
+.focus\:translate-x-3:focus {
+  --transform-translate-x: 0.75rem;
+}
+
+.focus\:translate-x-4:focus {
+  --transform-translate-x: 1rem;
+}
+
+.focus\:translate-x-5:focus {
+  --transform-translate-x: 1.25rem;
+}
+
+.focus\:translate-x-6:focus {
+  --transform-translate-x: 1.5rem;
+}
+
+.focus\:translate-x-8:focus {
+  --transform-translate-x: 2rem;
+}
+
+.focus\:translate-x-10:focus {
+  --transform-translate-x: 2.5rem;
+}
+
+.focus\:translate-x-12:focus {
+  --transform-translate-x: 3rem;
+}
+
+.focus\:translate-x-16:focus {
+  --transform-translate-x: 4rem;
+}
+
+.focus\:translate-x-20:focus {
+  --transform-translate-x: 5rem;
+}
+
+.focus\:translate-x-24:focus {
+  --transform-translate-x: 6rem;
+}
+
+.focus\:translate-x-32:focus {
+  --transform-translate-x: 8rem;
+}
+
+.focus\:translate-x-40:focus {
+  --transform-translate-x: 10rem;
+}
+
+.focus\:translate-x-48:focus {
+  --transform-translate-x: 12rem;
+}
+
+.focus\:translate-x-56:focus {
+  --transform-translate-x: 14rem;
+}
+
+.focus\:translate-x-64:focus {
+  --transform-translate-x: 16rem;
+}
+
+.focus\:translate-x-96:focus {
+  --transform-translate-x: 24rem;
+}
+
+.focus\:translate-x-128:focus {
+  --transform-translate-x: 32rem;
+}
+
+.focus\:translate-x-px:focus {
+  --transform-translate-x: 1px;
+}
+
+.focus\:-translate-x-1:focus {
+  --transform-translate-x: -0.25rem;
+}
+
+.focus\:-translate-x-2:focus {
+  --transform-translate-x: -0.5rem;
+}
+
+.focus\:-translate-x-3:focus {
+  --transform-translate-x: -0.75rem;
+}
+
+.focus\:-translate-x-4:focus {
+  --transform-translate-x: -1rem;
+}
+
+.focus\:-translate-x-5:focus {
+  --transform-translate-x: -1.25rem;
+}
+
+.focus\:-translate-x-6:focus {
+  --transform-translate-x: -1.5rem;
+}
+
+.focus\:-translate-x-8:focus {
+  --transform-translate-x: -2rem;
+}
+
+.focus\:-translate-x-10:focus {
+  --transform-translate-x: -2.5rem;
+}
+
+.focus\:-translate-x-12:focus {
+  --transform-translate-x: -3rem;
+}
+
+.focus\:-translate-x-16:focus {
+  --transform-translate-x: -4rem;
+}
+
+.focus\:-translate-x-20:focus {
+  --transform-translate-x: -5rem;
+}
+
+.focus\:-translate-x-24:focus {
+  --transform-translate-x: -6rem;
+}
+
+.focus\:-translate-x-32:focus {
+  --transform-translate-x: -8rem;
+}
+
+.focus\:-translate-x-40:focus {
+  --transform-translate-x: -10rem;
+}
+
+.focus\:-translate-x-48:focus {
+  --transform-translate-x: -12rem;
+}
+
+.focus\:-translate-x-56:focus {
+  --transform-translate-x: -14rem;
+}
+
+.focus\:-translate-x-64:focus {
+  --transform-translate-x: -16rem;
+}
+
+.focus\:-translate-x-96:focus {
+  --transform-translate-x: -24rem;
+}
+
+.focus\:-translate-x-128:focus {
+  --transform-translate-x: -32rem;
+}
+
+.focus\:-translate-x-px:focus {
+  --transform-translate-x: -1px;
+}
+
+.focus\:-translate-x-full:focus {
+  --transform-translate-x: -100%;
+}
+
+.focus\:-translate-x-1\/2:focus {
+  --transform-translate-x: -50%;
+}
+
+.focus\:translate-x-1\/2:focus {
+  --transform-translate-x: 50%;
+}
+
+.focus\:translate-x-full:focus {
+  --transform-translate-x: 100%;
+}
+
+.focus\:translate-y-0:focus {
+  --transform-translate-y: 0;
+}
+
+.focus\:translate-y-1:focus {
+  --transform-translate-y: 0.25rem;
+}
+
+.focus\:translate-y-2:focus {
+  --transform-translate-y: 0.5rem;
+}
+
+.focus\:translate-y-3:focus {
+  --transform-translate-y: 0.75rem;
+}
+
+.focus\:translate-y-4:focus {
+  --transform-translate-y: 1rem;
+}
+
+.focus\:translate-y-5:focus {
+  --transform-translate-y: 1.25rem;
+}
+
+.focus\:translate-y-6:focus {
+  --transform-translate-y: 1.5rem;
+}
+
+.focus\:translate-y-8:focus {
+  --transform-translate-y: 2rem;
+}
+
+.focus\:translate-y-10:focus {
+  --transform-translate-y: 2.5rem;
+}
+
+.focus\:translate-y-12:focus {
+  --transform-translate-y: 3rem;
+}
+
+.focus\:translate-y-16:focus {
+  --transform-translate-y: 4rem;
+}
+
+.focus\:translate-y-20:focus {
+  --transform-translate-y: 5rem;
+}
+
+.focus\:translate-y-24:focus {
+  --transform-translate-y: 6rem;
+}
+
+.focus\:translate-y-32:focus {
+  --transform-translate-y: 8rem;
+}
+
+.focus\:translate-y-40:focus {
+  --transform-translate-y: 10rem;
+}
+
+.focus\:translate-y-48:focus {
+  --transform-translate-y: 12rem;
+}
+
+.focus\:translate-y-56:focus {
+  --transform-translate-y: 14rem;
+}
+
+.focus\:translate-y-64:focus {
+  --transform-translate-y: 16rem;
+}
+
+.focus\:translate-y-96:focus {
+  --transform-translate-y: 24rem;
+}
+
+.focus\:translate-y-128:focus {
+  --transform-translate-y: 32rem;
+}
+
+.focus\:translate-y-px:focus {
+  --transform-translate-y: 1px;
+}
+
+.focus\:-translate-y-1:focus {
+  --transform-translate-y: -0.25rem;
+}
+
+.focus\:-translate-y-2:focus {
+  --transform-translate-y: -0.5rem;
+}
+
+.focus\:-translate-y-3:focus {
+  --transform-translate-y: -0.75rem;
+}
+
+.focus\:-translate-y-4:focus {
+  --transform-translate-y: -1rem;
+}
+
+.focus\:-translate-y-5:focus {
+  --transform-translate-y: -1.25rem;
+}
+
+.focus\:-translate-y-6:focus {
+  --transform-translate-y: -1.5rem;
+}
+
+.focus\:-translate-y-8:focus {
+  --transform-translate-y: -2rem;
+}
+
+.focus\:-translate-y-10:focus {
+  --transform-translate-y: -2.5rem;
+}
+
+.focus\:-translate-y-12:focus {
+  --transform-translate-y: -3rem;
+}
+
+.focus\:-translate-y-16:focus {
+  --transform-translate-y: -4rem;
+}
+
+.focus\:-translate-y-20:focus {
+  --transform-translate-y: -5rem;
+}
+
+.focus\:-translate-y-24:focus {
+  --transform-translate-y: -6rem;
+}
+
+.focus\:-translate-y-32:focus {
+  --transform-translate-y: -8rem;
+}
+
+.focus\:-translate-y-40:focus {
+  --transform-translate-y: -10rem;
+}
+
+.focus\:-translate-y-48:focus {
+  --transform-translate-y: -12rem;
+}
+
+.focus\:-translate-y-56:focus {
+  --transform-translate-y: -14rem;
+}
+
+.focus\:-translate-y-64:focus {
+  --transform-translate-y: -16rem;
+}
+
+.focus\:-translate-y-96:focus {
+  --transform-translate-y: -24rem;
+}
+
+.focus\:-translate-y-128:focus {
+  --transform-translate-y: -32rem;
+}
+
+.focus\:-translate-y-px:focus {
+  --transform-translate-y: -1px;
+}
+
+.focus\:-translate-y-full:focus {
+  --transform-translate-y: -100%;
+}
+
+.focus\:-translate-y-1\/2:focus {
+  --transform-translate-y: -50%;
+}
+
+.focus\:translate-y-1\/2:focus {
+  --transform-translate-y: 50%;
+}
+
+.focus\:translate-y-full:focus {
+  --transform-translate-y: 100%;
+}
+
+.skew-x-0 {
+  --transform-skew-x: 0;
+}
+
+.skew-x-3 {
+  --transform-skew-x: 3deg;
+}
+
+.skew-x-6 {
+  --transform-skew-x: 6deg;
+}
+
+.skew-x-12 {
+  --transform-skew-x: 12deg;
+}
+
+.-skew-x-12 {
+  --transform-skew-x: -12deg;
+}
+
+.-skew-x-6 {
+  --transform-skew-x: -6deg;
+}
+
+.-skew-x-3 {
+  --transform-skew-x: -3deg;
+}
+
+.skew-y-0 {
+  --transform-skew-y: 0;
+}
+
+.skew-y-3 {
+  --transform-skew-y: 3deg;
+}
+
+.skew-y-6 {
+  --transform-skew-y: 6deg;
+}
+
+.skew-y-12 {
+  --transform-skew-y: 12deg;
+}
+
+.-skew-y-12 {
+  --transform-skew-y: -12deg;
+}
+
+.-skew-y-6 {
+  --transform-skew-y: -6deg;
+}
+
+.-skew-y-3 {
+  --transform-skew-y: -3deg;
+}
+
+.hover\:skew-x-0:hover {
+  --transform-skew-x: 0;
+}
+
+.hover\:skew-x-3:hover {
+  --transform-skew-x: 3deg;
+}
+
+.hover\:skew-x-6:hover {
+  --transform-skew-x: 6deg;
+}
+
+.hover\:skew-x-12:hover {
+  --transform-skew-x: 12deg;
+}
+
+.hover\:-skew-x-12:hover {
+  --transform-skew-x: -12deg;
+}
+
+.hover\:-skew-x-6:hover {
+  --transform-skew-x: -6deg;
+}
+
+.hover\:-skew-x-3:hover {
+  --transform-skew-x: -3deg;
+}
+
+.hover\:skew-y-0:hover {
+  --transform-skew-y: 0;
+}
+
+.hover\:skew-y-3:hover {
+  --transform-skew-y: 3deg;
+}
+
+.hover\:skew-y-6:hover {
+  --transform-skew-y: 6deg;
+}
+
+.hover\:skew-y-12:hover {
+  --transform-skew-y: 12deg;
+}
+
+.hover\:-skew-y-12:hover {
+  --transform-skew-y: -12deg;
+}
+
+.hover\:-skew-y-6:hover {
+  --transform-skew-y: -6deg;
+}
+
+.hover\:-skew-y-3:hover {
+  --transform-skew-y: -3deg;
+}
+
+.focus\:skew-x-0:focus {
+  --transform-skew-x: 0;
+}
+
+.focus\:skew-x-3:focus {
+  --transform-skew-x: 3deg;
+}
+
+.focus\:skew-x-6:focus {
+  --transform-skew-x: 6deg;
+}
+
+.focus\:skew-x-12:focus {
+  --transform-skew-x: 12deg;
+}
+
+.focus\:-skew-x-12:focus {
+  --transform-skew-x: -12deg;
+}
+
+.focus\:-skew-x-6:focus {
+  --transform-skew-x: -6deg;
+}
+
+.focus\:-skew-x-3:focus {
+  --transform-skew-x: -3deg;
+}
+
+.focus\:skew-y-0:focus {
+  --transform-skew-y: 0;
+}
+
+.focus\:skew-y-3:focus {
+  --transform-skew-y: 3deg;
+}
+
+.focus\:skew-y-6:focus {
+  --transform-skew-y: 6deg;
+}
+
+.focus\:skew-y-12:focus {
+  --transform-skew-y: 12deg;
+}
+
+.focus\:-skew-y-12:focus {
+  --transform-skew-y: -12deg;
+}
+
+.focus\:-skew-y-6:focus {
+  --transform-skew-y: -6deg;
+}
+
+.focus\:-skew-y-3:focus {
+  --transform-skew-y: -3deg;
+}
+
+.transition-none {
+  transition-property: none;
+}
+
+.transition-all {
+  transition-property: all;
+}
+
+.transition {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+}
+
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+}
+
+.transition-transform {
+  transition-property: transform;
+}
+
+.ease-linear {
+  transition-timing-function: linear;
+}
+
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-75 {
+  transition-duration: 75ms;
+}
+
+.duration-100 {
+  transition-duration: 100ms;
+}
+
+.duration-150 {
+  transition-duration: 150ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
 }
 
 /* navbar and sidenav */
@@ -11288,6 +13964,10 @@ li svg #white-svg:hover {
     border-radius: 0.25rem;
   }
 
+  .mdcustom\:rounded-md {
+    border-radius: 0.375rem;
+  }
+
   .mdcustom\:rounded-lg {
     border-radius: 0.5rem;
   }
@@ -11354,6 +14034,26 @@ li svg #white-svg:hover {
   .mdcustom\:rounded-l {
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+  }
+
+  .mdcustom\:rounded-t-md {
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+  }
+
+  .mdcustom\:rounded-r-md {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+  }
+
+  .mdcustom\:rounded-b-md {
+    border-bottom-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+  }
+
+  .mdcustom\:rounded-l-md {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
   }
 
   .mdcustom\:rounded-t-lg {
@@ -11442,6 +14142,22 @@ li svg #white-svg:hover {
 
   .mdcustom\:rounded-bl {
     border-bottom-left-radius: 0.25rem;
+  }
+
+  .mdcustom\:rounded-tl-md {
+    border-top-left-radius: 0.375rem;
+  }
+
+  .mdcustom\:rounded-tr-md {
+    border-top-right-radius: 0.375rem;
+  }
+
+  .mdcustom\:rounded-br-md {
+    border-bottom-right-radius: 0.375rem;
+  }
+
+  .mdcustom\:rounded-bl-md {
+    border-bottom-left-radius: 0.375rem;
   }
 
   .mdcustom\:rounded-tl-lg {
@@ -11596,6 +14312,14 @@ li svg #white-svg:hover {
     border-left-width: 1px;
   }
 
+  .mdcustom\:box-border {
+    box-sizing: border-box;
+  }
+
+  .mdcustom\:box-content {
+    box-sizing: content-box;
+  }
+
   .mdcustom\:cursor-auto {
     cursor: auto;
   }
@@ -11644,16 +14368,44 @@ li svg #white-svg:hover {
     display: inline-flex;
   }
 
+  .mdcustom\:grid {
+    display: grid;
+  }
+
   .mdcustom\:table {
     display: table;
   }
 
-  .mdcustom\:table-row {
-    display: table-row;
+  .mdcustom\:table-caption {
+    display: table-caption;
   }
 
   .mdcustom\:table-cell {
     display: table-cell;
+  }
+
+  .mdcustom\:table-column {
+    display: table-column;
+  }
+
+  .mdcustom\:table-column-group {
+    display: table-column-group;
+  }
+
+  .mdcustom\:table-footer-group {
+    display: table-footer-group;
+  }
+
+  .mdcustom\:table-header-group {
+    display: table-header-group;
+  }
+
+  .mdcustom\:table-row-group {
+    display: table-row-group;
+  }
+
+  .mdcustom\:table-row {
+    display: table-row;
   }
 
   .mdcustom\:hidden {
@@ -11746,6 +14498,10 @@ li svg #white-svg:hover {
 
   .mdcustom\:justify-around {
     justify-content: space-around;
+  }
+
+  .mdcustom\:justify-evenly {
+    justify-content: space-evenly;
   }
 
   .mdcustom\:content-center {
@@ -11875,6 +14631,18 @@ li svg #white-svg:hover {
   .mdcustom\:clearfix:after {
     content: "";
     display: table;
+    clear: both;
+  }
+
+  .mdcustom\:clear-left {
+    clear: left;
+  }
+
+  .mdcustom\:clear-right {
+    clear: right;
+  }
+
+  .mdcustom\:clear-both {
     clear: both;
   }
 
@@ -12088,6 +14856,38 @@ li svg #white-svg:hover {
 
   .mdcustom\:h-screen {
     height: 100vh;
+  }
+
+  .mdcustom\:leading-3 {
+    line-height: .75rem;
+  }
+
+  .mdcustom\:leading-4 {
+    line-height: 1rem;
+  }
+
+  .mdcustom\:leading-5 {
+    line-height: 1.25rem;
+  }
+
+  .mdcustom\:leading-6 {
+    line-height: 1.5rem;
+  }
+
+  .mdcustom\:leading-7 {
+    line-height: 1.75rem;
+  }
+
+  .mdcustom\:leading-8 {
+    line-height: 2rem;
+  }
+
+  .mdcustom\:leading-9 {
+    line-height: 2.25rem;
+  }
+
+  .mdcustom\:leading-10 {
+    line-height: 2.5rem;
   }
 
   .mdcustom\:leading-none {
@@ -13400,6 +16200,10 @@ li svg #white-svg:hover {
 
   .mdcustom\:max-h-screen {
     max-height: 100vh;
+  }
+
+  .mdcustom\:max-w-none {
+    max-width: none;
   }
 
   .mdcustom\:max-w-xs {
@@ -15131,6 +17935,14 @@ li svg #white-svg:hover {
     resize: both;
   }
 
+  .mdcustom\:shadow-xs {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .mdcustom\:shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
   .mdcustom\:shadow {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
@@ -15163,6 +17975,14 @@ li svg #white-svg:hover {
     box-shadow: none;
   }
 
+  .mdcustom\:hover\:shadow-xs:hover {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .mdcustom\:hover\:shadow-sm:hover {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
   .mdcustom\:hover\:shadow:hover {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
@@ -15193,6 +18013,14 @@ li svg #white-svg:hover {
 
   .mdcustom\:hover\:shadow-none:hover {
     box-shadow: none;
+  }
+
+  .mdcustom\:focus\:shadow-xs:focus {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .mdcustom\:focus\:shadow-sm:focus {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
   .mdcustom\:focus\:shadow:focus {
@@ -15233,6 +18061,18 @@ li svg #white-svg:hover {
 
   .mdcustom\:stroke-current {
     stroke: currentColor;
+  }
+
+  .mdcustom\:stroke-0 {
+    stroke-width: 0;
+  }
+
+  .mdcustom\:stroke-1 {
+    stroke-width: 1;
+  }
+
+  .mdcustom\:stroke-2 {
+    stroke-width: 2;
   }
 
   .mdcustom\:table-auto {
@@ -16826,6 +19666,2522 @@ li svg #white-svg:hover {
 
   .mdcustom\:z-auto {
     z-index: auto;
+  }
+
+  .mdcustom\:gap-0 {
+    grid-gap: 0;
+    gap: 0;
+  }
+
+  .mdcustom\:gap-1 {
+    grid-gap: 0.25rem;
+    gap: 0.25rem;
+  }
+
+  .mdcustom\:gap-2 {
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .mdcustom\:gap-3 {
+    grid-gap: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .mdcustom\:gap-4 {
+    grid-gap: 1rem;
+    gap: 1rem;
+  }
+
+  .mdcustom\:gap-5 {
+    grid-gap: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .mdcustom\:gap-6 {
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .mdcustom\:gap-8 {
+    grid-gap: 2rem;
+    gap: 2rem;
+  }
+
+  .mdcustom\:gap-10 {
+    grid-gap: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .mdcustom\:gap-12 {
+    grid-gap: 3rem;
+    gap: 3rem;
+  }
+
+  .mdcustom\:gap-16 {
+    grid-gap: 4rem;
+    gap: 4rem;
+  }
+
+  .mdcustom\:gap-20 {
+    grid-gap: 5rem;
+    gap: 5rem;
+  }
+
+  .mdcustom\:gap-24 {
+    grid-gap: 6rem;
+    gap: 6rem;
+  }
+
+  .mdcustom\:gap-32 {
+    grid-gap: 8rem;
+    gap: 8rem;
+  }
+
+  .mdcustom\:gap-40 {
+    grid-gap: 10rem;
+    gap: 10rem;
+  }
+
+  .mdcustom\:gap-48 {
+    grid-gap: 12rem;
+    gap: 12rem;
+  }
+
+  .mdcustom\:gap-56 {
+    grid-gap: 14rem;
+    gap: 14rem;
+  }
+
+  .mdcustom\:gap-64 {
+    grid-gap: 16rem;
+    gap: 16rem;
+  }
+
+  .mdcustom\:gap-96 {
+    grid-gap: 24rem;
+    gap: 24rem;
+  }
+
+  .mdcustom\:gap-128 {
+    grid-gap: 32rem;
+    gap: 32rem;
+  }
+
+  .mdcustom\:gap-px {
+    grid-gap: 1px;
+    gap: 1px;
+  }
+
+  .mdcustom\:col-gap-0 {
+    grid-column-gap: 0;
+    column-gap: 0;
+  }
+
+  .mdcustom\:col-gap-1 {
+    grid-column-gap: 0.25rem;
+    column-gap: 0.25rem;
+  }
+
+  .mdcustom\:col-gap-2 {
+    grid-column-gap: 0.5rem;
+    column-gap: 0.5rem;
+  }
+
+  .mdcustom\:col-gap-3 {
+    grid-column-gap: 0.75rem;
+    column-gap: 0.75rem;
+  }
+
+  .mdcustom\:col-gap-4 {
+    grid-column-gap: 1rem;
+    column-gap: 1rem;
+  }
+
+  .mdcustom\:col-gap-5 {
+    grid-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+  }
+
+  .mdcustom\:col-gap-6 {
+    grid-column-gap: 1.5rem;
+    column-gap: 1.5rem;
+  }
+
+  .mdcustom\:col-gap-8 {
+    grid-column-gap: 2rem;
+    column-gap: 2rem;
+  }
+
+  .mdcustom\:col-gap-10 {
+    grid-column-gap: 2.5rem;
+    column-gap: 2.5rem;
+  }
+
+  .mdcustom\:col-gap-12 {
+    grid-column-gap: 3rem;
+    column-gap: 3rem;
+  }
+
+  .mdcustom\:col-gap-16 {
+    grid-column-gap: 4rem;
+    column-gap: 4rem;
+  }
+
+  .mdcustom\:col-gap-20 {
+    grid-column-gap: 5rem;
+    column-gap: 5rem;
+  }
+
+  .mdcustom\:col-gap-24 {
+    grid-column-gap: 6rem;
+    column-gap: 6rem;
+  }
+
+  .mdcustom\:col-gap-32 {
+    grid-column-gap: 8rem;
+    column-gap: 8rem;
+  }
+
+  .mdcustom\:col-gap-40 {
+    grid-column-gap: 10rem;
+    column-gap: 10rem;
+  }
+
+  .mdcustom\:col-gap-48 {
+    grid-column-gap: 12rem;
+    column-gap: 12rem;
+  }
+
+  .mdcustom\:col-gap-56 {
+    grid-column-gap: 14rem;
+    column-gap: 14rem;
+  }
+
+  .mdcustom\:col-gap-64 {
+    grid-column-gap: 16rem;
+    column-gap: 16rem;
+  }
+
+  .mdcustom\:col-gap-96 {
+    grid-column-gap: 24rem;
+    column-gap: 24rem;
+  }
+
+  .mdcustom\:col-gap-128 {
+    grid-column-gap: 32rem;
+    column-gap: 32rem;
+  }
+
+  .mdcustom\:col-gap-px {
+    grid-column-gap: 1px;
+    column-gap: 1px;
+  }
+
+  .mdcustom\:row-gap-0 {
+    grid-row-gap: 0;
+    row-gap: 0;
+  }
+
+  .mdcustom\:row-gap-1 {
+    grid-row-gap: 0.25rem;
+    row-gap: 0.25rem;
+  }
+
+  .mdcustom\:row-gap-2 {
+    grid-row-gap: 0.5rem;
+    row-gap: 0.5rem;
+  }
+
+  .mdcustom\:row-gap-3 {
+    grid-row-gap: 0.75rem;
+    row-gap: 0.75rem;
+  }
+
+  .mdcustom\:row-gap-4 {
+    grid-row-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .mdcustom\:row-gap-5 {
+    grid-row-gap: 1.25rem;
+    row-gap: 1.25rem;
+  }
+
+  .mdcustom\:row-gap-6 {
+    grid-row-gap: 1.5rem;
+    row-gap: 1.5rem;
+  }
+
+  .mdcustom\:row-gap-8 {
+    grid-row-gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  .mdcustom\:row-gap-10 {
+    grid-row-gap: 2.5rem;
+    row-gap: 2.5rem;
+  }
+
+  .mdcustom\:row-gap-12 {
+    grid-row-gap: 3rem;
+    row-gap: 3rem;
+  }
+
+  .mdcustom\:row-gap-16 {
+    grid-row-gap: 4rem;
+    row-gap: 4rem;
+  }
+
+  .mdcustom\:row-gap-20 {
+    grid-row-gap: 5rem;
+    row-gap: 5rem;
+  }
+
+  .mdcustom\:row-gap-24 {
+    grid-row-gap: 6rem;
+    row-gap: 6rem;
+  }
+
+  .mdcustom\:row-gap-32 {
+    grid-row-gap: 8rem;
+    row-gap: 8rem;
+  }
+
+  .mdcustom\:row-gap-40 {
+    grid-row-gap: 10rem;
+    row-gap: 10rem;
+  }
+
+  .mdcustom\:row-gap-48 {
+    grid-row-gap: 12rem;
+    row-gap: 12rem;
+  }
+
+  .mdcustom\:row-gap-56 {
+    grid-row-gap: 14rem;
+    row-gap: 14rem;
+  }
+
+  .mdcustom\:row-gap-64 {
+    grid-row-gap: 16rem;
+    row-gap: 16rem;
+  }
+
+  .mdcustom\:row-gap-96 {
+    grid-row-gap: 24rem;
+    row-gap: 24rem;
+  }
+
+  .mdcustom\:row-gap-128 {
+    grid-row-gap: 32rem;
+    row-gap: 32rem;
+  }
+
+  .mdcustom\:row-gap-px {
+    grid-row-gap: 1px;
+    row-gap: 1px;
+  }
+
+  .mdcustom\:grid-flow-row {
+    grid-auto-flow: row;
+  }
+
+  .mdcustom\:grid-flow-col {
+    grid-auto-flow: column;
+  }
+
+  .mdcustom\:grid-flow-row-dense {
+    grid-auto-flow: row dense;
+  }
+
+  .mdcustom\:grid-flow-col-dense {
+    grid-auto-flow: column dense;
+  }
+
+  .mdcustom\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-7 {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-8 {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-9 {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-10 {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-11 {
+    grid-template-columns: repeat(11, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-cols-none {
+    grid-template-columns: none;
+  }
+
+  .mdcustom\:col-auto {
+    grid-column: auto;
+  }
+
+  .mdcustom\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
+  .mdcustom\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .mdcustom\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .mdcustom\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .mdcustom\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
+  .mdcustom\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .mdcustom\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+
+  .mdcustom\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .mdcustom\:col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+
+  .mdcustom\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+
+  .mdcustom\:col-span-11 {
+    grid-column: span 11 / span 11;
+  }
+
+  .mdcustom\:col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+
+  .mdcustom\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .mdcustom\:col-start-2 {
+    grid-column-start: 2;
+  }
+
+  .mdcustom\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .mdcustom\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .mdcustom\:col-start-5 {
+    grid-column-start: 5;
+  }
+
+  .mdcustom\:col-start-6 {
+    grid-column-start: 6;
+  }
+
+  .mdcustom\:col-start-7 {
+    grid-column-start: 7;
+  }
+
+  .mdcustom\:col-start-8 {
+    grid-column-start: 8;
+  }
+
+  .mdcustom\:col-start-9 {
+    grid-column-start: 9;
+  }
+
+  .mdcustom\:col-start-10 {
+    grid-column-start: 10;
+  }
+
+  .mdcustom\:col-start-11 {
+    grid-column-start: 11;
+  }
+
+  .mdcustom\:col-start-12 {
+    grid-column-start: 12;
+  }
+
+  .mdcustom\:col-start-13 {
+    grid-column-start: 13;
+  }
+
+  .mdcustom\:col-start-auto {
+    grid-column-start: auto;
+  }
+
+  .mdcustom\:col-end-1 {
+    grid-column-end: 1;
+  }
+
+  .mdcustom\:col-end-2 {
+    grid-column-end: 2;
+  }
+
+  .mdcustom\:col-end-3 {
+    grid-column-end: 3;
+  }
+
+  .mdcustom\:col-end-4 {
+    grid-column-end: 4;
+  }
+
+  .mdcustom\:col-end-5 {
+    grid-column-end: 5;
+  }
+
+  .mdcustom\:col-end-6 {
+    grid-column-end: 6;
+  }
+
+  .mdcustom\:col-end-7 {
+    grid-column-end: 7;
+  }
+
+  .mdcustom\:col-end-8 {
+    grid-column-end: 8;
+  }
+
+  .mdcustom\:col-end-9 {
+    grid-column-end: 9;
+  }
+
+  .mdcustom\:col-end-10 {
+    grid-column-end: 10;
+  }
+
+  .mdcustom\:col-end-11 {
+    grid-column-end: 11;
+  }
+
+  .mdcustom\:col-end-12 {
+    grid-column-end: 12;
+  }
+
+  .mdcustom\:col-end-13 {
+    grid-column-end: 13;
+  }
+
+  .mdcustom\:col-end-auto {
+    grid-column-end: auto;
+  }
+
+  .mdcustom\:grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-rows-5 {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-rows-6 {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+  }
+
+  .mdcustom\:grid-rows-none {
+    grid-template-rows: none;
+  }
+
+  .mdcustom\:row-auto {
+    grid-row: auto;
+  }
+
+  .mdcustom\:row-span-1 {
+    grid-row: span 1 / span 1;
+  }
+
+  .mdcustom\:row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+
+  .mdcustom\:row-span-3 {
+    grid-row: span 3 / span 3;
+  }
+
+  .mdcustom\:row-span-4 {
+    grid-row: span 4 / span 4;
+  }
+
+  .mdcustom\:row-span-5 {
+    grid-row: span 5 / span 5;
+  }
+
+  .mdcustom\:row-span-6 {
+    grid-row: span 6 / span 6;
+  }
+
+  .mdcustom\:row-start-1 {
+    grid-row-start: 1;
+  }
+
+  .mdcustom\:row-start-2 {
+    grid-row-start: 2;
+  }
+
+  .mdcustom\:row-start-3 {
+    grid-row-start: 3;
+  }
+
+  .mdcustom\:row-start-4 {
+    grid-row-start: 4;
+  }
+
+  .mdcustom\:row-start-5 {
+    grid-row-start: 5;
+  }
+
+  .mdcustom\:row-start-6 {
+    grid-row-start: 6;
+  }
+
+  .mdcustom\:row-start-7 {
+    grid-row-start: 7;
+  }
+
+  .mdcustom\:row-start-auto {
+    grid-row-start: auto;
+  }
+
+  .mdcustom\:row-end-1 {
+    grid-row-end: 1;
+  }
+
+  .mdcustom\:row-end-2 {
+    grid-row-end: 2;
+  }
+
+  .mdcustom\:row-end-3 {
+    grid-row-end: 3;
+  }
+
+  .mdcustom\:row-end-4 {
+    grid-row-end: 4;
+  }
+
+  .mdcustom\:row-end-5 {
+    grid-row-end: 5;
+  }
+
+  .mdcustom\:row-end-6 {
+    grid-row-end: 6;
+  }
+
+  .mdcustom\:row-end-7 {
+    grid-row-end: 7;
+  }
+
+  .mdcustom\:row-end-auto {
+    grid-row-end: auto;
+  }
+
+  .mdcustom\:transform {
+    --transform-translate-x: 0;
+    --transform-translate-y: 0;
+    --transform-rotate: 0;
+    --transform-skew-x: 0;
+    --transform-skew-y: 0;
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+  }
+
+  .mdcustom\:transform-none {
+    transform: none;
+  }
+
+  .mdcustom\:origin-center {
+    transform-origin: center;
+  }
+
+  .mdcustom\:origin-top {
+    transform-origin: top;
+  }
+
+  .mdcustom\:origin-top-right {
+    transform-origin: top right;
+  }
+
+  .mdcustom\:origin-right {
+    transform-origin: right;
+  }
+
+  .mdcustom\:origin-bottom-right {
+    transform-origin: bottom right;
+  }
+
+  .mdcustom\:origin-bottom {
+    transform-origin: bottom;
+  }
+
+  .mdcustom\:origin-bottom-left {
+    transform-origin: bottom left;
+  }
+
+  .mdcustom\:origin-left {
+    transform-origin: left;
+  }
+
+  .mdcustom\:origin-top-left {
+    transform-origin: top left;
+  }
+
+  .mdcustom\:scale-0 {
+    --transform-scale-x: 0;
+    --transform-scale-y: 0;
+  }
+
+  .mdcustom\:scale-50 {
+    --transform-scale-x: .5;
+    --transform-scale-y: .5;
+  }
+
+  .mdcustom\:scale-75 {
+    --transform-scale-x: .75;
+    --transform-scale-y: .75;
+  }
+
+  .mdcustom\:scale-90 {
+    --transform-scale-x: .9;
+    --transform-scale-y: .9;
+  }
+
+  .mdcustom\:scale-95 {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+
+  .mdcustom\:scale-100 {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+  }
+
+  .mdcustom\:scale-105 {
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
+  }
+
+  .mdcustom\:scale-110 {
+    --transform-scale-x: 1.1;
+    --transform-scale-y: 1.1;
+  }
+
+  .mdcustom\:scale-125 {
+    --transform-scale-x: 1.25;
+    --transform-scale-y: 1.25;
+  }
+
+  .mdcustom\:scale-150 {
+    --transform-scale-x: 1.5;
+    --transform-scale-y: 1.5;
+  }
+
+  .mdcustom\:scale-x-0 {
+    --transform-scale-x: 0;
+  }
+
+  .mdcustom\:scale-x-50 {
+    --transform-scale-x: .5;
+  }
+
+  .mdcustom\:scale-x-75 {
+    --transform-scale-x: .75;
+  }
+
+  .mdcustom\:scale-x-90 {
+    --transform-scale-x: .9;
+  }
+
+  .mdcustom\:scale-x-95 {
+    --transform-scale-x: .95;
+  }
+
+  .mdcustom\:scale-x-100 {
+    --transform-scale-x: 1;
+  }
+
+  .mdcustom\:scale-x-105 {
+    --transform-scale-x: 1.05;
+  }
+
+  .mdcustom\:scale-x-110 {
+    --transform-scale-x: 1.1;
+  }
+
+  .mdcustom\:scale-x-125 {
+    --transform-scale-x: 1.25;
+  }
+
+  .mdcustom\:scale-x-150 {
+    --transform-scale-x: 1.5;
+  }
+
+  .mdcustom\:scale-y-0 {
+    --transform-scale-y: 0;
+  }
+
+  .mdcustom\:scale-y-50 {
+    --transform-scale-y: .5;
+  }
+
+  .mdcustom\:scale-y-75 {
+    --transform-scale-y: .75;
+  }
+
+  .mdcustom\:scale-y-90 {
+    --transform-scale-y: .9;
+  }
+
+  .mdcustom\:scale-y-95 {
+    --transform-scale-y: .95;
+  }
+
+  .mdcustom\:scale-y-100 {
+    --transform-scale-y: 1;
+  }
+
+  .mdcustom\:scale-y-105 {
+    --transform-scale-y: 1.05;
+  }
+
+  .mdcustom\:scale-y-110 {
+    --transform-scale-y: 1.1;
+  }
+
+  .mdcustom\:scale-y-125 {
+    --transform-scale-y: 1.25;
+  }
+
+  .mdcustom\:scale-y-150 {
+    --transform-scale-y: 1.5;
+  }
+
+  .mdcustom\:hover\:scale-0:hover {
+    --transform-scale-x: 0;
+    --transform-scale-y: 0;
+  }
+
+  .mdcustom\:hover\:scale-50:hover {
+    --transform-scale-x: .5;
+    --transform-scale-y: .5;
+  }
+
+  .mdcustom\:hover\:scale-75:hover {
+    --transform-scale-x: .75;
+    --transform-scale-y: .75;
+  }
+
+  .mdcustom\:hover\:scale-90:hover {
+    --transform-scale-x: .9;
+    --transform-scale-y: .9;
+  }
+
+  .mdcustom\:hover\:scale-95:hover {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+
+  .mdcustom\:hover\:scale-100:hover {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+  }
+
+  .mdcustom\:hover\:scale-105:hover {
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
+  }
+
+  .mdcustom\:hover\:scale-110:hover {
+    --transform-scale-x: 1.1;
+    --transform-scale-y: 1.1;
+  }
+
+  .mdcustom\:hover\:scale-125:hover {
+    --transform-scale-x: 1.25;
+    --transform-scale-y: 1.25;
+  }
+
+  .mdcustom\:hover\:scale-150:hover {
+    --transform-scale-x: 1.5;
+    --transform-scale-y: 1.5;
+  }
+
+  .mdcustom\:hover\:scale-x-0:hover {
+    --transform-scale-x: 0;
+  }
+
+  .mdcustom\:hover\:scale-x-50:hover {
+    --transform-scale-x: .5;
+  }
+
+  .mdcustom\:hover\:scale-x-75:hover {
+    --transform-scale-x: .75;
+  }
+
+  .mdcustom\:hover\:scale-x-90:hover {
+    --transform-scale-x: .9;
+  }
+
+  .mdcustom\:hover\:scale-x-95:hover {
+    --transform-scale-x: .95;
+  }
+
+  .mdcustom\:hover\:scale-x-100:hover {
+    --transform-scale-x: 1;
+  }
+
+  .mdcustom\:hover\:scale-x-105:hover {
+    --transform-scale-x: 1.05;
+  }
+
+  .mdcustom\:hover\:scale-x-110:hover {
+    --transform-scale-x: 1.1;
+  }
+
+  .mdcustom\:hover\:scale-x-125:hover {
+    --transform-scale-x: 1.25;
+  }
+
+  .mdcustom\:hover\:scale-x-150:hover {
+    --transform-scale-x: 1.5;
+  }
+
+  .mdcustom\:hover\:scale-y-0:hover {
+    --transform-scale-y: 0;
+  }
+
+  .mdcustom\:hover\:scale-y-50:hover {
+    --transform-scale-y: .5;
+  }
+
+  .mdcustom\:hover\:scale-y-75:hover {
+    --transform-scale-y: .75;
+  }
+
+  .mdcustom\:hover\:scale-y-90:hover {
+    --transform-scale-y: .9;
+  }
+
+  .mdcustom\:hover\:scale-y-95:hover {
+    --transform-scale-y: .95;
+  }
+
+  .mdcustom\:hover\:scale-y-100:hover {
+    --transform-scale-y: 1;
+  }
+
+  .mdcustom\:hover\:scale-y-105:hover {
+    --transform-scale-y: 1.05;
+  }
+
+  .mdcustom\:hover\:scale-y-110:hover {
+    --transform-scale-y: 1.1;
+  }
+
+  .mdcustom\:hover\:scale-y-125:hover {
+    --transform-scale-y: 1.25;
+  }
+
+  .mdcustom\:hover\:scale-y-150:hover {
+    --transform-scale-y: 1.5;
+  }
+
+  .mdcustom\:focus\:scale-0:focus {
+    --transform-scale-x: 0;
+    --transform-scale-y: 0;
+  }
+
+  .mdcustom\:focus\:scale-50:focus {
+    --transform-scale-x: .5;
+    --transform-scale-y: .5;
+  }
+
+  .mdcustom\:focus\:scale-75:focus {
+    --transform-scale-x: .75;
+    --transform-scale-y: .75;
+  }
+
+  .mdcustom\:focus\:scale-90:focus {
+    --transform-scale-x: .9;
+    --transform-scale-y: .9;
+  }
+
+  .mdcustom\:focus\:scale-95:focus {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+
+  .mdcustom\:focus\:scale-100:focus {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+  }
+
+  .mdcustom\:focus\:scale-105:focus {
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
+  }
+
+  .mdcustom\:focus\:scale-110:focus {
+    --transform-scale-x: 1.1;
+    --transform-scale-y: 1.1;
+  }
+
+  .mdcustom\:focus\:scale-125:focus {
+    --transform-scale-x: 1.25;
+    --transform-scale-y: 1.25;
+  }
+
+  .mdcustom\:focus\:scale-150:focus {
+    --transform-scale-x: 1.5;
+    --transform-scale-y: 1.5;
+  }
+
+  .mdcustom\:focus\:scale-x-0:focus {
+    --transform-scale-x: 0;
+  }
+
+  .mdcustom\:focus\:scale-x-50:focus {
+    --transform-scale-x: .5;
+  }
+
+  .mdcustom\:focus\:scale-x-75:focus {
+    --transform-scale-x: .75;
+  }
+
+  .mdcustom\:focus\:scale-x-90:focus {
+    --transform-scale-x: .9;
+  }
+
+  .mdcustom\:focus\:scale-x-95:focus {
+    --transform-scale-x: .95;
+  }
+
+  .mdcustom\:focus\:scale-x-100:focus {
+    --transform-scale-x: 1;
+  }
+
+  .mdcustom\:focus\:scale-x-105:focus {
+    --transform-scale-x: 1.05;
+  }
+
+  .mdcustom\:focus\:scale-x-110:focus {
+    --transform-scale-x: 1.1;
+  }
+
+  .mdcustom\:focus\:scale-x-125:focus {
+    --transform-scale-x: 1.25;
+  }
+
+  .mdcustom\:focus\:scale-x-150:focus {
+    --transform-scale-x: 1.5;
+  }
+
+  .mdcustom\:focus\:scale-y-0:focus {
+    --transform-scale-y: 0;
+  }
+
+  .mdcustom\:focus\:scale-y-50:focus {
+    --transform-scale-y: .5;
+  }
+
+  .mdcustom\:focus\:scale-y-75:focus {
+    --transform-scale-y: .75;
+  }
+
+  .mdcustom\:focus\:scale-y-90:focus {
+    --transform-scale-y: .9;
+  }
+
+  .mdcustom\:focus\:scale-y-95:focus {
+    --transform-scale-y: .95;
+  }
+
+  .mdcustom\:focus\:scale-y-100:focus {
+    --transform-scale-y: 1;
+  }
+
+  .mdcustom\:focus\:scale-y-105:focus {
+    --transform-scale-y: 1.05;
+  }
+
+  .mdcustom\:focus\:scale-y-110:focus {
+    --transform-scale-y: 1.1;
+  }
+
+  .mdcustom\:focus\:scale-y-125:focus {
+    --transform-scale-y: 1.25;
+  }
+
+  .mdcustom\:focus\:scale-y-150:focus {
+    --transform-scale-y: 1.5;
+  }
+
+  .mdcustom\:rotate-0 {
+    --transform-rotate: 0;
+  }
+
+  .mdcustom\:rotate-45 {
+    --transform-rotate: 45deg;
+  }
+
+  .mdcustom\:rotate-90 {
+    --transform-rotate: 90deg;
+  }
+
+  .mdcustom\:rotate-180 {
+    --transform-rotate: 180deg;
+  }
+
+  .mdcustom\:-rotate-180 {
+    --transform-rotate: -180deg;
+  }
+
+  .mdcustom\:-rotate-90 {
+    --transform-rotate: -90deg;
+  }
+
+  .mdcustom\:-rotate-45 {
+    --transform-rotate: -45deg;
+  }
+
+  .mdcustom\:hover\:rotate-0:hover {
+    --transform-rotate: 0;
+  }
+
+  .mdcustom\:hover\:rotate-45:hover {
+    --transform-rotate: 45deg;
+  }
+
+  .mdcustom\:hover\:rotate-90:hover {
+    --transform-rotate: 90deg;
+  }
+
+  .mdcustom\:hover\:rotate-180:hover {
+    --transform-rotate: 180deg;
+  }
+
+  .mdcustom\:hover\:-rotate-180:hover {
+    --transform-rotate: -180deg;
+  }
+
+  .mdcustom\:hover\:-rotate-90:hover {
+    --transform-rotate: -90deg;
+  }
+
+  .mdcustom\:hover\:-rotate-45:hover {
+    --transform-rotate: -45deg;
+  }
+
+  .mdcustom\:focus\:rotate-0:focus {
+    --transform-rotate: 0;
+  }
+
+  .mdcustom\:focus\:rotate-45:focus {
+    --transform-rotate: 45deg;
+  }
+
+  .mdcustom\:focus\:rotate-90:focus {
+    --transform-rotate: 90deg;
+  }
+
+  .mdcustom\:focus\:rotate-180:focus {
+    --transform-rotate: 180deg;
+  }
+
+  .mdcustom\:focus\:-rotate-180:focus {
+    --transform-rotate: -180deg;
+  }
+
+  .mdcustom\:focus\:-rotate-90:focus {
+    --transform-rotate: -90deg;
+  }
+
+  .mdcustom\:focus\:-rotate-45:focus {
+    --transform-rotate: -45deg;
+  }
+
+  .mdcustom\:translate-x-0 {
+    --transform-translate-x: 0;
+  }
+
+  .mdcustom\:translate-x-1 {
+    --transform-translate-x: 0.25rem;
+  }
+
+  .mdcustom\:translate-x-2 {
+    --transform-translate-x: 0.5rem;
+  }
+
+  .mdcustom\:translate-x-3 {
+    --transform-translate-x: 0.75rem;
+  }
+
+  .mdcustom\:translate-x-4 {
+    --transform-translate-x: 1rem;
+  }
+
+  .mdcustom\:translate-x-5 {
+    --transform-translate-x: 1.25rem;
+  }
+
+  .mdcustom\:translate-x-6 {
+    --transform-translate-x: 1.5rem;
+  }
+
+  .mdcustom\:translate-x-8 {
+    --transform-translate-x: 2rem;
+  }
+
+  .mdcustom\:translate-x-10 {
+    --transform-translate-x: 2.5rem;
+  }
+
+  .mdcustom\:translate-x-12 {
+    --transform-translate-x: 3rem;
+  }
+
+  .mdcustom\:translate-x-16 {
+    --transform-translate-x: 4rem;
+  }
+
+  .mdcustom\:translate-x-20 {
+    --transform-translate-x: 5rem;
+  }
+
+  .mdcustom\:translate-x-24 {
+    --transform-translate-x: 6rem;
+  }
+
+  .mdcustom\:translate-x-32 {
+    --transform-translate-x: 8rem;
+  }
+
+  .mdcustom\:translate-x-40 {
+    --transform-translate-x: 10rem;
+  }
+
+  .mdcustom\:translate-x-48 {
+    --transform-translate-x: 12rem;
+  }
+
+  .mdcustom\:translate-x-56 {
+    --transform-translate-x: 14rem;
+  }
+
+  .mdcustom\:translate-x-64 {
+    --transform-translate-x: 16rem;
+  }
+
+  .mdcustom\:translate-x-96 {
+    --transform-translate-x: 24rem;
+  }
+
+  .mdcustom\:translate-x-128 {
+    --transform-translate-x: 32rem;
+  }
+
+  .mdcustom\:translate-x-px {
+    --transform-translate-x: 1px;
+  }
+
+  .mdcustom\:-translate-x-1 {
+    --transform-translate-x: -0.25rem;
+  }
+
+  .mdcustom\:-translate-x-2 {
+    --transform-translate-x: -0.5rem;
+  }
+
+  .mdcustom\:-translate-x-3 {
+    --transform-translate-x: -0.75rem;
+  }
+
+  .mdcustom\:-translate-x-4 {
+    --transform-translate-x: -1rem;
+  }
+
+  .mdcustom\:-translate-x-5 {
+    --transform-translate-x: -1.25rem;
+  }
+
+  .mdcustom\:-translate-x-6 {
+    --transform-translate-x: -1.5rem;
+  }
+
+  .mdcustom\:-translate-x-8 {
+    --transform-translate-x: -2rem;
+  }
+
+  .mdcustom\:-translate-x-10 {
+    --transform-translate-x: -2.5rem;
+  }
+
+  .mdcustom\:-translate-x-12 {
+    --transform-translate-x: -3rem;
+  }
+
+  .mdcustom\:-translate-x-16 {
+    --transform-translate-x: -4rem;
+  }
+
+  .mdcustom\:-translate-x-20 {
+    --transform-translate-x: -5rem;
+  }
+
+  .mdcustom\:-translate-x-24 {
+    --transform-translate-x: -6rem;
+  }
+
+  .mdcustom\:-translate-x-32 {
+    --transform-translate-x: -8rem;
+  }
+
+  .mdcustom\:-translate-x-40 {
+    --transform-translate-x: -10rem;
+  }
+
+  .mdcustom\:-translate-x-48 {
+    --transform-translate-x: -12rem;
+  }
+
+  .mdcustom\:-translate-x-56 {
+    --transform-translate-x: -14rem;
+  }
+
+  .mdcustom\:-translate-x-64 {
+    --transform-translate-x: -16rem;
+  }
+
+  .mdcustom\:-translate-x-96 {
+    --transform-translate-x: -24rem;
+  }
+
+  .mdcustom\:-translate-x-128 {
+    --transform-translate-x: -32rem;
+  }
+
+  .mdcustom\:-translate-x-px {
+    --transform-translate-x: -1px;
+  }
+
+  .mdcustom\:-translate-x-full {
+    --transform-translate-x: -100%;
+  }
+
+  .mdcustom\:-translate-x-1\/2 {
+    --transform-translate-x: -50%;
+  }
+
+  .mdcustom\:translate-x-1\/2 {
+    --transform-translate-x: 50%;
+  }
+
+  .mdcustom\:translate-x-full {
+    --transform-translate-x: 100%;
+  }
+
+  .mdcustom\:translate-y-0 {
+    --transform-translate-y: 0;
+  }
+
+  .mdcustom\:translate-y-1 {
+    --transform-translate-y: 0.25rem;
+  }
+
+  .mdcustom\:translate-y-2 {
+    --transform-translate-y: 0.5rem;
+  }
+
+  .mdcustom\:translate-y-3 {
+    --transform-translate-y: 0.75rem;
+  }
+
+  .mdcustom\:translate-y-4 {
+    --transform-translate-y: 1rem;
+  }
+
+  .mdcustom\:translate-y-5 {
+    --transform-translate-y: 1.25rem;
+  }
+
+  .mdcustom\:translate-y-6 {
+    --transform-translate-y: 1.5rem;
+  }
+
+  .mdcustom\:translate-y-8 {
+    --transform-translate-y: 2rem;
+  }
+
+  .mdcustom\:translate-y-10 {
+    --transform-translate-y: 2.5rem;
+  }
+
+  .mdcustom\:translate-y-12 {
+    --transform-translate-y: 3rem;
+  }
+
+  .mdcustom\:translate-y-16 {
+    --transform-translate-y: 4rem;
+  }
+
+  .mdcustom\:translate-y-20 {
+    --transform-translate-y: 5rem;
+  }
+
+  .mdcustom\:translate-y-24 {
+    --transform-translate-y: 6rem;
+  }
+
+  .mdcustom\:translate-y-32 {
+    --transform-translate-y: 8rem;
+  }
+
+  .mdcustom\:translate-y-40 {
+    --transform-translate-y: 10rem;
+  }
+
+  .mdcustom\:translate-y-48 {
+    --transform-translate-y: 12rem;
+  }
+
+  .mdcustom\:translate-y-56 {
+    --transform-translate-y: 14rem;
+  }
+
+  .mdcustom\:translate-y-64 {
+    --transform-translate-y: 16rem;
+  }
+
+  .mdcustom\:translate-y-96 {
+    --transform-translate-y: 24rem;
+  }
+
+  .mdcustom\:translate-y-128 {
+    --transform-translate-y: 32rem;
+  }
+
+  .mdcustom\:translate-y-px {
+    --transform-translate-y: 1px;
+  }
+
+  .mdcustom\:-translate-y-1 {
+    --transform-translate-y: -0.25rem;
+  }
+
+  .mdcustom\:-translate-y-2 {
+    --transform-translate-y: -0.5rem;
+  }
+
+  .mdcustom\:-translate-y-3 {
+    --transform-translate-y: -0.75rem;
+  }
+
+  .mdcustom\:-translate-y-4 {
+    --transform-translate-y: -1rem;
+  }
+
+  .mdcustom\:-translate-y-5 {
+    --transform-translate-y: -1.25rem;
+  }
+
+  .mdcustom\:-translate-y-6 {
+    --transform-translate-y: -1.5rem;
+  }
+
+  .mdcustom\:-translate-y-8 {
+    --transform-translate-y: -2rem;
+  }
+
+  .mdcustom\:-translate-y-10 {
+    --transform-translate-y: -2.5rem;
+  }
+
+  .mdcustom\:-translate-y-12 {
+    --transform-translate-y: -3rem;
+  }
+
+  .mdcustom\:-translate-y-16 {
+    --transform-translate-y: -4rem;
+  }
+
+  .mdcustom\:-translate-y-20 {
+    --transform-translate-y: -5rem;
+  }
+
+  .mdcustom\:-translate-y-24 {
+    --transform-translate-y: -6rem;
+  }
+
+  .mdcustom\:-translate-y-32 {
+    --transform-translate-y: -8rem;
+  }
+
+  .mdcustom\:-translate-y-40 {
+    --transform-translate-y: -10rem;
+  }
+
+  .mdcustom\:-translate-y-48 {
+    --transform-translate-y: -12rem;
+  }
+
+  .mdcustom\:-translate-y-56 {
+    --transform-translate-y: -14rem;
+  }
+
+  .mdcustom\:-translate-y-64 {
+    --transform-translate-y: -16rem;
+  }
+
+  .mdcustom\:-translate-y-96 {
+    --transform-translate-y: -24rem;
+  }
+
+  .mdcustom\:-translate-y-128 {
+    --transform-translate-y: -32rem;
+  }
+
+  .mdcustom\:-translate-y-px {
+    --transform-translate-y: -1px;
+  }
+
+  .mdcustom\:-translate-y-full {
+    --transform-translate-y: -100%;
+  }
+
+  .mdcustom\:-translate-y-1\/2 {
+    --transform-translate-y: -50%;
+  }
+
+  .mdcustom\:translate-y-1\/2 {
+    --transform-translate-y: 50%;
+  }
+
+  .mdcustom\:translate-y-full {
+    --transform-translate-y: 100%;
+  }
+
+  .mdcustom\:hover\:translate-x-0:hover {
+    --transform-translate-x: 0;
+  }
+
+  .mdcustom\:hover\:translate-x-1:hover {
+    --transform-translate-x: 0.25rem;
+  }
+
+  .mdcustom\:hover\:translate-x-2:hover {
+    --transform-translate-x: 0.5rem;
+  }
+
+  .mdcustom\:hover\:translate-x-3:hover {
+    --transform-translate-x: 0.75rem;
+  }
+
+  .mdcustom\:hover\:translate-x-4:hover {
+    --transform-translate-x: 1rem;
+  }
+
+  .mdcustom\:hover\:translate-x-5:hover {
+    --transform-translate-x: 1.25rem;
+  }
+
+  .mdcustom\:hover\:translate-x-6:hover {
+    --transform-translate-x: 1.5rem;
+  }
+
+  .mdcustom\:hover\:translate-x-8:hover {
+    --transform-translate-x: 2rem;
+  }
+
+  .mdcustom\:hover\:translate-x-10:hover {
+    --transform-translate-x: 2.5rem;
+  }
+
+  .mdcustom\:hover\:translate-x-12:hover {
+    --transform-translate-x: 3rem;
+  }
+
+  .mdcustom\:hover\:translate-x-16:hover {
+    --transform-translate-x: 4rem;
+  }
+
+  .mdcustom\:hover\:translate-x-20:hover {
+    --transform-translate-x: 5rem;
+  }
+
+  .mdcustom\:hover\:translate-x-24:hover {
+    --transform-translate-x: 6rem;
+  }
+
+  .mdcustom\:hover\:translate-x-32:hover {
+    --transform-translate-x: 8rem;
+  }
+
+  .mdcustom\:hover\:translate-x-40:hover {
+    --transform-translate-x: 10rem;
+  }
+
+  .mdcustom\:hover\:translate-x-48:hover {
+    --transform-translate-x: 12rem;
+  }
+
+  .mdcustom\:hover\:translate-x-56:hover {
+    --transform-translate-x: 14rem;
+  }
+
+  .mdcustom\:hover\:translate-x-64:hover {
+    --transform-translate-x: 16rem;
+  }
+
+  .mdcustom\:hover\:translate-x-96:hover {
+    --transform-translate-x: 24rem;
+  }
+
+  .mdcustom\:hover\:translate-x-128:hover {
+    --transform-translate-x: 32rem;
+  }
+
+  .mdcustom\:hover\:translate-x-px:hover {
+    --transform-translate-x: 1px;
+  }
+
+  .mdcustom\:hover\:-translate-x-1:hover {
+    --transform-translate-x: -0.25rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-2:hover {
+    --transform-translate-x: -0.5rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-3:hover {
+    --transform-translate-x: -0.75rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-4:hover {
+    --transform-translate-x: -1rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-5:hover {
+    --transform-translate-x: -1.25rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-6:hover {
+    --transform-translate-x: -1.5rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-8:hover {
+    --transform-translate-x: -2rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-10:hover {
+    --transform-translate-x: -2.5rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-12:hover {
+    --transform-translate-x: -3rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-16:hover {
+    --transform-translate-x: -4rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-20:hover {
+    --transform-translate-x: -5rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-24:hover {
+    --transform-translate-x: -6rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-32:hover {
+    --transform-translate-x: -8rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-40:hover {
+    --transform-translate-x: -10rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-48:hover {
+    --transform-translate-x: -12rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-56:hover {
+    --transform-translate-x: -14rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-64:hover {
+    --transform-translate-x: -16rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-96:hover {
+    --transform-translate-x: -24rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-128:hover {
+    --transform-translate-x: -32rem;
+  }
+
+  .mdcustom\:hover\:-translate-x-px:hover {
+    --transform-translate-x: -1px;
+  }
+
+  .mdcustom\:hover\:-translate-x-full:hover {
+    --transform-translate-x: -100%;
+  }
+
+  .mdcustom\:hover\:-translate-x-1\/2:hover {
+    --transform-translate-x: -50%;
+  }
+
+  .mdcustom\:hover\:translate-x-1\/2:hover {
+    --transform-translate-x: 50%;
+  }
+
+  .mdcustom\:hover\:translate-x-full:hover {
+    --transform-translate-x: 100%;
+  }
+
+  .mdcustom\:hover\:translate-y-0:hover {
+    --transform-translate-y: 0;
+  }
+
+  .mdcustom\:hover\:translate-y-1:hover {
+    --transform-translate-y: 0.25rem;
+  }
+
+  .mdcustom\:hover\:translate-y-2:hover {
+    --transform-translate-y: 0.5rem;
+  }
+
+  .mdcustom\:hover\:translate-y-3:hover {
+    --transform-translate-y: 0.75rem;
+  }
+
+  .mdcustom\:hover\:translate-y-4:hover {
+    --transform-translate-y: 1rem;
+  }
+
+  .mdcustom\:hover\:translate-y-5:hover {
+    --transform-translate-y: 1.25rem;
+  }
+
+  .mdcustom\:hover\:translate-y-6:hover {
+    --transform-translate-y: 1.5rem;
+  }
+
+  .mdcustom\:hover\:translate-y-8:hover {
+    --transform-translate-y: 2rem;
+  }
+
+  .mdcustom\:hover\:translate-y-10:hover {
+    --transform-translate-y: 2.5rem;
+  }
+
+  .mdcustom\:hover\:translate-y-12:hover {
+    --transform-translate-y: 3rem;
+  }
+
+  .mdcustom\:hover\:translate-y-16:hover {
+    --transform-translate-y: 4rem;
+  }
+
+  .mdcustom\:hover\:translate-y-20:hover {
+    --transform-translate-y: 5rem;
+  }
+
+  .mdcustom\:hover\:translate-y-24:hover {
+    --transform-translate-y: 6rem;
+  }
+
+  .mdcustom\:hover\:translate-y-32:hover {
+    --transform-translate-y: 8rem;
+  }
+
+  .mdcustom\:hover\:translate-y-40:hover {
+    --transform-translate-y: 10rem;
+  }
+
+  .mdcustom\:hover\:translate-y-48:hover {
+    --transform-translate-y: 12rem;
+  }
+
+  .mdcustom\:hover\:translate-y-56:hover {
+    --transform-translate-y: 14rem;
+  }
+
+  .mdcustom\:hover\:translate-y-64:hover {
+    --transform-translate-y: 16rem;
+  }
+
+  .mdcustom\:hover\:translate-y-96:hover {
+    --transform-translate-y: 24rem;
+  }
+
+  .mdcustom\:hover\:translate-y-128:hover {
+    --transform-translate-y: 32rem;
+  }
+
+  .mdcustom\:hover\:translate-y-px:hover {
+    --transform-translate-y: 1px;
+  }
+
+  .mdcustom\:hover\:-translate-y-1:hover {
+    --transform-translate-y: -0.25rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-2:hover {
+    --transform-translate-y: -0.5rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-3:hover {
+    --transform-translate-y: -0.75rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-4:hover {
+    --transform-translate-y: -1rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-5:hover {
+    --transform-translate-y: -1.25rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-6:hover {
+    --transform-translate-y: -1.5rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-8:hover {
+    --transform-translate-y: -2rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-10:hover {
+    --transform-translate-y: -2.5rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-12:hover {
+    --transform-translate-y: -3rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-16:hover {
+    --transform-translate-y: -4rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-20:hover {
+    --transform-translate-y: -5rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-24:hover {
+    --transform-translate-y: -6rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-32:hover {
+    --transform-translate-y: -8rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-40:hover {
+    --transform-translate-y: -10rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-48:hover {
+    --transform-translate-y: -12rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-56:hover {
+    --transform-translate-y: -14rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-64:hover {
+    --transform-translate-y: -16rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-96:hover {
+    --transform-translate-y: -24rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-128:hover {
+    --transform-translate-y: -32rem;
+  }
+
+  .mdcustom\:hover\:-translate-y-px:hover {
+    --transform-translate-y: -1px;
+  }
+
+  .mdcustom\:hover\:-translate-y-full:hover {
+    --transform-translate-y: -100%;
+  }
+
+  .mdcustom\:hover\:-translate-y-1\/2:hover {
+    --transform-translate-y: -50%;
+  }
+
+  .mdcustom\:hover\:translate-y-1\/2:hover {
+    --transform-translate-y: 50%;
+  }
+
+  .mdcustom\:hover\:translate-y-full:hover {
+    --transform-translate-y: 100%;
+  }
+
+  .mdcustom\:focus\:translate-x-0:focus {
+    --transform-translate-x: 0;
+  }
+
+  .mdcustom\:focus\:translate-x-1:focus {
+    --transform-translate-x: 0.25rem;
+  }
+
+  .mdcustom\:focus\:translate-x-2:focus {
+    --transform-translate-x: 0.5rem;
+  }
+
+  .mdcustom\:focus\:translate-x-3:focus {
+    --transform-translate-x: 0.75rem;
+  }
+
+  .mdcustom\:focus\:translate-x-4:focus {
+    --transform-translate-x: 1rem;
+  }
+
+  .mdcustom\:focus\:translate-x-5:focus {
+    --transform-translate-x: 1.25rem;
+  }
+
+  .mdcustom\:focus\:translate-x-6:focus {
+    --transform-translate-x: 1.5rem;
+  }
+
+  .mdcustom\:focus\:translate-x-8:focus {
+    --transform-translate-x: 2rem;
+  }
+
+  .mdcustom\:focus\:translate-x-10:focus {
+    --transform-translate-x: 2.5rem;
+  }
+
+  .mdcustom\:focus\:translate-x-12:focus {
+    --transform-translate-x: 3rem;
+  }
+
+  .mdcustom\:focus\:translate-x-16:focus {
+    --transform-translate-x: 4rem;
+  }
+
+  .mdcustom\:focus\:translate-x-20:focus {
+    --transform-translate-x: 5rem;
+  }
+
+  .mdcustom\:focus\:translate-x-24:focus {
+    --transform-translate-x: 6rem;
+  }
+
+  .mdcustom\:focus\:translate-x-32:focus {
+    --transform-translate-x: 8rem;
+  }
+
+  .mdcustom\:focus\:translate-x-40:focus {
+    --transform-translate-x: 10rem;
+  }
+
+  .mdcustom\:focus\:translate-x-48:focus {
+    --transform-translate-x: 12rem;
+  }
+
+  .mdcustom\:focus\:translate-x-56:focus {
+    --transform-translate-x: 14rem;
+  }
+
+  .mdcustom\:focus\:translate-x-64:focus {
+    --transform-translate-x: 16rem;
+  }
+
+  .mdcustom\:focus\:translate-x-96:focus {
+    --transform-translate-x: 24rem;
+  }
+
+  .mdcustom\:focus\:translate-x-128:focus {
+    --transform-translate-x: 32rem;
+  }
+
+  .mdcustom\:focus\:translate-x-px:focus {
+    --transform-translate-x: 1px;
+  }
+
+  .mdcustom\:focus\:-translate-x-1:focus {
+    --transform-translate-x: -0.25rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-2:focus {
+    --transform-translate-x: -0.5rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-3:focus {
+    --transform-translate-x: -0.75rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-4:focus {
+    --transform-translate-x: -1rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-5:focus {
+    --transform-translate-x: -1.25rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-6:focus {
+    --transform-translate-x: -1.5rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-8:focus {
+    --transform-translate-x: -2rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-10:focus {
+    --transform-translate-x: -2.5rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-12:focus {
+    --transform-translate-x: -3rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-16:focus {
+    --transform-translate-x: -4rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-20:focus {
+    --transform-translate-x: -5rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-24:focus {
+    --transform-translate-x: -6rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-32:focus {
+    --transform-translate-x: -8rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-40:focus {
+    --transform-translate-x: -10rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-48:focus {
+    --transform-translate-x: -12rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-56:focus {
+    --transform-translate-x: -14rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-64:focus {
+    --transform-translate-x: -16rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-96:focus {
+    --transform-translate-x: -24rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-128:focus {
+    --transform-translate-x: -32rem;
+  }
+
+  .mdcustom\:focus\:-translate-x-px:focus {
+    --transform-translate-x: -1px;
+  }
+
+  .mdcustom\:focus\:-translate-x-full:focus {
+    --transform-translate-x: -100%;
+  }
+
+  .mdcustom\:focus\:-translate-x-1\/2:focus {
+    --transform-translate-x: -50%;
+  }
+
+  .mdcustom\:focus\:translate-x-1\/2:focus {
+    --transform-translate-x: 50%;
+  }
+
+  .mdcustom\:focus\:translate-x-full:focus {
+    --transform-translate-x: 100%;
+  }
+
+  .mdcustom\:focus\:translate-y-0:focus {
+    --transform-translate-y: 0;
+  }
+
+  .mdcustom\:focus\:translate-y-1:focus {
+    --transform-translate-y: 0.25rem;
+  }
+
+  .mdcustom\:focus\:translate-y-2:focus {
+    --transform-translate-y: 0.5rem;
+  }
+
+  .mdcustom\:focus\:translate-y-3:focus {
+    --transform-translate-y: 0.75rem;
+  }
+
+  .mdcustom\:focus\:translate-y-4:focus {
+    --transform-translate-y: 1rem;
+  }
+
+  .mdcustom\:focus\:translate-y-5:focus {
+    --transform-translate-y: 1.25rem;
+  }
+
+  .mdcustom\:focus\:translate-y-6:focus {
+    --transform-translate-y: 1.5rem;
+  }
+
+  .mdcustom\:focus\:translate-y-8:focus {
+    --transform-translate-y: 2rem;
+  }
+
+  .mdcustom\:focus\:translate-y-10:focus {
+    --transform-translate-y: 2.5rem;
+  }
+
+  .mdcustom\:focus\:translate-y-12:focus {
+    --transform-translate-y: 3rem;
+  }
+
+  .mdcustom\:focus\:translate-y-16:focus {
+    --transform-translate-y: 4rem;
+  }
+
+  .mdcustom\:focus\:translate-y-20:focus {
+    --transform-translate-y: 5rem;
+  }
+
+  .mdcustom\:focus\:translate-y-24:focus {
+    --transform-translate-y: 6rem;
+  }
+
+  .mdcustom\:focus\:translate-y-32:focus {
+    --transform-translate-y: 8rem;
+  }
+
+  .mdcustom\:focus\:translate-y-40:focus {
+    --transform-translate-y: 10rem;
+  }
+
+  .mdcustom\:focus\:translate-y-48:focus {
+    --transform-translate-y: 12rem;
+  }
+
+  .mdcustom\:focus\:translate-y-56:focus {
+    --transform-translate-y: 14rem;
+  }
+
+  .mdcustom\:focus\:translate-y-64:focus {
+    --transform-translate-y: 16rem;
+  }
+
+  .mdcustom\:focus\:translate-y-96:focus {
+    --transform-translate-y: 24rem;
+  }
+
+  .mdcustom\:focus\:translate-y-128:focus {
+    --transform-translate-y: 32rem;
+  }
+
+  .mdcustom\:focus\:translate-y-px:focus {
+    --transform-translate-y: 1px;
+  }
+
+  .mdcustom\:focus\:-translate-y-1:focus {
+    --transform-translate-y: -0.25rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-2:focus {
+    --transform-translate-y: -0.5rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-3:focus {
+    --transform-translate-y: -0.75rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-4:focus {
+    --transform-translate-y: -1rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-5:focus {
+    --transform-translate-y: -1.25rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-6:focus {
+    --transform-translate-y: -1.5rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-8:focus {
+    --transform-translate-y: -2rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-10:focus {
+    --transform-translate-y: -2.5rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-12:focus {
+    --transform-translate-y: -3rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-16:focus {
+    --transform-translate-y: -4rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-20:focus {
+    --transform-translate-y: -5rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-24:focus {
+    --transform-translate-y: -6rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-32:focus {
+    --transform-translate-y: -8rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-40:focus {
+    --transform-translate-y: -10rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-48:focus {
+    --transform-translate-y: -12rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-56:focus {
+    --transform-translate-y: -14rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-64:focus {
+    --transform-translate-y: -16rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-96:focus {
+    --transform-translate-y: -24rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-128:focus {
+    --transform-translate-y: -32rem;
+  }
+
+  .mdcustom\:focus\:-translate-y-px:focus {
+    --transform-translate-y: -1px;
+  }
+
+  .mdcustom\:focus\:-translate-y-full:focus {
+    --transform-translate-y: -100%;
+  }
+
+  .mdcustom\:focus\:-translate-y-1\/2:focus {
+    --transform-translate-y: -50%;
+  }
+
+  .mdcustom\:focus\:translate-y-1\/2:focus {
+    --transform-translate-y: 50%;
+  }
+
+  .mdcustom\:focus\:translate-y-full:focus {
+    --transform-translate-y: 100%;
+  }
+
+  .mdcustom\:skew-x-0 {
+    --transform-skew-x: 0;
+  }
+
+  .mdcustom\:skew-x-3 {
+    --transform-skew-x: 3deg;
+  }
+
+  .mdcustom\:skew-x-6 {
+    --transform-skew-x: 6deg;
+  }
+
+  .mdcustom\:skew-x-12 {
+    --transform-skew-x: 12deg;
+  }
+
+  .mdcustom\:-skew-x-12 {
+    --transform-skew-x: -12deg;
+  }
+
+  .mdcustom\:-skew-x-6 {
+    --transform-skew-x: -6deg;
+  }
+
+  .mdcustom\:-skew-x-3 {
+    --transform-skew-x: -3deg;
+  }
+
+  .mdcustom\:skew-y-0 {
+    --transform-skew-y: 0;
+  }
+
+  .mdcustom\:skew-y-3 {
+    --transform-skew-y: 3deg;
+  }
+
+  .mdcustom\:skew-y-6 {
+    --transform-skew-y: 6deg;
+  }
+
+  .mdcustom\:skew-y-12 {
+    --transform-skew-y: 12deg;
+  }
+
+  .mdcustom\:-skew-y-12 {
+    --transform-skew-y: -12deg;
+  }
+
+  .mdcustom\:-skew-y-6 {
+    --transform-skew-y: -6deg;
+  }
+
+  .mdcustom\:-skew-y-3 {
+    --transform-skew-y: -3deg;
+  }
+
+  .mdcustom\:hover\:skew-x-0:hover {
+    --transform-skew-x: 0;
+  }
+
+  .mdcustom\:hover\:skew-x-3:hover {
+    --transform-skew-x: 3deg;
+  }
+
+  .mdcustom\:hover\:skew-x-6:hover {
+    --transform-skew-x: 6deg;
+  }
+
+  .mdcustom\:hover\:skew-x-12:hover {
+    --transform-skew-x: 12deg;
+  }
+
+  .mdcustom\:hover\:-skew-x-12:hover {
+    --transform-skew-x: -12deg;
+  }
+
+  .mdcustom\:hover\:-skew-x-6:hover {
+    --transform-skew-x: -6deg;
+  }
+
+  .mdcustom\:hover\:-skew-x-3:hover {
+    --transform-skew-x: -3deg;
+  }
+
+  .mdcustom\:hover\:skew-y-0:hover {
+    --transform-skew-y: 0;
+  }
+
+  .mdcustom\:hover\:skew-y-3:hover {
+    --transform-skew-y: 3deg;
+  }
+
+  .mdcustom\:hover\:skew-y-6:hover {
+    --transform-skew-y: 6deg;
+  }
+
+  .mdcustom\:hover\:skew-y-12:hover {
+    --transform-skew-y: 12deg;
+  }
+
+  .mdcustom\:hover\:-skew-y-12:hover {
+    --transform-skew-y: -12deg;
+  }
+
+  .mdcustom\:hover\:-skew-y-6:hover {
+    --transform-skew-y: -6deg;
+  }
+
+  .mdcustom\:hover\:-skew-y-3:hover {
+    --transform-skew-y: -3deg;
+  }
+
+  .mdcustom\:focus\:skew-x-0:focus {
+    --transform-skew-x: 0;
+  }
+
+  .mdcustom\:focus\:skew-x-3:focus {
+    --transform-skew-x: 3deg;
+  }
+
+  .mdcustom\:focus\:skew-x-6:focus {
+    --transform-skew-x: 6deg;
+  }
+
+  .mdcustom\:focus\:skew-x-12:focus {
+    --transform-skew-x: 12deg;
+  }
+
+  .mdcustom\:focus\:-skew-x-12:focus {
+    --transform-skew-x: -12deg;
+  }
+
+  .mdcustom\:focus\:-skew-x-6:focus {
+    --transform-skew-x: -6deg;
+  }
+
+  .mdcustom\:focus\:-skew-x-3:focus {
+    --transform-skew-x: -3deg;
+  }
+
+  .mdcustom\:focus\:skew-y-0:focus {
+    --transform-skew-y: 0;
+  }
+
+  .mdcustom\:focus\:skew-y-3:focus {
+    --transform-skew-y: 3deg;
+  }
+
+  .mdcustom\:focus\:skew-y-6:focus {
+    --transform-skew-y: 6deg;
+  }
+
+  .mdcustom\:focus\:skew-y-12:focus {
+    --transform-skew-y: 12deg;
+  }
+
+  .mdcustom\:focus\:-skew-y-12:focus {
+    --transform-skew-y: -12deg;
+  }
+
+  .mdcustom\:focus\:-skew-y-6:focus {
+    --transform-skew-y: -6deg;
+  }
+
+  .mdcustom\:focus\:-skew-y-3:focus {
+    --transform-skew-y: -3deg;
+  }
+
+  .mdcustom\:transition-none {
+    transition-property: none;
+  }
+
+  .mdcustom\:transition-all {
+    transition-property: all;
+  }
+
+  .mdcustom\:transition {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  }
+
+  .mdcustom\:transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+  }
+
+  .mdcustom\:transition-opacity {
+    transition-property: opacity;
+  }
+
+  .mdcustom\:transition-shadow {
+    transition-property: box-shadow;
+  }
+
+  .mdcustom\:transition-transform {
+    transition-property: transform;
+  }
+
+  .mdcustom\:ease-linear {
+    transition-timing-function: linear;
+  }
+
+  .mdcustom\:ease-in {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  .mdcustom\:ease-out {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .mdcustom\:ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mdcustom\:duration-75 {
+    transition-duration: 75ms;
+  }
+
+  .mdcustom\:duration-100 {
+    transition-duration: 100ms;
+  }
+
+  .mdcustom\:duration-150 {
+    transition-duration: 150ms;
+  }
+
+  .mdcustom\:duration-200 {
+    transition-duration: 200ms;
+  }
+
+  .mdcustom\:duration-300 {
+    transition-duration: 300ms;
+  }
+
+  .mdcustom\:duration-500 {
+    transition-duration: 500ms;
+  }
+
+  .mdcustom\:duration-700 {
+    transition-duration: 700ms;
+  }
+
+  .mdcustom\:duration-1000 {
+    transition-duration: 1000ms;
   }
 }
 
@@ -19218,6 +24574,10 @@ li svg #white-svg:hover {
     border-radius: 0.25rem;
   }
 
+  .smcustom\:rounded-md {
+    border-radius: 0.375rem;
+  }
+
   .smcustom\:rounded-lg {
     border-radius: 0.5rem;
   }
@@ -19284,6 +24644,26 @@ li svg #white-svg:hover {
   .smcustom\:rounded-l {
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+  }
+
+  .smcustom\:rounded-t-md {
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+  }
+
+  .smcustom\:rounded-r-md {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+  }
+
+  .smcustom\:rounded-b-md {
+    border-bottom-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+  }
+
+  .smcustom\:rounded-l-md {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
   }
 
   .smcustom\:rounded-t-lg {
@@ -19372,6 +24752,22 @@ li svg #white-svg:hover {
 
   .smcustom\:rounded-bl {
     border-bottom-left-radius: 0.25rem;
+  }
+
+  .smcustom\:rounded-tl-md {
+    border-top-left-radius: 0.375rem;
+  }
+
+  .smcustom\:rounded-tr-md {
+    border-top-right-radius: 0.375rem;
+  }
+
+  .smcustom\:rounded-br-md {
+    border-bottom-right-radius: 0.375rem;
+  }
+
+  .smcustom\:rounded-bl-md {
+    border-bottom-left-radius: 0.375rem;
   }
 
   .smcustom\:rounded-tl-lg {
@@ -19526,6 +24922,14 @@ li svg #white-svg:hover {
     border-left-width: 1px;
   }
 
+  .smcustom\:box-border {
+    box-sizing: border-box;
+  }
+
+  .smcustom\:box-content {
+    box-sizing: content-box;
+  }
+
   .smcustom\:cursor-auto {
     cursor: auto;
   }
@@ -19574,16 +24978,44 @@ li svg #white-svg:hover {
     display: inline-flex;
   }
 
+  .smcustom\:grid {
+    display: grid;
+  }
+
   .smcustom\:table {
     display: table;
   }
 
-  .smcustom\:table-row {
-    display: table-row;
+  .smcustom\:table-caption {
+    display: table-caption;
   }
 
   .smcustom\:table-cell {
     display: table-cell;
+  }
+
+  .smcustom\:table-column {
+    display: table-column;
+  }
+
+  .smcustom\:table-column-group {
+    display: table-column-group;
+  }
+
+  .smcustom\:table-footer-group {
+    display: table-footer-group;
+  }
+
+  .smcustom\:table-header-group {
+    display: table-header-group;
+  }
+
+  .smcustom\:table-row-group {
+    display: table-row-group;
+  }
+
+  .smcustom\:table-row {
+    display: table-row;
   }
 
   .smcustom\:hidden {
@@ -19676,6 +25108,10 @@ li svg #white-svg:hover {
 
   .smcustom\:justify-around {
     justify-content: space-around;
+  }
+
+  .smcustom\:justify-evenly {
+    justify-content: space-evenly;
   }
 
   .smcustom\:content-center {
@@ -19805,6 +25241,18 @@ li svg #white-svg:hover {
   .smcustom\:clearfix:after {
     content: "";
     display: table;
+    clear: both;
+  }
+
+  .smcustom\:clear-left {
+    clear: left;
+  }
+
+  .smcustom\:clear-right {
+    clear: right;
+  }
+
+  .smcustom\:clear-both {
     clear: both;
   }
 
@@ -20018,6 +25466,38 @@ li svg #white-svg:hover {
 
   .smcustom\:h-screen {
     height: 100vh;
+  }
+
+  .smcustom\:leading-3 {
+    line-height: .75rem;
+  }
+
+  .smcustom\:leading-4 {
+    line-height: 1rem;
+  }
+
+  .smcustom\:leading-5 {
+    line-height: 1.25rem;
+  }
+
+  .smcustom\:leading-6 {
+    line-height: 1.5rem;
+  }
+
+  .smcustom\:leading-7 {
+    line-height: 1.75rem;
+  }
+
+  .smcustom\:leading-8 {
+    line-height: 2rem;
+  }
+
+  .smcustom\:leading-9 {
+    line-height: 2.25rem;
+  }
+
+  .smcustom\:leading-10 {
+    line-height: 2.5rem;
   }
 
   .smcustom\:leading-none {
@@ -21330,6 +26810,10 @@ li svg #white-svg:hover {
 
   .smcustom\:max-h-screen {
     max-height: 100vh;
+  }
+
+  .smcustom\:max-w-none {
+    max-width: none;
   }
 
   .smcustom\:max-w-xs {
@@ -23061,6 +28545,14 @@ li svg #white-svg:hover {
     resize: both;
   }
 
+  .smcustom\:shadow-xs {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .smcustom\:shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
   .smcustom\:shadow {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
@@ -23093,6 +28585,14 @@ li svg #white-svg:hover {
     box-shadow: none;
   }
 
+  .smcustom\:hover\:shadow-xs:hover {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .smcustom\:hover\:shadow-sm:hover {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
   .smcustom\:hover\:shadow:hover {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
@@ -23123,6 +28623,14 @@ li svg #white-svg:hover {
 
   .smcustom\:hover\:shadow-none:hover {
     box-shadow: none;
+  }
+
+  .smcustom\:focus\:shadow-xs:focus {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .smcustom\:focus\:shadow-sm:focus {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
   .smcustom\:focus\:shadow:focus {
@@ -23163,6 +28671,18 @@ li svg #white-svg:hover {
 
   .smcustom\:stroke-current {
     stroke: currentColor;
+  }
+
+  .smcustom\:stroke-0 {
+    stroke-width: 0;
+  }
+
+  .smcustom\:stroke-1 {
+    stroke-width: 1;
+  }
+
+  .smcustom\:stroke-2 {
+    stroke-width: 2;
   }
 
   .smcustom\:table-auto {
@@ -24756,5 +30276,2521 @@ li svg #white-svg:hover {
 
   .smcustom\:z-auto {
     z-index: auto;
+  }
+
+  .smcustom\:gap-0 {
+    grid-gap: 0;
+    gap: 0;
+  }
+
+  .smcustom\:gap-1 {
+    grid-gap: 0.25rem;
+    gap: 0.25rem;
+  }
+
+  .smcustom\:gap-2 {
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .smcustom\:gap-3 {
+    grid-gap: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .smcustom\:gap-4 {
+    grid-gap: 1rem;
+    gap: 1rem;
+  }
+
+  .smcustom\:gap-5 {
+    grid-gap: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .smcustom\:gap-6 {
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .smcustom\:gap-8 {
+    grid-gap: 2rem;
+    gap: 2rem;
+  }
+
+  .smcustom\:gap-10 {
+    grid-gap: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .smcustom\:gap-12 {
+    grid-gap: 3rem;
+    gap: 3rem;
+  }
+
+  .smcustom\:gap-16 {
+    grid-gap: 4rem;
+    gap: 4rem;
+  }
+
+  .smcustom\:gap-20 {
+    grid-gap: 5rem;
+    gap: 5rem;
+  }
+
+  .smcustom\:gap-24 {
+    grid-gap: 6rem;
+    gap: 6rem;
+  }
+
+  .smcustom\:gap-32 {
+    grid-gap: 8rem;
+    gap: 8rem;
+  }
+
+  .smcustom\:gap-40 {
+    grid-gap: 10rem;
+    gap: 10rem;
+  }
+
+  .smcustom\:gap-48 {
+    grid-gap: 12rem;
+    gap: 12rem;
+  }
+
+  .smcustom\:gap-56 {
+    grid-gap: 14rem;
+    gap: 14rem;
+  }
+
+  .smcustom\:gap-64 {
+    grid-gap: 16rem;
+    gap: 16rem;
+  }
+
+  .smcustom\:gap-96 {
+    grid-gap: 24rem;
+    gap: 24rem;
+  }
+
+  .smcustom\:gap-128 {
+    grid-gap: 32rem;
+    gap: 32rem;
+  }
+
+  .smcustom\:gap-px {
+    grid-gap: 1px;
+    gap: 1px;
+  }
+
+  .smcustom\:col-gap-0 {
+    grid-column-gap: 0;
+    column-gap: 0;
+  }
+
+  .smcustom\:col-gap-1 {
+    grid-column-gap: 0.25rem;
+    column-gap: 0.25rem;
+  }
+
+  .smcustom\:col-gap-2 {
+    grid-column-gap: 0.5rem;
+    column-gap: 0.5rem;
+  }
+
+  .smcustom\:col-gap-3 {
+    grid-column-gap: 0.75rem;
+    column-gap: 0.75rem;
+  }
+
+  .smcustom\:col-gap-4 {
+    grid-column-gap: 1rem;
+    column-gap: 1rem;
+  }
+
+  .smcustom\:col-gap-5 {
+    grid-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+  }
+
+  .smcustom\:col-gap-6 {
+    grid-column-gap: 1.5rem;
+    column-gap: 1.5rem;
+  }
+
+  .smcustom\:col-gap-8 {
+    grid-column-gap: 2rem;
+    column-gap: 2rem;
+  }
+
+  .smcustom\:col-gap-10 {
+    grid-column-gap: 2.5rem;
+    column-gap: 2.5rem;
+  }
+
+  .smcustom\:col-gap-12 {
+    grid-column-gap: 3rem;
+    column-gap: 3rem;
+  }
+
+  .smcustom\:col-gap-16 {
+    grid-column-gap: 4rem;
+    column-gap: 4rem;
+  }
+
+  .smcustom\:col-gap-20 {
+    grid-column-gap: 5rem;
+    column-gap: 5rem;
+  }
+
+  .smcustom\:col-gap-24 {
+    grid-column-gap: 6rem;
+    column-gap: 6rem;
+  }
+
+  .smcustom\:col-gap-32 {
+    grid-column-gap: 8rem;
+    column-gap: 8rem;
+  }
+
+  .smcustom\:col-gap-40 {
+    grid-column-gap: 10rem;
+    column-gap: 10rem;
+  }
+
+  .smcustom\:col-gap-48 {
+    grid-column-gap: 12rem;
+    column-gap: 12rem;
+  }
+
+  .smcustom\:col-gap-56 {
+    grid-column-gap: 14rem;
+    column-gap: 14rem;
+  }
+
+  .smcustom\:col-gap-64 {
+    grid-column-gap: 16rem;
+    column-gap: 16rem;
+  }
+
+  .smcustom\:col-gap-96 {
+    grid-column-gap: 24rem;
+    column-gap: 24rem;
+  }
+
+  .smcustom\:col-gap-128 {
+    grid-column-gap: 32rem;
+    column-gap: 32rem;
+  }
+
+  .smcustom\:col-gap-px {
+    grid-column-gap: 1px;
+    column-gap: 1px;
+  }
+
+  .smcustom\:row-gap-0 {
+    grid-row-gap: 0;
+    row-gap: 0;
+  }
+
+  .smcustom\:row-gap-1 {
+    grid-row-gap: 0.25rem;
+    row-gap: 0.25rem;
+  }
+
+  .smcustom\:row-gap-2 {
+    grid-row-gap: 0.5rem;
+    row-gap: 0.5rem;
+  }
+
+  .smcustom\:row-gap-3 {
+    grid-row-gap: 0.75rem;
+    row-gap: 0.75rem;
+  }
+
+  .smcustom\:row-gap-4 {
+    grid-row-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .smcustom\:row-gap-5 {
+    grid-row-gap: 1.25rem;
+    row-gap: 1.25rem;
+  }
+
+  .smcustom\:row-gap-6 {
+    grid-row-gap: 1.5rem;
+    row-gap: 1.5rem;
+  }
+
+  .smcustom\:row-gap-8 {
+    grid-row-gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  .smcustom\:row-gap-10 {
+    grid-row-gap: 2.5rem;
+    row-gap: 2.5rem;
+  }
+
+  .smcustom\:row-gap-12 {
+    grid-row-gap: 3rem;
+    row-gap: 3rem;
+  }
+
+  .smcustom\:row-gap-16 {
+    grid-row-gap: 4rem;
+    row-gap: 4rem;
+  }
+
+  .smcustom\:row-gap-20 {
+    grid-row-gap: 5rem;
+    row-gap: 5rem;
+  }
+
+  .smcustom\:row-gap-24 {
+    grid-row-gap: 6rem;
+    row-gap: 6rem;
+  }
+
+  .smcustom\:row-gap-32 {
+    grid-row-gap: 8rem;
+    row-gap: 8rem;
+  }
+
+  .smcustom\:row-gap-40 {
+    grid-row-gap: 10rem;
+    row-gap: 10rem;
+  }
+
+  .smcustom\:row-gap-48 {
+    grid-row-gap: 12rem;
+    row-gap: 12rem;
+  }
+
+  .smcustom\:row-gap-56 {
+    grid-row-gap: 14rem;
+    row-gap: 14rem;
+  }
+
+  .smcustom\:row-gap-64 {
+    grid-row-gap: 16rem;
+    row-gap: 16rem;
+  }
+
+  .smcustom\:row-gap-96 {
+    grid-row-gap: 24rem;
+    row-gap: 24rem;
+  }
+
+  .smcustom\:row-gap-128 {
+    grid-row-gap: 32rem;
+    row-gap: 32rem;
+  }
+
+  .smcustom\:row-gap-px {
+    grid-row-gap: 1px;
+    row-gap: 1px;
+  }
+
+  .smcustom\:grid-flow-row {
+    grid-auto-flow: row;
+  }
+
+  .smcustom\:grid-flow-col {
+    grid-auto-flow: column;
+  }
+
+  .smcustom\:grid-flow-row-dense {
+    grid-auto-flow: row dense;
+  }
+
+  .smcustom\:grid-flow-col-dense {
+    grid-auto-flow: column dense;
+  }
+
+  .smcustom\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-7 {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-8 {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-9 {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-10 {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-11 {
+    grid-template-columns: repeat(11, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-cols-none {
+    grid-template-columns: none;
+  }
+
+  .smcustom\:col-auto {
+    grid-column: auto;
+  }
+
+  .smcustom\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
+  .smcustom\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .smcustom\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .smcustom\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .smcustom\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
+  .smcustom\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .smcustom\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+
+  .smcustom\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .smcustom\:col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+
+  .smcustom\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+
+  .smcustom\:col-span-11 {
+    grid-column: span 11 / span 11;
+  }
+
+  .smcustom\:col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+
+  .smcustom\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .smcustom\:col-start-2 {
+    grid-column-start: 2;
+  }
+
+  .smcustom\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .smcustom\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .smcustom\:col-start-5 {
+    grid-column-start: 5;
+  }
+
+  .smcustom\:col-start-6 {
+    grid-column-start: 6;
+  }
+
+  .smcustom\:col-start-7 {
+    grid-column-start: 7;
+  }
+
+  .smcustom\:col-start-8 {
+    grid-column-start: 8;
+  }
+
+  .smcustom\:col-start-9 {
+    grid-column-start: 9;
+  }
+
+  .smcustom\:col-start-10 {
+    grid-column-start: 10;
+  }
+
+  .smcustom\:col-start-11 {
+    grid-column-start: 11;
+  }
+
+  .smcustom\:col-start-12 {
+    grid-column-start: 12;
+  }
+
+  .smcustom\:col-start-13 {
+    grid-column-start: 13;
+  }
+
+  .smcustom\:col-start-auto {
+    grid-column-start: auto;
+  }
+
+  .smcustom\:col-end-1 {
+    grid-column-end: 1;
+  }
+
+  .smcustom\:col-end-2 {
+    grid-column-end: 2;
+  }
+
+  .smcustom\:col-end-3 {
+    grid-column-end: 3;
+  }
+
+  .smcustom\:col-end-4 {
+    grid-column-end: 4;
+  }
+
+  .smcustom\:col-end-5 {
+    grid-column-end: 5;
+  }
+
+  .smcustom\:col-end-6 {
+    grid-column-end: 6;
+  }
+
+  .smcustom\:col-end-7 {
+    grid-column-end: 7;
+  }
+
+  .smcustom\:col-end-8 {
+    grid-column-end: 8;
+  }
+
+  .smcustom\:col-end-9 {
+    grid-column-end: 9;
+  }
+
+  .smcustom\:col-end-10 {
+    grid-column-end: 10;
+  }
+
+  .smcustom\:col-end-11 {
+    grid-column-end: 11;
+  }
+
+  .smcustom\:col-end-12 {
+    grid-column-end: 12;
+  }
+
+  .smcustom\:col-end-13 {
+    grid-column-end: 13;
+  }
+
+  .smcustom\:col-end-auto {
+    grid-column-end: auto;
+  }
+
+  .smcustom\:grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-rows-5 {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-rows-6 {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+  }
+
+  .smcustom\:grid-rows-none {
+    grid-template-rows: none;
+  }
+
+  .smcustom\:row-auto {
+    grid-row: auto;
+  }
+
+  .smcustom\:row-span-1 {
+    grid-row: span 1 / span 1;
+  }
+
+  .smcustom\:row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+
+  .smcustom\:row-span-3 {
+    grid-row: span 3 / span 3;
+  }
+
+  .smcustom\:row-span-4 {
+    grid-row: span 4 / span 4;
+  }
+
+  .smcustom\:row-span-5 {
+    grid-row: span 5 / span 5;
+  }
+
+  .smcustom\:row-span-6 {
+    grid-row: span 6 / span 6;
+  }
+
+  .smcustom\:row-start-1 {
+    grid-row-start: 1;
+  }
+
+  .smcustom\:row-start-2 {
+    grid-row-start: 2;
+  }
+
+  .smcustom\:row-start-3 {
+    grid-row-start: 3;
+  }
+
+  .smcustom\:row-start-4 {
+    grid-row-start: 4;
+  }
+
+  .smcustom\:row-start-5 {
+    grid-row-start: 5;
+  }
+
+  .smcustom\:row-start-6 {
+    grid-row-start: 6;
+  }
+
+  .smcustom\:row-start-7 {
+    grid-row-start: 7;
+  }
+
+  .smcustom\:row-start-auto {
+    grid-row-start: auto;
+  }
+
+  .smcustom\:row-end-1 {
+    grid-row-end: 1;
+  }
+
+  .smcustom\:row-end-2 {
+    grid-row-end: 2;
+  }
+
+  .smcustom\:row-end-3 {
+    grid-row-end: 3;
+  }
+
+  .smcustom\:row-end-4 {
+    grid-row-end: 4;
+  }
+
+  .smcustom\:row-end-5 {
+    grid-row-end: 5;
+  }
+
+  .smcustom\:row-end-6 {
+    grid-row-end: 6;
+  }
+
+  .smcustom\:row-end-7 {
+    grid-row-end: 7;
+  }
+
+  .smcustom\:row-end-auto {
+    grid-row-end: auto;
+  }
+
+  .smcustom\:transform {
+    --transform-translate-x: 0;
+    --transform-translate-y: 0;
+    --transform-rotate: 0;
+    --transform-skew-x: 0;
+    --transform-skew-y: 0;
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+  }
+
+  .smcustom\:transform-none {
+    transform: none;
+  }
+
+  .smcustom\:origin-center {
+    transform-origin: center;
+  }
+
+  .smcustom\:origin-top {
+    transform-origin: top;
+  }
+
+  .smcustom\:origin-top-right {
+    transform-origin: top right;
+  }
+
+  .smcustom\:origin-right {
+    transform-origin: right;
+  }
+
+  .smcustom\:origin-bottom-right {
+    transform-origin: bottom right;
+  }
+
+  .smcustom\:origin-bottom {
+    transform-origin: bottom;
+  }
+
+  .smcustom\:origin-bottom-left {
+    transform-origin: bottom left;
+  }
+
+  .smcustom\:origin-left {
+    transform-origin: left;
+  }
+
+  .smcustom\:origin-top-left {
+    transform-origin: top left;
+  }
+
+  .smcustom\:scale-0 {
+    --transform-scale-x: 0;
+    --transform-scale-y: 0;
+  }
+
+  .smcustom\:scale-50 {
+    --transform-scale-x: .5;
+    --transform-scale-y: .5;
+  }
+
+  .smcustom\:scale-75 {
+    --transform-scale-x: .75;
+    --transform-scale-y: .75;
+  }
+
+  .smcustom\:scale-90 {
+    --transform-scale-x: .9;
+    --transform-scale-y: .9;
+  }
+
+  .smcustom\:scale-95 {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+
+  .smcustom\:scale-100 {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+  }
+
+  .smcustom\:scale-105 {
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
+  }
+
+  .smcustom\:scale-110 {
+    --transform-scale-x: 1.1;
+    --transform-scale-y: 1.1;
+  }
+
+  .smcustom\:scale-125 {
+    --transform-scale-x: 1.25;
+    --transform-scale-y: 1.25;
+  }
+
+  .smcustom\:scale-150 {
+    --transform-scale-x: 1.5;
+    --transform-scale-y: 1.5;
+  }
+
+  .smcustom\:scale-x-0 {
+    --transform-scale-x: 0;
+  }
+
+  .smcustom\:scale-x-50 {
+    --transform-scale-x: .5;
+  }
+
+  .smcustom\:scale-x-75 {
+    --transform-scale-x: .75;
+  }
+
+  .smcustom\:scale-x-90 {
+    --transform-scale-x: .9;
+  }
+
+  .smcustom\:scale-x-95 {
+    --transform-scale-x: .95;
+  }
+
+  .smcustom\:scale-x-100 {
+    --transform-scale-x: 1;
+  }
+
+  .smcustom\:scale-x-105 {
+    --transform-scale-x: 1.05;
+  }
+
+  .smcustom\:scale-x-110 {
+    --transform-scale-x: 1.1;
+  }
+
+  .smcustom\:scale-x-125 {
+    --transform-scale-x: 1.25;
+  }
+
+  .smcustom\:scale-x-150 {
+    --transform-scale-x: 1.5;
+  }
+
+  .smcustom\:scale-y-0 {
+    --transform-scale-y: 0;
+  }
+
+  .smcustom\:scale-y-50 {
+    --transform-scale-y: .5;
+  }
+
+  .smcustom\:scale-y-75 {
+    --transform-scale-y: .75;
+  }
+
+  .smcustom\:scale-y-90 {
+    --transform-scale-y: .9;
+  }
+
+  .smcustom\:scale-y-95 {
+    --transform-scale-y: .95;
+  }
+
+  .smcustom\:scale-y-100 {
+    --transform-scale-y: 1;
+  }
+
+  .smcustom\:scale-y-105 {
+    --transform-scale-y: 1.05;
+  }
+
+  .smcustom\:scale-y-110 {
+    --transform-scale-y: 1.1;
+  }
+
+  .smcustom\:scale-y-125 {
+    --transform-scale-y: 1.25;
+  }
+
+  .smcustom\:scale-y-150 {
+    --transform-scale-y: 1.5;
+  }
+
+  .smcustom\:hover\:scale-0:hover {
+    --transform-scale-x: 0;
+    --transform-scale-y: 0;
+  }
+
+  .smcustom\:hover\:scale-50:hover {
+    --transform-scale-x: .5;
+    --transform-scale-y: .5;
+  }
+
+  .smcustom\:hover\:scale-75:hover {
+    --transform-scale-x: .75;
+    --transform-scale-y: .75;
+  }
+
+  .smcustom\:hover\:scale-90:hover {
+    --transform-scale-x: .9;
+    --transform-scale-y: .9;
+  }
+
+  .smcustom\:hover\:scale-95:hover {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+
+  .smcustom\:hover\:scale-100:hover {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+  }
+
+  .smcustom\:hover\:scale-105:hover {
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
+  }
+
+  .smcustom\:hover\:scale-110:hover {
+    --transform-scale-x: 1.1;
+    --transform-scale-y: 1.1;
+  }
+
+  .smcustom\:hover\:scale-125:hover {
+    --transform-scale-x: 1.25;
+    --transform-scale-y: 1.25;
+  }
+
+  .smcustom\:hover\:scale-150:hover {
+    --transform-scale-x: 1.5;
+    --transform-scale-y: 1.5;
+  }
+
+  .smcustom\:hover\:scale-x-0:hover {
+    --transform-scale-x: 0;
+  }
+
+  .smcustom\:hover\:scale-x-50:hover {
+    --transform-scale-x: .5;
+  }
+
+  .smcustom\:hover\:scale-x-75:hover {
+    --transform-scale-x: .75;
+  }
+
+  .smcustom\:hover\:scale-x-90:hover {
+    --transform-scale-x: .9;
+  }
+
+  .smcustom\:hover\:scale-x-95:hover {
+    --transform-scale-x: .95;
+  }
+
+  .smcustom\:hover\:scale-x-100:hover {
+    --transform-scale-x: 1;
+  }
+
+  .smcustom\:hover\:scale-x-105:hover {
+    --transform-scale-x: 1.05;
+  }
+
+  .smcustom\:hover\:scale-x-110:hover {
+    --transform-scale-x: 1.1;
+  }
+
+  .smcustom\:hover\:scale-x-125:hover {
+    --transform-scale-x: 1.25;
+  }
+
+  .smcustom\:hover\:scale-x-150:hover {
+    --transform-scale-x: 1.5;
+  }
+
+  .smcustom\:hover\:scale-y-0:hover {
+    --transform-scale-y: 0;
+  }
+
+  .smcustom\:hover\:scale-y-50:hover {
+    --transform-scale-y: .5;
+  }
+
+  .smcustom\:hover\:scale-y-75:hover {
+    --transform-scale-y: .75;
+  }
+
+  .smcustom\:hover\:scale-y-90:hover {
+    --transform-scale-y: .9;
+  }
+
+  .smcustom\:hover\:scale-y-95:hover {
+    --transform-scale-y: .95;
+  }
+
+  .smcustom\:hover\:scale-y-100:hover {
+    --transform-scale-y: 1;
+  }
+
+  .smcustom\:hover\:scale-y-105:hover {
+    --transform-scale-y: 1.05;
+  }
+
+  .smcustom\:hover\:scale-y-110:hover {
+    --transform-scale-y: 1.1;
+  }
+
+  .smcustom\:hover\:scale-y-125:hover {
+    --transform-scale-y: 1.25;
+  }
+
+  .smcustom\:hover\:scale-y-150:hover {
+    --transform-scale-y: 1.5;
+  }
+
+  .smcustom\:focus\:scale-0:focus {
+    --transform-scale-x: 0;
+    --transform-scale-y: 0;
+  }
+
+  .smcustom\:focus\:scale-50:focus {
+    --transform-scale-x: .5;
+    --transform-scale-y: .5;
+  }
+
+  .smcustom\:focus\:scale-75:focus {
+    --transform-scale-x: .75;
+    --transform-scale-y: .75;
+  }
+
+  .smcustom\:focus\:scale-90:focus {
+    --transform-scale-x: .9;
+    --transform-scale-y: .9;
+  }
+
+  .smcustom\:focus\:scale-95:focus {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+
+  .smcustom\:focus\:scale-100:focus {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+  }
+
+  .smcustom\:focus\:scale-105:focus {
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
+  }
+
+  .smcustom\:focus\:scale-110:focus {
+    --transform-scale-x: 1.1;
+    --transform-scale-y: 1.1;
+  }
+
+  .smcustom\:focus\:scale-125:focus {
+    --transform-scale-x: 1.25;
+    --transform-scale-y: 1.25;
+  }
+
+  .smcustom\:focus\:scale-150:focus {
+    --transform-scale-x: 1.5;
+    --transform-scale-y: 1.5;
+  }
+
+  .smcustom\:focus\:scale-x-0:focus {
+    --transform-scale-x: 0;
+  }
+
+  .smcustom\:focus\:scale-x-50:focus {
+    --transform-scale-x: .5;
+  }
+
+  .smcustom\:focus\:scale-x-75:focus {
+    --transform-scale-x: .75;
+  }
+
+  .smcustom\:focus\:scale-x-90:focus {
+    --transform-scale-x: .9;
+  }
+
+  .smcustom\:focus\:scale-x-95:focus {
+    --transform-scale-x: .95;
+  }
+
+  .smcustom\:focus\:scale-x-100:focus {
+    --transform-scale-x: 1;
+  }
+
+  .smcustom\:focus\:scale-x-105:focus {
+    --transform-scale-x: 1.05;
+  }
+
+  .smcustom\:focus\:scale-x-110:focus {
+    --transform-scale-x: 1.1;
+  }
+
+  .smcustom\:focus\:scale-x-125:focus {
+    --transform-scale-x: 1.25;
+  }
+
+  .smcustom\:focus\:scale-x-150:focus {
+    --transform-scale-x: 1.5;
+  }
+
+  .smcustom\:focus\:scale-y-0:focus {
+    --transform-scale-y: 0;
+  }
+
+  .smcustom\:focus\:scale-y-50:focus {
+    --transform-scale-y: .5;
+  }
+
+  .smcustom\:focus\:scale-y-75:focus {
+    --transform-scale-y: .75;
+  }
+
+  .smcustom\:focus\:scale-y-90:focus {
+    --transform-scale-y: .9;
+  }
+
+  .smcustom\:focus\:scale-y-95:focus {
+    --transform-scale-y: .95;
+  }
+
+  .smcustom\:focus\:scale-y-100:focus {
+    --transform-scale-y: 1;
+  }
+
+  .smcustom\:focus\:scale-y-105:focus {
+    --transform-scale-y: 1.05;
+  }
+
+  .smcustom\:focus\:scale-y-110:focus {
+    --transform-scale-y: 1.1;
+  }
+
+  .smcustom\:focus\:scale-y-125:focus {
+    --transform-scale-y: 1.25;
+  }
+
+  .smcustom\:focus\:scale-y-150:focus {
+    --transform-scale-y: 1.5;
+  }
+
+  .smcustom\:rotate-0 {
+    --transform-rotate: 0;
+  }
+
+  .smcustom\:rotate-45 {
+    --transform-rotate: 45deg;
+  }
+
+  .smcustom\:rotate-90 {
+    --transform-rotate: 90deg;
+  }
+
+  .smcustom\:rotate-180 {
+    --transform-rotate: 180deg;
+  }
+
+  .smcustom\:-rotate-180 {
+    --transform-rotate: -180deg;
+  }
+
+  .smcustom\:-rotate-90 {
+    --transform-rotate: -90deg;
+  }
+
+  .smcustom\:-rotate-45 {
+    --transform-rotate: -45deg;
+  }
+
+  .smcustom\:hover\:rotate-0:hover {
+    --transform-rotate: 0;
+  }
+
+  .smcustom\:hover\:rotate-45:hover {
+    --transform-rotate: 45deg;
+  }
+
+  .smcustom\:hover\:rotate-90:hover {
+    --transform-rotate: 90deg;
+  }
+
+  .smcustom\:hover\:rotate-180:hover {
+    --transform-rotate: 180deg;
+  }
+
+  .smcustom\:hover\:-rotate-180:hover {
+    --transform-rotate: -180deg;
+  }
+
+  .smcustom\:hover\:-rotate-90:hover {
+    --transform-rotate: -90deg;
+  }
+
+  .smcustom\:hover\:-rotate-45:hover {
+    --transform-rotate: -45deg;
+  }
+
+  .smcustom\:focus\:rotate-0:focus {
+    --transform-rotate: 0;
+  }
+
+  .smcustom\:focus\:rotate-45:focus {
+    --transform-rotate: 45deg;
+  }
+
+  .smcustom\:focus\:rotate-90:focus {
+    --transform-rotate: 90deg;
+  }
+
+  .smcustom\:focus\:rotate-180:focus {
+    --transform-rotate: 180deg;
+  }
+
+  .smcustom\:focus\:-rotate-180:focus {
+    --transform-rotate: -180deg;
+  }
+
+  .smcustom\:focus\:-rotate-90:focus {
+    --transform-rotate: -90deg;
+  }
+
+  .smcustom\:focus\:-rotate-45:focus {
+    --transform-rotate: -45deg;
+  }
+
+  .smcustom\:translate-x-0 {
+    --transform-translate-x: 0;
+  }
+
+  .smcustom\:translate-x-1 {
+    --transform-translate-x: 0.25rem;
+  }
+
+  .smcustom\:translate-x-2 {
+    --transform-translate-x: 0.5rem;
+  }
+
+  .smcustom\:translate-x-3 {
+    --transform-translate-x: 0.75rem;
+  }
+
+  .smcustom\:translate-x-4 {
+    --transform-translate-x: 1rem;
+  }
+
+  .smcustom\:translate-x-5 {
+    --transform-translate-x: 1.25rem;
+  }
+
+  .smcustom\:translate-x-6 {
+    --transform-translate-x: 1.5rem;
+  }
+
+  .smcustom\:translate-x-8 {
+    --transform-translate-x: 2rem;
+  }
+
+  .smcustom\:translate-x-10 {
+    --transform-translate-x: 2.5rem;
+  }
+
+  .smcustom\:translate-x-12 {
+    --transform-translate-x: 3rem;
+  }
+
+  .smcustom\:translate-x-16 {
+    --transform-translate-x: 4rem;
+  }
+
+  .smcustom\:translate-x-20 {
+    --transform-translate-x: 5rem;
+  }
+
+  .smcustom\:translate-x-24 {
+    --transform-translate-x: 6rem;
+  }
+
+  .smcustom\:translate-x-32 {
+    --transform-translate-x: 8rem;
+  }
+
+  .smcustom\:translate-x-40 {
+    --transform-translate-x: 10rem;
+  }
+
+  .smcustom\:translate-x-48 {
+    --transform-translate-x: 12rem;
+  }
+
+  .smcustom\:translate-x-56 {
+    --transform-translate-x: 14rem;
+  }
+
+  .smcustom\:translate-x-64 {
+    --transform-translate-x: 16rem;
+  }
+
+  .smcustom\:translate-x-96 {
+    --transform-translate-x: 24rem;
+  }
+
+  .smcustom\:translate-x-128 {
+    --transform-translate-x: 32rem;
+  }
+
+  .smcustom\:translate-x-px {
+    --transform-translate-x: 1px;
+  }
+
+  .smcustom\:-translate-x-1 {
+    --transform-translate-x: -0.25rem;
+  }
+
+  .smcustom\:-translate-x-2 {
+    --transform-translate-x: -0.5rem;
+  }
+
+  .smcustom\:-translate-x-3 {
+    --transform-translate-x: -0.75rem;
+  }
+
+  .smcustom\:-translate-x-4 {
+    --transform-translate-x: -1rem;
+  }
+
+  .smcustom\:-translate-x-5 {
+    --transform-translate-x: -1.25rem;
+  }
+
+  .smcustom\:-translate-x-6 {
+    --transform-translate-x: -1.5rem;
+  }
+
+  .smcustom\:-translate-x-8 {
+    --transform-translate-x: -2rem;
+  }
+
+  .smcustom\:-translate-x-10 {
+    --transform-translate-x: -2.5rem;
+  }
+
+  .smcustom\:-translate-x-12 {
+    --transform-translate-x: -3rem;
+  }
+
+  .smcustom\:-translate-x-16 {
+    --transform-translate-x: -4rem;
+  }
+
+  .smcustom\:-translate-x-20 {
+    --transform-translate-x: -5rem;
+  }
+
+  .smcustom\:-translate-x-24 {
+    --transform-translate-x: -6rem;
+  }
+
+  .smcustom\:-translate-x-32 {
+    --transform-translate-x: -8rem;
+  }
+
+  .smcustom\:-translate-x-40 {
+    --transform-translate-x: -10rem;
+  }
+
+  .smcustom\:-translate-x-48 {
+    --transform-translate-x: -12rem;
+  }
+
+  .smcustom\:-translate-x-56 {
+    --transform-translate-x: -14rem;
+  }
+
+  .smcustom\:-translate-x-64 {
+    --transform-translate-x: -16rem;
+  }
+
+  .smcustom\:-translate-x-96 {
+    --transform-translate-x: -24rem;
+  }
+
+  .smcustom\:-translate-x-128 {
+    --transform-translate-x: -32rem;
+  }
+
+  .smcustom\:-translate-x-px {
+    --transform-translate-x: -1px;
+  }
+
+  .smcustom\:-translate-x-full {
+    --transform-translate-x: -100%;
+  }
+
+  .smcustom\:-translate-x-1\/2 {
+    --transform-translate-x: -50%;
+  }
+
+  .smcustom\:translate-x-1\/2 {
+    --transform-translate-x: 50%;
+  }
+
+  .smcustom\:translate-x-full {
+    --transform-translate-x: 100%;
+  }
+
+  .smcustom\:translate-y-0 {
+    --transform-translate-y: 0;
+  }
+
+  .smcustom\:translate-y-1 {
+    --transform-translate-y: 0.25rem;
+  }
+
+  .smcustom\:translate-y-2 {
+    --transform-translate-y: 0.5rem;
+  }
+
+  .smcustom\:translate-y-3 {
+    --transform-translate-y: 0.75rem;
+  }
+
+  .smcustom\:translate-y-4 {
+    --transform-translate-y: 1rem;
+  }
+
+  .smcustom\:translate-y-5 {
+    --transform-translate-y: 1.25rem;
+  }
+
+  .smcustom\:translate-y-6 {
+    --transform-translate-y: 1.5rem;
+  }
+
+  .smcustom\:translate-y-8 {
+    --transform-translate-y: 2rem;
+  }
+
+  .smcustom\:translate-y-10 {
+    --transform-translate-y: 2.5rem;
+  }
+
+  .smcustom\:translate-y-12 {
+    --transform-translate-y: 3rem;
+  }
+
+  .smcustom\:translate-y-16 {
+    --transform-translate-y: 4rem;
+  }
+
+  .smcustom\:translate-y-20 {
+    --transform-translate-y: 5rem;
+  }
+
+  .smcustom\:translate-y-24 {
+    --transform-translate-y: 6rem;
+  }
+
+  .smcustom\:translate-y-32 {
+    --transform-translate-y: 8rem;
+  }
+
+  .smcustom\:translate-y-40 {
+    --transform-translate-y: 10rem;
+  }
+
+  .smcustom\:translate-y-48 {
+    --transform-translate-y: 12rem;
+  }
+
+  .smcustom\:translate-y-56 {
+    --transform-translate-y: 14rem;
+  }
+
+  .smcustom\:translate-y-64 {
+    --transform-translate-y: 16rem;
+  }
+
+  .smcustom\:translate-y-96 {
+    --transform-translate-y: 24rem;
+  }
+
+  .smcustom\:translate-y-128 {
+    --transform-translate-y: 32rem;
+  }
+
+  .smcustom\:translate-y-px {
+    --transform-translate-y: 1px;
+  }
+
+  .smcustom\:-translate-y-1 {
+    --transform-translate-y: -0.25rem;
+  }
+
+  .smcustom\:-translate-y-2 {
+    --transform-translate-y: -0.5rem;
+  }
+
+  .smcustom\:-translate-y-3 {
+    --transform-translate-y: -0.75rem;
+  }
+
+  .smcustom\:-translate-y-4 {
+    --transform-translate-y: -1rem;
+  }
+
+  .smcustom\:-translate-y-5 {
+    --transform-translate-y: -1.25rem;
+  }
+
+  .smcustom\:-translate-y-6 {
+    --transform-translate-y: -1.5rem;
+  }
+
+  .smcustom\:-translate-y-8 {
+    --transform-translate-y: -2rem;
+  }
+
+  .smcustom\:-translate-y-10 {
+    --transform-translate-y: -2.5rem;
+  }
+
+  .smcustom\:-translate-y-12 {
+    --transform-translate-y: -3rem;
+  }
+
+  .smcustom\:-translate-y-16 {
+    --transform-translate-y: -4rem;
+  }
+
+  .smcustom\:-translate-y-20 {
+    --transform-translate-y: -5rem;
+  }
+
+  .smcustom\:-translate-y-24 {
+    --transform-translate-y: -6rem;
+  }
+
+  .smcustom\:-translate-y-32 {
+    --transform-translate-y: -8rem;
+  }
+
+  .smcustom\:-translate-y-40 {
+    --transform-translate-y: -10rem;
+  }
+
+  .smcustom\:-translate-y-48 {
+    --transform-translate-y: -12rem;
+  }
+
+  .smcustom\:-translate-y-56 {
+    --transform-translate-y: -14rem;
+  }
+
+  .smcustom\:-translate-y-64 {
+    --transform-translate-y: -16rem;
+  }
+
+  .smcustom\:-translate-y-96 {
+    --transform-translate-y: -24rem;
+  }
+
+  .smcustom\:-translate-y-128 {
+    --transform-translate-y: -32rem;
+  }
+
+  .smcustom\:-translate-y-px {
+    --transform-translate-y: -1px;
+  }
+
+  .smcustom\:-translate-y-full {
+    --transform-translate-y: -100%;
+  }
+
+  .smcustom\:-translate-y-1\/2 {
+    --transform-translate-y: -50%;
+  }
+
+  .smcustom\:translate-y-1\/2 {
+    --transform-translate-y: 50%;
+  }
+
+  .smcustom\:translate-y-full {
+    --transform-translate-y: 100%;
+  }
+
+  .smcustom\:hover\:translate-x-0:hover {
+    --transform-translate-x: 0;
+  }
+
+  .smcustom\:hover\:translate-x-1:hover {
+    --transform-translate-x: 0.25rem;
+  }
+
+  .smcustom\:hover\:translate-x-2:hover {
+    --transform-translate-x: 0.5rem;
+  }
+
+  .smcustom\:hover\:translate-x-3:hover {
+    --transform-translate-x: 0.75rem;
+  }
+
+  .smcustom\:hover\:translate-x-4:hover {
+    --transform-translate-x: 1rem;
+  }
+
+  .smcustom\:hover\:translate-x-5:hover {
+    --transform-translate-x: 1.25rem;
+  }
+
+  .smcustom\:hover\:translate-x-6:hover {
+    --transform-translate-x: 1.5rem;
+  }
+
+  .smcustom\:hover\:translate-x-8:hover {
+    --transform-translate-x: 2rem;
+  }
+
+  .smcustom\:hover\:translate-x-10:hover {
+    --transform-translate-x: 2.5rem;
+  }
+
+  .smcustom\:hover\:translate-x-12:hover {
+    --transform-translate-x: 3rem;
+  }
+
+  .smcustom\:hover\:translate-x-16:hover {
+    --transform-translate-x: 4rem;
+  }
+
+  .smcustom\:hover\:translate-x-20:hover {
+    --transform-translate-x: 5rem;
+  }
+
+  .smcustom\:hover\:translate-x-24:hover {
+    --transform-translate-x: 6rem;
+  }
+
+  .smcustom\:hover\:translate-x-32:hover {
+    --transform-translate-x: 8rem;
+  }
+
+  .smcustom\:hover\:translate-x-40:hover {
+    --transform-translate-x: 10rem;
+  }
+
+  .smcustom\:hover\:translate-x-48:hover {
+    --transform-translate-x: 12rem;
+  }
+
+  .smcustom\:hover\:translate-x-56:hover {
+    --transform-translate-x: 14rem;
+  }
+
+  .smcustom\:hover\:translate-x-64:hover {
+    --transform-translate-x: 16rem;
+  }
+
+  .smcustom\:hover\:translate-x-96:hover {
+    --transform-translate-x: 24rem;
+  }
+
+  .smcustom\:hover\:translate-x-128:hover {
+    --transform-translate-x: 32rem;
+  }
+
+  .smcustom\:hover\:translate-x-px:hover {
+    --transform-translate-x: 1px;
+  }
+
+  .smcustom\:hover\:-translate-x-1:hover {
+    --transform-translate-x: -0.25rem;
+  }
+
+  .smcustom\:hover\:-translate-x-2:hover {
+    --transform-translate-x: -0.5rem;
+  }
+
+  .smcustom\:hover\:-translate-x-3:hover {
+    --transform-translate-x: -0.75rem;
+  }
+
+  .smcustom\:hover\:-translate-x-4:hover {
+    --transform-translate-x: -1rem;
+  }
+
+  .smcustom\:hover\:-translate-x-5:hover {
+    --transform-translate-x: -1.25rem;
+  }
+
+  .smcustom\:hover\:-translate-x-6:hover {
+    --transform-translate-x: -1.5rem;
+  }
+
+  .smcustom\:hover\:-translate-x-8:hover {
+    --transform-translate-x: -2rem;
+  }
+
+  .smcustom\:hover\:-translate-x-10:hover {
+    --transform-translate-x: -2.5rem;
+  }
+
+  .smcustom\:hover\:-translate-x-12:hover {
+    --transform-translate-x: -3rem;
+  }
+
+  .smcustom\:hover\:-translate-x-16:hover {
+    --transform-translate-x: -4rem;
+  }
+
+  .smcustom\:hover\:-translate-x-20:hover {
+    --transform-translate-x: -5rem;
+  }
+
+  .smcustom\:hover\:-translate-x-24:hover {
+    --transform-translate-x: -6rem;
+  }
+
+  .smcustom\:hover\:-translate-x-32:hover {
+    --transform-translate-x: -8rem;
+  }
+
+  .smcustom\:hover\:-translate-x-40:hover {
+    --transform-translate-x: -10rem;
+  }
+
+  .smcustom\:hover\:-translate-x-48:hover {
+    --transform-translate-x: -12rem;
+  }
+
+  .smcustom\:hover\:-translate-x-56:hover {
+    --transform-translate-x: -14rem;
+  }
+
+  .smcustom\:hover\:-translate-x-64:hover {
+    --transform-translate-x: -16rem;
+  }
+
+  .smcustom\:hover\:-translate-x-96:hover {
+    --transform-translate-x: -24rem;
+  }
+
+  .smcustom\:hover\:-translate-x-128:hover {
+    --transform-translate-x: -32rem;
+  }
+
+  .smcustom\:hover\:-translate-x-px:hover {
+    --transform-translate-x: -1px;
+  }
+
+  .smcustom\:hover\:-translate-x-full:hover {
+    --transform-translate-x: -100%;
+  }
+
+  .smcustom\:hover\:-translate-x-1\/2:hover {
+    --transform-translate-x: -50%;
+  }
+
+  .smcustom\:hover\:translate-x-1\/2:hover {
+    --transform-translate-x: 50%;
+  }
+
+  .smcustom\:hover\:translate-x-full:hover {
+    --transform-translate-x: 100%;
+  }
+
+  .smcustom\:hover\:translate-y-0:hover {
+    --transform-translate-y: 0;
+  }
+
+  .smcustom\:hover\:translate-y-1:hover {
+    --transform-translate-y: 0.25rem;
+  }
+
+  .smcustom\:hover\:translate-y-2:hover {
+    --transform-translate-y: 0.5rem;
+  }
+
+  .smcustom\:hover\:translate-y-3:hover {
+    --transform-translate-y: 0.75rem;
+  }
+
+  .smcustom\:hover\:translate-y-4:hover {
+    --transform-translate-y: 1rem;
+  }
+
+  .smcustom\:hover\:translate-y-5:hover {
+    --transform-translate-y: 1.25rem;
+  }
+
+  .smcustom\:hover\:translate-y-6:hover {
+    --transform-translate-y: 1.5rem;
+  }
+
+  .smcustom\:hover\:translate-y-8:hover {
+    --transform-translate-y: 2rem;
+  }
+
+  .smcustom\:hover\:translate-y-10:hover {
+    --transform-translate-y: 2.5rem;
+  }
+
+  .smcustom\:hover\:translate-y-12:hover {
+    --transform-translate-y: 3rem;
+  }
+
+  .smcustom\:hover\:translate-y-16:hover {
+    --transform-translate-y: 4rem;
+  }
+
+  .smcustom\:hover\:translate-y-20:hover {
+    --transform-translate-y: 5rem;
+  }
+
+  .smcustom\:hover\:translate-y-24:hover {
+    --transform-translate-y: 6rem;
+  }
+
+  .smcustom\:hover\:translate-y-32:hover {
+    --transform-translate-y: 8rem;
+  }
+
+  .smcustom\:hover\:translate-y-40:hover {
+    --transform-translate-y: 10rem;
+  }
+
+  .smcustom\:hover\:translate-y-48:hover {
+    --transform-translate-y: 12rem;
+  }
+
+  .smcustom\:hover\:translate-y-56:hover {
+    --transform-translate-y: 14rem;
+  }
+
+  .smcustom\:hover\:translate-y-64:hover {
+    --transform-translate-y: 16rem;
+  }
+
+  .smcustom\:hover\:translate-y-96:hover {
+    --transform-translate-y: 24rem;
+  }
+
+  .smcustom\:hover\:translate-y-128:hover {
+    --transform-translate-y: 32rem;
+  }
+
+  .smcustom\:hover\:translate-y-px:hover {
+    --transform-translate-y: 1px;
+  }
+
+  .smcustom\:hover\:-translate-y-1:hover {
+    --transform-translate-y: -0.25rem;
+  }
+
+  .smcustom\:hover\:-translate-y-2:hover {
+    --transform-translate-y: -0.5rem;
+  }
+
+  .smcustom\:hover\:-translate-y-3:hover {
+    --transform-translate-y: -0.75rem;
+  }
+
+  .smcustom\:hover\:-translate-y-4:hover {
+    --transform-translate-y: -1rem;
+  }
+
+  .smcustom\:hover\:-translate-y-5:hover {
+    --transform-translate-y: -1.25rem;
+  }
+
+  .smcustom\:hover\:-translate-y-6:hover {
+    --transform-translate-y: -1.5rem;
+  }
+
+  .smcustom\:hover\:-translate-y-8:hover {
+    --transform-translate-y: -2rem;
+  }
+
+  .smcustom\:hover\:-translate-y-10:hover {
+    --transform-translate-y: -2.5rem;
+  }
+
+  .smcustom\:hover\:-translate-y-12:hover {
+    --transform-translate-y: -3rem;
+  }
+
+  .smcustom\:hover\:-translate-y-16:hover {
+    --transform-translate-y: -4rem;
+  }
+
+  .smcustom\:hover\:-translate-y-20:hover {
+    --transform-translate-y: -5rem;
+  }
+
+  .smcustom\:hover\:-translate-y-24:hover {
+    --transform-translate-y: -6rem;
+  }
+
+  .smcustom\:hover\:-translate-y-32:hover {
+    --transform-translate-y: -8rem;
+  }
+
+  .smcustom\:hover\:-translate-y-40:hover {
+    --transform-translate-y: -10rem;
+  }
+
+  .smcustom\:hover\:-translate-y-48:hover {
+    --transform-translate-y: -12rem;
+  }
+
+  .smcustom\:hover\:-translate-y-56:hover {
+    --transform-translate-y: -14rem;
+  }
+
+  .smcustom\:hover\:-translate-y-64:hover {
+    --transform-translate-y: -16rem;
+  }
+
+  .smcustom\:hover\:-translate-y-96:hover {
+    --transform-translate-y: -24rem;
+  }
+
+  .smcustom\:hover\:-translate-y-128:hover {
+    --transform-translate-y: -32rem;
+  }
+
+  .smcustom\:hover\:-translate-y-px:hover {
+    --transform-translate-y: -1px;
+  }
+
+  .smcustom\:hover\:-translate-y-full:hover {
+    --transform-translate-y: -100%;
+  }
+
+  .smcustom\:hover\:-translate-y-1\/2:hover {
+    --transform-translate-y: -50%;
+  }
+
+  .smcustom\:hover\:translate-y-1\/2:hover {
+    --transform-translate-y: 50%;
+  }
+
+  .smcustom\:hover\:translate-y-full:hover {
+    --transform-translate-y: 100%;
+  }
+
+  .smcustom\:focus\:translate-x-0:focus {
+    --transform-translate-x: 0;
+  }
+
+  .smcustom\:focus\:translate-x-1:focus {
+    --transform-translate-x: 0.25rem;
+  }
+
+  .smcustom\:focus\:translate-x-2:focus {
+    --transform-translate-x: 0.5rem;
+  }
+
+  .smcustom\:focus\:translate-x-3:focus {
+    --transform-translate-x: 0.75rem;
+  }
+
+  .smcustom\:focus\:translate-x-4:focus {
+    --transform-translate-x: 1rem;
+  }
+
+  .smcustom\:focus\:translate-x-5:focus {
+    --transform-translate-x: 1.25rem;
+  }
+
+  .smcustom\:focus\:translate-x-6:focus {
+    --transform-translate-x: 1.5rem;
+  }
+
+  .smcustom\:focus\:translate-x-8:focus {
+    --transform-translate-x: 2rem;
+  }
+
+  .smcustom\:focus\:translate-x-10:focus {
+    --transform-translate-x: 2.5rem;
+  }
+
+  .smcustom\:focus\:translate-x-12:focus {
+    --transform-translate-x: 3rem;
+  }
+
+  .smcustom\:focus\:translate-x-16:focus {
+    --transform-translate-x: 4rem;
+  }
+
+  .smcustom\:focus\:translate-x-20:focus {
+    --transform-translate-x: 5rem;
+  }
+
+  .smcustom\:focus\:translate-x-24:focus {
+    --transform-translate-x: 6rem;
+  }
+
+  .smcustom\:focus\:translate-x-32:focus {
+    --transform-translate-x: 8rem;
+  }
+
+  .smcustom\:focus\:translate-x-40:focus {
+    --transform-translate-x: 10rem;
+  }
+
+  .smcustom\:focus\:translate-x-48:focus {
+    --transform-translate-x: 12rem;
+  }
+
+  .smcustom\:focus\:translate-x-56:focus {
+    --transform-translate-x: 14rem;
+  }
+
+  .smcustom\:focus\:translate-x-64:focus {
+    --transform-translate-x: 16rem;
+  }
+
+  .smcustom\:focus\:translate-x-96:focus {
+    --transform-translate-x: 24rem;
+  }
+
+  .smcustom\:focus\:translate-x-128:focus {
+    --transform-translate-x: 32rem;
+  }
+
+  .smcustom\:focus\:translate-x-px:focus {
+    --transform-translate-x: 1px;
+  }
+
+  .smcustom\:focus\:-translate-x-1:focus {
+    --transform-translate-x: -0.25rem;
+  }
+
+  .smcustom\:focus\:-translate-x-2:focus {
+    --transform-translate-x: -0.5rem;
+  }
+
+  .smcustom\:focus\:-translate-x-3:focus {
+    --transform-translate-x: -0.75rem;
+  }
+
+  .smcustom\:focus\:-translate-x-4:focus {
+    --transform-translate-x: -1rem;
+  }
+
+  .smcustom\:focus\:-translate-x-5:focus {
+    --transform-translate-x: -1.25rem;
+  }
+
+  .smcustom\:focus\:-translate-x-6:focus {
+    --transform-translate-x: -1.5rem;
+  }
+
+  .smcustom\:focus\:-translate-x-8:focus {
+    --transform-translate-x: -2rem;
+  }
+
+  .smcustom\:focus\:-translate-x-10:focus {
+    --transform-translate-x: -2.5rem;
+  }
+
+  .smcustom\:focus\:-translate-x-12:focus {
+    --transform-translate-x: -3rem;
+  }
+
+  .smcustom\:focus\:-translate-x-16:focus {
+    --transform-translate-x: -4rem;
+  }
+
+  .smcustom\:focus\:-translate-x-20:focus {
+    --transform-translate-x: -5rem;
+  }
+
+  .smcustom\:focus\:-translate-x-24:focus {
+    --transform-translate-x: -6rem;
+  }
+
+  .smcustom\:focus\:-translate-x-32:focus {
+    --transform-translate-x: -8rem;
+  }
+
+  .smcustom\:focus\:-translate-x-40:focus {
+    --transform-translate-x: -10rem;
+  }
+
+  .smcustom\:focus\:-translate-x-48:focus {
+    --transform-translate-x: -12rem;
+  }
+
+  .smcustom\:focus\:-translate-x-56:focus {
+    --transform-translate-x: -14rem;
+  }
+
+  .smcustom\:focus\:-translate-x-64:focus {
+    --transform-translate-x: -16rem;
+  }
+
+  .smcustom\:focus\:-translate-x-96:focus {
+    --transform-translate-x: -24rem;
+  }
+
+  .smcustom\:focus\:-translate-x-128:focus {
+    --transform-translate-x: -32rem;
+  }
+
+  .smcustom\:focus\:-translate-x-px:focus {
+    --transform-translate-x: -1px;
+  }
+
+  .smcustom\:focus\:-translate-x-full:focus {
+    --transform-translate-x: -100%;
+  }
+
+  .smcustom\:focus\:-translate-x-1\/2:focus {
+    --transform-translate-x: -50%;
+  }
+
+  .smcustom\:focus\:translate-x-1\/2:focus {
+    --transform-translate-x: 50%;
+  }
+
+  .smcustom\:focus\:translate-x-full:focus {
+    --transform-translate-x: 100%;
+  }
+
+  .smcustom\:focus\:translate-y-0:focus {
+    --transform-translate-y: 0;
+  }
+
+  .smcustom\:focus\:translate-y-1:focus {
+    --transform-translate-y: 0.25rem;
+  }
+
+  .smcustom\:focus\:translate-y-2:focus {
+    --transform-translate-y: 0.5rem;
+  }
+
+  .smcustom\:focus\:translate-y-3:focus {
+    --transform-translate-y: 0.75rem;
+  }
+
+  .smcustom\:focus\:translate-y-4:focus {
+    --transform-translate-y: 1rem;
+  }
+
+  .smcustom\:focus\:translate-y-5:focus {
+    --transform-translate-y: 1.25rem;
+  }
+
+  .smcustom\:focus\:translate-y-6:focus {
+    --transform-translate-y: 1.5rem;
+  }
+
+  .smcustom\:focus\:translate-y-8:focus {
+    --transform-translate-y: 2rem;
+  }
+
+  .smcustom\:focus\:translate-y-10:focus {
+    --transform-translate-y: 2.5rem;
+  }
+
+  .smcustom\:focus\:translate-y-12:focus {
+    --transform-translate-y: 3rem;
+  }
+
+  .smcustom\:focus\:translate-y-16:focus {
+    --transform-translate-y: 4rem;
+  }
+
+  .smcustom\:focus\:translate-y-20:focus {
+    --transform-translate-y: 5rem;
+  }
+
+  .smcustom\:focus\:translate-y-24:focus {
+    --transform-translate-y: 6rem;
+  }
+
+  .smcustom\:focus\:translate-y-32:focus {
+    --transform-translate-y: 8rem;
+  }
+
+  .smcustom\:focus\:translate-y-40:focus {
+    --transform-translate-y: 10rem;
+  }
+
+  .smcustom\:focus\:translate-y-48:focus {
+    --transform-translate-y: 12rem;
+  }
+
+  .smcustom\:focus\:translate-y-56:focus {
+    --transform-translate-y: 14rem;
+  }
+
+  .smcustom\:focus\:translate-y-64:focus {
+    --transform-translate-y: 16rem;
+  }
+
+  .smcustom\:focus\:translate-y-96:focus {
+    --transform-translate-y: 24rem;
+  }
+
+  .smcustom\:focus\:translate-y-128:focus {
+    --transform-translate-y: 32rem;
+  }
+
+  .smcustom\:focus\:translate-y-px:focus {
+    --transform-translate-y: 1px;
+  }
+
+  .smcustom\:focus\:-translate-y-1:focus {
+    --transform-translate-y: -0.25rem;
+  }
+
+  .smcustom\:focus\:-translate-y-2:focus {
+    --transform-translate-y: -0.5rem;
+  }
+
+  .smcustom\:focus\:-translate-y-3:focus {
+    --transform-translate-y: -0.75rem;
+  }
+
+  .smcustom\:focus\:-translate-y-4:focus {
+    --transform-translate-y: -1rem;
+  }
+
+  .smcustom\:focus\:-translate-y-5:focus {
+    --transform-translate-y: -1.25rem;
+  }
+
+  .smcustom\:focus\:-translate-y-6:focus {
+    --transform-translate-y: -1.5rem;
+  }
+
+  .smcustom\:focus\:-translate-y-8:focus {
+    --transform-translate-y: -2rem;
+  }
+
+  .smcustom\:focus\:-translate-y-10:focus {
+    --transform-translate-y: -2.5rem;
+  }
+
+  .smcustom\:focus\:-translate-y-12:focus {
+    --transform-translate-y: -3rem;
+  }
+
+  .smcustom\:focus\:-translate-y-16:focus {
+    --transform-translate-y: -4rem;
+  }
+
+  .smcustom\:focus\:-translate-y-20:focus {
+    --transform-translate-y: -5rem;
+  }
+
+  .smcustom\:focus\:-translate-y-24:focus {
+    --transform-translate-y: -6rem;
+  }
+
+  .smcustom\:focus\:-translate-y-32:focus {
+    --transform-translate-y: -8rem;
+  }
+
+  .smcustom\:focus\:-translate-y-40:focus {
+    --transform-translate-y: -10rem;
+  }
+
+  .smcustom\:focus\:-translate-y-48:focus {
+    --transform-translate-y: -12rem;
+  }
+
+  .smcustom\:focus\:-translate-y-56:focus {
+    --transform-translate-y: -14rem;
+  }
+
+  .smcustom\:focus\:-translate-y-64:focus {
+    --transform-translate-y: -16rem;
+  }
+
+  .smcustom\:focus\:-translate-y-96:focus {
+    --transform-translate-y: -24rem;
+  }
+
+  .smcustom\:focus\:-translate-y-128:focus {
+    --transform-translate-y: -32rem;
+  }
+
+  .smcustom\:focus\:-translate-y-px:focus {
+    --transform-translate-y: -1px;
+  }
+
+  .smcustom\:focus\:-translate-y-full:focus {
+    --transform-translate-y: -100%;
+  }
+
+  .smcustom\:focus\:-translate-y-1\/2:focus {
+    --transform-translate-y: -50%;
+  }
+
+  .smcustom\:focus\:translate-y-1\/2:focus {
+    --transform-translate-y: 50%;
+  }
+
+  .smcustom\:focus\:translate-y-full:focus {
+    --transform-translate-y: 100%;
+  }
+
+  .smcustom\:skew-x-0 {
+    --transform-skew-x: 0;
+  }
+
+  .smcustom\:skew-x-3 {
+    --transform-skew-x: 3deg;
+  }
+
+  .smcustom\:skew-x-6 {
+    --transform-skew-x: 6deg;
+  }
+
+  .smcustom\:skew-x-12 {
+    --transform-skew-x: 12deg;
+  }
+
+  .smcustom\:-skew-x-12 {
+    --transform-skew-x: -12deg;
+  }
+
+  .smcustom\:-skew-x-6 {
+    --transform-skew-x: -6deg;
+  }
+
+  .smcustom\:-skew-x-3 {
+    --transform-skew-x: -3deg;
+  }
+
+  .smcustom\:skew-y-0 {
+    --transform-skew-y: 0;
+  }
+
+  .smcustom\:skew-y-3 {
+    --transform-skew-y: 3deg;
+  }
+
+  .smcustom\:skew-y-6 {
+    --transform-skew-y: 6deg;
+  }
+
+  .smcustom\:skew-y-12 {
+    --transform-skew-y: 12deg;
+  }
+
+  .smcustom\:-skew-y-12 {
+    --transform-skew-y: -12deg;
+  }
+
+  .smcustom\:-skew-y-6 {
+    --transform-skew-y: -6deg;
+  }
+
+  .smcustom\:-skew-y-3 {
+    --transform-skew-y: -3deg;
+  }
+
+  .smcustom\:hover\:skew-x-0:hover {
+    --transform-skew-x: 0;
+  }
+
+  .smcustom\:hover\:skew-x-3:hover {
+    --transform-skew-x: 3deg;
+  }
+
+  .smcustom\:hover\:skew-x-6:hover {
+    --transform-skew-x: 6deg;
+  }
+
+  .smcustom\:hover\:skew-x-12:hover {
+    --transform-skew-x: 12deg;
+  }
+
+  .smcustom\:hover\:-skew-x-12:hover {
+    --transform-skew-x: -12deg;
+  }
+
+  .smcustom\:hover\:-skew-x-6:hover {
+    --transform-skew-x: -6deg;
+  }
+
+  .smcustom\:hover\:-skew-x-3:hover {
+    --transform-skew-x: -3deg;
+  }
+
+  .smcustom\:hover\:skew-y-0:hover {
+    --transform-skew-y: 0;
+  }
+
+  .smcustom\:hover\:skew-y-3:hover {
+    --transform-skew-y: 3deg;
+  }
+
+  .smcustom\:hover\:skew-y-6:hover {
+    --transform-skew-y: 6deg;
+  }
+
+  .smcustom\:hover\:skew-y-12:hover {
+    --transform-skew-y: 12deg;
+  }
+
+  .smcustom\:hover\:-skew-y-12:hover {
+    --transform-skew-y: -12deg;
+  }
+
+  .smcustom\:hover\:-skew-y-6:hover {
+    --transform-skew-y: -6deg;
+  }
+
+  .smcustom\:hover\:-skew-y-3:hover {
+    --transform-skew-y: -3deg;
+  }
+
+  .smcustom\:focus\:skew-x-0:focus {
+    --transform-skew-x: 0;
+  }
+
+  .smcustom\:focus\:skew-x-3:focus {
+    --transform-skew-x: 3deg;
+  }
+
+  .smcustom\:focus\:skew-x-6:focus {
+    --transform-skew-x: 6deg;
+  }
+
+  .smcustom\:focus\:skew-x-12:focus {
+    --transform-skew-x: 12deg;
+  }
+
+  .smcustom\:focus\:-skew-x-12:focus {
+    --transform-skew-x: -12deg;
+  }
+
+  .smcustom\:focus\:-skew-x-6:focus {
+    --transform-skew-x: -6deg;
+  }
+
+  .smcustom\:focus\:-skew-x-3:focus {
+    --transform-skew-x: -3deg;
+  }
+
+  .smcustom\:focus\:skew-y-0:focus {
+    --transform-skew-y: 0;
+  }
+
+  .smcustom\:focus\:skew-y-3:focus {
+    --transform-skew-y: 3deg;
+  }
+
+  .smcustom\:focus\:skew-y-6:focus {
+    --transform-skew-y: 6deg;
+  }
+
+  .smcustom\:focus\:skew-y-12:focus {
+    --transform-skew-y: 12deg;
+  }
+
+  .smcustom\:focus\:-skew-y-12:focus {
+    --transform-skew-y: -12deg;
+  }
+
+  .smcustom\:focus\:-skew-y-6:focus {
+    --transform-skew-y: -6deg;
+  }
+
+  .smcustom\:focus\:-skew-y-3:focus {
+    --transform-skew-y: -3deg;
+  }
+
+  .smcustom\:transition-none {
+    transition-property: none;
+  }
+
+  .smcustom\:transition-all {
+    transition-property: all;
+  }
+
+  .smcustom\:transition {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  }
+
+  .smcustom\:transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+  }
+
+  .smcustom\:transition-opacity {
+    transition-property: opacity;
+  }
+
+  .smcustom\:transition-shadow {
+    transition-property: box-shadow;
+  }
+
+  .smcustom\:transition-transform {
+    transition-property: transform;
+  }
+
+  .smcustom\:ease-linear {
+    transition-timing-function: linear;
+  }
+
+  .smcustom\:ease-in {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  .smcustom\:ease-out {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .smcustom\:ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .smcustom\:duration-75 {
+    transition-duration: 75ms;
+  }
+
+  .smcustom\:duration-100 {
+    transition-duration: 100ms;
+  }
+
+  .smcustom\:duration-150 {
+    transition-duration: 150ms;
+  }
+
+  .smcustom\:duration-200 {
+    transition-duration: 200ms;
+  }
+
+  .smcustom\:duration-300 {
+    transition-duration: 300ms;
+  }
+
+  .smcustom\:duration-500 {
+    transition-duration: 500ms;
+  }
+
+  .smcustom\:duration-700 {
+    transition-duration: 700ms;
+  }
+
+  .smcustom\:duration-1000 {
+    transition-duration: 1000ms;
   }
 }
