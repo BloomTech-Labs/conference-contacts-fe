@@ -15,6 +15,7 @@
     "graphql": "^14.5.8",
     "mixpanel-browser": "^2.31.0",
     "moment": "^2.24.0",
+    "npm-check-updates": "^4.0.5",
     "qrcode.react": "^1.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
