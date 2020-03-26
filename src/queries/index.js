@@ -1,5 +1,4 @@
 import { gql } from 'apollo-boost';
-// fbvsbdivbsdv
 
 export const FETCH_QRCODE_DATA = gql`
   query FetchQRCodeData($id: ID!) {
