@@ -11483,6 +11483,11 @@ li svg #white-svg:hover {
   margin-left: 20.2%;
 }
 
+.grid-2 {
+  display: grid;
+  margin: 0 auto;
+}
+
 .hovereffect {
   width: 60%;
   height: 100%;
