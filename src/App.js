@@ -49,6 +49,5 @@ export default function App(props) {
     }
   }, [user]);
 
-  console.log('in App.js | client.readQuery({ query })\n', data);
   return data.isLoggedIn ? <Pages /> : <Landing />;
 }
