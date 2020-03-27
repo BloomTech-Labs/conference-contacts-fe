@@ -77,8 +77,7 @@ const ScanQr = () => {
         onError={handleError}
         onScan={handleScan}
         facingMode="environment"
-        style={{ width: '100%' }}
-        className="mt-12 mb-6"
+        className="mb-6 mt-16 qrsizing smcustom:w-full smcustom:mt-12"
         showViewFinder={true}
       />
       {errors.length > 0 && (
