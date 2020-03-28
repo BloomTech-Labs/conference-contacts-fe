@@ -23,7 +23,7 @@ export default function Pages() {
         <Contacts path='contacts' />
         <Messages path='messages' />
         <ScanQr path="scanqr" />
-        <ReadQr path="readqr" />
+        {/* <ReadQr path="readqr" /> */}
       </Router>
     </Fragment>
   );
