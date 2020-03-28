@@ -91,9 +91,9 @@ export default function NavBar() {
                 <li className="p-6 desktop-link text-lg">
                   <NavLink to="profile">Profile</NavLink>
                 </li>
-                <li className="p-6 desktop-link text-lg">
+                {/* <li className="p-6 desktop-link text-lg">
                   <NavLink to="settings">Settings</NavLink>
-                </li>
+                </li> */}
                 <li className="p-6 desktop-link text-lg">
                   <div className="">
                     <button className="" onClick={handleLogout}>
@@ -186,7 +186,7 @@ export default function NavBar() {
                     <span className="uppercase">Profile</span>
                   </li>
                 </Link>
-                <Link to="/settings" onClick={() => setOpen(!open)}>
+                {/* <Link to="/settings" onClick={() => setOpen(!open)}>
                   <li className="flex items-center p-4 border-b-2">
                     <svg
                       className="main-nav-link mr-4"
@@ -203,7 +203,7 @@ export default function NavBar() {
                     </svg>
                     <span className="uppercase">Settings</span>
                   </li>
-                </Link>
+                </Link> */}
               </ul>
               {/* LOGOUT BUTTON */}
               <li className="flex justify-center mt-6">
