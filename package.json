@@ -49,13 +49,13 @@
     "tailwindcss": "^1.2.0"
   },
   "scripts": {
-    "start": "npm-run-all -p start:css start:js",
-    "build": "npm-run-all build:css build:js",
-    "start:js": "react-scripts start",
-    "build:js": "react-scripts build",
-    "start:css": "postcss src/styles/tailwind.src.css -o src/styles/tailwind.css -w",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:styles": "postcss src/styles/tailwind.css -o src/styles/index.css",
+    "prestart": "npm run build:styles",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
