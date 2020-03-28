@@ -13,7 +13,7 @@ import { onError } from 'apollo-link-error';
 import { ApolloLink, Observable } from 'apollo-link';
 import gql from 'graphql-tag';
 
-import './styles/tailwind.css';
+import './styles/index.css';
 
 const request = operation => {
   const token = localStorage.getItem('token');
@@ -65,6 +65,11 @@ client.cache.writeData({
   }
 });
 
+window.addEventListener('beforeunload', () => {
+  // ? is this a safe/clean way to renew the token
+  localStorage.removeItem('token');
+})
+
 const onRedirectCallback = appState => {
   history.navigate(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
 };
@@ -104,6 +109,8 @@ const render = () => {
 
 render();
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
+const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+
+if (inDevelopment && module.hot) {
   module.hot.accept('./pages', render);
 }
