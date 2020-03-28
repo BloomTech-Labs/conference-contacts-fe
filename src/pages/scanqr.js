@@ -51,7 +51,7 @@ const ScanQr = () => {
     if (!connectLoading && !connections.includes(qrCode)) {
       await fetchQRCode({ variables: { id: qrCode } });
       if (data?.qrcode?.user && position) {
-        // setConnections([...connections, qrCode]);
+        setConnections([...connections, qrCode]);
         const { latitude, longitude } = position.coords;
         setErrors([]);
         await createConnection({
@@ -60,7 +60,6 @@ const ScanQr = () => {
             senderCoords: { latitude, longitude }
           }
         });
-        setConnections([...connections, qrCode]);
       } else if (data && !data?.qrcode?.user) {
         setErrors(['Invalid QR Code']);
       }
