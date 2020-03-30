@@ -45,8 +45,6 @@ const AuthorizedApolloProvider = ({ children }) => {
     }
   });
 
-  console.log('in AuthorizedApolloProvider | apolloClient\n', apolloClient);
-
   return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;
 };
 
