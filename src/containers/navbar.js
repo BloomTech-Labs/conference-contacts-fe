@@ -38,7 +38,7 @@ export default function NavBar() {
           style: {
             background: isCurrent ? 'whiteSmoke' : 'white',
             padding: '10px',
-            borderRadius: isCurrent ? '5px' : '0px'
+            borderRadius: '5px'
           }
         };
       }}
@@ -79,22 +79,22 @@ export default function NavBar() {
             <div className="flex">
               {/* DESKTOP NAV */}
               <ul className="desktop-nav flex items-center">
-                <li className="p-6 desktop-link text-lg">
+                <li className="p-6 desktop-link text-lg flex items-center">
                   <NavLink to="/">Home</NavLink>
                 </li>
-                <li className="p-6 desktop-link text-lg">
+                <li className="p-6 desktop-link text-lg flex items-center">
                   <NavLink to="contacts">Contacts</NavLink>
                 </li>
                 {/* <li className="p-6 desktop-link text-lg">
                   <Link to="messages">Messages</Link>
                 </li> */}
-                <li className="p-6 desktop-link text-lg">
+                <li className="p-6 desktop-link text-lg flex items-center">
                   <NavLink to="profile">Profile</NavLink>
                 </li>
-                <li className="p-6 desktop-link text-lg">
+                {/* <li className="p-6 desktop-link text-lg">
                   <NavLink to="settings">Settings</NavLink>
-                </li>
-                <li className="p-6 desktop-link text-lg">
+                </li> */}
+                <li className="p-6 desktop-link text-lg flex items-center">
                   <div className="">
                     <button className="" onClick={handleLogout}>
                       Logout
@@ -186,7 +186,7 @@ export default function NavBar() {
                     <span className="uppercase">Profile</span>
                   </li>
                 </Link>
-                <Link to="/settings" onClick={() => setOpen(!open)}>
+                {/* <Link to="/settings" onClick={() => setOpen(!open)}>
                   <li className="flex items-center p-4 border-b-2">
                     <svg
                       className="main-nav-link mr-4"
@@ -203,7 +203,7 @@ export default function NavBar() {
                     </svg>
                     <span className="uppercase">Settings</span>
                   </li>
-                </Link>
+                </Link> */}
               </ul>
               {/* LOGOUT BUTTON */}
               <li className="flex justify-center mt-6">

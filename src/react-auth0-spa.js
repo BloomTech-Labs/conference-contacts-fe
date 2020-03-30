@@ -20,6 +20,8 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
 
+  console.log('\n\n***********\n\n INSIDE AUTH0 SPA FILE \n\n***********\n\n');
+
   useEffect(() => {
     const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
