@@ -94,7 +94,7 @@ export default function NavBar() {
                 {/* <li className="p-6 desktop-link text-lg">
                   <NavLink to="settings">Settings</NavLink>
                 </li> */}
-                <li className="p-6 desktop-link text-lg flex items-center">
+                <li className="p-6 desktop-link text-lg">
                   <div className="">
                     <button className="" onClick={handleLogout}>
                       Logout
