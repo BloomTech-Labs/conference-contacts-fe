@@ -48,11 +48,11 @@ const Profile = ({ location, navigate }) => {
   return (
     // following two divs add card style
     // to profile page
-    <div className="pt-24 pb-6 bg-gray-200 smcustom:pt-24 mdcustom:pt-32 desktop:h-screen">
+    <div className="pt-24 pb-6 bg-gray-200 smcustom:pt-24 mdcustom:pt-32 desktop:h-full">
       <div className="profile-card pb-4 bg-white mx-6 desktop:mx-auto shadow-md overflow-hidden desktop:max-w-4xl">
-        <div className="pt-5 flex flex-col overflow-hidden px-6 pb-8">
+        <div className="pt-5 desktop:pt-0 flex flex-col overflow-hidden px-6 pb-8">
           {viewingContact && (
-            <div className="absolute">
+            <div className="absolute desktop:pt-4">
               <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
             </div>
           )}
