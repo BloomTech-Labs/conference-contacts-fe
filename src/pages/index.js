@@ -19,9 +19,9 @@ export default function Pages(props) {
         <Profile path="profile" />
         <Profile path="profile" />
         <ProfileEdit path="profile/edit" />
-        <Settings path="settings" />
         <Contacts path="contacts" />
-        <Messages path="messages" />
+        {/* <Messages path="messages" /> */}
+        {/* <Settings path="settings" /> */}
         <ScanQr path="scanqr" />
         {/* <ReadQr path="readqr" /> */}
       </Router>
