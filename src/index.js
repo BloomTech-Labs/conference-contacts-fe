@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Sentry from '@sentry/browser';
-import { Auth0Provider } from './react-auth0-spa';
-import config from './auth_config.json';
-import history from './utils/history';
 
+// sentry sdk
+import * as Sentry from '@sentry/browser';
+
+// auth0 config and init
+import config from './auth_config.json';
+import { Auth0Provider } from './react-auth0-spa';
 import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -13,84 +15,25 @@ import { onError } from 'apollo-link-error';
 import { ApolloLink, Observable } from 'apollo-link';
 import gql from 'graphql-tag';
 
+// utils
+import history from './utils/history';
+
+// apollo init
+import AuthorizeApolloProvider from './AuthorizedApolloProvider';
+
+// App component
+import App from './App';
+
+// stylesheet
 import './styles/index.css';
-
-const request = operation => {
-  const token = localStorage.getItem('token');
-  operation.setContext({
-    headers: {
-      authorization: token
-    }
-  });
-};
-const requestLink = new ApolloLink(
-  (operation, forward) =>
-    new Observable(observer => {
-      let handle;
-      Promise.resolve(operation)
-        .then(oper => request(oper))
-        .then(() => {
-          handle = forward(operation).subscribe({
-            next: observer.next.bind(observer),
-            error: observer.error.bind(observer),
-            complete: observer.complete.bind(observer)
-          });
-        })
-        .catch(observer.error.bind(observer));
-      return () => {
-        if (handle) handle.unsubscribe();
-      };
-    })
-);
-export const client = new ApolloClient({
-  link: ApolloLink.from([
-    onError(({ graphQLErrors, networkError }) => {
-      if (graphQLErrors)
-        graphQLErrors.forEach(({ message, locations, path }) =>
-          console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
-        );
-      if (networkError) console.log(`[Network error]: ${networkError}`);
-    }),
-    requestLink,
-    new HttpLink({
-      uri: process.env.REACT_APP_APOLLO_URI
-    })
-  ]),
-  cache: new InMemoryCache()
-});
-
-client.cache.writeData({
-  data: {
-    isLoggedIn: Boolean(localStorage.getItem('token'))
-  }
-});
-
-window.addEventListener('beforeunload', () => {
-  // ? is this a safe/clean way to renew the token
-  localStorage.removeItem('token');
-})
 
 const onRedirectCallback = appState => {
   history.navigate(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
 };
 
-const IS_LOGGED_IN = gql`
-  query IsUserLoggedIn {
-    isLoggedIn @client
-  }
-`;
-
 Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN });
 
 const render = () => {
-  const Pages = require('./pages').default;
-  const Landing = require('./pages/landing').default;
-
-  function IsLoggedIn() {
-    const { data } = useQuery(IS_LOGGED_IN);
-    return data.isLoggedIn ? <Pages /> : <Landing />;
-  }
-
   ReactDOM.render(
     <Auth0Provider
       domain={config.domain}
@@ -99,17 +42,17 @@ const render = () => {
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
-      <ApolloProvider client={client}>
-        <IsLoggedIn />
-      </ApolloProvider>
+      <AuthorizeApolloProvider>
+        <App />
+      </AuthorizeApolloProvider>
     </Auth0Provider>,
     document.getElementById('root')
   );
 };
-
 render();
 
-const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+const inDevelopment =
+  process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
 
 if (inDevelopment && module.hot) {
   module.hot.accept('./pages', render);
