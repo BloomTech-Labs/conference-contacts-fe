@@ -11,9 +11,10 @@ module.exports = {
       }
     },
     screens: {
-      'mdcustom': {'min': '700px'},
-      'smcustom': {'max': '699px'},  
-    },
+      mdcustom: { min: '700px' },
+      smcustom: { max: '699px' },
+      desktop: { min: '1000px' }
+    }
   },
   variants: {},
   plugins: []

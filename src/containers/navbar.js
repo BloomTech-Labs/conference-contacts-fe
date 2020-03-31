@@ -48,7 +48,7 @@ export default function NavBar() {
   return (
     <>
       <header className="header">
-        <div className="navContainer flex items-center px-4 py-2 shadow">
+        <div className="navContainer items-center px-4 py-2 shadow ">
           {/* LOGO */}
           <Link to="/">
             <svg width="70" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
