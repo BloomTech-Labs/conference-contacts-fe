@@ -7,6 +7,13 @@ import * as Sentry from '@sentry/browser';
 // auth0 config and init
 import config from './auth_config.json';
 import { Auth0Provider } from './react-auth0-spa';
+import { ApolloProvider, useQuery } from '@apollo/react-hooks';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { ApolloLink, Observable } from 'apollo-link';
+import gql from 'graphql-tag';
 
 // utils
 import history from './utils/history';

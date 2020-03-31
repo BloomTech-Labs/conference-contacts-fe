@@ -11566,6 +11566,10 @@ li svg #white-svg:hover {
   width: 35%;
 }
 
+.qrsizing {
+  width: 35%;
+}
+
 /* ********* MEDIA QUERIES ********* */
 
 @media (max-width: 700px) {
