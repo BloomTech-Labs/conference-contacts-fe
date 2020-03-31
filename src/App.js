@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // apollo imports
 import { gql } from 'apollo-boost';
-import { useApolloClient, useQuery, useMutation } from '@apollo/react-hooks';
+import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { CREATE_QRCODE } from './queries/index';
 
 // auth0 imports

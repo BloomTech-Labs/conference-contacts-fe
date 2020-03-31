@@ -9,9 +9,6 @@ import {
 import BeatLoader from 'react-spinners/BeatLoader';
 import QRCode from 'qrcode.react';
 
-// import useAuth0 from auth0 init
-import { useAuth0 } from '../react-auth0-spa';
-
 // import pages
 import ErrorPage from './errorpage';
 
@@ -26,9 +23,6 @@ const QRC = React.memo(QRCode);
 const Home = ({ qr }) => {
   // init geolocation local state management
   const [position, setPosition] = useState({});
-
-  // get auth0 user
-  const { user } = useAuth0();
 
   // grab qrCode from localStorage
   const qrcData = localStorage.getItem('qrCode');
