@@ -30,7 +30,7 @@ const ScanQr = () => {
     navigator.geolocation.getCurrentPosition(async position => {
       setPosition(position);
     });
-  },[]);
+  }, []);
 
   const handleScan = async scan => {
     if (!scan) return;
@@ -76,8 +76,6 @@ const ScanQr = () => {
         // delay={100}
         onError={handleError}
         onScan={handleScan}
-        // legacyMode={true}
-        onClick={{ legacyMode: true }}
         facingMode="environment"
         className="mb-6 mt-16 qrsizing smcustom:w-full smcustom:mt-12"
         showViewFinder={true}
