@@ -10,11 +10,7 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from '@reach/router';
 import QRCode from 'qrcode.react';
 
-// import useAuth0 from auth0 init
 import { useAuth0 } from '../react-auth0-spa';
-
-// import other components
-import ErrorPage from './errorpage';
 
 const QRC = React.memo(QRCode);
 
@@ -29,9 +25,11 @@ const Home = ({ qr }) => {
   const qrcData = localStorage.getItem('qrCode');
 
   // fetch user data from server
-  const { loading, error, data, stopPolling } = useQuery(FETCH_HOME_USER, {
+  const { loading, error, data, stopPolling } = useQuery(
+    FETCH_HOME_USER /* , {
     pollInterval: 3000
-  });
+  } */
+  );
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -117,7 +115,7 @@ const Home = ({ qr }) => {
     );
   } else if (error) {
     console.error(error);
-    return <ErrorPage />;
+    return <p>Something went wrong! </p>;
   } else {
     const receivedConnections = data.user.receivedConnections.filter(c => c.status === 'PENDING');
 
@@ -178,13 +176,6 @@ const Home = ({ qr }) => {
                 )}
               </div>
             </div>
-            {/* CURRENT IMAGE -> */}
-            {/* <img
-              className="rounded-full shadow-lg w-96 h-96 object-cover -mt-12 ml-2 -mr-12"
-              src={data.user.picture}
-              alt={`profile picuture of ${data.user.name}`}
-            /> */}
-            {/* EXPLORATION IMAGE -> */}
             <img
               className="rounded-full shadow-lg w-96 h-96 object-cover -mt-12 ml-2 -mr-12"
               src={data.user.picture}
