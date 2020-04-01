@@ -38,7 +38,7 @@ export default function NavBar() {
           style: {
             background: isCurrent ? 'whiteSmoke' : 'white',
             padding: '10px',
-            borderRadius: '5px'
+            borderRadius: isCurrent ? '5px' : '0px'
           }
         };
       }}
@@ -79,22 +79,22 @@ export default function NavBar() {
             <div className="flex">
               {/* DESKTOP NAV */}
               <ul className="desktop-nav flex items-center">
-                <li className="p-6 desktop-link text-lg flex items-center">
+                <li className="p-6 desktop-link text-lg">
                   <NavLink to="/">Home</NavLink>
                 </li>
-                <li className="p-6 desktop-link text-lg flex items-center">
+                <li className="p-6 desktop-link text-lg">
                   <NavLink to="contacts">Contacts</NavLink>
                 </li>
                 {/* <li className="p-6 desktop-link text-lg">
                   <Link to="messages">Messages</Link>
                 </li> */}
-                <li className="p-6 desktop-link text-lg flex items-center">
+                <li className="p-6 desktop-link text-lg">
                   <NavLink to="profile">Profile</NavLink>
                 </li>
                 {/* <li className="p-6 desktop-link text-lg">
                   <NavLink to="settings">Settings</NavLink>
                 </li> */}
-                <li className="p-6 desktop-link text-lg flex items-center">
+                <li className="p-6 desktop-link text-lg">
                   <div className="">
                     <button className="" onClick={handleLogout}>
                       Logout
