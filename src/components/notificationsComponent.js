@@ -15,7 +15,7 @@ export default function NotificationsComponent(props) {
   } = props;
 
   return (
-    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:w-2/5">
+    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:m-0 desktop:w-2/5">
       <div className="flex mx-4 pt-4 my-6 items-center">
         <div className="relative flex-grow-0">
           <svg

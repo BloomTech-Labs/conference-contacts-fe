@@ -66,6 +66,7 @@
   transition: transform 0.45s ease-in-out;
   overflow-y: auto;
 }
+
 .mainNav.open {
   transform: translateX(0%);
 }
@@ -358,18 +359,4 @@ li svg #white-svg:hover {
 
 .qrsizing {
   width: 35%;
-}
-
-/* ********* MEDIA QUERIES ********* */
-
-@media (max-width: 700px) {
-  .desktop-nav {
-    display: none;
-  }
-}
-
-@media (min-width: 700px) {
-  .mobile-nav {
-    display: none;
-  }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 export default function UserInfo(props) {
   const { data, qrcData, qrLink, QRC } = props;
   return (
-    <div className="profile-card pb-4 bg-white mx-6 desktop:m-0 desktop:w-1/4 shadow-md mt-0 overflow-hidden">
+    <div className="desktop:hidden profile-card pb-4 bg-white mx-6 desktop:m-0 desktop:w-1/4 shadow-md mt-0 overflow-hidden">
       <div className="flex justify-between">
         <div className="flex pl-2 pt-4">
           <svg

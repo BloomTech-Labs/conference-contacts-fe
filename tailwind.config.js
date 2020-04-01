@@ -13,7 +13,8 @@ module.exports = {
     screens: {
       mdcustom: { min: '700px' },
       smcustom: { max: '699px' },
-      desktop: { min: '1000px' }
+      desktop: { min: '1000px' },
+      mobile: { max: '1000px' }
     }
   },
   variants: {},
