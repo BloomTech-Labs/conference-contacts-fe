@@ -1,12 +1,10 @@
 import React from 'react';
 
 // apollo imports
-import { ApolloClient, InMemoryCache } from 'apollo-boost';
-// import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient, InMemoryCache, gql } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
-import { gql } from 'graphql-tag';
 
 // component start
 const AuthorizedApolloProvider = ({ children }) => {
