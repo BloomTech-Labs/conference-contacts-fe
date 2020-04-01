@@ -50,7 +50,7 @@ export default function NavBar({ inHeader, qr }) {
           style: {
             background: isCurrent ? 'whiteSmoke' : 'white',
             padding: '10px',
-            borderRadius: '5px'
+            borderRadius: isCurrent ? '5px' : '0px'
           }
         };
       }}
