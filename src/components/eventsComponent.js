@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function EventsComponent(props) {
   return (
-    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:w-1/4 desktop:m-0">
+    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:w-2/6 desktop:m-0">
       <div className="flex justify-between mx-4 pt-4 my-6">
         <p className="text-xl mr-10 ">Events</p>
         <p className="text-lg desktop:hidden">view all</p>

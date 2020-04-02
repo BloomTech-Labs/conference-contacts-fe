@@ -110,7 +110,7 @@ const Home = ({ qr }) => {
 
   if (loading) {
     return (
-      <div className="flex justify-center h-screen items-center w-screen">
+      <div className="flex justify-center h-screen items-center">
         <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
     );
@@ -131,8 +131,8 @@ const Home = ({ qr }) => {
       : `https://swaap.co/qrLink/${qrcData || qr}`;
 
     return (
-      <div className="pb-6 flex flex-col desktop:h-full ">
-        <div className="mx-auto container desktop:w-full desktop:h-full desktop:items-start desktop:flex desktop:flex-row desktop:justify-evenly">
+      <div className="mobile:pb-6 flex flex-col mt-24">
+        <div className="container desktop:w-full  desktop:items-start desktop:flex desktop:flex-row desktop:justify-end">
           {/* qrcode and user info display component */}
           <UserInfo data={data} qrcData={qrcData} qrLink={qrLink} QRC={QRC} />
           {/* open camera / scane qr component */}

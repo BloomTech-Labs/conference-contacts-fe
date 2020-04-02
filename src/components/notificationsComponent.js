@@ -15,7 +15,7 @@ export default function NotificationsComponent(props) {
   } = props;
 
   return (
-    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:m-0 desktop:w-2/5">
+    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:w-1/2">
       <div className="flex mx-4 pt-4 my-6 items-center">
         <div className="relative flex-grow-0">
           <svg
@@ -40,7 +40,7 @@ export default function NotificationsComponent(props) {
         </div>
         <p className="text-xl flex-1 text-center -ml-6">Notifications</p>
       </div>
-      <p className="ml-4 mt-4 text-xl text-gray-500">New Messages</p>
+      <p className="ml-4 mt-4 text-xl desktop:text-base text-gray-500">New Messages</p>
       {!data.user.notifications.length ? (
         <div className="flex flex-col items-center my-16">
           <svg
@@ -64,7 +64,7 @@ export default function NotificationsComponent(props) {
             <circle cx="27" cy="30" r="3" fill="#595959" />
             <circle cx="63" cy="30" r="3" fill="#595959" />
           </svg>
-          <p className="text-xl mt-10 text-gray-500">You are all caught up!</p>
+          <p className="text-xl mt-10 text-gray-500 desktop:text-base ">You are all caught up!</p>
         </div>
       ) : (
         <ul className="my-5">
@@ -102,7 +102,7 @@ export default function NotificationsComponent(props) {
           ))}
         </ul>
       )}
-      <p className="ml-4 text-xl text-gray-500">New Requests</p>
+      <p className="ml-4 text-xl text-gray-500  desktop:text-base ">New Requests</p>
       {!receivedConnections.length ? (
         <div className="flex flex-col items-center my-16">
           <svg
@@ -161,7 +161,9 @@ export default function NotificationsComponent(props) {
               />
             </g>
           </svg>
-          <p className="text-xl mt-10 text-gray-500">Go out and meet more people!</p>
+          <p className="text-xl mt-10 text-gray-500 desktop:text-base ">
+            Go out and meet more people!
+          </p>
         </div>
       ) : (
         <ul className="my-5">
