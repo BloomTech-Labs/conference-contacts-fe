@@ -16,7 +16,7 @@ export default function Pages(props) {
     <Fragment>
       <NavBar inHeader={true} />
       <div className="bg-gray-200">
-        <div className="container mx-auto flex w-screen pt-24 h-full desktop:min-h-screen">
+        <div className="container mx-auto flex w-screen h-full desktop:min-h-screen justify-between">
           <NavBar inHeader={false} qr={props.qr} />
           <Router className="w-full">
             <Home path="/" qr={props.qr} />

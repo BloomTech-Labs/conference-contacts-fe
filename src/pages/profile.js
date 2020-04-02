@@ -48,8 +48,8 @@ const Profile = ({ location, navigate }) => {
   return (
     // following two divs add card style
     // to profile page
-    <div className="pb-6 desktop:h-full">
-      <div className="profile-card pb-4 bg-white mx-6 desktop:mx-auto shadow-md overflow-hidden desktop:max-w-3xl">
+    <div className="pb-6  mt-24 desktop:flex desktop:justify-end">
+      <div className="profile-card pb-4 bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
         <div className="pt-5 desktop:pt-0 flex flex-col overflow-hidden px-6 pb-8">
           {viewingContact && (
             <div className="absolute desktop:pt-4">
