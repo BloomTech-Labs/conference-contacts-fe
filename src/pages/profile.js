@@ -156,7 +156,9 @@ const Profile = ({ location, navigate }) => {
                   </h2>
                   <div className="flex mt-3">
                     <Icon type={preferredContact.type} size={24} />
-                    <span className="ml-4 text-blue-500">{preferredContact.value}</span>
+                    <a className="ml-4 text-blue-500" href={preferredContact.value} target="_blank">
+                      {preferredContact.value}
+                    </a>
                   </div>
                 </section>
               )}
@@ -165,12 +167,20 @@ const Profile = ({ location, navigate }) => {
                 <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
                 <ul className="mt-3">
                   {contacts.length ? (
-                    contacts.map(field => (
-                      <li key={field.id} className="flex mb-3">
-                        <Icon type={field.type} size={24} />
-                        <span className="ml-4">{field.value}</span>
-                      </li>
-                    ))
+                    contacts.map(field => {
+                      return (
+                        <li key={field.id} className="flex mb-3">
+                          <Icon type={field.type} size={24} />
+                          <a
+                            className="ml-4"
+                            href={field.type == 'EMAIL' ? `mailto:${field.value}` : field.value}
+                            target="_blank"
+                          >
+                            {field.value}
+                          </a>
+                        </li>
+                      );
+                    })
                   ) : viewingContact ? (
                     <p>They have not shared any other methods of contact.</p>
                   ) : (
