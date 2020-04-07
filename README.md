@@ -7,31 +7,49 @@
 ### The contributors for Swaap.
 
 **Bobby Hall**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/bobbyhalljr)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/bobby-hall-jr-339091143/)
 
 **Tyler Quinn**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Bangstry)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-quinn-b78a41195/)
 
 **Jonathan Picazo**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/macjabeth)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/macjabeth/)
 
 **Zachary Peasley**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/zpallday)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/zachary-peasley-b8b057194/)
 
 **Jarvise Billups-Brown**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Fullmetal235)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/)
 
 **Emily Arias**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Ehuntwork)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/emily-arias-921924181/)
 
 **Marlon Raskin**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/marlonjames71)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/marlon-raskin/)
 
 **Tyler Nishida**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tylernishida)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-nishida/)
 
 **Michael Redig**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/mredig)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/michael-redig/)
+
+**Chad Rutherford**
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/chadarutherford)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://https://www.linkedin.com/in/chadarutherford/)
+
+**Erica Ingram**
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/evoingram)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://http://www.linkedin.com/in/aquocotrans/)
+
+**Tristan Depew**
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tadepew)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tristan-depew-60a2b28/)
+
+**Sierra Curtis**
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/scurtis6)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sierra-curtis/)
+
+**Roberto Banbanaste**
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Banbanaste)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/roberto-banbanaste-2a1627132/)
+
+**Corey Gumbs**
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CoreyGumbs)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/coreygumbs/)
 
 ## Project Overview
 
@@ -66,6 +84,7 @@ Front end built using:
 - Reach Router
 - Apollo
 - Tailwind css
+- npm-check-updates
 
 Front end deployed to `Netlify` and built using:
 ### React
@@ -97,6 +116,12 @@ https://www.apollographql.com/
 https://tailwindcss.com/
 
 - Tailwind is a collection of low-level utility classes. They can be used like lego bricks to build any kind of component. The collection covers the most important CSS properties, but it can be easily extended in a variety of ways. With Tailwind, customization isn’t pain in the neck anymore. The framework has great documentation, covering every class utility in detail and showing the ways it can be customized. All modern browsers, and IE11+, are supported.
+
+### npm-check-updates
+
+https://www.npmjs.com/package/npm-check-updates
+
+- npm-check-updates is a package that find newer versions of dependencies than what your package.json or bower.json allows
 
 ## Extensions
 
