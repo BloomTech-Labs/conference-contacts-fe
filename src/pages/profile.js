@@ -165,12 +165,11 @@ const Profile = ({ location, navigate }) => {
 								<h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
 									Contact Methods
 								</h2>
-								<ul className="mt-3">
+								<div className="flex flex-no-wrap ml-2">
 									{contacts.length ? (
 										contacts.map(field => {
 											return (
-												<li key={field.id} className="flex mb-3 text-xl">
-													<Icon type={field.type} size={24} />
+												<div className="p-2">
 													<a
 														className="ml-4"
 														href={
@@ -180,9 +179,9 @@ const Profile = ({ location, navigate }) => {
 														}
 														target="_blank"
 													>
-														{field.value}
+														<Icon type={field.type} size={24} />
 													</a>
-												</li>
+												</div>
 											);
 										})
 									) : viewingContact ? (
@@ -190,7 +189,7 @@ const Profile = ({ location, navigate }) => {
 									) : (
 										<p>You have not added any other methods of contact.</p>
 									)}
-								</ul>
+								</div>
 							</section>
 						</div>
 					</div>
