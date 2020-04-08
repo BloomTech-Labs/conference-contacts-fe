@@ -55,7 +55,9 @@ const Profile = ({ location, navigate }) => {
 				<div className="pt-5 desktop:pt-0 flex flex-col overflow-hidden px-6 pb-8">
 					{viewingContact && (
 						<div className="absolute desktop:pt-4">
-							<Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
+							<div style={iconSizing}>
+								<Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
+							</div>
 						</div>
 					)}
 					<div className="flex flex-col desktop:flex-row-reverse justify-between">
@@ -100,7 +102,9 @@ const Profile = ({ location, navigate }) => {
 										<Popup
 											trigger={
 												<button>
-													<Icon size={60} type="TRASH" />
+													<div style={iconSizing}>
+														<Icon size={60} type="TRASH" />
+													</div>
 												</button>
 											}
 											modal
@@ -158,10 +162,15 @@ const Profile = ({ location, navigate }) => {
 										Preferred Contact
 									</h2>
 									<div className="flex mt-3 text-xl">
-										<Icon type={preferredContact.type} size={32} />
-										<a className="ml-4 text-blue-500" href={preferredContact.value} target="_blank">
-											{preferredContact.value}
-										</a>
+										<div style={iconSizing}>
+											<a
+												className="ml-4 text-blue-500"
+												href={preferredContact.value}
+												target="_blank"
+											>
+												<Icon type={preferredContact.type} size={32} />
+											</a>
+										</div>
 									</div>
 								</section>
 							)}
