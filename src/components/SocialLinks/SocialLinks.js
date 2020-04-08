@@ -1,11 +1,14 @@
 import React from 'react';
+import LinkInput from './LinkInput/LinkInput';
+import SocialIcons  from './SocialIcons/SocialIcons';
+import { set } from 'react-ga';
 
-
-const SocialLinks = () => {
+const SocialLinks = (props) => {
+    const {handleFieldChange, handleNewLink, fields, link, setLink } = props;
     return(
-        <div>
-            <Icons/>
-            <Input/> 
+        <div className="relative flex items-center">
+            <LinkInput handleNewLink={handleNewLink} fields={fields} handleFieldChange={handleFieldChange} link={link} />
+            <SocialIcons setLink={setLink} link={link}/>
         </div>
     );
 }
