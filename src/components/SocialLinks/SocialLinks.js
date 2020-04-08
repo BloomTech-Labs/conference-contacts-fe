@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-
 const SocialLinks = () => {
     return(
         <div>
-            Social Links
+            <Icons/>
+            <Input/> 
         </div>
     );
 }
