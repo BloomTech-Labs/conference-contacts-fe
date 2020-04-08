@@ -3,6 +3,9 @@ import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 import BeatLoader from 'react-spinners/BeatLoader';
 
+// import components
+import ErrorPage from './errorpage';
+
 const Contacts = ({ navigate }) => {
   let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
   const [name, setName] = useState('');
@@ -18,7 +21,7 @@ const Contacts = ({ navigate }) => {
       </div>
     );
 
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) return <ErrorPage />;
 
   let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
     const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;

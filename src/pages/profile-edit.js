@@ -5,10 +5,13 @@ import {
   UPDATE_USER_INFO,
   CREATE_PROFILE_FIELD,
   UPDATE_PROFILE_FIELD,
-  DELETE_PROFILE_FIELD
+  DELETE_PROFILE_FIELD,
 } from '../queries';
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
+
+// components
+import InputsComponent from '../components/editComponents/inputsComponent';
 
 export default function ProfileEdit(props) {
   //State
@@ -35,8 +38,8 @@ export default function ProfileEdit(props) {
       cache,
       {
         data: {
-          createProfileField: { profileField }
-        }
+          createProfileField: { profileField },
+        },
       }
     ) {
       const { user } = cache.readQuery({ query: FETCH_USER_PROFILE });
@@ -45,11 +48,11 @@ export default function ProfileEdit(props) {
         data: {
           user: {
             ...user,
-            profile: user.profile.concat(profileField)
-          }
-        }
+            profile: user.profile.concat(profileField),
+          },
+        },
       });
-    }
+    },
   });
 
   //Delete Profile link
@@ -58,8 +61,8 @@ export default function ProfileEdit(props) {
       cache,
       {
         data: {
-          deleteProfileField: { profileField }
-        }
+          deleteProfileField: { profileField },
+        },
       }
     ) {
       const { user } = cache.readQuery({ query: FETCH_USER_PROFILE });
@@ -68,17 +71,17 @@ export default function ProfileEdit(props) {
         data: {
           user: {
             ...user,
-            profile: user.profile.filter(field => field.id !== profileField.id)
-          }
-        }
+            profile: user.profile.filter((field) => field.id !== profileField.id),
+          },
+        },
       });
-    }
+    },
   });
 
   const handleFieldChange = ({ target: { name, value } }) =>
     setFields({
       ...fields,
-      [name]: value
+      [name]: value,
     });
 
   const handleSave = async () => {
@@ -94,7 +97,7 @@ export default function ProfileEdit(props) {
 
   const handleCancel = () => props.navigate('/profile');
 
-  const handleNewLink = async event => {
+  const handleNewLink = async (event) => {
     if (link === 'PLUS') {
       setLinkError(true);
       return;
@@ -106,13 +109,13 @@ export default function ProfileEdit(props) {
       value: fields.link,
       type: link,
       privacy: 'PRIVATE',
-      preferredContact: false
+      preferredContact: false,
     };
 
     try {
       await createProfileField({
         variables: {
-          data: profileData
+          data: profileData,
         },
         optimisticResponse: {
           __typename: 'Mutation',
@@ -124,10 +127,10 @@ export default function ProfileEdit(props) {
             profileField: {
               __typename: 'ProfileField',
               id: Math.random().toString(),
-              ...profileData
-            }
-          }
-        }
+              ...profileData,
+            },
+          },
+        },
       });
     } catch (error) {
       console.error('createProfileField', error);
@@ -148,17 +151,17 @@ export default function ProfileEdit(props) {
             profileField: {
               __typename: 'ProfileField',
               ...field,
-              ...changes
-            }
-          }
-        }
+              ...changes,
+            },
+          },
+        },
       });
     } catch (error) {
       console.error('updateLink', error);
     }
   };
 
-  const removeLink = async id => {
+  const removeLink = async (id) => {
     try {
       await deleteProfileField({
         variables: { id },
@@ -171,10 +174,10 @@ export default function ProfileEdit(props) {
             message: 'Profile field deleted successfully',
             profileField: {
               __typename: 'ProfileField',
-              id
-            }
-          }
-        }
+              id,
+            },
+          },
+        },
       });
     } catch (error) {
       console.error('removeLink', error);
@@ -194,23 +197,23 @@ export default function ProfileEdit(props) {
   const widget = window.cloudinary.createUploadWidget(
     {
       cloudName: process.env.REACT_APP_CLOUDINARY_NAME,
-      uploadPreset: process.env.REACT_APP_CLOUDINARY_PRESET
+      uploadPreset: process.env.REACT_APP_CLOUDINARY_PRESET,
     },
     (error, result) => {
       if (!error && result?.event === 'success') {
         updateUserInfo({
           variables: {
             data: {
-              picture: result.info.secure_url
-            }
-          }
+              picture: result.info.secure_url,
+            },
+          },
         });
       }
     }
   );
 
   // track preferred contact for validation
-  const preferredContact = fields?.profile?.find(field => field.preferredContact);
+  const preferredContact = fields?.profile?.find((field) => field.preferredContact);
 
   return (
     <div className="px-6 mt-24">
@@ -232,97 +235,9 @@ export default function ProfileEdit(props) {
           <Icon type="CAMERA" classes="absolute" size={34} />
         </div>
       </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="name">
-          Name
-        </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.name || ''}
-        />
-      </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="jobtitle">
-          Job Title
-        </label>
-        <input
-          type="text"
-          name="jobtitle"
-          id="jobtitle"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.jobtitle || ''}
-        />
-      </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="industry">
-          Industry
-        </label>
-        <input
-          type="text"
-          name="industry"
-          id="industry"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.industry || ''}
-        />
-      </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="location">
-          Location
-        </label>
-        <input
-          type="text"
-          name="location"
-          id="location"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.location || ''}
-        />
-      </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="birthdate">
-          Birthdate
-        </label>
-        <input
-          type="date"
-          name="birthdate"
-          id="birthdate"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.birthdate || ''}
-        />
-      </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="tagline">
-          Tagline
-        </label>
-        <input
-          type="text"
-          name="tagline"
-          id="tagline"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.tagline || ''}
-        />
-      </div>
-      <div className="mt-4">
-        <label className="block text-sm mb-1" htmlFor="bio">
-          Bio
-        </label>
-        <textarea
-          name="bio"
-          id="bio"
-          rows="5"
-          className="w-full border border-gray-900 rounded p-2"
-          onChange={handleFieldChange}
-          value={fields.bio || ''}
-        />
-      </div>
+
+      <InputsComponent fields={fields} handleFieldChange={handleFieldChange} />
+
       {/* Link Section Starts */}
       <div className="mt-4">
         <div className="flex justify-between items-center">
@@ -488,7 +403,7 @@ export default function ProfileEdit(props) {
           {/* Social Media Icons */}
           <div id="link-types" className="absolute flex items-center right-1 mr-10 hidden">
             {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map(
-              type =>
+              (type) =>
                 type !== link && (
                   <Icon
                     id={type}

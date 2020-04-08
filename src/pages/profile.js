@@ -6,6 +6,10 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
+
+// import components
+import ErrorPage from './errorpage';
+
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
@@ -40,7 +44,7 @@ const Profile = ({ location, navigate }) => {
         <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
     );
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) return <ErrorPage />;
   const preferredContact = data.user.profile.find(field => field.preferredContact);
   const contacts = preferredContact
     ? data.user.profile.filter(field => field.id !== preferredContact.id)
