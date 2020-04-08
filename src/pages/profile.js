@@ -75,12 +75,13 @@ const Profile = ({ location, navigate }) => {
 										<Link to="edit">
 											{/* EDIT ICON */}
 											<svg
-												className="mr-3"
-												width="24"
-												height="24"
-												viewBox="0 0 24 24"
+												className="ml-3"
+												width="60"
+												height="60"
+												viewBox="0 0 40 40"
 												fill="none"
 												xmlns="http://www.w3.org/2000/svg"
+												preserveAspectRatio="xMidYMid meet"
 											>
 												<path
 													d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z"
@@ -95,7 +96,7 @@ const Profile = ({ location, navigate }) => {
 										<Popup
 											trigger={
 												<button>
-													<Icon size={24} type="TRASH" />
+													<Icon size={28} type="TRASH" />
 												</button>
 											}
 											modal
@@ -153,7 +154,7 @@ const Profile = ({ location, navigate }) => {
 										Preferred Contact
 									</h2>
 									<div className="flex mt-3 text-xl">
-										<Icon type={preferredContact.type} size={24} />
+										<Icon type={preferredContact.type} size={32} />
 										<a className="ml-4 text-blue-500" href={preferredContact.value} target="_blank">
 											{preferredContact.value}
 										</a>
@@ -179,7 +180,7 @@ const Profile = ({ location, navigate }) => {
 														}
 														target="_blank"
 													>
-														<Icon type={field.type} size={24} />
+														<Icon type={field.type} size={28} />
 													</a>
 												</div>
 											);
