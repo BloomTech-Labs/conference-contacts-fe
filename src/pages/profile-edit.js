@@ -216,10 +216,10 @@ export default function ProfileEdit(props) {
 		<div className="px-6 mt-24">
 			<div>
 				<div className="flex justify-between">
-					<button type="button" className="text-red-600 focus:outline-none" onClick={handleCancel}>
+					<button type="button" className="text-red-600 focus:outline-none text-2xl" onClick={handleCancel}>
 						Cancel
 					</button>
-					<button type="submit" className="text-blue-700 focus:outline-none" onClick={handleSave}>
+					<button type="submit" className="text-blue-700 text-2xl focus:outline-none" onClick={handleSave}>
 						Save
 					</button>
 				</div>
@@ -233,92 +233,92 @@ export default function ProfileEdit(props) {
 				</div>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="name">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="name">
 					Name
 				</label>
 				<input
 					type="text"
 					name="name"
 					id="name"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.name || ''}
 				/>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="jobtitle">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="jobtitle">
 					Job Title
 				</label>
 				<input
 					type="text"
 					name="jobtitle"
 					id="jobtitle"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.jobtitle || ''}
 				/>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="industry">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="industry">
 					Industry
 				</label>
 				<input
 					type="text"
 					name="industry"
 					id="industry"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.industry || ''}
 				/>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="location">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="location">
 					Location
 				</label>
 				<input
 					type="text"
 					name="location"
 					id="location"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.location || ''}
 				/>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="birthdate">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="birthdate">
 					Birthdate
 				</label>
 				<input
 					type="date"
 					name="birthdate"
 					id="birthdate"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.birthdate || ''}
 				/>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="tagline">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="tagline">
 					Tagline
 				</label>
 				<input
 					type="text"
 					name="tagline"
 					id="tagline"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.tagline || ''}
 				/>
 			</div>
 			<div className="mt-4">
-				<label className="block text-sm mb-1" htmlFor="bio">
+				<label className="block text-sm mb-1 text-2xl" htmlFor="bio">
 					Bio
 				</label>
 				<textarea
 					name="bio"
 					id="bio"
 					rows="5"
-					className="w-full border border-gray-900 rounded p-2"
+					className="w-full border border-gray-900 rounded p-2 text-xl"
 					onChange={handleFieldChange}
 					value={fields.bio || ''}
 				/>
@@ -326,7 +326,7 @@ export default function ProfileEdit(props) {
 			{/* Link Section Starts */}
 			<div className="mt-4">
 				<div className="flex justify-between items-center">
-					<label className="block text-sm mb-1">Links</label>
+					<label className="block text-sm mb-1 text-2xl">Links</label>
 					<button
 						type="button"
 						className="text-xs text-blue-500 focus:outline-none"
@@ -338,7 +338,7 @@ export default function ProfileEdit(props) {
 				{/* User privacy drop down menu */}
 				<ul className="mt-3">
 					{fields?.profile?.map((field, idx) => (
-						<li key={field.id} className="flex mb-3">
+						<li key={field.id} className="flex mb-3 text-xl">
 							<Icon type={field.type} size={24} />
 							<span
 								className={
