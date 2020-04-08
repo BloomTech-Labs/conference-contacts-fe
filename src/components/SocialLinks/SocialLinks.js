@@ -1,7 +1,6 @@
 import React from 'react';
 import LinkInput from './LinkInput/LinkInput';
 import SocialIcons  from './SocialIcons/SocialIcons';
-import { set } from 'react-ga';
 
 const SocialLinks = (props) => {
     const {handleFieldChange, handleNewLink, fields, link, setLink } = props;
@@ -12,6 +11,5 @@ const SocialLinks = (props) => {
         </div>
     );
 }
-
 
 export default SocialLinks;
