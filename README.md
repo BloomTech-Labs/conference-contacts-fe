@@ -68,6 +68,7 @@ Front end built using:
 - Tailwind css
 
 Front end deployed to `Netlify` and built using:
+
 ### React
 
 https://www.apollographql.com/
