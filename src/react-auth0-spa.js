@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
-import { gql } from 'apollo-boost';
 
-const DEFAULT_REDIRECT_CALLBACK = () =>
-  window.history.replaceState({}, document.title, window.location.pathname);
+const DEFAULT_REDIRECT_CALLBACK = () => {
+  return window.history.replaceState({}, document.title, window.location.pathname);
+};
 
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
+
+//compnent start
 export const Auth0Provider = ({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
@@ -23,7 +25,7 @@ export const Auth0Provider = ({
       const auth0FromHook = await createAuth0Client(initOptions);
       setAuth0(auth0FromHook);
 
-      if (window.location.search.includes('code=')) {
+      if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
         const { appState } = await auth0FromHook.handleRedirectCallback();
         onRedirectCallback(appState);
       }
@@ -34,32 +36,14 @@ export const Auth0Provider = ({
 
       if (isAuthenticated) {
         let user = await auth0FromHook.getUser();
-        localStorage.setItem('token', await auth0FromHook.getTokenSilently());
-        const client = require('./index').client;
-        client.writeData({ data: { isLoggedIn: true } });
 
-        await client.mutate({
-          mutation: gql`
-            mutation CreateUser($user: CreateUserInput!) {
-              createUser(data: $user) {
-                success
-              }
-            }
-          `,
-          variables: {
-            user: {
-              name: user.name,
-              picture: user.picture,
-              email: user.email
-            }
-          }
-        });
+        localStorage.setItem('token', await auth0FromHook.getTokenSilently());
+        setUser(user);
       }
       setLoading(false);
     };
 
     initAuth0();
-    // eslint-disable-next-line
   }, []);
 
   const loginWithPopup = async (params = {}) => {

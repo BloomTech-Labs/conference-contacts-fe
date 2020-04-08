@@ -1,5 +1,5 @@
-import { gql } from 'apollo-boost';
-// fbvsbdivbsdv
+import gql from 'graphql-tag';
+
 
 export const FETCH_QRCODE_DATA = gql`
   query FetchQRCodeData($id: ID!) {
