@@ -362,15 +362,6 @@ export default function ProfileEdit(props) {
       {/* Link Section ENDS */}
       {/* Link Form Input Starts */}
       <div id="new-link" className="hidden">
-        {/* Social Media Link Type Error Handling - need to select type before allowing btn to add */}
-        <div className="relative">
-          {linkError && (
-            <p className="text-red-600 font-bold my-3">
-              Please click on the "+" to select a social media account type.
-            </p>
-          )}
-        </div>
-        {/* Error handling end */}
         {/* Social Links Component */}
         <SocialLinks 
           handleNewLink={handleNewLink} 
@@ -378,6 +369,7 @@ export default function ProfileEdit(props) {
           handleFieldChange={handleFieldChange} 
           link={link}
           setLink={setLink}
+          linkError={linkError}
         />
       </div>
     </div>
