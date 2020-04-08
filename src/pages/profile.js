@@ -6,6 +6,10 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
+
+const iconSizing = {
+	transform: 'scale(1.5)'
+};
 const Profile = ({ location, navigate }) => {
 	const viewingContact = Boolean(location.state.userId);
 	const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
@@ -96,7 +100,7 @@ const Profile = ({ location, navigate }) => {
 										<Popup
 											trigger={
 												<button>
-													<Icon size={28} type="TRASH" />
+													<Icon size={60} type="TRASH" />
 												</button>
 											}
 											modal
@@ -180,7 +184,9 @@ const Profile = ({ location, navigate }) => {
 														}
 														target="_blank"
 													>
-														<Icon type={field.type} size={28} />
+														<div style={iconSizing}>
+															<Icon type={field.type} size={50} />
+														</div>
 													</a>
 												</div>
 											);
