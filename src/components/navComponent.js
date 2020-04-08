@@ -73,6 +73,12 @@ export default function NavComponent(props) {
 								/>
 							</svg>
 							<span className="uppercase">Contacts</span>
+							{/*
+								className="bg-gray-200 w-1/2 shadow br-black text-center text-xl py-2 px-6 rounded-lg hover:bg-black-400 hover:shadow-lg desktop:text:base desktop:px-0 desktop:w-2/3"
+								933EFF electricViolet
+								hover:bg-electricViolet hover:text-white
+
+							*/}
 						</li>
 					</Link>
 					<Link to="/profile" onClick={inHeader ? () => setOpen(!open) : null}>

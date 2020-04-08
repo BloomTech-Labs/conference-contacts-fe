@@ -13,6 +13,7 @@ module.exports = {
 			transparent: 'transparent',
 			black: '#000',
 			white: '#fff',
+			electricViolet: '#933EFF',
 			gray: {
 				100: '#f7fafc',
 				200: '#edf2f7',
@@ -123,8 +124,6 @@ module.exports = {
 				800: '#97266d',
 				900: '#702459'
 			}
-
-	
 		},
 		spacing: {
 			px: '1px',
