@@ -20,7 +20,7 @@ export default function ProfileEdit(props) {
   const [linkError, setLinkError] = useState(false);
 
   //Profile links type state
-  const [link, setLink] = useState('PLUS');
+  const [link, setLink] = useState('');
 
   //GraphQL Queries
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
@@ -99,7 +99,7 @@ export default function ProfileEdit(props) {
   const handleCancel = () => props.navigate('/profile');
 
   const handleNewLink = async (event) => {
-    if (link === 'PLUS') {
+    if (link === '') {
       setLinkError(true);
       return;
     } else {
@@ -114,6 +114,7 @@ export default function ProfileEdit(props) {
     };
 
     try {
+      document.getElementById('new-link').classList.toggle('hidden');
       await createProfileField({
         variables: {
           data: profileData,
@@ -363,10 +364,10 @@ export default function ProfileEdit(props) {
       {/* Link Form Input Starts */}
       <div id="new-link" className="hidden">
         {/* Social Links Component */}
-        <SocialLinks 
-          handleNewLink={handleNewLink} 
-          fields={fields} 
-          handleFieldChange={handleFieldChange} 
+        <SocialLinks
+          handleNewLink={handleNewLink}
+          fields={fields}
+          handleFieldChange={handleFieldChange}
           link={link}
           setLink={setLink}
           linkError={linkError}
