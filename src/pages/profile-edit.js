@@ -430,7 +430,7 @@ export default function ProfileEdit(props) {
         </div>
       </div>
       {/* End of Link Input Section*/}
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <div className="flex justify-between items-center">
           <label className="block text-sm mb-1">Interests</label>
           <button type="button" className="text-xs text-blue-500 focus:outline-none">
@@ -459,7 +459,7 @@ export default function ProfileEdit(props) {
             <Icon type="DELETE" size={14} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
