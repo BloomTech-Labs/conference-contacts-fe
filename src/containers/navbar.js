@@ -5,6 +5,7 @@ import { useQuery, useApolloClient } from '@apollo/react-hooks';
 import { NAVBAR_PROFILE } from '../queries/index';
 
 // import components
+import ErrorPage from '../pages/errorpage';
 import NavComponent from '../components/navComponent';
 
 export default function NavBar({ inHeader, qr }) {
@@ -23,7 +24,7 @@ export default function NavBar({ inHeader, qr }) {
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
 
   if (loading || !data) return null;
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) return <ErrorPage />;
 
   const handleLogout = () => {
     const hosts = {
