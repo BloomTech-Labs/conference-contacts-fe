@@ -133,11 +133,13 @@
 /*PROFILE SOCIAL ICONS LINKS */
 
 .social-icons {
-  fill: black;
+  color: black;
+  width: 24px;
+  height: 24px;
 }
 
 .social-icons:hover {
-  fill: red;
+  color: red;
 }
 
 .right-1 {

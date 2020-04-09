@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Icon from '../../icon';
+import SVGIcon from './SVGIcon';
 
 const SocialLinks = ({ setLink, link }) => {
   // useState toggle to show/hide icons
@@ -28,7 +28,7 @@ const SocialLinks = ({ setLink, link }) => {
           {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map(
             (type) =>
               type !== link && (
-                <Icon
+                <SVGIcon
                   id={type}
                   key={type}
                   type={type}
@@ -45,7 +45,7 @@ const SocialLinks = ({ setLink, link }) => {
       )}
       {link && (
         <div className="flex bg-red-500">
-          <Icon
+          <SVGIcon
             id={link}
             key={link}
             type={link}
