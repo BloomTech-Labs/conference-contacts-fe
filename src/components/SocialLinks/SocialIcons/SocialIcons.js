@@ -5,17 +5,26 @@ const SocialLinks = ({ setLink, link }) => {
   // useState toggle to show/hide icons
   const [visibleIcons, setVisibleIcons] = useState(false);
   return (
-    <div className="flex self-start">
+    <div className="flex justify-center border border-gray-900 rounded p-2 text-center">
       {/* PLUS Icon within link input */}
-      {!visibleIcons ? (
+      {!visibleIcons && !link && (
         <span classes="" onClick={() => setVisibleIcons(true)}>
           +
         </span>
-      ) : (
-        <div id="link-types" className="flex ">
-          <span classes="" onClick={() => setVisibleIcons(false)}>
-            -
-          </span>
+      )}
+
+      {visibleIcons && !link && (
+        <span classes="" onClick={() => setVisibleIcons(false)}>
+          -
+        </span>
+      )}
+
+      {visibleIcons && (
+        <div
+          id="link-types"
+          className="flex justify-between absolute w-1/4"
+          style={{ marginTop: '-40px', marginLeft: '-70%' }}
+        >
           {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map(
             (type) =>
               type !== link && (
@@ -36,8 +45,16 @@ const SocialLinks = ({ setLink, link }) => {
       )}
       {link && (
         <div className="flex bg-red-500">
-          <label>Current Icon: </label>
-          <Icon id={link} key={link} type={link} size={24} classes={'social-icons'} />
+          <Icon
+            id={link}
+            key={link}
+            type={link}
+            size={24}
+            classes={'social-icons'}
+            onClick={() => {
+              setVisibleIcons(!visibleIcons);
+            }}
+          />
         </div>
       )}
     </div>
