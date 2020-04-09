@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FaPlus, FaMinus } from 'react-icons/fa';
+
+//Components
 import SVGIcon from './SVGIcon';
 
 const SocialLinks = ({ setLink, link }) => {
@@ -8,14 +11,14 @@ const SocialLinks = ({ setLink, link }) => {
     <div className="flex justify-center border border-gray-900 rounded p-2 text-center">
       {/* PLUS Icon within link input */}
       {!visibleIcons && !link && (
-        <span classes="" onClick={() => setVisibleIcons(true)}>
-          +
+        <span classes="flex justify-center plus-minus-icons" onClick={() => setVisibleIcons(true)}>
+          <FaPlus />
         </span>
       )}
 
       {visibleIcons && !link && (
-        <span classes="" onClick={() => setVisibleIcons(false)}>
-          -
+        <span classes="flex plus-minus-icons" onClick={() => setVisibleIcons(false)}>
+          <FaMinus />
         </span>
       )}
 
@@ -32,7 +35,6 @@ const SocialLinks = ({ setLink, link }) => {
                   id={type}
                   key={type}
                   type={type}
-                  size={24}
                   classes={'social-icons'}
                   onClick={() => {
                     setLink(type);
@@ -49,7 +51,6 @@ const SocialLinks = ({ setLink, link }) => {
             id={link}
             key={link}
             type={link}
-            size={24}
             classes={'social-icons'}
             onClick={() => {
               setVisibleIcons(!visibleIcons);

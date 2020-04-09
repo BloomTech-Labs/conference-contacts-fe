@@ -1,12 +1,13 @@
 import React from 'react';
 import Icon from '../../icon';
+import SVGIcon from '../SocialIcons/SVGIcon';
 
 const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink }) => {
   return (
     <ul className="mt-3">
       {fields?.profile?.map((field, idx) => (
         <li key={field.id} className="flex mb-3">
-          <Icon type={field.type} size={24} />
+          <SVGIcon type={field.type} classes={'stationary-social-icons'} />
           <span
             className={
               field.preferredContact

@@ -11346,6 +11346,22 @@ video {
   color: red;
 }
 
+/* profile-edit page link social icons */
+
+.stationary-social-icons{
+  color: black;
+  width: 36px;
+  height: 36px;
+}
+
+/* profile-edit page add link +/- button  */
+
+.plus-minus-icons{
+  color: black;
+  width: 24px;
+  height: 24px;
+}
+
 .right-1 {
   right: 33%;
 }
