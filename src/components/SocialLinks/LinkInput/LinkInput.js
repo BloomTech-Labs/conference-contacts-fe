@@ -1,10 +1,11 @@
 import React from 'react';
+import SocialIcons from '../SocialIcons/SocialIcons';
 
 const LinkInput = (props) => {
-  const { handleFieldChange, handleNewLink, fields, link } = props;
+  const { handleFieldChange, handleNewLink, fields, link, setLink } = props;
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full mt-6">
       {/* Link Input */}
       <input
         type="text"
@@ -15,6 +16,9 @@ const LinkInput = (props) => {
         value={fields.link || ''}
         //onKeyPress={handleNewLink}
       />
+
+      <SocialIcons setLink={setLink} link={link} />
+
       {/* Check Icon Btn */}
       <button
         className={`bg-gray-300 hover:text-white text-gray-800 font-bold py-2 px-5 ml-5 rounded inline-flex items-center ${
