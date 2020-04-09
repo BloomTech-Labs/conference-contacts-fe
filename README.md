@@ -87,6 +87,7 @@ Front end built using:
 - npm-check-updates
 
 Front end deployed to `Netlify` and built using:
+
 ### React
 
 https://www.apollographql.com/
