@@ -11,7 +11,7 @@ const LinkInput = (props) => {
         type="text"
         name="link"
         placeholder="Username or URL"
-        className="w-full border border-gray-900 rounded p-2 pr-10"
+        className="w-full border border-r-0 rounded-r-none border-gray-900 rounded p-2 pr-10"
         onChange={handleFieldChange}
         value={fields.link || ''}
         //onKeyPress={handleNewLink}

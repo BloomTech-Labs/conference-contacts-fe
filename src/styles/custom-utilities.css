@@ -141,14 +141,14 @@
 }
 
 /* profile-edit page link social icons */
-.stationary-social-icons{
+.stationary-social-icons {
   color: black;
   width: 36px;
   height: 36px;
 }
 
 /* profile-edit page add link +/- button  */
-.plus-minus-icons{
+.plus-minus-icons {
   color: black;
   width: 24px;
   height: 24px;
@@ -302,7 +302,7 @@ li svg #white-svg:hover {
 .grid-2 {
   display: grid;
   margin: 0 auto;
-  }
+}
 
 .hovereffect {
   width: 60%;
@@ -374,7 +374,8 @@ li svg #white-svg:hover {
   transform: translate3d(0, 0, 0);
 }
 
-.hovereffect a, .hovereffect p {
+.hovereffect a,
+.hovereffect p {
   color: #fff;
   opacity: 0;
   filter: alpha(opacity=0);
@@ -384,7 +385,8 @@ li svg #white-svg:hover {
   transform: translate3d(100%, 0, 0);
 }
 
-.hovereffect:hover a, .hovereffect:hover p {
+.hovereffect:hover a,
+.hovereffect:hover p {
   opacity: 1;
   filter: alpha(opacity=100);
   -webkit-transform: translate3d(0, 0, 0);
@@ -404,7 +406,7 @@ li svg #white-svg:hover {
   height: auto;
   width: 100%;
   display: table;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
   -webkit-transition: opacity 300ms ease;
   -moz-transition: opacity 300ms ease;
   -o-transition: opacity 300ms ease;
@@ -452,7 +454,7 @@ li svg #white-svg:hover {
   font-weight: 700;
   color: white;
   background: transparent;
-  border-left: 1px rgba(0, 0, 0, .2) solid;
+  border-left: 1px rgba(0, 0, 0, 0.2) solid;
   cursor: pointer;
   outline: none;
   -webkit-transition: background 300ms ease;
@@ -462,24 +464,24 @@ li svg #white-svg:hover {
 }
 
 .cookies-wrapper .button-wrapper button:hover {
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 800px) {
   .cookies-wrapper .cookies-message {
     width: 90%;
-    font-size: 11px
+    font-size: 11px;
   }
   .cookies-wrapper .button-wrapper {
-    width: 10%
+    width: 10%;
   }
 }
 
 @media (max-width: 400px) {
   .cookies-wrapper .cookies-message {
-    width: 86%
+    width: 86%;
   }
   .cookies-wrapper .button-wrapper {
-    width: 13%
+    width: 13%;
   }
 }
