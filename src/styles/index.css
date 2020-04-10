@@ -11346,6 +11346,29 @@ video {
   color: red;
 }
 
+/* LINK ICON ANIMATIONS W/ REACT TRANSITION GROUP */
+
+.icons-enter {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.icons-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 200ms;
+}
+
+.icons-exit {
+  opacity: 1;
+}
+
+.icons-exit-active {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 200ms;
+}
+
 /* profile-edit page link social icons */
 
 .stationary-social-icons {
@@ -11360,7 +11383,6 @@ video {
   color: black;
   width: 24px;
   height: 24px;
-  vertical-align: middle;
 }
 
 .right-1 {

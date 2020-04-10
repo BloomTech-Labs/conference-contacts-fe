@@ -5,13 +5,13 @@ const LinkInput = (props) => {
   const { handleFieldChange, handleNewLink, fields, link, setLink } = props;
 
   return (
-    <div className="flex w-full mt-6">
+    <div className="flex w-full mt-8">
       {/* Link Input */}
       <input
         type="text"
         name="link"
         placeholder="Username or URL"
-        className="w-full border border-r-0 rounded-r-none border-gray-900 rounded p-2 pr-10"
+        className="w-full border border-r-0 rounded-r-none border-gray-400 rounded p-2 pr-10 z-10"
         onChange={handleFieldChange}
         value={fields.link || ''}
         //onKeyPress={handleNewLink}

@@ -240,7 +240,7 @@ export default function ProfileEdit(props) {
       </div>
 
       {/* Link Section Starts */}
-      <div className="mt-4 text-2xl">
+      <div className="mt-4 text-2xl ">
         <div className="flex justify-between items-center">
           <label className="block text-sm mb-1 text-2xl">Links</label>
           <button
