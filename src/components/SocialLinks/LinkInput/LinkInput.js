@@ -4,14 +4,14 @@ import SVGIcon from '../SocialIcons/SVGIcon';
 
 const LinkInput = (props) => {
   const { handleFieldChange, handleNewLink, fields, link, setLink } = props;
-  
+
   return (
     <div className="flex w-full mt-8">
       {/* Link Input */}
       <input
         type="text"
         name="link"
-        placeholder="Username or URL"
+        placeholder="Enter Account Username or Email"
         className="w-full border border-r-0 rounded-r-none border-gray-400 rounded p-2 pr-10 z-10"
         onChange={handleFieldChange}
         value={fields.link || ''}
