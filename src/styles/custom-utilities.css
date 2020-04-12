@@ -140,6 +140,16 @@
   color: red;
 }
 
+/*PROFILE DELETE LINKS ICON*/
+.delete-social-link{
+  color: black;
+  width: 24px;
+  height: 24px;
+}
+
+.delete-social-link:hover{
+  color: red;
+}
 /* LINK ICON ANIMATIONS W/ REACT TRANSITION GROUP */
 .icons-enter {
   opacity: 0;

@@ -47,7 +47,7 @@ const SocialLinks = ({ setLink, link }) => {
           </span>
         )}
         {link && (
-          <div className="flex bg-red-500">
+          <div className="flex">
             <SVGIcon
               id={link}
               key={link}

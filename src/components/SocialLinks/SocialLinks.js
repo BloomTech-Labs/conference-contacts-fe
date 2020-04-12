@@ -6,7 +6,7 @@ const SocialLinks = (props) => {
   const { handleFieldChange, handleNewLink, fields, link, setLink, linkError } = props;
   return (
     <div className="relative flex flex-col items-center ">
-      <SocialLinksError linkError={linkError} />
+      <SocialLinksError linkError={linkError} fields={fields} />
 
       <LinkInput
         handleNewLink={handleNewLink}

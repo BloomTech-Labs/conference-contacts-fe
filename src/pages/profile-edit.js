@@ -10,6 +10,7 @@ import {
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
+
 // components
 import InputsComponent from '../components/editComponents/inputsComponent';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
@@ -100,7 +101,7 @@ export default function ProfileEdit(props) {
   const handleCancel = () => props.navigate('/profile');
 
   const handleNewLink = async (event) => {
-    if (link === '') {
+    if (!fields.link || link === '') {
       setLinkError(true);
       return;
     } else {

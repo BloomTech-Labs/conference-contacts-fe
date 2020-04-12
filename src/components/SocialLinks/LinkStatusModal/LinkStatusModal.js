@@ -1,6 +1,8 @@
 import React from 'react';
+import Popup from "reactjs-popup";
 import Icon from '../../icon';
 import SVGIcon from '../SocialIcons/SVGIcon';
+
 
 const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink }) => {
   return (
@@ -98,12 +100,39 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink }) =
               </>
             )}
           </div>
-          <Icon
-            classes="flex-shrink-0"
-            type="MINUS-CIRCLE"
-            size={24}
-            onClick={() => removeLink(field.id)}
-          />
+          {/* Delete Btn/Minus-Circle */}
+          <Popup
+            //produces the delete icon to trigger modal as per documentation
+            trigger={    
+              //Minus-Circle/Delete Icon
+              <SVGIcon
+                classes="flex-shrink-0 delete-social-link"
+                type="MINUS-CIRCLE"
+              />
+            }
+            modal
+          >
+            {/* Modal Content */}
+            {(close) => (
+              <div className="modal text-center font-bold my-4 px-5 w-full object-contain">
+                <h4>Are You Sure You Want to Delete Link?</h4>
+                {/* Delete Button */}
+                <button 
+                  className="flex-1 bg-purple-700 hover:bg-purple-900 text-white font-bold my-5 mr-2  py-2 px-4 rounded"
+                  onClick={() => removeLink(field.id)}>
+                    Delete
+                </button>
+
+
+                {/* Cancel/Close Modal Button */}
+                <button 
+                  className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => close()}>
+                    Cancel
+                </button>
+              </div>  
+            )}
+           </Popup>
         </li>
       ))}
     </ul>
