@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { CSSTransition } from 'react-transition-group';
 

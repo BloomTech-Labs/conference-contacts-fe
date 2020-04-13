@@ -249,14 +249,14 @@ export default function ProfileEdit(props) {
       <div className="mt-4 text-2xl ">
         <div className="flex justify-between items-center">
           <label className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg">
-            Links
+            Contact Methods
           </label>
           <button
             type="button"
             className="text-sm text-blue-500 focus:outline-none mobile:text-lg"
             onClick={() => document.getElementById('new-link').classList.toggle('hidden')}
           >
-            &#43; add link
+            &#43; add contact
           </button>
         </div>
         {/* User privacy drop down menu */}
