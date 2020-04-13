@@ -11342,19 +11342,15 @@ video {
   height: 24px;
 }
 
-.social-icons:hover {
-  color: red;
-}
-
 /*PROFILE DELETE LINKS ICON*/
 
-.delete-social-link{
+.delete-social-link {
   color: black;
   width: 24px;
   height: 24px;
 }
 
-.delete-social-link:hover{
+.delete-social-link:hover {
   color: red;
 }
 

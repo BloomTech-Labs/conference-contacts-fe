@@ -4,7 +4,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
   return (
     <>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="name">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="name"
+        >
           Name
         </label>
         <input
@@ -17,7 +20,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
         />
       </div>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="jobtitle">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="jobtitle"
+        >
           Job Title
         </label>
         <input
@@ -30,7 +36,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
         />
       </div>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="industry">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="industry"
+        >
           Industry
         </label>
         <input
@@ -43,7 +52,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
         />
       </div>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="location">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="location"
+        >
           Location
         </label>
         <input
@@ -56,7 +68,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
         />
       </div>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="birthdate">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="birthdate"
+        >
           Birthdate
         </label>
         <input
@@ -69,7 +84,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
         />
       </div>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="tagline">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="tagline"
+        >
           Tagline
         </label>
         <input
@@ -82,7 +100,10 @@ export default function InputsComponent({ fields, handleFieldChange }) {
         />
       </div>
       <div className="mt-4">
-        <label className="block text-sm mb-1 text-2xl" htmlFor="bio">
+        <label
+          className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
+          htmlFor="bio"
+        >
           Bio
         </label>
         <textarea

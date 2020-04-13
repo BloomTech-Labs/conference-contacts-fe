@@ -248,10 +248,12 @@ export default function ProfileEdit(props) {
       {/* Link Section Starts */}
       <div className="mt-4 text-2xl ">
         <div className="flex justify-between items-center">
-          <label className="block text-sm mb-1 text-2xl">Links</label>
+          <label className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg">
+            Links
+          </label>
           <button
             type="button"
-            className="text-xs text-blue-500 focus:outline-none text-2xl"
+            className="text-sm text-blue-500 focus:outline-none mobile:text-lg"
             onClick={() => document.getElementById('new-link').classList.toggle('hidden')}
           >
             &#43; add link
