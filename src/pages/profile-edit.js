@@ -14,11 +14,14 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import InputsComponent from '../components/editComponents/inputsComponent';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import LinkStatusModal from '../components/SocialLinks/LinkStatusModal/LinkStatusModal';
+import { FaShieldAlt } from 'react-icons/fa';
 
 export default function ProfileEdit(props) {
   //State
   const [fields, setFields] = useState({});
   const [linkError, setLinkError] = useState(false);
+  const [showEditLink, setShowEditLink] = useState(false);
+  const [linkToEdit, setLinkToEdit] = useState();
 
   //Profile links type state
   const [link, setLink] = useState('');
@@ -107,6 +110,8 @@ export default function ProfileEdit(props) {
       setLinkError(false);
     }
 
+    console.log('inside handleNewLink | \n ', fields);
+
     const profileData = {
       value: fields.link,
       type: link,
@@ -187,6 +192,18 @@ export default function ProfileEdit(props) {
     }
   };
 
+  const toggleEdit = (field) => {
+    console.log('inside toggleEdit! \n', field);
+    console.log('inside toggleEdit! \n', fields);
+    setFields({
+      ...fields,
+      link: field.value,
+    });
+
+    setShowEditLink(!showEditLink);
+    setLinkToEdit(field);
+  };
+
   if (loading || !data)
     return (
       <div className="flex justify-center h-screen items-center">
@@ -265,11 +282,23 @@ export default function ProfileEdit(props) {
           preferredContact={preferredContact}
           updateLink={updateLink}
           removeLink={removeLink}
+          toggleEdit={toggleEdit}
         />
         {/* User privacy drop down menu ends */}
       </div>
       {/* Link Section ENDS */}
       {/* Link Form Input Starts */}
+      {showEditLink && (
+        <SocialLinks
+          handleNewLink={handleNewLink}
+          fields={fields}
+          handleFieldChange={handleFieldChange}
+          link={linkToEdit.type}
+          setLink={setLink}
+          linkError={linkError}
+          preferredContact={linkToEdit.preferredContact}
+        />
+      )}
       <div id="new-link" className="hidden">
         {/* Social Links Component */}
         <SocialLinks

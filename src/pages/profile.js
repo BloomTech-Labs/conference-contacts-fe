@@ -78,15 +78,15 @@ const Profile = ({ location, navigate }) => {
               {/* name, industry, and edit icon if on own profile */}
               <section className="mt-12">
                 <div className="flex justify-between items-center">
-                  <h5 className="text-3xl font-bold">{data.user.name}</h5>
+                  <h5 className="text-2xl font-bold">{data.user.name}</h5>
                   {!viewingContact ? (
                     <Link to="edit">
                       {/* EDIT ICON */}
                       <svg
                         className="ml-3"
                         width="60"
-                        height="60"
-                        viewBox="0 0 40 40"
+                        height="40"
+                        viewBox="0 0 30 30"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         preserveAspectRatio="xMidYMid meet"
@@ -148,21 +148,21 @@ const Profile = ({ location, navigate }) => {
                     </Popup>
                   )}
                 </div>
-                <p className="text-gray-700 tracking-wide text-2xl">{data.user.industry}</p>
+                <p className="text-gray-700 tracking-wide text-xl">{data.user.industry}</p>
               </section>
               {/* job title */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Job Title
                 </h2>
-                <p className="mt-4 text-xl">
+                <p className=" text-xl">
                   {data.user.jobtitle ? data.user.jobtitle : <span>None</span>}
                 </p>
               </section>
               {/* preffered contact method if user has one selected */}
               {preferredContact && (
                 <section className="mt-10">
-                  <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
+                  <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                     Preferred Contact
                   </h2>
                   <div className="flex mt-3 text-xl">
@@ -180,7 +180,7 @@ const Profile = ({ location, navigate }) => {
               )}
               {/* other contact methods */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Contact Methods
                 </h2>
                 <div className="flex flex-no-wrap ml-2">
@@ -213,19 +213,19 @@ const Profile = ({ location, navigate }) => {
             <div className="">
               {/* location */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Location
                 </h2>
-                <p className="mt-4 text-xl">
+                <p className=" text-xl">
                   {data.user.location ? data.user.location : <span>None</span>}
                 </p>
               </section>
               {/* DOB */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Birthdate
                 </h2>
-                <p className="mt-4 text-xl">
+                <p className=" text-xl">
                   {data.user.birthdate ? (
                     moment(data.user.birthdate).format('L')
                   ) : (
@@ -235,18 +235,20 @@ const Profile = ({ location, navigate }) => {
               </section>
               {/* tagline */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Tagline
                 </h2>
-                <p className="mt-4 text-xl">
+                <p className=" text-xl">
                   {data.user.tagline ? data.user.tagline : <span>None</span>}
                 </p>
               </section>
             </div>
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <h2 className="uppercase text-xs text-gray-900 tracking-widest text-2xl">Bio</h2>
-              <p className="mt-4 text-xl">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+              <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                Bio
+              </h2>
+              <p className=" text-xl">{data.user.bio ? data.user.bio : <span>None</span>}</p>
             </section>
           </div>
         </div>
