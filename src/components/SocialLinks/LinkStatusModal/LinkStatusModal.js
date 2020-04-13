@@ -80,26 +80,47 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink }) =
                 Connected
               </span>
             </div>
-            {(!preferredContact || preferredContact.id === field.id) && (
+            
+          </div>
+          {(!preferredContact || preferredContact.id === field.id) && (
               <>
                 <hr className="my-3" />
                 <div
                   className="flex items-center mt-3"
                   onClick={() => updateLink(field, { preferredContact: !field.preferredContact })}
                 >
-                  <Icon
+                  {!field.preferredContact ? (
+                    <SVGIcon
                     classes="mr-3"
-                    type="CHECK"
-                    size={24}
-                    fill={field.preferredContact && '#007AFF'}
-                  />
+                    type="STAR"
+                    // size={24}
+                    // fill={field.preferredContact && '#007AFF'}
+                    />
+
+                  ): (
+                    <SVGIcon
+                    classes="mr-3"
+                    type="SELECTEDSTAR"
+                      // size={24}
+                      // fill={field.preferredContact && '#007AFF'}
+                    />
+                  ) }
+
+                  {/* {field.preferredContact && (
+                    <SVGIcon
+                    classes="mr-3"
+                    type="SELECTEDSTAR"
+                      // size={24}
+                      // fill={field.preferredContact && '#007AFF'}
+                    />
+                  )} */}
+                  
                   <span style={{ color: field.preferredContact ? '#007AFF' : 'unset' }}>
                     Main contact
                   </span>
                 </div>
               </>
             )}
-          </div>
           {/* Delete Btn/Minus-Circle */}
           <Popup
             //produces the delete icon to trigger modal as per documentation

@@ -1,6 +1,16 @@
 import React from 'react';
 import {FaCheck } from 'react-icons/fa';
-import {AiOutlineMail, AiOutlineFacebook, AiOutlineTwitter, AiOutlineLinkedin, AiOutlineInstagram, AiOutlineMinusCircle} from 'react-icons/ai';
+import {
+  AiOutlineMail, 
+  AiOutlineFacebook, 
+  AiOutlineTwitter, 
+  AiOutlineLinkedin, 
+  AiOutlineInstagram, 
+  AiOutlineMinusCircle,
+  AiOutlineStar,
+  AiFillStar
+
+} from 'react-icons/ai';
 
 
 const SVGIcon = React.memo(({ id, type, classes, onClick, fill}) => (
@@ -58,8 +68,18 @@ const SVGIcon = React.memo(({ id, type, classes, onClick, fill}) => (
         />
       </>
     ) : type === 'MINUS-CIRCLE' ? (
+
       <AiOutlineMinusCircle className={classes} />
-    ) : null}
+
+    ) : type === 'STAR' ? (
+
+      <AiOutlineStar className={classes} />
+ 
+    ) : type === 'SELECTEDSTAR' ? (
+
+      <AiFillStar className={classes} />
+ 
+    ): null}
   </div>
 ));
 
