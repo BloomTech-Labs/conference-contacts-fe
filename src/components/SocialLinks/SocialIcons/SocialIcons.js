@@ -5,9 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 //Components
 import SVGIcon from './SVGIcon';
 
-const SocialLinks = ({ setLink, link }) => {
-  // useState toggle to show/hide icons
-  const [visibleIcons, setVisibleIcons] = useState(false);
+const SocialLinks = ({ setLink, link, visibleIcons, setVisibleIcons }) => {
   return (
     <>
       <CSSTransition in={visibleIcons} classNames="icons" timeout={200} unmountOnExit>
@@ -15,21 +13,20 @@ const SocialLinks = ({ setLink, link }) => {
           id="link-types"
           className="flex justify-between absolute w-2/4 -mt-10 bg-white p-2 rounded-t-md"
         >
-          {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map(
-            (type) =>
-              type !== link && (
-                <SVGIcon
-                  id={type}
-                  key={type}
-                  type={type}
-                  classes={'social-icons'}
-                  onClick={() => {
-                    setLink(type);
-                    setVisibleIcons(false);
-                  }}
-                />
-              )
-          )}
+          {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map((type) => (
+            <SVGIcon
+              id={type}
+              key={type}
+              type={type}
+              classes={`social-icons hover:text-blue-500 hover:cursor-pointer duration-150 rounded ${
+                type === link ? 'bg-gray-400' : ''
+              }`}
+              onClick={() => {
+                setLink(type);
+                setVisibleIcons(false);
+              }}
+            />
+          ))}
         </div>
       </CSSTransition>
 

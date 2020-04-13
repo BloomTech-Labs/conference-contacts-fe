@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SocialIcons from '../SocialIcons/SocialIcons';
 import SVGIcon from '../SocialIcons/SVGIcon';
 
 const LinkInput = (props) => {
   const { handleFieldChange, handleNewLink, fields, link, setLink } = props;
+  // useState toggle to show/hide icons
+  const [visibleIcons, setVisibleIcons] = useState(false);
 
   return (
-    <div className="flex w-full mt-8">
+    <div className={`flex w-full duration-200 ${visibleIcons ? 'mt-8' : ''}`}>
       {/* Link Input */}
       <input
         type="text"
@@ -18,7 +20,12 @@ const LinkInput = (props) => {
         //onKeyPress={handleNewLink}
       />
 
-      <SocialIcons setLink={setLink} link={link} />
+      <SocialIcons
+        setLink={setLink}
+        link={link}
+        visibleIcons={visibleIcons}
+        setVisibleIcons={setVisibleIcons}
+      />
 
       {/* Check Icon Btn */}
       <button
@@ -28,10 +35,7 @@ const LinkInput = (props) => {
         onClick={handleNewLink}
       >
         {/* Check Icon on Add Button */}
-        <SVGIcon 
-          type={'CHECK'}
-          classes={"fill-current w-4 h-4 mr-2"}
-        />
+        <SVGIcon type={'CHECK'} classes={'fill-current w-4 h-4 mr-2'} />
         <span> Add</span>
       </button>
     </div>
