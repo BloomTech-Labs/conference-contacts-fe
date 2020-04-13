@@ -10,7 +10,6 @@ import {
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
-
 // components
 import InputsComponent from '../components/editComponents/inputsComponent';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
@@ -230,13 +229,19 @@ export default function ProfileEdit(props) {
             Save
           </button>
         </div>
-        <div className="flex justify-center items-center mt-2" onClick={() => widget.open()}>
-          <img
-            src={data.user.picture}
+        <div className="flex justify-center items-center mt-2">
+          <div
             alt="profile"
-            className="rounded-full shadow-lg w-56 h-56 object-cover"
-          />
-          <Icon type="CAMERA" classes="absolute" size={34} />
+            className="rounded-full shadow-lg w-56 h-56 flex justify-center items-center"
+            onClick={() => widget.open()}
+            style={{
+              backgroundImage: `url("${data.user.picture}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <Icon type="CAMERA" classes="absolute " size={34} />
+          </div>
         </div>
       </div>
 
