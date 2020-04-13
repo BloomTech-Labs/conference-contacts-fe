@@ -11334,7 +11334,7 @@ video {
   color: #9a99a2;
 }
 
-/*PROFILE SOCIAL ICONS LINKS */
+/*PROFILE-EDIT SOCIAL ICONS LINKS */
 
 .social-icons {
   color: black;
@@ -11342,7 +11342,7 @@ video {
   height: 24px;
 }
 
-/*PROFILE DELETE LINKS ICON*/
+/*PROFILE-EDIT DELETE LINKS ICON*/
 
 .delete-social-link {
   color: black;
@@ -11352,6 +11352,18 @@ video {
 
 .delete-social-link:hover {
   color: red;
+}
+
+/*PROFILE-EDIT MAIN CONTACT SELECTION STAR*/
+
+.social-link-main-contact {
+  color: black;
+  width: 24px;
+  height: 24px;
+}
+
+.social-link-main-contact-selected {
+  color: #007AFF;
 }
 
 /* LINK ICON ANIMATIONS W/ REACT TRANSITION GROUP */
