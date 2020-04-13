@@ -11345,7 +11345,7 @@ video {
 /*PROFILE-EDIT DELETE LINKS ICON*/
 
 .delete-social-link {
-  color: black;
+  color: #999;
   width: 24px;
   height: 24px;
 }
@@ -11357,7 +11357,29 @@ video {
 /*PROFILE-EDIT MAIN CONTACT SELECTION STAR*/
 
 .social-link-main-contact {
-  color: black;
+  color: #999;
+  width: 24px;
+  height: 24px;
+}
+
+.social-link-main-contact-selected {
+  color: #007AFF;
+}
+
+/*PROFILE-EDIT PRIVACY LOCK*/
+
+.social-link-privacy-private {
+  color: #999;
+  width: 24px;
+  height: 24px;
+}
+
+.social-link-privacy-private:hover, .social-link-main-contact:hover{
+  color: #666;
+}
+
+.social-link-privacy-public {
+  color: green;
   width: 24px;
   height: 24px;
 }

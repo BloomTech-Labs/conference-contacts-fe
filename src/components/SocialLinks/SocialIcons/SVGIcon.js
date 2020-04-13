@@ -8,7 +8,9 @@ import {
   AiOutlineInstagram, 
   AiOutlineMinusCircle,
   AiOutlineStar,
-  AiFillStar
+  AiFillStar,
+  AiFillLock,
+  AiFillUnlock
 
 } from 'react-icons/ai';
 
@@ -78,6 +80,14 @@ const SVGIcon = React.memo(({ id, type, classes, onClick, fill}) => (
     ) : type === 'SELECTEDSTAR' ? (
 
       <AiFillStar className={classes} />
+ 
+    ) : type === 'LOCK' ? (
+
+      <AiFillLock className={classes} />
+ 
+    ) : type === 'UNLOCK' ? (
+
+      <AiFillUnlock className={classes} />
  
     ): null}
   </div>

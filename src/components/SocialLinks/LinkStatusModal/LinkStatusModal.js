@@ -5,6 +5,20 @@ import SVGIcon from '../SocialIcons/SVGIcon';
 
 
 const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink }) => {
+
+  const updatePrivacy  = (field) => {
+    
+    if(field.privacy === 'PRIVATE'){
+    
+      updateLink(field, { privacy: 'PUBLIC' });
+
+    }else if(field.privacy === 'PUBLIC'){
+    
+      updateLink(field, { privacy: 'PRIVATE'});
+    }
+    
+  }
+
   return (
     <ul className="mt-3">
       {fields?.profile?.map((field, idx) => (
@@ -20,92 +34,53 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink }) =
           >
             {field.value}
           </span>
-          <Icon
-            type="MORE"
-            size={24}
-            classes="mr-3 relative flex-shrink-0"
-            onClick={() => {
-              for (let i = 0; i < fields.profile.length; i++) {
-                const element = document.getElementById(`link-privacy-${i}`);
-                if (i !== idx && !element.classList.contains('hidden')) {
-                  element.classList.add('hidden');
-                }
-              }
-              document.getElementById(`link-privacy-${idx}`).classList.toggle('hidden');
-            }}
-          />
-          <div
-            id={`link-privacy-${idx}`}
-            className="absolute right-0 mr-16 mt-6 p-3 bg-white border border-gray-300 z-10 hidden"
-          >
-            <div
-              className="flex items-center mb-3"
-              onClick={() => updateLink(field, { privacy: 'PRIVATE' })}
-            >
-              <Icon
-                classes="mr-5"
-                type="LOCK"
-                size={17}
-                fill={field.privacy === 'PRIVATE' && '#007AFF'}
-              />
-              <span style={{ color: field.privacy === 'PRIVATE' ? '#007AFF' : 'unset' }}>
-                Private
-              </span>
-            </div>
-            <div
-              className="flex items-center mb-3"
-              onClick={() => updateLink(field, { privacy: 'PUBLIC' })}
-            >
-              <Icon
-                classes="mr-5"
-                type="GLOBE"
-                size={17}
-                fill={field.privacy === 'PUBLIC' && '#007AFF'}
-              />
-              <span style={{ color: field.privacy === 'PUBLIC' ? '#007AFF' : 'unset' }}>
-                Public
-              </span>
-            </div>
-            <div
-              className="flex items-center"
-              onClick={() => updateLink(field, { privacy: 'CONNECTED' })}
-            >
-              <Icon
-                classes="mr-5"
-                type="SWAAP"
-                size={17}
-                fill={field.privacy === 'CONNECTED' && '#007AFF'}
-              />
-              <span style={{ color: field.privacy === 'CONNECTED' ? '#007AFF' : 'unset' }}>
-                Connected
-              </span>
-            </div>
-            
-          </div>
+          {/* SELECT PREFERRED CONTACT */}
           {(!preferredContact || preferredContact.id === field.id) && (
               <>
                 <div
                   onClick={() => updateLink(field, { preferredContact: !field.preferredContact })}
                 >
                   {!field.preferredContact ? (
+                    //shows outlined star
                     <SVGIcon
                     classes="mr-3 social-link-main-contact"
                     type="STAR"
-                    // size={24}
-                    // fill={field.preferredContact && '#007AFF'}
                     />
 
                   ) : (
+                    //shows filled in star
                     <SVGIcon
                     classes="mr-3 social-link-main-contact-selected"
                     type="SELECTEDSTAR"
-                      // size={24}
-                      // fill={field.preferredContact && '#007AFF'}
                     />
                   ) }
                 </div>
               </>
             )}
+            {/* Make Contact PRIVATE/PUBLIC toggle icons */}
+          <div
+              className="flex items-center mb-3"
+            >
+              {field.privacy === 'PUBLIC' ? (
+                //field.privacy is public and will show unlock icon.
+                //ONCLICK changes from 'PUBLIC' Value to 'PRIVATE' value.
+                <SVGIcon
+                classes="mr-5 social-link-privacy-public "
+                type="UNLOCK"
+                onClick={() => updatePrivacy (field)}
+               />
+              ) : (
+                // field.privacy is PRIVATE on default, LOCK Icon will show by default.
+                //ONCLICK changes from 'PRIVATE' value to 'PUBLIC' value.
+                <SVGIcon
+                classes="mr-5 social-link-privacy-private"
+                type="LOCK"
+                onClick={() => updatePrivacy (field)}
+              />
+              )}   
+
+            </div>
+          
           {/* Delete Btn/Minus-Circle */}
           <Popup
             //produces the delete icon to trigger modal as per documentation
