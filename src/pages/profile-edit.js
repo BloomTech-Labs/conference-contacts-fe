@@ -279,7 +279,7 @@ export default function ProfileEdit(props) {
           </label>
           <button
             type="button"
-            className="text-sm text-blue-500 focus:outline-none mobile:text-lg"
+            className="text-base text-blue-500 focus:outline-none mobile:text-lg"
             onClick={() => {
               setShowEditLink(false);
               setLinkInput(!showLinkInput);
