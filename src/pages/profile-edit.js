@@ -9,12 +9,12 @@ import {
 } from '../queries';
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { CSSTransition } from 'react-transition-group';
 
 // components
 import InputsComponent from '../components/editComponents/inputsComponent';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import LinkStatusModal from '../components/SocialLinks/LinkStatusModal/LinkStatusModal';
-import { FaShieldAlt } from 'react-icons/fa';
 
 export default function ProfileEdit(props) {
   //State
@@ -297,7 +297,7 @@ export default function ProfileEdit(props) {
       </div>
       {/* Link Section ENDS */}
       {/* Link Form Input Starts */}
-      {showEditLink && (
+      <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
         <SocialLinks
           updateLink={updateLink}
           field={linkToEdit}
@@ -308,9 +308,9 @@ export default function ProfileEdit(props) {
           linkError={linkError}
           preferredContact={preferredContact}
         />
-      )}
+      </CSSTransition>
       {/* Social Links Component */}
-      {showLinkInput && (
+      <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
         <SocialLinks
           handleNewLink={handleNewLink}
           fields={fields}
@@ -320,8 +320,15 @@ export default function ProfileEdit(props) {
           linkError={linkError}
           preferredContact={preferredContact}
         />
-      )}
-      <InputsComponent fields={fields} handleFieldChange={handleFieldChange} />
+      </CSSTransition>
+      {/* Start of profile inputs, span to animate */}
+
+      <InputsComponent
+        fields={fields}
+        handleFieldChange={handleFieldChange}
+        showLinkInput={showLinkInput}
+        showEditLink={showEditLink}
+      />
     </div>
   );
 }

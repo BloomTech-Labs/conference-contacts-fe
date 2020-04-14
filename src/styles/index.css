@@ -11361,7 +11361,7 @@ video {
 }
 
 .social-link-main-contact-selected {
-  color: #007AFF;
+  color: #007aff;
 }
 
 /*PROFILE-EDIT PRIVACY LOCK*/
@@ -11370,7 +11370,8 @@ video {
   color: #999;
 }
 
-.social-link-privacy-private:hover, .social-link-main-contact:hover{
+.social-link-privacy-private:hover,
+.social-link-main-contact:hover {
   color: #666;
 }
 
@@ -11379,10 +11380,31 @@ video {
 }
 
 .social-link-main-contact-selected {
-  color: #007AFF;
+  color: #007aff;
 }
 
 /* LINK ICON ANIMATIONS W/ REACT TRANSITION GROUP */
+
+.inputs-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.inputs-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.inputs-exit {
+  opacity: 1;
+}
+
+.inputs-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
 
 .icons-enter {
   opacity: 0;

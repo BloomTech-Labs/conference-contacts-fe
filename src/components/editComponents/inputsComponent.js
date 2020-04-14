@@ -1,9 +1,14 @@
 import React from 'react';
 
-export default function InputsComponent({ fields, handleFieldChange }) {
+export default function InputsComponent({
+  fields,
+  handleFieldChange,
+  showLinkInput,
+  showEditLink,
+}) {
   return (
     <>
-      <div className="mt-4">
+      <div className={`duration-300 ${showLinkInput || showEditLink ? 'mt-4' : ''}`}>
         <label
           className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
           htmlFor="name"
