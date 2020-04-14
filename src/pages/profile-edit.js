@@ -247,11 +247,31 @@ export default function ProfileEdit(props) {
   return (
     <div className="px-6 mt-24">
       <div>
-        <div className="flex justify-between">
-          <button type="button" className="text-red-600 focus:outline-none" onClick={handleCancel}>
+        <div
+          className="flex justify-between mx-auto rounded desktop:w-full mobile:w-96 mobile:inset-x-0"
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            background: '#fff',
+            height: '64px',
+            maxWidth: '751px',
+            padding: '16px',
+            boxShadow: '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)',
+            zIndex: '1000',
+          }}
+        >
+          <button
+            type="button"
+            className="text-red-600 focus:outline-none font-bold"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
-          <button type="submit" className="text-blue-700 focus:outline-none" onClick={handleSave}>
+          <button
+            type="submit"
+            className="text-blue-700 focus:outline-none font-bold"
+            onClick={handleSave}
+          >
             Save
           </button>
         </div>
@@ -272,7 +292,7 @@ export default function ProfileEdit(props) {
       </div>
 
       {/* Link Section Starts */}
-      <div className="mt-4 text-2xl ">
+      <div className="mt-4 text-2xl">
         <div className="flex justify-between items-center">
           <label className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg">
             Contact Methods
@@ -293,6 +313,11 @@ export default function ProfileEdit(props) {
             &#43; add contact
           </button>
         </div>
+        <ul className="text-xs m-0 text-gray-500">
+          <li>click on the star to set your prefered contact method</li>
+          <li>select the lock to set link private or public</li>
+        </ul>
+
         {/* User privacy drop down menu */}
         <LinkStatusModal
           fields={fields}

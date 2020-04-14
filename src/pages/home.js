@@ -151,7 +151,7 @@ const Home = ({ qr }) => {
             deleteLoading={deleteLoading}
           />
           {/* events component */}
-          <EventsComponent />
+          {/* <EventsComponent /> */}
         </div>
       </div>
     );
