@@ -9,18 +9,15 @@
   color: #292a2a;
   z-index: 4;
 }
-
 .header a {
   color: inherit;
   text-decoration: none;
 }
-
 .header .navContainer {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
 }
-
 .navToggle {
   display: block;
   background-color: transparent;
@@ -33,20 +30,16 @@
   cursor: pointer;
   z-index: 5;
 }
-
 .navToggle.open span:first-child {
   transform: rotate(45deg) translate(4.4px, 4.4px);
 }
-
 .navToggle.open span:nth-child(2) {
   width: 0%;
   opacity: 0;
 }
-
 .navToggle.open span:last-child {
   transform: rotate(-45deg) translate(4.4px, -4.4px);
 }
-
 .navToggle span {
   position: relative;
   display: block;
@@ -57,11 +50,9 @@
   border-radius: 5px;
   transition: all 0.35s cubic-bezier(1, 0.13, 0.35, 1.09);
 }
-
 .navToggle span:last-child {
   margin-bottom: 0;
 }
-
 .mainNav {
   position: absolute;
   top: 0;
@@ -79,7 +70,6 @@
 .mainNav.open {
   transform: translateX(0%);
 }
-
 .mainNav .mainNavLink {
   display: block;
   padding: 0.71875rem 0;
@@ -90,7 +80,6 @@
 .toggle:focus {
   outline: none;
 }
-
 .overlay {
   position: fixed;
   left: 0;
@@ -102,7 +91,6 @@
   opacity: 0;
   transition: opacity 0.5s ease 0.1s;
 }
-
 .overlay.open {
   opacity: 3;
   width: 100%;
@@ -110,7 +98,6 @@
 }
 
 /* DESKTOP */
-
 .desktop-active {
   border-bottom: 5px solid #6640ff;
   padding-bottom: 30px;
@@ -125,7 +112,6 @@
 }
 
 /* SOCIAL TAG */
-
 .gray-text {
   color: #9a99a2;
 }
@@ -227,7 +213,6 @@
 }
 
 /* PROFILE CARD */
-
 .profile-card {
   border-radius: 16px;
 }
@@ -241,7 +226,6 @@
 }
 
 /* PURPLE */
-
 .purple {
   background: #6640ff;
 }
@@ -251,7 +235,6 @@
 }
 
 /* NAV-LIST ITEM */
-
 .nav-list-item:hover {
   background: #a9a8ff;
   color: #fff;

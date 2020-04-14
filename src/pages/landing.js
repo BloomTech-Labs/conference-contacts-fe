@@ -1,6 +1,5 @@
 import React from 'react';
 import Screenshot from '../components/screenshot';
-import Cookies from './cookies';
 import NavbarLanding from '../containers/navbarlanding';
 import Team from './teampage';
 import Footer from './footer';
@@ -9,31 +8,30 @@ import Title from './title';
 import Review from './review';
 
 export default function Landing() {
-	return (
-		<div className="overflow-x-hidden">
-			{/* LandpageNavBar */}
-			<Cookies />
-			<NavbarLanding />
+  return (
+    <div className="overflow-x-hidden">
+      {/* LandpageNavBar */}
+      <NavbarLanding />
 
-			{/* Title */}
-			<Title />
+      {/* Title */}
+      <Title />
 
-			{/* Features */}
-			<Features />
+      {/* Features */}
+      <Features />
 
-			{/* App Screenshots */}
-			<h2 className="text-4xl flex justify-center font-sembold text-black-600 py-12" id="demo">
-				App Screenshots
-			</h2>
-			<Screenshot />
+      {/* App Screenshots */}
+      <h2 className="text-4xl flex justify-center font-sembold text-black-600 py-12" id="demo">
+        App Screenshots
+      </h2>
+      <Screenshot />
 
-			{/* Review */}
-			<Review />
-			{/* Team */}
-			<Team />
+      {/* Review */}
+      <Review />
+      {/* Team */}
+      <Team />
 
-			{/* footer */}
-			<Footer />
-		</div>
-	);
+      {/* footer */}
+      <Footer />
+    </div>
+  );
 }
