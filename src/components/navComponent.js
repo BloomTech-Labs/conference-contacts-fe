@@ -22,7 +22,7 @@ export default function NavComponent(props) {
         style={inHeader && open ? { transform: 'translateX(0)' } : null}
       >
         <div className="px-6">
-          <div className=" flex-col justify-center items-center">
+          {inHeader && (<div className=" flex-col justify-center items-center">
             {/* SMALL IMG ROUNG */}
             <img
               className="rounded-full shadow-md mx-auto w-32 h-32 object-cover"
@@ -30,7 +30,7 @@ export default function NavComponent(props) {
               alt={`avatar of ${data.user.name}`}
             />
             <p className="py-6 text-2xl desktop:text-base text-center">{data.user.name}</p>
-          </div>
+          </div>)}
           {qrcData && (
             <div className="flex justify-center">
               <span className="qr-box p-2">
