@@ -244,7 +244,7 @@ export default function ProfileEdit(props) {
           style={{
             position: 'fixed',
             bottom: '20px',
-            background: '#000',
+            background: '#fff',
             height: '64px',
             maxWidth: '751px',
             padding: '16px',
