@@ -1,9 +1,9 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import Icon from '../../icon';
 import SVGIcon from '../SocialIcons/SVGIcon';
 
 const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, toggleEdit }) => {
+  console.log('inside link status modal\n', fields);
   const updatePrivacy = (field) => {
     if (field.privacy === 'PRIVATE') {
       updateLink(field, { privacy: 'PUBLIC' });
@@ -15,51 +15,99 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
   return (
     <ul className="mt-3">
       {fields?.profile?.map((field, idx) => (
-        <li key={field.id} className="flex mb-3">
-          <SVGIcon type={field.type} classes={'stationary-social-icons'} />
+        <li key={field.id} className="flex mb-3 text-xl mobile:text-base">
+          {/* Social Media/Contact Icons */}
+
+          <SVGIcon
+            type={field.type}
+            size={'1.75rem'}
+            divClass={'flex items-center content-center'}
+            classes={field.preferredContact ? 'h-full text-blue-500 truncate' : 'h-full truncate'}
+          />
+
+          {/* Social Media/Contact Icons Field Values */}
           <span
             className={
               field.preferredContact
-                ? 'ml-4 mr-auto text-blue-500 truncate'
-                : 'ml-4 mr-auto truncate'
+                ? 'flex items-center ml-3 mr-auto text-blue-500 truncate '
+                : ' flex items-center ml-3 mr-auto truncate'
             }
             title={field.value}
             onClick={() => toggleEdit(field)}
           >
             {field.value}
           </span>
+
           {/* SELECT PREFERRED CONTACT */}
           {(!preferredContact || preferredContact.id === field.id) && (
             <>
-              <div onClick={() => updateLink(field, { preferredContact: !field.preferredContact })}>
+              <div
+                className="flex flex-wrap w-16"
+                onClick={() => updateLink(field, { preferredContact: !field.preferredContact })}
+              >
                 {!field.preferredContact ? (
                   //shows outlined star
-                  <SVGIcon classes="mr-3 social-link-main-contact" type="STAR" />
+                  <>
+                    <SVGIcon
+                      divClass={'flex items-center content-center w-full social-link-main-contact'}
+                      classes="m-auto"
+                      size="1.5rem"
+                      type="STAR"
+                    />
+
+                    <span className="m-auto">
+                      <p className="text-xs">Preferred</p>
+                    </span>
+                  </>
                 ) : (
                   //shows filled in star
-                  <SVGIcon classes="mr-3 social-link-main-contact-selected" type="SELECTEDSTAR" />
+                  <>
+                    <SVGIcon
+                      divClass={'flex items-center content-center w-full '}
+                      classes="m-auto social-link-main-contact-selected"
+                      size="1.5rem"
+                      type="SELECTEDSTAR"
+                    />
+                    <span className="m-auto">
+                      <p className="text-xs">Preferred</p>
+                    </span>
+                  </>
                 )}
               </div>
             </>
           )}
           {/* Make Contact PRIVATE/PUBLIC toggle icons */}
-          <div className="flex items-center mb-3">
+          <div className="flex flex-wrap w-16">
             {field.privacy === 'PUBLIC' ? (
               //field.privacy is public and will show unlock icon.
               //ONCLICK changes from 'PUBLIC' Value to 'PRIVATE' value.
-              <SVGIcon
-                classes="mr-5 social-link-privacy-public "
-                type="UNLOCK"
-                onClick={() => updatePrivacy(field)}
-              />
+              <>
+                <SVGIcon
+                  divClass={'flex items-center content-center w-full'}
+                  classes="m-auto social-link-privacy-public"
+                  size="1.5rem"
+                  type="UNLOCK"
+                  onClick={() => updatePrivacy(field)}
+                />
+                <span className="m-auto">
+                  <p className="text-xs">Public</p>
+                </span>
+              </>
             ) : (
               // field.privacy is PRIVATE on default, LOCK Icon will show by default.
               //ONCLICK changes from 'PRIVATE' value to 'PUBLIC' value.
-              <SVGIcon
-                classes="mr-5 social-link-privacy-private"
-                type="LOCK"
-                onClick={() => updatePrivacy(field)}
-              />
+              <>
+                <SVGIcon
+                  divClass={'flex items-center content-center w-full'}
+                  classes="m-auto social-link-privacy-private"
+                  size="1.5rem"
+                  type="LOCK"
+                  onClick={() => updatePrivacy(field)}
+                />
+                <span className="m-auto">
+                  <p className="text-xs">Private</p>
+                </span>
+              </>
             )}
           </div>
 
@@ -68,7 +116,17 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
             //produces the delete icon to trigger modal as per documentation
             trigger={
               //Minus-Circle/Delete Icon
-              <SVGIcon classes="flex-shrink-0 delete-social-link" type="MINUS-CIRCLE" />
+              <div className="flex flex-wrap w-16">
+                <SVGIcon
+                  divClass={'flex items-center content-center w-full'}
+                  classes="m-auto delete-social-link"
+                  size="1.5rem"
+                  type="MINUS-CIRCLE"
+                />
+                <span className="m-auto">
+                  <p className="text-xs">Delete</p>
+                </span>
+              </div>
             }
             modal
           >

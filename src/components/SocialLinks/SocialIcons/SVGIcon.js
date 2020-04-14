@@ -1,4 +1,5 @@
 import React from 'react';
+import {IconContext} from 'react-icons';
 import {FaCheck } from 'react-icons/fa';
 import {
   AiOutlineMail, 
@@ -15,82 +16,72 @@ import {
 } from 'react-icons/ai';
 
 
-const SVGIcon = React.memo(({ id, type, classes, onClick, fill}) => (
+const SVGIcon = React.memo(({ id, type, classes, divClass, onClick, size}) => (
+  //You can control the styling of the icons via classes or size or both. 
+  //IconContext.Provider allows you to override styles as needed see for more info:
+  //https://www.npmjs.com/package/react-icons
+  //Component is set up to be flexible to your needs. If you use size for the icon
+  //do not make a css class to do so, unless you are looking to control the sizing of the parent div.
 
   <div
+    className={divClass}
     id={id}
     onClick={onClick}
   >
     {type === 'EMAIL' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineMail className={classes} />
+      </IconContext.Provider>
       
-      <AiOutlineMail className={classes} />
-
     ) : type === 'INSTAGRAM' ? (
-
-      <AiOutlineInstagram className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineInstagram  />
+      </IconContext.Provider>
 
     ) : type === 'FACEBOOK' ? (
-
-      <AiOutlineFacebook className={classes} />
-      
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineFacebook className={classes} />
+      </IconContext.Provider>
     ) : type === 'LINKEDIN' ? (
-
-      <AiOutlineLinkedin className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineLinkedin className={classes} />
+      </IconContext.Provider>
 
     ) : type === 'TWITTER' ? (
-
-      <AiOutlineTwitter className={classes}/>
-
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineTwitter className={classes}/>
+      </IconContext.Provider>
     ) : type === 'CHECK' ? (
-
+      <IconContext.Provider value={{className: classes, size: size }}>
         <FaCheck className={classes}/>
-
-    ) : type === 'MORE' ? (
-      <>
-        <path
-          d="M12 12.8571C12.4734 12.8571 12.8572 12.4734 12.8572 12C12.8572 11.5266 12.4734 11.1428 12 11.1428C11.5266 11.1428 11.1429 11.5266 11.1429 12C11.1429 12.4734 11.5266 12.8571 12 12.8571Z"
-          stroke={fill || '#4A5568'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M18 12.8571C18.4734 12.8571 18.8572 12.4734 18.8572 12C18.8572 11.5266 18.4734 11.1428 18 11.1428C17.5266 11.1428 17.1429 11.5266 17.1429 12C17.1429 12.4734 17.5266 12.8571 18 12.8571Z"
-          stroke={fill || '#4A5568'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M6.00003 12.8571C6.47341 12.8571 6.85717 12.4734 6.85717 12C6.85717 11.5266 6.47341 11.1428 6.00003 11.1428C5.52664 11.1428 5.14288 11.5266 5.14288 12C5.14288 12.4734 5.52664 12.8571 6.00003 12.8571Z"
-          stroke={fill || '#4A5568'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </>
+      </IconContext.Provider>
     ) : type === 'MINUS-CIRCLE' ? (
-
-      <AiOutlineMinusCircle className={classes} />
-
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineMinusCircle className={classes} />
+      </IconContext.Provider>
     ) : type === 'STAR' ? (
-
-      <AiOutlineStar className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineStar className={classes} />
+      </IconContext.Provider>
  
     ) : type === 'SELECTEDSTAR' ? (
-
-      <AiFillStar className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiFillStar className={classes} />
+      </IconContext.Provider>
  
     ) : type === 'LOCK' ? (
-
-      <AiFillLock className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiFillLock className={classes} />
+      </IconContext.Provider>
  
     ) : type === 'UNLOCK' ? (
-
-      <AiFillUnlock className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiFillUnlock className={classes} />
+      </IconContext.Provider>
  
     ): null}
   </div>
+ 
 ));
 
 export default SVGIcon;

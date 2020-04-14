@@ -20,6 +20,7 @@ export default function ProfileEdit(props) {
   //State
   const [fields, setFields] = useState({});
   const [linkError, setLinkError] = useState(false);
+  const [showLinkInput, setLinkInput] = useState(false);
   const [showEditLink, setShowEditLink] = useState(false);
   const [linkToEdit, setLinkToEdit] = useState();
 
@@ -120,7 +121,7 @@ export default function ProfileEdit(props) {
     };
 
     try {
-      document.getElementById('new-link').classList.toggle('hidden');
+      setLinkInput(false);
       await createProfileField({
         variables: {
           data: profileData,
@@ -146,6 +147,7 @@ export default function ProfileEdit(props) {
   };
 
   const updateLink = async (field, changes) => {
+    setShowEditLink(false);
     try {
       await updateProfileField({
         variables: { id: field.id, data: changes },
@@ -193,15 +195,14 @@ export default function ProfileEdit(props) {
   };
 
   const toggleEdit = (field) => {
-    console.log('inside toggleEdit! \n', field);
-    console.log('inside toggleEdit! \n', fields);
+    setLinkInput(false);
+    setShowEditLink(!showEditLink);
+    setLinkToEdit(field);
     setFields({
       ...fields,
       link: field.value,
     });
-
-    setShowEditLink(!showEditLink);
-    setLinkToEdit(field);
+    setLink(field.type);
   };
 
   if (loading || !data)
@@ -266,14 +267,22 @@ export default function ProfileEdit(props) {
       <div className="mt-4 text-2xl ">
         <div className="flex justify-between items-center">
           <label className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg">
-            Links
+            Contact Methods
           </label>
           <button
             type="button"
             className="text-sm text-blue-500 focus:outline-none mobile:text-lg"
-            onClick={() => document.getElementById('new-link').classList.toggle('hidden')}
+            onClick={() => {
+              setShowEditLink(false);
+              setLinkInput(!showLinkInput);
+              setFields({
+                ...fields,
+                link: '',
+              });
+              setLink('');
+            }}
           >
-            &#43; add link
+            &#43; add contact
           </button>
         </div>
         {/* User privacy drop down menu */}
@@ -290,17 +299,18 @@ export default function ProfileEdit(props) {
       {/* Link Form Input Starts */}
       {showEditLink && (
         <SocialLinks
-          handleNewLink={handleNewLink}
+          updateLink={updateLink}
+          field={linkToEdit}
           fields={fields}
           handleFieldChange={handleFieldChange}
-          link={linkToEdit.type}
+          link={link}
           setLink={setLink}
           linkError={linkError}
-          preferredContact={linkToEdit.preferredContact}
+          preferredContact={preferredContact}
         />
       )}
-      <div id="new-link" className="hidden">
-        {/* Social Links Component */}
+      {/* Social Links Component */}
+      {showLinkInput && (
         <SocialLinks
           handleNewLink={handleNewLink}
           fields={fields}
@@ -310,7 +320,7 @@ export default function ProfileEdit(props) {
           linkError={linkError}
           preferredContact={preferredContact}
         />
-      </div>
+      )}
       <InputsComponent fields={fields} handleFieldChange={handleFieldChange} />
     </div>
   );
