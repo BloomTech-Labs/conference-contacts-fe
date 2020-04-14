@@ -22,21 +22,24 @@ export default function ErrorPage() {
   };
 
   return (
-    <section
-      className="flex flex-col text-center container mx-auto content-center justify-center"
-      style={{ height: '100vh' }}
-    >
-      <h1 className="text-4xl">Sorry, something went wrong :(</h1>
-      <div className="flex content-center justify-center mt-10">
-        <p className="mr-5">please proceed to the landing site</p>
+    <section className="flex flex-col text-center container mx-auto content-center justify-center h-full min-h-screen">
+      <h1 className="text-4xl z-10">Sorry, something went wrong :(</h1>
+      <div className="flex content-center justify-center mt-10 z-10">
+        <p className="mr-5 z-10">please proceed to the landing site</p>
 
         <div
-          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded z-10 hover:cursor-pointer"
           onClick={handleLogout}
         >
           Continue
         </div>
       </div>
+      <p
+        className="absolute text-gray-300 left-0 right-0"
+        style={{ fontSize: '35vw', zIndex: '1' }}
+      >
+        404
+      </p>
     </section>
   );
 }

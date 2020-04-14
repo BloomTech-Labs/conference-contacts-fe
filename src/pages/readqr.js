@@ -4,19 +4,20 @@ import QRCode from 'qrcode.react';
 import { useQuery } from '@apollo/react-hooks';
 import { NAVBAR_PROFILE } from '../queries/index';
 
+// import components
+import ErrorPage from './errorpage';
+
 // ! deprecated component - not in use
 const ReadQr = () => {
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
 
   if (loading || !data) return null;
-  if (error) return <p>There was an error: {error}</p>;
+  if (error) return <ErrorPage />;
 
   return (
     <div className="flex flex-col justify-center items-center mt-32">
       <div className="flex flex-col justify-center items-center w-full h-1/2">
-        {data?.user?.id && (
-          <QRCode renderAs="svg" size={250} value={data.user.id} />
-        )}
+        {data?.user?.id && <QRCode renderAs="svg" size={250} value={data.user.id} />}
       </div>
       <p className="text-xl w-3/4 text-center border-b-4 mt-10 pb-6 mx-2">
         Scan QR code to swaap information{' '}

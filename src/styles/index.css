@@ -11334,14 +11334,105 @@ video {
   color: #9a99a2;
 }
 
-/*PROFILE SOCIAL ICONS LINKS */
+/*PROFILE-EDIT SOCIAL ICONS LINKS */
 
 .social-icons {
-  fill: black;
+  color: black;
+  width: 24px;
+  height: 24px;
 }
 
-.social-icons:hover {
-  fill: red;
+/*PROFILE-EDIT DELETE LINKS ICON*/
+
+.delete-social-link {
+  color: #999;
+  width: 24px;
+  height: 24px;
+}
+
+.delete-social-link:hover {
+  color: red;
+}
+
+/*PROFILE-EDIT MAIN CONTACT SELECTION STAR*/
+
+.social-link-main-contact {
+  color: #999;
+}
+
+.social-link-main-contact-selected {
+  color: #007aff;
+}
+
+/*PROFILE-EDIT PRIVACY LOCK*/
+
+.social-link-privacy-private {
+  color: #999;
+}
+
+.social-link-privacy-private:hover,
+.social-link-main-contact:hover {
+  color: #666;
+}
+
+.social-link-privacy-public {
+  color: rgb(26, 184, 129);
+}
+
+.social-link-main-contact-selected {
+  color: #007aff;
+}
+
+/* LINK ICON ANIMATIONS W/ REACT TRANSITION GROUP */
+
+.inputs-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.inputs-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.inputs-exit {
+  opacity: 1;
+}
+
+.inputs-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.icons-enter {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.icons-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 200ms;
+}
+
+.icons-exit {
+  opacity: 1;
+}
+
+.icons-exit-active {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 200ms;
+}
+
+/* profile-edit page add link +/- button  */
+
+.plus-minus-icons {
+  color: black;
+  width: 24px;
+  height: 24px;
 }
 
 .right-1 {
@@ -11488,6 +11579,11 @@ li svg #white-svg:hover {
   margin-left: 20.2%;
 }
 
+.grid-2 {
+  display: grid;
+  margin: 0 auto;
+}
+
 .hovereffect {
   width: 60%;
   height: 100%;
@@ -11570,6 +11666,91 @@ li svg #white-svg:hover {
 
 .qrsizing {
   width: 35%;
+}
+
+.cookies-wrapper {
+  position: fixed;
+  z-index: 4000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  display: table;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 300ms ease;
+}
+
+.cookies-wrapper.hide {
+  display: none;
+}
+
+.cookies-wrapper.dismiss {
+  opacity: 0;
+}
+
+.cookies-wrapper .cookies-message {
+  margin: 0;
+  padding: 15px 10px;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 13px;
+  font-family: sans-serif;
+  color: white;
+  text-align: left;
+  width: 93%;
+}
+
+.cookies-wrapper .button-wrapper {
+  margin: 0;
+  padding: 0;
+  display: table-cell;
+  vertical-align: middle;
+  width: 6%;
+  pointer-events: auto;
+}
+
+.cookies-wrapper .button-wrapper button {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: white;
+  background: transparent;
+  border-left: 1px rgba(0, 0, 0, 0.2) solid;
+  cursor: pointer;
+  outline: none;
+  transition: background 300ms ease;
+}
+
+.cookies-wrapper .button-wrapper button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 800px) {
+  .cookies-wrapper .cookies-message {
+    width: 90%;
+    font-size: 11px;
+  }
+
+  .cookies-wrapper .button-wrapper {
+    width: 10%;
+  }
+}
+
+@media (max-width: 400px) {
+  .cookies-wrapper .cookies-message {
+    width: 86%;
+  }
+
+  .cookies-wrapper .button-wrapper {
+    width: 13%;
+  }
 }
 
 @media (min-width: 700px) {

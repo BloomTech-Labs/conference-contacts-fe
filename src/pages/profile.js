@@ -6,33 +6,37 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
+
+const iconSizing = {
+  transform: 'scale(1.5)',
+};
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
-    variables: { id: location.state.userId }
+    variables: { id: location.state.userId },
   });
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(
       cache,
       {
         data: {
-          deleteConnection: { connection }
-        }
+          deleteConnection: { connection },
+        },
       }
     ) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
-      const connections = user.connections.filter(c => c.id !== connection.id);
-      const pendingConnections = user.pendingConnections.filter(c => c.id !== connection.id);
+      const connections = user.connections.filter((c) => c.id !== connection.id);
+      const pendingConnections = user.pendingConnections.filter((c) => c.id !== connection.id);
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
           user:
             location.state.status === 'PENDING'
               ? { ...user, pendingConnections }
-              : { ...user, connections }
-        }
+              : { ...user, connections },
+        },
       });
-    }
+    },
   });
   if (loading || !data)
     return (
@@ -41,9 +45,9 @@ const Profile = ({ location, navigate }) => {
       </div>
     );
   if (error) return <p>There was an error: {error}</p>;
-  const preferredContact = data.user.profile.find(field => field.preferredContact);
+  const preferredContact = data.user.profile.find((field) => field.preferredContact);
   const contacts = preferredContact
-    ? data.user.profile.filter(field => field.id !== preferredContact.id)
+    ? data.user.profile.filter((field) => field.id !== preferredContact.id)
     : data.user.profile;
   return (
     // following two divs add card style
@@ -53,7 +57,9 @@ const Profile = ({ location, navigate }) => {
         <div className="pt-5 desktop:pt-0 flex flex-col overflow-hidden px-6 pb-8">
           {viewingContact && (
             <div className="absolute desktop:pt-4">
-              <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
+              <div style={iconSizing}>
+                <Icon size={28} type="BACK" onClick={() => navigate('/contacts')} />
+              </div>
             </div>
           )}
           <div className="flex flex-col desktop:flex-row-reverse justify-between">
@@ -77,12 +83,13 @@ const Profile = ({ location, navigate }) => {
                     <Link to="edit">
                       {/* EDIT ICON */}
                       <svg
-                        className="mr-3"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
+                        className="ml-3"
+                        width="60"
+                        height="40"
+                        viewBox="0 0 30 30"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="xMidYMid meet"
                       >
                         <path
                           d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z"
@@ -97,13 +104,15 @@ const Profile = ({ location, navigate }) => {
                     <Popup
                       trigger={
                         <button>
-                          <Icon size={24} type="TRASH" />
+                          <div style={iconSizing}>
+                            <Icon size={60} type="TRASH" />
+                          </div>
                         </button>
                       }
                       modal
                       position="top left"
                     >
-                      {close => (
+                      {(close) => (
                         <div className="modal text-center font-bold my-4 w-full object-contain">
                           Are you sure you want to delete this contact?
                           <div className="">
@@ -115,8 +124,8 @@ const Profile = ({ location, navigate }) => {
                                   if (deleteLoading) return;
                                   await deleteConnection({
                                     variables: {
-                                      id: location.state.connectionId
-                                    }
+                                      id: location.state.connectionId,
+                                    },
                                   });
                                   navigate('/contacts');
                                 }}
@@ -139,46 +148,56 @@ const Profile = ({ location, navigate }) => {
                     </Popup>
                   )}
                 </div>
-                <p className="text-gray-700 tracking-wide">{data.user.industry}</p>
+                <p className="text-gray-700 tracking-wide text-xl">{data.user.industry}</p>
               </section>
               {/* job title */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest">Job Title</h2>
-                <p className="mt-4">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                  Job Title
+                </h2>
+                <p className=" text-xl">
                   {data.user.jobtitle ? data.user.jobtitle : <span>None</span>}
                 </p>
               </section>
               {/* preffered contact method if user has one selected */}
               {preferredContact && (
                 <section className="mt-10">
-                  <h2 className="uppercase text-xs text-gray-900 tracking-widest">
+                  <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                     Preferred Contact
                   </h2>
-                  <div className="flex mt-3">
-                    <Icon type={preferredContact.type} size={24} />
-                    <a className="ml-4 text-blue-500" href={preferredContact.value} target="_blank">
-                      {preferredContact.value}
-                    </a>
+                  <div className="flex mt-3 text-xl">
+                    <div style={iconSizing}>
+                      <a
+                        className="ml-4 text-blue-500"
+                        href={preferredContact.value}
+                        target="_blank"
+                      >
+                        <Icon type={preferredContact.type} size={32} />
+                      </a>
+                    </div>
                   </div>
                 </section>
               )}
               {/* other contact methods */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest">Contact Methods</h2>
-                <ul className="mt-3">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                  Contact Methods
+                </h2>
+                <div className="flex flex-no-wrap ml-2">
                   {contacts.length ? (
-                    contacts.map(field => {
+                    contacts.map((field) => {
                       return (
-                        <li key={field.id} className="flex mb-3">
-                          <Icon type={field.type} size={24} />
+                        <div className="p-2">
                           <a
                             className="ml-4"
                             href={field.type == 'EMAIL' ? `mailto:${field.value}` : field.value}
                             target="_blank"
                           >
-                            {field.value}
+                            <div style={iconSizing}>
+                              <Icon type={field.type} size={50} />
+                            </div>
                           </a>
-                        </li>
+                        </div>
                       );
                     })
                   ) : viewingContact ? (
@@ -186,7 +205,7 @@ const Profile = ({ location, navigate }) => {
                   ) : (
                     <p>You have not added any other methods of contact.</p>
                   )}
-                </ul>
+                </div>
               </section>
             </div>
           </div>
@@ -194,15 +213,19 @@ const Profile = ({ location, navigate }) => {
             <div className="">
               {/* location */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest">Location</h2>
-                <p className="mt-4">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                  Location
+                </h2>
+                <p className=" text-xl">
                   {data.user.location ? data.user.location : <span>None</span>}
                 </p>
               </section>
               {/* DOB */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest">Birthdate</h2>
-                <p className="mt-4">
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                  Birthdate
+                </h2>
+                <p className=" text-xl">
                   {data.user.birthdate ? (
                     moment(data.user.birthdate).format('L')
                   ) : (
@@ -212,14 +235,20 @@ const Profile = ({ location, navigate }) => {
               </section>
               {/* tagline */}
               <section className="mt-10">
-                <h2 className="uppercase text-xs text-gray-900 tracking-widest">Tagline</h2>
-                <p className="mt-4">{data.user.tagline ? data.user.tagline : <span>None</span>}</p>
+                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                  Tagline
+                </h2>
+                <p className=" text-xl">
+                  {data.user.tagline ? data.user.tagline : <span>None</span>}
+                </p>
               </section>
             </div>
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <h2 className="uppercase text-xs text-gray-900 tracking-widest">Bio</h2>
-              <p className="mt-4">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+              <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
+                Bio
+              </h2>
+              <p className=" text-xl">{data.user.bio ? data.user.bio : <span>None</span>}</p>
             </section>
           </div>
         </div>
