@@ -1,82 +1,87 @@
 import React from 'react';
-import {AiOutlineMail, AiOutlineFacebook, AiOutlineTwitter, AiOutlineLinkedin, AiOutlineInstagram} from 'react-icons/ai';
+import {IconContext} from 'react-icons';
+import {FaCheck } from 'react-icons/fa';
+import {
+  AiOutlineMail, 
+  AiOutlineFacebook, 
+  AiOutlineTwitter, 
+  AiOutlineLinkedin, 
+  AiOutlineInstagram, 
+  AiOutlineMinusCircle,
+  AiOutlineStar,
+  AiFillStar,
+  AiFillLock,
+  AiFillUnlock
+
+} from 'react-icons/ai';
 
 
-const SVGIcon = React.memo(({ id, type, classes, onClick, fill}) => (
+const SVGIcon = React.memo(({ id, type, classes, divClass, onClick, size}) => (
+  //You can control the styling of the icons via classes or size or both. 
+  //IconContext.Provider allows you to override styles as needed see for more info:
+  //https://www.npmjs.com/package/react-icons
+  //Component is set up to be flexible to your needs. If you use size for the icon
+  //do not make a css class to do so, unless you are looking to control the sizing of the parent div.
 
   <div
+    className={divClass}
     id={id}
     onClick={onClick}
   >
     {type === 'EMAIL' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineMail className={classes} />
+      </IconContext.Provider>
       
-      <AiOutlineMail className={classes} />
-
     ) : type === 'INSTAGRAM' ? (
-
-      <AiOutlineInstagram className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineInstagram  />
+      </IconContext.Provider>
 
     ) : type === 'FACEBOOK' ? (
-
-      <AiOutlineFacebook className={classes} />
-      
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineFacebook className={classes} />
+      </IconContext.Provider>
     ) : type === 'LINKEDIN' ? (
-
-      <AiOutlineLinkedin className={classes} />
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineLinkedin className={classes} />
+      </IconContext.Provider>
 
     ) : type === 'TWITTER' ? (
-
-      <AiOutlineTwitter className={classes}/>
-
-    ) : type === 'DELETE' ? (
-      <path
-        d="M7.27016 6.99915L9.59171 4.6776C9.80276 4.46655 9.80276 4.11934 9.59171 3.90829C9.38066 3.69724 9.03345 3.69724 8.8224 3.90829L6.50085 6.22984L4.1793 3.90829C3.96825 3.69724 3.62104 3.69724 3.40999 3.90829C3.30446 4.01381 3.25 4.15338 3.25 4.29294C3.25 4.43251 3.30446 4.57207 3.40999 4.6776L5.73154 6.99915L3.40999 9.3207C3.30446 9.42623 3.25 9.56579 3.25 9.70536C3.25 9.84492 3.30446 9.98449 3.40999 10.09C3.62104 10.3011 3.96825 10.3011 4.1793 10.09L6.50085 7.76846L8.8224 10.09C9.03345 10.3011 9.38066 10.3011 9.59171 10.09C9.80276 9.87896 9.80276 9.53175 9.59171 9.3207L7.27016 6.99915Z"
-        fill={fill || '#9A99A2'}
-      />
-    ) : type === 'CAMERA' ? (
-      <>
-        <path
-          d="M28.6875 8.23438H24.1719L23.0961 5.21953C23.0218 5.01323 22.8856 4.83491 22.7061 4.70893C22.5266 4.58294 22.3126 4.51543 22.0934 4.51563H11.9066C11.4584 4.51563 11.0566 4.79785 10.9072 5.21953L9.82812 8.23438H5.3125C3.84492 8.23438 2.65625 9.42305 2.65625 10.8906V26.0313C2.65625 27.4988 3.84492 28.6875 5.3125 28.6875H28.6875C30.1551 28.6875 31.3438 27.4988 31.3438 26.0313V10.8906C31.3438 9.42305 30.1551 8.23438 28.6875 8.23438ZM28.9531 26.0313C28.9531 26.1773 28.8336 26.2969 28.6875 26.2969H5.3125C5.16641 26.2969 5.04688 26.1773 5.04688 26.0313V10.8906C5.04688 10.7445 5.16641 10.625 5.3125 10.625H11.5115L12.0793 9.03789L12.8396 6.90625H21.157L21.9174 9.03789L22.4852 10.625H28.6875C28.8336 10.625 28.9531 10.7445 28.9531 10.8906V26.0313ZM17 12.75C14.0648 12.75 11.6875 15.1273 11.6875 18.0625C11.6875 20.9977 14.0648 23.375 17 23.375C19.9352 23.375 22.3125 20.9977 22.3125 18.0625C22.3125 15.1273 19.9352 12.75 17 12.75ZM17 21.25C15.2402 21.25 13.8125 19.8223 13.8125 18.0625C13.8125 16.3027 15.2402 14.875 17 14.875C18.7598 14.875 20.1875 16.3027 20.1875 18.0625C20.1875 19.8223 18.7598 21.25 17 21.25Z"
-          fill={fill || '#F7FAFC'}
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M17.5434 16.1276C17.5434 15.8268 17.2996 15.583 16.9988 15.583C16.698 15.583 16.4542 15.8268 16.4542 16.1276V17.5914L14.7145 17.5915C14.4137 17.5915 14.1699 17.8353 14.1699 18.1361C14.1699 18.4369 14.4138 18.6807 14.7146 18.6807L16.4542 18.6807V20.0438C16.4542 20.3446 16.698 20.5884 16.9988 20.5884C17.2996 20.5884 17.5434 20.3446 17.5434 20.0438V18.6806L19.2896 18.6806C19.5904 18.6806 19.8342 18.4367 19.8342 18.1359C19.8342 17.8351 19.5903 17.5913 19.2895 17.5913L17.5434 17.5914V16.1276Z"
-          fill={fill || '#F7FAFC'}
-        />
-      </>
-    ) : type === 'MORE' ? (
-      <>
-        <path
-          d="M12 12.8571C12.4734 12.8571 12.8572 12.4734 12.8572 12C12.8572 11.5266 12.4734 11.1428 12 11.1428C11.5266 11.1428 11.1429 11.5266 11.1429 12C11.1429 12.4734 11.5266 12.8571 12 12.8571Z"
-          stroke={fill || '#4A5568'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M18 12.8571C18.4734 12.8571 18.8572 12.4734 18.8572 12C18.8572 11.5266 18.4734 11.1428 18 11.1428C17.5266 11.1428 17.1429 11.5266 17.1429 12C17.1429 12.4734 17.5266 12.8571 18 12.8571Z"
-          stroke={fill || '#4A5568'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M6.00003 12.8571C6.47341 12.8571 6.85717 12.4734 6.85717 12C6.85717 11.5266 6.47341 11.1428 6.00003 11.1428C5.52664 11.1428 5.14288 11.5266 5.14288 12C5.14288 12.4734 5.52664 12.8571 6.00003 12.8571Z"
-          stroke={fill || '#4A5568'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </>
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineTwitter className={classes}/>
+      </IconContext.Provider>
+    ) : type === 'CHECK' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <FaCheck className={classes}/>
+      </IconContext.Provider>
     ) : type === 'MINUS-CIRCLE' ? (
-      <path
-        d="M12.242 22C9.53635 22 6.94152 20.9464 5.02834 19.0711C3.11516 17.1957 2.04034 14.6522 2.04034 12C2.04034 9.34784 3.11516 6.8043 5.02834 4.92893C6.94152 3.05357 9.53635 2 12.242 2C14.9476 2 17.5425 3.05357 19.4557 4.92893C21.3688 6.8043 22.4437 9.34784 22.4437 12C22.4437 14.6522 21.3688 17.1957 19.4557 19.0711C17.5425 20.9464 14.9476 22 12.242 22ZM12.242 20C14.4065 20 16.4824 19.1571 18.0129 17.6569C19.5435 16.1566 20.4033 14.1217 20.4033 12C20.4033 9.87827 19.5435 7.84344 18.0129 6.34315C16.4824 4.84285 14.4065 4 12.242 4C10.0775 4 8.00162 4.84285 6.47107 6.34315C4.94053 7.84344 4.08068 9.87827 4.08068 12C4.08068 14.1217 4.94053 16.1566 6.47107 17.6569C8.00162 19.1571 10.0775 20 12.242 20ZM16.3227 12C16.3227 12.2652 16.2152 12.5196 16.0239 12.7071C15.8325 12.8946 15.5731 13 15.3025 13H9.1815C8.91094 13 8.65146 12.8946 8.46014 12.7071C8.26882 12.5196 8.16134 12.2652 8.16134 12C8.16134 11.7348 8.26882 11.4804 8.46014 11.2929C8.65146 11.1054 8.91094 11 9.1815 11H15.3025C15.5731 11 15.8325 11.1054 16.0239 11.2929C16.2152 11.4804 16.3227 11.7348 16.3227 12Z"
-        fill={fill || '#4A5568'}
-      />
-    ) : null}
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineMinusCircle className={classes} />
+      </IconContext.Provider>
+    ) : type === 'STAR' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiOutlineStar className={classes} />
+      </IconContext.Provider>
+ 
+    ) : type === 'SELECTEDSTAR' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiFillStar className={classes} />
+      </IconContext.Provider>
+ 
+    ) : type === 'LOCK' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiFillLock className={classes} />
+      </IconContext.Provider>
+ 
+    ) : type === 'UNLOCK' ? (
+      <IconContext.Provider value={{className: classes, size: size }}>
+        <AiFillUnlock className={classes} />
+      </IconContext.Provider>
+ 
+    ): null}
   </div>
+ 
 ));
 
 export default SVGIcon;
