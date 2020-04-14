@@ -29,13 +29,18 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
           <span
             className={
               field.preferredContact
-                ? 'flex items-center ml-3 mr-auto text-blue-500 truncate '
-                : ' flex items-center ml-3 mr-auto truncate'
+                ? 'flex items-center ml-3  text-blue-500 truncate '
+                : ' flex items-center ml-3  truncate'
             }
             title={field.value}
-            onClick={() => toggleEdit(field)}
           >
             {field.value}
+          </span>
+          <span
+            className="flex items-start ml-3 mr-auto text-red-500 truncate cursor-pointer text-base"
+            onClick={() => toggleEdit(field)}
+          >
+            {fields.link == field.value ? 'cancel' : 'edit'}
           </span>
 
           {/* SELECT PREFERRED CONTACT */}

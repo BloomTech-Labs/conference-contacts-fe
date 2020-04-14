@@ -198,10 +198,18 @@ export default function ProfileEdit(props) {
     setLinkInput(false);
     setShowEditLink(!showEditLink);
     setLinkToEdit(field);
-    setFields({
-      ...fields,
-      link: field.value,
-    });
+
+    if (field.value == fields.link) {
+      setFields({
+        ...fields,
+        link: '',
+      });
+    } else {
+      setFields({
+        ...fields,
+        link: field.value,
+      });
+    }
     setLink(field.type);
   };
 
