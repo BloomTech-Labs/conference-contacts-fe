@@ -15,9 +15,38 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
   return (
     <ul className="mt-3">
       {fields?.profile?.map((field, idx) => (
-        <li key={field.id} className="flex mb-3 text-xl mobile:text-base">
+        <li
+          key={field.id}
+          className="flex justify-between mb-3 text-base mobile:text-sm bg-gray-300 rounded py-2 px-4"
+        >
+          {/* SELECT PREFERRED CONTACT */}
+          {(!preferredContact || preferredContact.id === field.id) && (
+            <>
+              <div
+                className="flex flex-wrap mr-4"
+                onClick={() => updateLink(field, { preferredContact: !field.preferredContact })}
+              >
+                {!field.preferredContact ? (
+                  //shows outlined star
+                  <SVGIcon
+                    divClass={'flex items-center content-center w-full social-link-main-contact'}
+                    classes=""
+                    size="1.5rem"
+                    type="STAR"
+                  />
+                ) : (
+                  //shows filled in star
+                  <SVGIcon
+                    divClass={'flex items-center content-center w-full '}
+                    classes="social-link-main-contact-selected"
+                    size="1.5rem"
+                    type="SELECTEDSTAR"
+                  />
+                )}
+              </div>
+            </>
+          )}
           {/* Social Media/Contact Icons */}
-
           <SVGIcon
             type={field.type}
             size={'1.75rem'}
@@ -29,90 +58,39 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
           <span
             className={
               field.preferredContact
-                ? 'flex items-center ml-3  text-blue-500 truncate '
-                : ' flex items-center ml-3  truncate'
+                ? 'flex items-center ml-3 text-blue-500 truncate w-full cursor-pointer'
+                : 'flex items-center ml-3 truncate w-full cursor-pointer'
             }
+            onClick={() => toggleEdit(field)}
             title={field.value}
           >
             {field.value}
           </span>
-          <span
-            className="flex items-center ml-3 mr-auto text-red-500 truncate cursor-pointer text-base"
-            onClick={() => toggleEdit(field)}
-          >
-            {fields.link == field.value ? 'cancel' : 'edit'}
-          </span>
 
-          {/* SELECT PREFERRED CONTACT */}
-          {(!preferredContact || preferredContact.id === field.id) && (
-            <>
-              <div
-                className="flex flex-wrap w-16"
-                onClick={() => updateLink(field, { preferredContact: !field.preferredContact })}
-              >
-                {!field.preferredContact ? (
-                  //shows outlined star
-                  <>
-                    <SVGIcon
-                      divClass={'flex items-center content-center w-full social-link-main-contact'}
-                      classes="m-auto"
-                      size="1.5rem"
-                      type="STAR"
-                    />
-
-                    <span className="m-auto">
-                      <p className="text-xs">Preferred</p>
-                    </span>
-                  </>
-                ) : (
-                  //shows filled in star
-                  <>
-                    <SVGIcon
-                      divClass={'flex items-center content-center w-full '}
-                      classes="m-auto social-link-main-contact-selected"
-                      size="1.5rem"
-                      type="SELECTEDSTAR"
-                    />
-                    <span className="m-auto">
-                      <p className="text-xs">Preferred</p>
-                    </span>
-                  </>
-                )}
-              </div>
-            </>
-          )}
           {/* Make Contact PRIVATE/PUBLIC toggle icons */}
           <div className="flex flex-wrap w-16">
             {field.privacy === 'PUBLIC' ? (
               //field.privacy is public and will show unlock icon.
               //ONCLICK changes from 'PUBLIC' Value to 'PRIVATE' value.
-              <>
-                <SVGIcon
-                  divClass={'flex items-center content-center w-full'}
-                  classes="m-auto social-link-privacy-public"
-                  size="1.5rem"
-                  type="UNLOCK"
-                  onClick={() => updatePrivacy(field)}
-                />
-                <span className="m-auto">
-                  <p className="text-xs">Public</p>
-                </span>
-              </>
+
+              <SVGIcon
+                divClass={'flex items-center content-center w-full'}
+                classes="m-auto social-link-privacy-public"
+                size="1.5rem"
+                type="UNLOCK"
+                onClick={() => updatePrivacy(field)}
+              />
             ) : (
               // field.privacy is PRIVATE on default, LOCK Icon will show by default.
               //ONCLICK changes from 'PRIVATE' value to 'PUBLIC' value.
-              <>
-                <SVGIcon
-                  divClass={'flex items-center content-center w-full'}
-                  classes="m-auto social-link-privacy-private"
-                  size="1.5rem"
-                  type="LOCK"
-                  onClick={() => updatePrivacy(field)}
-                />
-                <span className="m-auto">
-                  <p className="text-xs">Private</p>
-                </span>
-              </>
+
+              <SVGIcon
+                divClass={'flex items-center content-center w-full'}
+                classes="m-auto social-link-privacy-private"
+                size="1.5rem"
+                type="LOCK"
+                onClick={() => updatePrivacy(field)}
+              />
             )}
           </div>
 
@@ -121,16 +99,13 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
             //produces the delete icon to trigger modal as per documentation
             trigger={
               //Minus-Circle/Delete Icon
-              <div className="flex flex-wrap w-16">
+              <div className="flex flex-wrap">
                 <SVGIcon
                   divClass={'flex items-center content-center w-full'}
                   classes="m-auto delete-social-link"
                   size="1.5rem"
                   type="MINUS-CIRCLE"
                 />
-                <span className="m-auto">
-                  <p className="text-xs">Delete</p>
-                </span>
               </div>
             }
             modal

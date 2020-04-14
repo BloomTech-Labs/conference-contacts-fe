@@ -313,6 +313,11 @@ export default function ProfileEdit(props) {
             &#43; add contact
           </button>
         </div>
+        <ul className="text-xs m-0 text-gray-500">
+          <li>click on the star to set your prefered contact method</li>
+          <li>select the lock to set link private or public</li>
+        </ul>
+
         {/* User privacy drop down menu */}
         <LinkStatusModal
           fields={fields}
