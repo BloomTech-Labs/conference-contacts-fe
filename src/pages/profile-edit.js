@@ -9,6 +9,7 @@ import {
 } from '../queries';
 import Icon from '../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { CSSTransition } from 'react-transition-group';
 
 // components
 import InputsComponent from '../components/editComponents/inputsComponent';
@@ -19,6 +20,9 @@ export default function ProfileEdit(props) {
   //State
   const [fields, setFields] = useState({});
   const [linkError, setLinkError] = useState(false);
+  const [showLinkInput, setLinkInput] = useState(false);
+  const [showEditLink, setShowEditLink] = useState(false);
+  const [linkToEdit, setLinkToEdit] = useState();
 
   //Profile links type state
   const [link, setLink] = useState('');
@@ -100,12 +104,14 @@ export default function ProfileEdit(props) {
   const handleCancel = () => props.navigate('/profile');
 
   const handleNewLink = async (event) => {
-    if (link === '') {
+    if (!fields.link || link === '') {
       setLinkError(true);
       return;
     } else {
       setLinkError(false);
     }
+
+    console.log('inside handleNewLink | \n ', fields);
 
     const profileData = {
       value: fields.link,
@@ -115,7 +121,7 @@ export default function ProfileEdit(props) {
     };
 
     try {
-      document.getElementById('new-link').classList.toggle('hidden');
+      setLinkInput(false);
       await createProfileField({
         variables: {
           data: profileData,
@@ -141,6 +147,7 @@ export default function ProfileEdit(props) {
   };
 
   const updateLink = async (field, changes) => {
+    setShowEditLink(false);
     try {
       await updateProfileField({
         variables: { id: field.id, data: changes },
@@ -187,6 +194,25 @@ export default function ProfileEdit(props) {
     }
   };
 
+  const toggleEdit = (field) => {
+    setLinkInput(false);
+    setShowEditLink(!showEditLink);
+    setLinkToEdit(field);
+
+    if (field.value == fields.link) {
+      setFields({
+        ...fields,
+        link: '',
+      });
+    } else {
+      setFields({
+        ...fields,
+        link: field.value,
+      });
+    }
+    setLink(field.type);
+  };
+
   if (loading || !data)
     return (
       <div className="flex justify-center h-screen items-center">
@@ -229,26 +255,42 @@ export default function ProfileEdit(props) {
             Save
           </button>
         </div>
-        <div className="flex justify-center items-center mt-2" onClick={() => widget.open()}>
-          <img
-            src={data.user.picture}
+        <div className="flex justify-center items-center mt-2">
+          <div
             alt="profile"
-            className="rounded-full shadow-lg w-56 h-56 object-cover"
-          />
-          <Icon type="CAMERA" classes="absolute" size={34} />
+            className="rounded-full shadow-lg w-56 h-56 flex justify-center items-center"
+            onClick={() => widget.open()}
+            style={{
+              backgroundImage: `url("${data.user.picture}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <Icon type="CAMERA" classes="absolute " size={34} />
+          </div>
         </div>
       </div>
 
       {/* Link Section Starts */}
-      <div className="mt-4 text-2xl">
+      <div className="mt-4 text-2xl ">
         <div className="flex justify-between items-center">
-          <label className="block text-sm mb-1 text-2xl">Links</label>
+          <label className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg">
+            Contact Methods
+          </label>
           <button
             type="button"
-            className="text-xs text-blue-500 focus:outline-none text-2xl"
-            onClick={() => document.getElementById('new-link').classList.toggle('hidden')}
+            className="text-base text-blue-500 focus:outline-none mobile:text-lg"
+            onClick={() => {
+              setShowEditLink(false);
+              setLinkInput(!showLinkInput);
+              setFields({
+                ...fields,
+                link: '',
+              });
+              setLink('');
+            }}
           >
-            &#43; add link
+            &#43; add contact
           </button>
         </div>
         {/* User privacy drop down menu */}
@@ -257,13 +299,26 @@ export default function ProfileEdit(props) {
           preferredContact={preferredContact}
           updateLink={updateLink}
           removeLink={removeLink}
+          toggleEdit={toggleEdit}
         />
         {/* User privacy drop down menu ends */}
       </div>
       {/* Link Section ENDS */}
       {/* Link Form Input Starts */}
-      <div id="new-link" className="hidden">
-        {/* Social Links Component */}
+      <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
+        <SocialLinks
+          updateLink={updateLink}
+          field={linkToEdit}
+          fields={fields}
+          handleFieldChange={handleFieldChange}
+          link={link}
+          setLink={setLink}
+          linkError={linkError}
+          preferredContact={preferredContact}
+        />
+      </CSSTransition>
+      {/* Social Links Component */}
+      <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
         <SocialLinks
           handleNewLink={handleNewLink}
           fields={fields}
@@ -273,8 +328,15 @@ export default function ProfileEdit(props) {
           linkError={linkError}
           preferredContact={preferredContact}
         />
-      </div>
-      <InputsComponent fields={fields} handleFieldChange={handleFieldChange} />
+      </CSSTransition>
+      {/* Start of profile inputs, span to animate */}
+
+      <InputsComponent
+        fields={fields}
+        handleFieldChange={handleFieldChange}
+        showLinkInput={showLinkInput}
+        showEditLink={showEditLink}
+      />
     </div>
   );
 }
