@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from '@reach/router';
-
+import NavLink from './navlink';
 import QRCode from 'qrcode.react';
 const QRC = React.memo(QRCode);
 
 // Component Start
 export default function NavComponent(props) {
-  const { open, setOpen, inHeader, qrLink, qrcData, handleLogout, data } = props;
+  const { open, setOpen, inHeader, qrLink, qrcData, handleLogout, data, isCurrent } = props;
 
   return (
     <nav
@@ -22,7 +22,7 @@ export default function NavComponent(props) {
         style={inHeader && open ? { transform: 'translateX(0)' } : null}
       >
         <div className="px-6">
-          <div className=" flex-col justify-center items-center">
+          {inHeader && (<div className=" flex-col justify-center items-center">
             {/* SMALL IMG ROUNG */}
             <img
               className="rounded-full shadow-md mx-auto w-32 h-32 object-cover"
@@ -30,7 +30,7 @@ export default function NavComponent(props) {
               alt={`avatar of ${data.user.name}`}
             />
             <p className="py-6 text-2xl desktop:text-base text-center">{data.user.name}</p>
-          </div>
+          </div>)}
           {qrcData && (
             <div className="flex justify-center">
               <span className="qr-box p-2">
@@ -39,15 +39,15 @@ export default function NavComponent(props) {
                   level="Q"
                   renderAs="svg"
                   value={qrLink}
-                  fgColor="#000" /* "#6640FF" */
+                  fgColor="#6640FF"
                 />
               </span>
             </div>
           )}
         </div>
         <ul className="mt-8">
-          <Link to="/" onClick={inHeader ? () => setOpen(!open) : null}>
-            <li className="flex py-4 pl-6">
+          <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>
+            <li className="flex pl-6">
               <svg
                 className="mr-4"
                 width="22"
@@ -63,9 +63,10 @@ export default function NavComponent(props) {
               </svg>
               <span className="uppercase">Home</span>
             </li>
-          </Link>
-          <Link to="/contacts" onClick={inHeader ? () => setOpen(!open) : null}>
-            <li className="flex py-4 pl-6">
+          </NavLink>
+
+          <NavLink to="/contacts" onClick={inHeader ? () => setOpen(!open) : null}>
+            <li className="flex pl-6">
               <svg
                 className="mr-4"
                 background="new 0 0 20 20"
@@ -75,16 +76,21 @@ export default function NavComponent(props) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  id="white-svg"
                   d="M17.3175 14.4035C16.7308 13.8164 16.0454 13.3372 15.2925 12.9879C16.3542 12.1277 17.0316 10.8152 17.0316 9.34332C17.0316 6.74645 14.8659 4.61598 12.2691 4.65582C9.71202 4.69567 7.65187 6.77926 7.65187 9.34332C7.65187 10.8152 8.33155 12.1277 9.39093 12.9879C8.6379 13.3369 7.95238 13.8161 7.36593 14.4035C6.08624 15.6855 5.35968 17.3777 5.3128 19.1824C5.31218 19.2074 5.31657 19.2323 5.32571 19.2556C5.33485 19.2789 5.34856 19.3001 5.36604 19.318C5.38351 19.3359 5.40439 19.3502 5.42745 19.3599C5.45051 19.3696 5.47528 19.3746 5.5003 19.3746H6.8128C6.91358 19.3746 6.99796 19.2949 7.0003 19.1941C7.04483 17.8347 7.59562 16.5621 8.56358 15.5964C9.05891 15.0985 9.64808 14.7037 10.297 14.435C10.9459 14.1662 11.6417 14.0289 12.3441 14.0308C13.7714 14.0308 15.1144 14.5863 16.1245 15.5964C17.0901 16.5621 17.6409 17.8347 17.6878 19.1941C17.6901 19.2949 17.7745 19.3746 17.8753 19.3746H19.1878C19.2128 19.3746 19.2376 19.3696 19.2607 19.3599C19.2837 19.3502 19.3046 19.3359 19.3221 19.318C19.3395 19.3001 19.3533 19.2789 19.3624 19.2556C19.3715 19.2323 19.3759 19.2074 19.3753 19.1824C19.3284 17.3777 18.6019 15.6855 17.3175 14.4035ZM12.3441 12.3433C11.5425 12.3433 10.7878 12.0316 10.223 11.4644C9.93949 11.1832 9.71557 10.8477 9.56457 10.4781C9.41357 10.1084 9.33857 9.71213 9.34405 9.31285C9.35108 8.54411 9.65812 7.80114 10.1948 7.25035C10.7573 6.67379 11.5097 6.3527 12.3136 6.34332C13.1081 6.33629 13.8792 6.64567 14.4464 7.20114C15.0276 7.77067 15.3464 8.53239 15.3464 9.34332C15.3464 10.1449 15.0347 10.8972 14.4675 11.4644C14.1892 11.744 13.8583 11.9657 13.4938 12.1165C13.1293 12.2674 12.7385 12.3445 12.3441 12.3433ZM6.47296 9.96207C6.45187 9.75817 6.44015 9.55192 6.44015 9.34332C6.44015 8.97067 6.4753 8.60739 6.54093 8.25348C6.55733 8.1691 6.5128 8.08239 6.43546 8.04723C6.11671 7.90426 5.82374 7.70739 5.57062 7.45895C5.27235 7.16975 5.03764 6.82155 4.88147 6.43656C4.7253 6.05158 4.65109 5.63828 4.66358 5.22301C4.68468 4.47067 4.98702 3.75582 5.51437 3.21676C6.09327 2.62379 6.8714 2.30035 7.69874 2.30973C8.4464 2.31676 9.16827 2.60504 9.71437 3.11598C9.89952 3.28942 10.0589 3.4816 10.1925 3.68785C10.2394 3.76051 10.3308 3.79098 10.4105 3.76285C10.823 3.61989 11.2589 3.5191 11.7066 3.47223C11.8378 3.45817 11.9128 3.31754 11.8542 3.20035C11.0925 1.69332 9.53624 0.652698 7.73624 0.624573C5.13702 0.58473 2.9714 2.7152 2.9714 5.30973C2.9714 6.7816 3.64874 8.0941 4.71046 8.95426C3.96515 9.29879 3.27843 9.77457 2.68312 10.3699C1.39874 11.6519 0.672178 13.3441 0.625303 15.1511C0.624677 15.1761 0.629065 15.201 0.638207 15.2243C0.647349 15.2476 0.661061 15.2688 0.678535 15.2868C0.696009 15.3047 0.716891 15.3189 0.73995 15.3286C0.76301 15.3383 0.78778 15.3433 0.812803 15.3433H2.12765C2.22843 15.3433 2.3128 15.2636 2.31515 15.1629C2.35968 13.8035 2.91046 12.5308 3.87843 11.5652C4.56749 10.8761 5.41124 10.398 6.33233 10.166C6.42374 10.1425 6.48468 10.0558 6.47296 9.96207Z"
                   fill="#1A202C"
                 />
               </svg>
               <span className="uppercase">Contacts</span>
+              {/*
+								className="bg-gray-200 w-1/2 shadow br-black text-center text-xl py-2 px-6 rounded-lg hover:bg-black-400 hover:shadow-lg desktop:text:base desktop:px-0 desktop:w-2/3"
+								933EFF electricViolet
+								hover:bg-electricViolet hover:text-white
+
+							*/}
             </li>
-          </Link>
-          <Link to="/profile" onClick={inHeader ? () => setOpen(!open) : null}>
-            <li className="flex  py-4 pl-6">
+          </NavLink>
+          <NavLink to="/profile" onClick={inHeader ? () => setOpen(!open) : null}>
+            <li className="flex pl-6">
               <svg
                 className="mr-4"
                 width="20"
@@ -100,7 +106,7 @@ export default function NavComponent(props) {
               </svg>
               <span className="uppercase">Profile</span>
             </li>
-          </Link>
+          </NavLink>
         </ul>
         {/* LOGOUT BUTTON */}
         <div className="flex justify-center mt-6">
