@@ -4,6 +4,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
 import Icon from '../components/icon';
+import SVGIcon from '../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
 
@@ -165,16 +166,24 @@ const Profile = ({ location, navigate }) => {
                   <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                     Preferred Contact
                   </h2>
-                  <div className="flex mt-3 text-xl">
-                    <div style={iconSizing}>
-                      <a
-                        className="ml-4 text-blue-500"
-                        href={preferredContact.value}
-                        target="_blank"
-                      >
-                        <Icon type={preferredContact.type} size={32} />
-                      </a>
-                    </div>
+                  <div className="flex text-base items-end">
+                    <a
+                      className="text-blue-500 hover:text-blue-800 duration-200 mr-2"
+                      href={
+                        preferredContact.type == 'EMAIL'
+                          ? `mailto:${preferredContact.value}`
+                          : preferredContact.value
+                      }
+                      target="_blank"
+                    >
+                      <SVGIcon
+                        type={preferredContact.type}
+                        size={'1.75rem'}
+                        divClass={'flex items-center content-center'}
+                        classes={'h-full truncate'}
+                      />
+                    </a>
+                    <span> {preferredContact.value}</span>
                   </div>
                 </section>
               )}
@@ -183,21 +192,22 @@ const Profile = ({ location, navigate }) => {
                 <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Contact Methods
                 </h2>
-                <div className="flex flex-no-wrap ml-2">
+                <div className="flex flex-no-wrap ">
                   {contacts.length ? (
                     contacts.map((field) => {
                       return (
-                        <div className="p-2">
-                          <a
-                            className="ml-4"
-                            href={field.type == 'EMAIL' ? `mailto:${field.value}` : field.value}
-                            target="_blank"
-                          >
-                            <div style={iconSizing}>
-                              <Icon type={field.type} size={50} />
-                            </div>
-                          </a>
-                        </div>
+                        <a
+                          className="text-blue-500 hover:text-blue-800 duration-200 mr-8"
+                          href={field.type == 'EMAIL' ? `mailto:${field.value}` : field.value}
+                          target="_blank"
+                        >
+                          <SVGIcon
+                            type={field.type}
+                            size={'1.75rem'}
+                            divClass={'flex items-center content-center'}
+                            classes={'h-full truncate'}
+                          />
+                        </a>
                       );
                     })
                   ) : viewingContact ? (
