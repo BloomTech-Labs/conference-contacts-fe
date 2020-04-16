@@ -10,11 +10,6 @@ import { useAuth0 } from './react-auth0-spa';
 
 // component imports
 import MainRouter from './components/MainRouter/MainRouter';
-//import Pages from './pages';
-//import Landing from './pages/landing';
-
-// react loading animation
-//import BeatLoader from 'react-spinners/BeatLoader';
 
 // App component Start
 export default function App(props) {
@@ -45,16 +40,6 @@ export default function App(props) {
       await createQRCode({ variables: { label: 'homepage' } });
     }
   };
-
-  // make gql query
-  const query = gql`
-    query IsUserLoggedIn {
-      isLoggedIn
-    }
-  `;
-
-  // CALL query to get if user is logged in
-  const data = client.readQuery({ query });
 
   // isLoggedIn set to True
   const isLoggedInStateHandler = () => {
@@ -98,18 +83,9 @@ export default function App(props) {
   }, [user]);
 
   return(
+
+    // Router Component
     <MainRouter trackUserCreation={trackUserCreation} />
+
   );
-  // if (data.isLoggedIn && trackUserCreation) {
-  //   return <Pages />;
-  // } else if (data.isLoggedIn && !trackUserCreation) {
-  //   return (
-  //     <div className="flex justify-center h-screen items-center">
-  //       <BeatLoader size={35} loading={!trackUserCreation} color="#7B41FF" />
-  //     </div>
-  //   );
-  // } else {
-  //   return <Landing />;
-  // }
-  // return data.isLoggedIn ? <Pages qr={qrCode} /> : <Landing qr={qrCode} />;
 }

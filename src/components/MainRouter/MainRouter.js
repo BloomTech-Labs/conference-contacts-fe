@@ -4,10 +4,10 @@ import { useApolloClient } from '@apollo/react-hooks';
 import {Router} from '@reach/router';
 
 //components
-import PrivateRoute from './PrivateRoute';
+import LoggedInRoute from './LoggedInRoute';
 import Pages from '../../pages';
-import Landing from '../../pages/landing';
 import PublicProfile from '../PublicProfile/PublicProfile';
+
 
 const MainRouter = ({trackUserCreation}) => {
     // make gql query
@@ -25,9 +25,9 @@ const MainRouter = ({trackUserCreation}) => {
     return(
         <>
         <Router>
-            <Landing path='/landing'/>
-            <PrivateRoute path='/' data={data.isLoggedIn}  trackUserCreation={trackUserCreation} component={Pages} /> 
-            <PublicProfile path='/profile/:id'/>
+            {/* Private Route */}
+            <LoggedInRoute path='/*' data={data.isLoggedIn}  trackUserCreation={trackUserCreation} component={Pages} /> 
+            <PublicProfile path='/user/profile/:id'/>
         </Router>
         </>
     );
