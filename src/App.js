@@ -10,11 +10,11 @@ import { useAuth0 } from './react-auth0-spa';
 
 // component imports
 import MainRouter from './components/MainRouter/MainRouter';
-import Pages from './pages';
-import Landing from './pages/landing';
+//import Pages from './pages';
+//import Landing from './pages/landing';
 
 // react loading animation
-import BeatLoader from 'react-spinners/BeatLoader';
+//import BeatLoader from 'react-spinners/BeatLoader';
 
 // App component Start
 export default function App(props) {
