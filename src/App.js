@@ -9,6 +9,7 @@ import { CREATE_QRCODE } from './queries/index';
 import { useAuth0 } from './react-auth0-spa';
 
 // component imports
+import MainRouter from './components/MainRouter/MainRouter';
 import Pages from './pages';
 import Landing from './pages/landing';
 
@@ -96,16 +97,19 @@ export default function App(props) {
     }
   }, [user]);
 
-  if (data.isLoggedIn && trackUserCreation) {
-    return <Pages />;
-  } else if (data.isLoggedIn && !trackUserCreation) {
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <BeatLoader size={35} loading={!trackUserCreation} color="#7B41FF" />
-      </div>
-    );
-  } else {
-    return <Landing />;
-  }
+  return(
+    <MainRouter trackUserCreation={trackUserCreation} />
+  );
+  // if (data.isLoggedIn && trackUserCreation) {
+  //   return <Pages />;
+  // } else if (data.isLoggedIn && !trackUserCreation) {
+  //   return (
+  //     <div className="flex justify-center h-screen items-center">
+  //       <BeatLoader size={35} loading={!trackUserCreation} color="#7B41FF" />
+  //     </div>
+  //   );
+  // } else {
+  //   return <Landing />;
+  // }
   // return data.isLoggedIn ? <Pages qr={qrCode} /> : <Landing qr={qrCode} />;
 }

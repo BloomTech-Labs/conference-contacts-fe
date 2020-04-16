@@ -1,20 +1,33 @@
 import React from 'react';
+import {gql} from 'apollo-boost';
+import { useApolloClient } from '@apollo/react-hooks';
 import {Router} from '@reach/router';
 
 //components
 import PrivateRoute from './PrivateRoute';
 import Pages from '../../pages';
 import Landing from '../../pages/landing';
+import PublicProfile from '../PublicProfile/PublicProfile';
 
+const MainRouter = ({trackUserCreation}) => {
+    // make gql query
+    const query = gql`
+    query IsUserLoggedIn {
+        isLoggedIn
+    }`;
 
-const MainRouter = () => {
+    // access apollo client
+    const client = useApolloClient();
+
+    // CALL query to get if user is logged in
+    const data = client.readQuery({ query });
+    
     return(
         <>
         <Router>
-            <PrivateRoute path='/'>
-                <Pages path='/*' />
-            </PrivateRoute>
-            <Landing default/>
+            <Landing path='/landing'/>
+            <PrivateRoute path='/' data={data.isLoggedIn}  trackUserCreation={trackUserCreation} component={Pages} /> 
+            <PublicProfile path='/profile/:id'/>
         </Router>
         </>
     );
