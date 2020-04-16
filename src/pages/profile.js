@@ -166,9 +166,9 @@ const Profile = ({ location, navigate }) => {
                   <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                     Preferred Contact
                   </h2>
-                  <div className="flex text-base items-end">
+                  <div className="text-base">
                     <a
-                      className="text-blue-500 hover:text-blue-800 duration-200 mr-2"
+                      className="flex text-blue-500 hover:text-blue-800 duration-200 w-full"
                       href={
                         preferredContact.type == 'EMAIL'
                           ? `mailto:${preferredContact.value}`
@@ -180,10 +180,10 @@ const Profile = ({ location, navigate }) => {
                         type={preferredContact.type}
                         size={'1.75rem'}
                         divClass={'flex items-center content-center'}
-                        classes={'h-full truncate'}
+                        classes={'h-full truncate mr-2'}
                       />
+                      <span className="self-end"> {preferredContact.value}</span>
                     </a>
-                    <span> {preferredContact.value}</span>
                   </div>
                 </section>
               )}
