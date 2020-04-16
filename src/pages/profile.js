@@ -192,13 +192,22 @@ const Profile = ({ location, navigate }) => {
                 <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
                   Contact Methods
                 </h2>
+                {/* loop through links and check what they are to construct the correct anchor href */}
                 <div className="flex flex-no-wrap ">
                   {contacts.length ? (
                     contacts.map((field) => {
                       return (
                         <a
                           className="text-blue-500 hover:text-blue-800 duration-200 mr-8"
-                          href={field.type == 'EMAIL' ? `mailto:${field.value}` : field.value}
+                          href={
+                            field.type == 'EMAIL'
+                              ? `mailto:${field.value}`
+                              : field.type == 'PHONE'
+                              ? `tel:${field.value}`
+                              : field.type == 'SMS'
+                              ? `sms:${field.value}`
+                              : ''
+                          }
                           target="_blank"
                         >
                           <SVGIcon
