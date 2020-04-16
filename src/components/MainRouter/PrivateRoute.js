@@ -1,23 +1,28 @@
 import React from 'react';
-
+import { Redirect } from '@reach/router';
 // auth0 imports
-import { useAuth0 } from '../../react-auth0-spa';
 
+// react loading animation
+import BeatLoader from 'react-spinners/BeatLoader';
 import Landing from '../../pages/landing';
 
-const PrivateRoute = (props) => {
-    
-    // access to useAuth0
-    const { isAuthenticated } = useAuth0();
 
-    console.log(isAuthenticated);
 
-    if(isAuthenticated){
-        return props.children
-    }else{
-       return <Landing  path='/*' />
-    }
+const PrivateRoute = ({component: Component, ...rest}) => {
 
+    return(
+        <>
+            {(rest.data && !rest.trackUserCreation) &&
+                <div className="flex justify-center h-screen items-center">
+                    <BeatLoader size={35} loading={!rest.trackUserCreation} color="#7B41FF" />
+                </div>
+             }
+
+            {(rest.data && rest.trackUserCreation)   
+                ? <Component {...rest} /> 
+                : <Landing />
+            }
+        </>
+    )
 }
-
 export default PrivateRoute;
