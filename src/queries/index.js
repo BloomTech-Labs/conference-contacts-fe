@@ -231,6 +231,9 @@ export const FETCH_USER_PROFILE = gql`
         privacy
         preferredContact
       }
+      connections {
+        id
+      }
     }
   }
 `;
