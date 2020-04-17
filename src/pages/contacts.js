@@ -128,7 +128,7 @@ const Contacts = ({ navigate }) => {
           </p>
         </div>
         <div>
-          <DrpBtn connections={connections} />
+          <DrpBtn connections={connections} navigate={navigate} />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alphabetical, Recent } from '../components/contactList';
 
-const DrpBtn = ({ connections }) => {
+const DrpBtn = ({ connections, navigate }) => {
   console.log({ connections });
   const [sortBy, setSortBy] = useState('alphabetical');
 
@@ -11,7 +11,7 @@ const DrpBtn = ({ connections }) => {
 
   return (
     <div>
-      <div class="inline-block relative w-24 h-10 float-right -mt-11">
+      <div class="inline-block relative w-24 h-8 float-right -mt-11">
         <select
           value={sortBy}
           class="block appearance-none w-full h-8 border border-gray-400 hover:border-gray-500 px-1 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
@@ -27,9 +27,9 @@ const DrpBtn = ({ connections }) => {
         </div>
       </div>
       {sortBy === 'recent' ? (
-        <Recent connections={connections} />
+        <Recent connections={connections} navigate={navigate} />
       ) : (
-        <Alphabetical connections={connections} />
+        <Alphabetical connections={connections} navigate={navigate} />
       )}
     </div>
   );
