@@ -29,7 +29,7 @@ export default function NavComponent(props) {
               src={data.user.picture}
               alt={`avatar of ${data.user.name}`}
             />
-            <p className="py-6 text-2xl desktop:text-base text-center">{data.user.name}</p>
+            <p className="py-6 text-2xl desktop:text-lg text-center">{data.user.name}</p>
           </div>
           {qrcData && (
             <div className="flex justify-center">
