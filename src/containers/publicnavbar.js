@@ -8,15 +8,9 @@ import { NAVBAR_PROFILE } from '../queries/index';
 import ErrorPage from '../pages/errorpage';
 import PublicNav from '../components/publicnavcomponent';
 
-export default function PublicNavBar({ inHeader, qr }) {
+export default function PublicNavBar({ inHeader }) {
   const [open, setOpen] = useState(false);
 
-  // const qrcData = localStorage.getItem('qrCode');
-  // const inDevelopment =
-  //   process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
-
-const client = useApolloClient();
-  const { logout } = useAuth0();
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
 
   if (loading || !data) return null;

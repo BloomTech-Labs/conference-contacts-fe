@@ -8,7 +8,7 @@ export default function ConnectionCount () {
     return (
         <div>
             {/* Counts the number of connections a user has */}
-            <div className="flex">
+            <div className="flex self-center text-sm">
                     <svg
                     className=""
                     width="25"

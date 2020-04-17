@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Popup from 'reactjs-popup';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { FETCH_USER_PROFILE, FETCH_HOME_USER, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../../queries/index';
@@ -27,17 +27,18 @@ const PublicProfile = () => {
 
       
     return (
-      // public profile page
-      <div className="pb-6  mt-24">
-        {/* <div className="public-card pb-4 bg-white mx-6 desktop:mx-auto shadow-md overflow-hidden desktop:w-4/5"> */}
-        <div className="public-card pb-4 bg-white mx-6 desktop:mx-auto shadow-md overflow-hidden desktop:w-1/2">
-           <PublicNavBar inHeader={true} />
-          <div className="pt-5 flex flex-col overflow-hidden px-6 pb-8">
-            <div className="">
+      <Fragment>
+          <PublicNavBar inHeader={true} />
+          {/* public profile page */}
+      <div className="pb-6  mt-24 ">
+        <div className="flex pb-4 mt-8 bg-white mx-6 desktop:mx-auto overflow-hidden desktop:w-11/12">
+           <PublicNavBar inHeader={false} />
+          <div className="container pt-5 flex flex-col overflow-hidden px-6 -mt-8 desktop:ml-8">
+            <div className="p-0 flex flex-col">
               {/* IMG ROUND LARGE */}
-              <div className={`self-end -mt-16 -mr-12 desktop:m-0 ${data.user.id}`}>
+              <div className="self-end -mr-8 mb-4">
                 <img
-                  className="rounded-full shadow-lg w-96 h-96 object-cover "
+                  className="rounded-full shadow-lg object-cover "
                   src={data.user.picture}
                   alt={`profile picuture of ${data.user.name}`}
                 />
@@ -45,7 +46,7 @@ const PublicProfile = () => {
   
               <div className="flex flex-col pl-0 m-0">
                 {/* name */}
-                <section className="mt-12">
+                <section className="">
                   <div className="flex justify-between items-center">
                     <h5 className="text-2xl">{data.user.name}</h5>
                   </div>
@@ -81,14 +82,19 @@ const PublicProfile = () => {
                   </section>
                 )}
               </div>
-              <div className="mt-4">
+              <div className="my-4">
                 <ConnectionCount />
               </div>
             </div>
-          <button className="bg-purple-700 text-white w-1/2">Send Request</button>
+            <div className="bg-gray-300 -mx-6">
+                <div className="flex justify-center">
+                    <button className="mobile:w-2/3 rounded-full my-12 px-16 bg-purple-700 text-white w-2/5 py-1">Send Request</button>
+                </div>
+            </div>
           </div>
         </div>
       </div>
+      </Fragment>
     );
 }
 
