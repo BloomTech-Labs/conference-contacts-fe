@@ -104,7 +104,7 @@ export default function InputsComponent({
           value={fields.tagline || ''}
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 pb-24">
         <label
           className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg"
           htmlFor="bio"
