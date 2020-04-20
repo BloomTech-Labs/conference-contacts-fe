@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from '@reach/router';
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
@@ -8,6 +8,15 @@ const QRC = React.memo(QRCode);
 export default function NavComponent(props) {
   const { open, setOpen, inHeader, qrLink, qrcData, handleLogout, data, isCurrent } = props;
 
+  // const [copySuccess, setCopySuccess] = useState('');
+
+  // const source = document.querySelector('div.source');
+  // source.addEventListener('copy', (e) => {
+  //   const selection = document.getSelection();
+  //   e.clipboardData.setData('text/plain', selection.toString());
+  //   e.preventDefault()
+  // })
+ 
   return (
     <nav
       className={
@@ -44,6 +53,16 @@ export default function NavComponent(props) {
               </span>
             </div>
           )}
+          {/* personal link information */}
+          {/* <div>
+            {document.queryCommandSupported('copy') && 
+            <div>
+              <button onClick={source}>Copy</button>{copySuccess}</div>}
+              <NavLink to='/public-profile/${data.user.id}' onClick={source}>http://swaap.co/profile/{data.user.id}</NavLink>
+          </div>
+          </div> */}
+          <div>Share Your Link!</div>
+          <NavLink to='/public-profile/${data.user.id}'>http://swaap.co/public-profile/{data.user.id}</NavLink>
         </div>
         <ul className="mt-8">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>
