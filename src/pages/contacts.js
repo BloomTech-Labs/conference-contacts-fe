@@ -9,45 +9,67 @@ import { AtoZ, Recent, ContactList } from '../components/contactList';
 import ErrorPage from './errorpage';
 
 const Contacts = ({ navigate }) => {
-  let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
-  const [name, setName] = useState('');
+	let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+	const [name, setName] = useState('');
 
   const handleSearch = (e) => {
     setName(e.target.value);
   };
 
-  if (loading || !data)
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <BeatLoader size={35} loading={loading} color="#7B41FF" />
-      </div>
-    );
+	if (loading || !data)
+		return (
+			<div className="flex justify-center h-screen items-center">
+				<BeatLoader size={35} loading={loading} color="#7B41FF" />
+			</div>
+		);
 
-  if (error) return <ErrorPage />;
+	if (error) return <ErrorPage />;
 
-  let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
-    const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
-    return acc.concat({ ...cur, contact });
-  }, []);
+	let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
+		const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
+		return acc.concat({ ...cur, contact });
+	}, []);
 
-  pendingConnections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
+	pendingConnections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
 
-  let connections = data.user.connections.reduce((acc, cur) => {
-    const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
-    return acc.concat({ ...cur, contact });
-  }, []);
+	let connections = data.user.connections.reduce((acc, cur) => {
+		const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
+		return acc.concat({ ...cur, contact });
+	}, []);
 
-  // connections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
+  connections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
 
-  if (name?.length > 0) {
-    const pattern = new RegExp(name, 'i');
-    pendingConnections = pendingConnections.filter(
-      (c) => c.contact.name?.match(pattern) || c.contact.industry?.match(pattern)
-    );
-    connections = connections.filter(
-      (c) => c.contact.name?.match(pattern) || c.contact.industry?.match(pattern)
-    );
-  }
+	if (name?.length > 0) {
+		const pattern = new RegExp(name, 'i');
+		pendingConnections = pendingConnections.filter(
+			c =>
+				c.contact.name?.match(pattern) ||
+				c.contact.industry?.match(pattern) ||
+				c.contact.jobtitle?.match(pattern) ||
+				c.contact.location?.match(pattern) ||
+				c.contact.tagline?.match(pattern) ||
+				c.contact.bio?.match(pattern) ||
+				(c.contact.profile.length > 0 && c.contact.profile[0].value.match(pattern)) ||
+				(c.contact.profile.length > 1 && c.contact.profile[1].value.match(pattern)) ||
+				(c.contact.profile.length > 2 && c.contact.profile[2].value.match(pattern)) ||
+				(c.contact.profile.length > 3 && c.contact.profile[3].value.match(pattern)) ||
+				(c.contact.profile.length > 4 && c.contact.profile[4].value.match(pattern))
+		);
+		connections = connections.filter(
+			c =>
+				c.contact.name?.match(pattern) ||
+				c.contact.industry?.match(pattern) ||
+				c.contact.jobtitle?.match(pattern) ||
+				c.contact.location?.match(pattern) ||
+				c.contact.tagline?.match(pattern) ||
+				c.contact.bio?.match(pattern) ||
+				(c.contact.profile.length > 0 && c.contact.profile[0].value.match(pattern)) ||
+				(c.contact.profile.length > 1 && c.contact.profile[1].value.match(pattern)) ||
+				(c.contact.profile.length > 2 && c.contact.profile[2].value.match(pattern)) ||
+				(c.contact.profile.length > 3 && c.contact.profile[3].value.match(pattern)) ||
+				(c.contact.profile.length > 4 && c.contact.profile[4].value.match(pattern))
+		);
+	}
 
   return (
     <div className="pb-6  mt-24">
