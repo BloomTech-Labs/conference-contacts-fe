@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Popup from 'reactjs-popup';
+import { useParams, useNavigate } from '@reach/router';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { FETCH_USER_PROFILE, FETCH_HOME_USER, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../../queries/index';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
@@ -8,15 +9,23 @@ import BeatLoader from 'react-spinners/BeatLoader';
 //components
 import ConnectionCount from '../PublicProfile/ConnectionCount';
 import PublicNavBar from '../../containers/publicnavbar';
-import AddButton from './AddButton';
+import AddButton from './AddButton/AddButton';
 
 const iconSizing = {
     transform: 'scale(1.5)',
   };
 
-const PublicProfile = () => {
-    const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
+const PublicProfile = ({location, navigate}) => {
 
+  //Reach Router Hooks.
+  const params = useParams();
+  const navigateURL = useNavigate();
+
+  console.log(location)
+
+  //fetch profile id 
+    const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
+  
     if (loading || !data)
       return (
         <div className="flex justify-center h-screen items-center">
@@ -26,7 +35,7 @@ const PublicProfile = () => {
     if (error) return <p>There was an error: {error}</p>;
 
     const preferredContact = data.user.profile.find((field) => field.preferredContact);
-
+    
       
     return (
       <Fragment>
@@ -84,12 +93,12 @@ const PublicProfile = () => {
                   </section>
                 )}
               </div>
-              <div className="my-4">
+              {/* <div className="my-4">
                 <ConnectionCount />
-              </div>
+              </div> */}
             </div>
             <div className="bg-gray-300 -mx-6">
-                <AddButton />
+                <AddButton  params={params} navigate={navigate} />
             </div>
           </div>
         </div>
