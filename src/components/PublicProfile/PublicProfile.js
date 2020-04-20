@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Popup from 'reactjs-popup';
-import { useParams, useNavigate } from '@reach/router';
+import { useParams } from '@reach/router';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { FETCH_USER_PROFILE, FETCH_HOME_USER, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../../queries/index';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
@@ -11,21 +11,15 @@ import ConnectionCount from '../PublicProfile/ConnectionCount';
 import PublicNavBar from '../../containers/publicnavbar';
 import AddButton from './AddButton/AddButton';
 
-const iconSizing = {
-    transform: 'scale(1.5)',
-  };
+const PublicProfile = () => {
+    const params = useParams();
 
-const PublicProfile = ({location, navigate}) => {
+    console.log(params.id)
 
-  //Reach Router Hooks.
-  const params = useParams();
-  const navigateURL = useNavigate();
+    const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
+      variables: { id: params.id }
+    });
 
-  console.log(location)
-
-  //fetch profile id 
-    const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
-  
     if (loading || !data)
       return (
         <div className="flex justify-center h-screen items-center">
@@ -47,7 +41,7 @@ const PublicProfile = ({location, navigate}) => {
           <div className="container pt-5 flex flex-col overflow-hidden px-6 -mt-8 desktop:ml-8">
             <div className="p-0 flex flex-col">
               {/* IMG ROUND LARGE */}
-              <div className="self-end -mr-8 mb-4">
+              <div className={`self-end -mr-8 mb-4`} >
                 <img
                   className="rounded-full shadow-lg object-cover "
                   src={data.user.picture}
@@ -98,7 +92,7 @@ const PublicProfile = ({location, navigate}) => {
               </div> */}
             </div>
             <div className="bg-gray-300 -mx-6">
-                <AddButton  params={params} navigate={navigate} />
+                <AddButton  params={params}  />
             </div>
           </div>
         </div>
