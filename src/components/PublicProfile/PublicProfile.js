@@ -5,8 +5,10 @@ import { FETCH_USER_PROFILE, FETCH_HOME_USER, DELETE_CONNECTION, GET_USER_CONNEC
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
+//components
 import ConnectionCount from '../PublicProfile/ConnectionCount';
 import PublicNavBar from '../../containers/publicnavbar';
+import AddButton from './AddButton';
 
 const iconSizing = {
     transform: 'scale(1.5)',
@@ -87,9 +89,7 @@ const PublicProfile = () => {
               </div>
             </div>
             <div className="bg-gray-300 -mx-6">
-                <div className="flex justify-center">
-                    <button className="mobile:w-2/3 rounded-full my-12 px-16 bg-purple-700 text-white w-2/5 py-1">Send Request</button>
-                </div>
+                <AddButton />
             </div>
           </div>
         </div>
