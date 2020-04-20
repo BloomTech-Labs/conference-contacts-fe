@@ -2,56 +2,80 @@ import React, { useState } from 'react';
 import { GET_USER_CONNECTIONS } from '../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 import BeatLoader from 'react-spinners/BeatLoader';
+import DrpBtn from '../components/dropButton';
+import { AtoZ, Recent, ContactList } from '../components/contactList';
 
 // import components
 import ErrorPage from './errorpage';
 
 const Contacts = ({ navigate }) => {
-  let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
-  const [name, setName] = useState('');
+	let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+	const [name, setName] = useState('');
 
-  const handleSearch = e => {
+  const handleSearch = (e) => {
     setName(e.target.value);
   };
 
-  if (loading || !data)
-    return (
-      <div className="flex justify-center h-screen items-center">
-        <BeatLoader size={35} loading={loading} color="#7B41FF" />
-      </div>
-    );
+	if (loading || !data)
+		return (
+			<div className="flex justify-center h-screen items-center">
+				<BeatLoader size={35} loading={loading} color="#7B41FF" />
+			</div>
+		);
 
-  if (error) return <ErrorPage />;
+	if (error) return <ErrorPage />;
 
-  let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
-    const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
-    return acc.concat({ ...cur, contact });
-  }, []);
+	let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
+		const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
+		return acc.concat({ ...cur, contact });
+	}, []);
 
-  pendingConnections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
+	pendingConnections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
 
-  let connections = data.user.connections.reduce((acc, cur) => {
-    const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
-    return acc.concat({ ...cur, contact });
-  }, []);
+	let connections = data.user.connections.reduce((acc, cur) => {
+		const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
+		return acc.concat({ ...cur, contact });
+	}, []);
 
   connections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
 
-  if (name?.length > 0) {
-    const pattern = new RegExp(name, 'i');
-    pendingConnections = pendingConnections.filter(
-      c => c.contact.name?.match(pattern) || c.contact.industry?.match(pattern)
-    );
-    connections = connections.filter(
-      c => c.contact.name?.match(pattern) || c.contact.industry?.match(pattern)
-    );
-  }
+	if (name?.length > 0) {
+		const pattern = new RegExp(name, 'i');
+		pendingConnections = pendingConnections.filter(
+			c =>
+				c.contact.name?.match(pattern) ||
+				c.contact.industry?.match(pattern) ||
+				c.contact.jobtitle?.match(pattern) ||
+				c.contact.location?.match(pattern) ||
+				c.contact.tagline?.match(pattern) ||
+				c.contact.bio?.match(pattern) ||
+				(c.contact.profile.length > 0 && c.contact.profile[0].value.match(pattern)) ||
+				(c.contact.profile.length > 1 && c.contact.profile[1].value.match(pattern)) ||
+				(c.contact.profile.length > 2 && c.contact.profile[2].value.match(pattern)) ||
+				(c.contact.profile.length > 3 && c.contact.profile[3].value.match(pattern)) ||
+				(c.contact.profile.length > 4 && c.contact.profile[4].value.match(pattern))
+		);
+		connections = connections.filter(
+			c =>
+				c.contact.name?.match(pattern) ||
+				c.contact.industry?.match(pattern) ||
+				c.contact.jobtitle?.match(pattern) ||
+				c.contact.location?.match(pattern) ||
+				c.contact.tagline?.match(pattern) ||
+				c.contact.bio?.match(pattern) ||
+				(c.contact.profile.length > 0 && c.contact.profile[0].value.match(pattern)) ||
+				(c.contact.profile.length > 1 && c.contact.profile[1].value.match(pattern)) ||
+				(c.contact.profile.length > 2 && c.contact.profile[2].value.match(pattern)) ||
+				(c.contact.profile.length > 3 && c.contact.profile[3].value.match(pattern)) ||
+				(c.contact.profile.length > 4 && c.contact.profile[4].value.match(pattern))
+		);
+	}
 
   return (
     <div className="pb-6  mt-24">
       <div className="flex justify-center items-center mb-6">
         <div className="m-auto">
-          <p className="text-2xl">Contacts</p>
+          <p className="text-2xl">CONTACTS</p>
         </div>
       </div>
       <div className="mx-4 flex items-center border-black">
@@ -75,27 +99,13 @@ const Contacts = ({ navigate }) => {
           value={name}
           onChange={handleSearch}
         />
-        <div className="absolute pr-6 top-20 right-0">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.9688 3H3.75C3.33516 3 3 3.33516 3 3.75V10.9688C3 11.0719 3.08437 11.1562 3.1875 11.1562H10.9688C11.0719 11.1562 11.1562 11.0719 11.1562 10.9688V3.1875C11.1562 3.08437 11.0719 3 10.9688 3ZM9.65625 9.65625H4.5V4.5H9.65625V9.65625ZM6.42188 7.92188H7.73438C7.8375 7.92188 7.92188 7.8375 7.92188 7.73438V6.42188C7.92188 6.31875 7.8375 6.23438 7.73438 6.23438H6.42188C6.31875 6.23438 6.23438 6.31875 6.23438 6.42188V7.73438C6.23438 7.8375 6.31875 7.92188 6.42188 7.92188ZM10.9688 12.8438H3.1875C3.08437 12.8438 3 12.9281 3 13.0312V20.25C3 20.6648 3.33516 21 3.75 21H10.9688C11.0719 21 11.1562 20.9156 11.1562 20.8125V13.0312C11.1562 12.9281 11.0719 12.8438 10.9688 12.8438ZM9.65625 19.5H4.5V14.3438H9.65625V19.5ZM6.42188 17.7656H7.73438C7.8375 17.7656 7.92188 17.6812 7.92188 17.5781V16.2656C7.92188 16.1625 7.8375 16.0781 7.73438 16.0781H6.42188C6.31875 16.0781 6.23438 16.1625 6.23438 16.2656V17.5781C6.23438 17.6812 6.31875 17.7656 6.42188 17.7656ZM20.25 3H13.0312C12.9281 3 12.8438 3.08437 12.8438 3.1875V10.9688C12.8438 11.0719 12.9281 11.1562 13.0312 11.1562H20.8125C20.9156 11.1562 21 11.0719 21 10.9688V3.75C21 3.33516 20.6648 3 20.25 3ZM19.5 9.65625H14.3438V4.5H19.5V9.65625ZM16.2656 7.92188H17.5781C17.6812 7.92188 17.7656 7.8375 17.7656 7.73438V6.42188C17.7656 6.31875 17.6812 6.23438 17.5781 6.23438H16.2656C16.1625 6.23438 16.0781 6.31875 16.0781 6.42188V7.73438C16.0781 7.8375 16.1625 7.92188 16.2656 7.92188ZM20.8125 12.8438H19.6875C19.5844 12.8438 19.5 12.9281 19.5 13.0312V16.1719H17.6719V13.0312C17.6719 12.9281 17.5875 12.8438 17.4844 12.8438H13.0312C12.9281 12.8438 12.8438 12.9281 12.8438 13.0312V20.8125C12.8438 20.9156 12.9281 21 13.0312 21H14.1562C14.2594 21 14.3438 20.9156 14.3438 20.8125V15.0938H16.1719V17.4844C16.1719 17.5875 16.2563 17.6719 16.3594 17.6719H20.8125C20.9156 17.6719 21 17.5875 21 17.4844V13.0312C21 12.9281 20.9156 12.8438 20.8125 12.8438ZM17.4844 19.5H16.3594C16.2563 19.5 16.1719 19.5844 16.1719 19.6875V20.8125C16.1719 20.9156 16.2563 21 16.3594 21H17.4844C17.5875 21 17.6719 20.9156 17.6719 20.8125V19.6875C17.6719 19.5844 17.5875 19.5 17.4844 19.5ZM20.8125 19.5H19.6875C19.5844 19.5 19.5 19.5844 19.5 19.6875V20.8125C19.5 20.9156 19.5844 21 19.6875 21H20.8125C20.9156 21 21 20.9156 21 20.8125V19.6875C21 19.5844 20.9156 19.5 20.8125 19.5Z"
-              fill="black"
-            />
-          </svg>
-        </div>
       </div>
       <div className="mt-6">
         <div className="bg-gray-300 py-2">
-          <strong className="ml-4">Pending</strong>
+          <strong className="ml-4">PENDING</strong>
         </div>
         {pendingConnections.length ? (
-          pendingConnections.map(connection => (
+          pendingConnections.map((connection) => (
             <button
               key={connection.id}
               onClick={() =>
@@ -104,8 +114,8 @@ const Contacts = ({ navigate }) => {
                     userId: connection.contact.id,
                     connectionId: connection.id,
                     location: connection.location,
-                    status: 'PENDING'
-                  }
+                    status: 'PENDING',
+                  },
                 })
               }
               className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
@@ -118,7 +128,14 @@ const Contacts = ({ navigate }) => {
                 />
               </div>
               <div className="flex flex-col items-start">
-                <span>{connection.contact.name}</span>
+                <span>
+                  {connection.contact.name}
+                  {connection.receiver.id === connection.contact.id ? (
+                    <small> (Sent)</small>
+                  ) : (
+                    <small> (Received)</small>
+                  )}
+                </span>
                 <small>{connection.contact.industry}</small>
               </div>
             </button>
@@ -126,41 +143,15 @@ const Contacts = ({ navigate }) => {
         ) : (
           <p className="ml-4 my-2">None</p>
         )}
-        <div className="bg-gray-300 py-2">
-          <strong className="ml-4">Connected</strong>
+
+        <div className="flex justify-between items-center bg-gray-300 py-2">
+          <p>
+            <strong className="ml-4">CONNECTED</strong>
+          </p>
         </div>
-        {connections.length > 0 ? (
-          connections.map(connection => (
-            <button
-              key={connection.id}
-              onClick={() =>
-                navigate('/profile', {
-                  state: {
-                    userId: connection.contact.id,
-                    connectionId: connection.id,
-                    location: connection.location,
-                    status: 'CONNECTED'
-                  }
-                })
-              }
-              className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
-            >
-              <div>
-                <img
-                  className="rounded-full w-12 h-12 object-cover mr-6"
-                  src={connection.contact.picture}
-                  alt={connection.contact.name}
-                />
-              </div>
-              <div className="flex flex-col items-start">
-                <span>{connection.contact.name}</span>
-                <small>{connection.contact.industry}</small>
-              </div>
-            </button>
-          ))
-        ) : (
-          <p className="ml-4 my-2">None</p>
-        )}
+        <div>
+          <DrpBtn connections={connections} navigate={navigate} />
+        </div>
       </div>
     </div>
   );
