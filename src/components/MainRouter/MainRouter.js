@@ -27,7 +27,7 @@ const MainRouter = ({trackUserCreation}) => {
         <Router>
             {/* Private Route */}
             <LoggedInRoute path='/*' data={data.isLoggedIn}  trackUserCreation={trackUserCreation} component={Pages} /> 
-            <PublicProfile path='/user/profile/:id'/>
+            <PublicProfile path='/public-profile/:id'/>
         </Router>
         </>
     );
