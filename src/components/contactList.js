@@ -41,7 +41,7 @@ export const Alphabetical = ({ connections, navigate }) => {
 export const Recent = ({ connections, navigate }) => {
   console.log(connections, 'recent');
   return connections.length > 0 ? (
-    [...connections].reverse().map((connection) => (
+    [...connections].map((connection) => (
       <button
         key={connection.id}
         onClick={() =>
