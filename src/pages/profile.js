@@ -7,6 +7,7 @@ import Icon from '../components/icon';
 import SVGIcon from '../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
+import ConnectionMap from '../components/map';
 
 const iconSizing = {
   transform: 'scale(1.5)',
@@ -270,6 +271,9 @@ const Profile = ({ location, navigate }) => {
               <p className=" text-xl">{data.user.bio ? data.user.bio : <span>None</span>}</p>
             </section>
           </div>
+        </div>
+        <div className="flex justify-center">
+          <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
       </div>
