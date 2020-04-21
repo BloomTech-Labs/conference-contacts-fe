@@ -24,10 +24,10 @@ export default function App(props) {
   const [trackUserCreation, setUserCreation] = useState(false);
   const [createQRCode] = useMutation(CREATE_QRCODE, {
     variables: { label: 'homepage' },
-    onCompleted: qrcData => {
+    onCompleted: (qrcData) => {
       localStorage.setItem('qrCode', qrcData.createQRCode.qrcode.id);
       return setQRCode(qrcData.createQRCode.qrcode.id);
-    }
+    },
   });
 
   //function to create a qrCode
@@ -61,9 +61,9 @@ export default function App(props) {
           user: {
             name: user.name,
             picture: user.picture,
-            email: user.email
-          }
-        }
+            email: user.email,
+          },
+        },
       })
       .then(() => {
         // setusercreate
@@ -82,10 +82,8 @@ export default function App(props) {
     }
   }, [user]);
 
-  return(
-
+  return (
     // Router Component
     <MainRouter trackUserCreation={trackUserCreation} />
-
   );
 }
