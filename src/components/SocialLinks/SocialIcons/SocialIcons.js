@@ -11,9 +11,9 @@ const SocialLinks = ({ setLink, link, visibleIcons, setVisibleIcons }) => {
       <CSSTransition in={visibleIcons} classNames="icons" timeout={200} unmountOnExit>
         <div
           id="link-types"
-          className="flex justify-between absolute w-2/4 -mt-10 bg-white p-2 rounded-t-md"
+          className="flex justify-between absolute w-8/12 -mt-10 bg-white p-2 rounded-t-md"
         >
-          {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL'].map((type) => (
+          {['INSTAGRAM', 'LINKEDIN', 'FACEBOOK', 'TWITTER', 'EMAIL', 'PHONE', 'SMS'].map((type) => (
             <SVGIcon
               id={type}
               key={type}
