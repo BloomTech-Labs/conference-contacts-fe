@@ -43,7 +43,9 @@ export default function App(props) {
 
   // isLoggedIn set to True
   const isLoggedInStateHandler = () => {
-    client.writeData({ data: { isLoggedIn: true } });
+    //isProfileId is used to save the public-profile id paramafor usage in the public-profile link. 
+    //see home.js & AddButton component in Public Profile Component - corey
+    client.writeData({ data: { isLoggedIn: true, isProfileId: 'public profile id goes here' } });
   };
 
   // CreateUser mutation, creates a user from auth0 user info

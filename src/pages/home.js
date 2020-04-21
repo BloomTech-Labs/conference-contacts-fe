@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation, useApolloClient } from '@apollo/react-hooks';
 import {
   FETCH_HOME_USER,
   DISMISS_NOTIFICATION,
+  CREATE_CONNECTION,
   ACCEPT_CONNECTION,
-  DELETE_CONNECTION
+  DELETE_CONNECTION,
+  GET_USER_CONNECTIONS
 } from '../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import QRCode from 'qrcode.react';
+import gql from 'graphql-tag';
+
 
 // import pages
 import ErrorPage from './errorpage';
@@ -17,6 +21,7 @@ import UserInfo from '../components/userInfo';
 import ScanQrButton from '../components/scanQrButton';
 import NotificationsComponent from '../components/notificationsComponent';
 import EventsComponent from '../components/eventsComponent';
+import { set } from 'react-ga';
 
 const QRC = React.memo(QRCode);
 
@@ -32,7 +37,19 @@ const Home = ({ qr }) => {
     pollInterval: 3000
   });
 
+  //ApolloCache Client to retrieve profileID
+  //see AddPublicProfileHandler helper function below
+  const client = useApolloClient();
+
+
+  //Use Effect
   useEffect(() => {
+    //calls AddPublicProfileHandler()
+    //This is where the public profile id is checked and added to home user's connections
+    //public profile id comes from the add button located in Public Profile Component
+    AddPublicProfileHandler();
+
+    //gets geolocation data
     navigator.geolocation.getCurrentPosition(position => {
       setPosition(position);
     });
@@ -40,6 +57,21 @@ const Home = ({ qr }) => {
       stopPolling();
     };
   }, [stopPolling]);
+
+  const [createConnection, { loading: newConnectLoading, called }] = useMutation(CREATE_CONNECTION, {
+    update(cache, { data: { createConnection: { connection } } }) {
+      const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      cache.writeQuery({
+        query: GET_USER_CONNECTIONS,
+        data: {
+          user: {
+            ...user,
+            pendingConnections: user.pendingConnections.concat(connection)
+          }
+        }
+      });
+    }
+  });
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
     update(
@@ -108,6 +140,23 @@ const Home = ({ qr }) => {
     }
   });
 
+  //Add Public Profil connection to Home User connections helper function
+  const AddPublicProfileHandler = async () => {
+    //query's the cache to retrieve the saved public profile id from PublicProfile Component
+    const {isProfileId} = await client.readQuery({
+    query: gql`
+        query ReadProfileId {
+          isProfileId @client 
+        }
+      `
+    });
+
+
+    console.log('Home.js: ', newConnectLoading);
+    
+  }
+
+  //React Rendering Logic
   if (loading) {
     return (
       <div className="flex justify-center h-screen items-center">

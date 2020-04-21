@@ -62,7 +62,7 @@ export default function NavComponent(props) {
           </div>
           </div> */}
           <div>Share Your Link!</div>
-          <NavLink to='/public-profile/${data.user.id}'>http://swaap.co/public-profile/{data.user.id}</NavLink>
+          <NavLink className="text-xs" to={`/public-profile/${data.user.id}`}>View Profile</NavLink>
         </div>
         <ul className="mt-8">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>

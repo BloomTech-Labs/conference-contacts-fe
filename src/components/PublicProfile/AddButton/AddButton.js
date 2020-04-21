@@ -1,15 +1,14 @@
 import React from 'react';
-import { useApolloClient, useQuery } from '@apollo/react-hooks';
-import { useParams, useNavigate } from '@reach/router';
+import { useApolloClient } from '@apollo/react-hooks';
+import { useNavigate } from '@reach/router';
 import gql from 'graphql-tag';
 
 
 
-const AddButton  = ({params, navigate}) => {
-    //Reach Router Hook to get params from route
-    // const params = useParams();
+const AddButton  = ({params}) => {
+   
     //Reach Router Hook to navigate to different page
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     
     //ApolloCache Client
     const client = useApolloClient();
@@ -18,24 +17,16 @@ const AddButton  = ({params, navigate}) => {
     const {isLoggedIn} = client.readQuery({
         query: gql`
             query ReadLoggedIn {
-                isLoggedIn
+                isLoggedIn @client
             }
         `
     });
 
-
-
     //Btn OnClickHandler
-    const connectUser = () => {
-        client.writeData({data: {profileId: params.id}});
-        // console.log(params.id);
-        // console.log(client.cache.data);
-        // console.log(isLoggedIn);
-        // console.log(user);
-       
+    const connectUser = async () => {
+        await client.writeData({data: { isProfileId: params.id} });
         navigate('/');
     }
-
 
     return(
         <div className="flex justify-center">
