@@ -35,6 +35,12 @@ context('Body', () => {
 			'Connect-Seamlessly'
 		);
 	});
+	it('does stay in touch feature section div contain an image', () => {
+		cy.get('#root > div > div > .container > .padding-title')
+		cy.get('.mb-20 > img')
+			.should('have.attr', 'src', 'https://i.ibb.co/qBrvpvL/undraw-online-chat-d7ek-1.png')
+			.should('have.attr', 'alt', 'undraw-online-chat-d7ek-1');
+	});
 
 	it('does footer contain "Designed by Swaap"', () => {
 		cy.get('footer');
