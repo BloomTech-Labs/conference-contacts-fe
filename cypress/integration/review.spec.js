@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('FOOTER', () => {
+context('TESTIMONIALS', () => {
 	before(() => {
 		/* 
       cy.login()
@@ -12,8 +12,9 @@ context('FOOTER', () => {
 		cy.clearCookies();
 		cy.visit('http://localhost:3000/');
 	});
+
 	it('contain "Designed by Swaap"', () => {
 		cy.get('footer');
-		cy.get('h5').contains('Designed by Swaap');
+		cy.get('h5').contains('Copyright ©2020 Designed by Swaap');
 	});
 });

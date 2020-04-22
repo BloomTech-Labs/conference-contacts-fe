@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('FOOTER', () => {
+context('TEAM MEMBER PROFILES SECTION', () => {
 	before(() => {
 		/* 
       cy.login()

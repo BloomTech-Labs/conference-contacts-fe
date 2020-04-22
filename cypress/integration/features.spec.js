@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 context('BIG FEATURES', () => {
 	before(() => {
 		/* 
