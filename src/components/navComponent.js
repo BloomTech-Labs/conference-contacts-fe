@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from '@reach/router';
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
@@ -19,14 +19,14 @@ export default function NavComponent(props) {
     isCurrent,
   } = props;
 
-  // const [copySuccess, setCopySuccess] = useState('');
+  const [copySuccess, setCopySuccess] = useState('');
 
-  // const source = document.querySelector('div.source');
-  // source.addEventListener('copy', (e) => {
-  //   const selection = document.getSelection();
-  //   e.clipboardData.setData('text/plain', selection.toString());
-  //   e.preventDefault()
-  // })
+  const source = document.querySelector('div.source');
+  source.addEventListener('copy', (e) => {
+    const selection = document.getSelection();
+    e.clipboardData.setData('text/plain', selection.toString());
+    e.preventDefault()
+  })
  
   return (
     <nav
@@ -66,25 +66,30 @@ export default function NavComponent(props) {
                   />
                 </span>
               </div>
-              <a
+              {/* <a
                 href={qrPubLink}
                 target="_blank"
                 className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
               >
                 Public Profile link
+              </a> */}
+              <a href={`/public-profile/${data.user.id}`} className=" p-0">
+                  <div className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Public Profile link
+                  </div>
               </a>
             </div>
           )}
           {/* personal link information */}
-          {/* <div>
+          <div>
             {document.queryCommandSupported('copy') && 
             <div>
               <button onClick={source}>Copy</button>{copySuccess}</div>}
-              <NavLink to='/public-profile/${data.user.id}' onClick={source}>http://swaap.co/profile/{data.user.id}</NavLink>
+              <NavLink to={`/public-profile/${data.user.id}`} onClick={source}>http://swaap.co/profile/{data.user.id}</NavLink>
           </div>
-          </div> */}
-          <div>Share Your Link!</div>
-          <NavLink to='/public-profile/${data.user.id}'>http://swaap.co/public-profile/{data.user.id}</NavLink>
+          {/* </div> */}
+          {/* <div>Share Your Link!</div>
+          <NavLink to='/public-profile/${data.user.id}'>http://swaap.co/public-profile/{data.user.id}</NavLink> */}
         </div>
         <ul className="mt-8">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>
