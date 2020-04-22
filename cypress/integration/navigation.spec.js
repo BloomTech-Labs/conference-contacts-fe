@@ -13,24 +13,74 @@ context('Navigation', () => {
 		cy.visit('http://localhost:3000/');
 	});
 
-	it('navigates to features page', () => {
-		cy.get('.fill-current').click();
-		cy.get('#menu').contains('Features').click();
-		cy.url().should('include', '/#features');
+	it('loads top left swaap svg', () => {
+		cy.get('#root > div > div > .mx-auto > .px-2 > .mx-auto > nav > .container > svg').should(
+			'have.attr',
+			'width',
+			'70'
+		);
+		cy.get('#root > div > div > .mx-auto > .px-2 > .mx-auto > nav > .container > svg').should(
+			'have.attr',
+			'height',
+			'30'
+		);
+		cy.get('#root > div > div > .mx-auto > .px-2 > .mx-auto > nav > .container > svg').should(
+			'have.attr',
+			'fill',
+			'none'
+		);
+		cy.get('#root > div > div > .mx-auto > .px-2 > .mx-auto > nav > .container > svg')
+			.find('path')
+			.eq(0)
+			.should('have.attr', 'fill', 'url(#paint0_linear)');
+		cy.get('#root > div > div > .mx-auto > .px-2 > .mx-auto > nav > .container > svg')
+			.find('path')
+			.eq(1)
+			.should('have.attr', 'fill', '#000');
 	});
 
-	it('navigates to demo page', () => {
-		cy.get('#menu').contains('Demo').click();
-		cy.url().should('include', '/#demo');
+	it('navigates to features section', () => {
+		cy.get('#menu')
+			.find('nav')
+			.find('ul > li')
+			.eq(0)
+			.find('a')
+			.contains('Features')
+			.should('have.attr', 'href', '#features');
 	});
 
-	it('navigates to reviews page', () => {
-		cy.get('#menu').contains('Reviews').click();
-		cy.url().should('include', '/#reviews');
+	it('navigates to demo section', () => {
+		cy.get('#menu')
+			.find('nav')
+			.find('ul > li')
+			.eq(1)
+			.find('a')
+			.contains('Demo')
+			.should('have.attr', 'href', '#demo');
 	});
+
+	it('navigates to reviews section', () => {
+		cy.get('#menu')
+			.find('nav')
+			.find('ul > li')
+			.eq(2)
+			.find('a')
+			.contains('Reviews')
+			.should('have.attr', 'href', '#reviews');
+	});
+
+	it('navigates to team section', () => {
+		cy.get('#menu')
+			.find('nav')
+			.find('ul > li')
+			.eq(3)
+			.find('a')
+			.contains('Team')
+			.should('have.attr', 'href', '#team');
+	});
+
 	it('navigates to login page', () => {
-		cy.get('.fill-current').click();
-		cy.get('#menu').contains('Sign Up').click();
+		cy.get('#menu').find('nav').find('ul > li').eq(4).find('button').contains('Sign Up').click();
 		// cy.url().should('include', '/contacts');
 	});
 });
