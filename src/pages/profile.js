@@ -9,7 +9,7 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
 
 const iconSizing = {
-  transform: 'scale(1.5)',
+  transform: 'scale(1.1)',
 };
 const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
@@ -65,7 +65,7 @@ const Profile = ({ location, navigate }) => {
           )}
           <div className="flex flex-col desktop:flex-row-reverse justify-between">
             {/* IMG ROUND LARGE */}
-            <div className="self-end -mt-16 -mr-12 desktop:m-0">
+            <div className="self-end -mt-16 -mr-20 desktop:m-0">
               <img
                 className="rounded-full shadow-lg w-96 h-96 object-cover "
                 src={data.user.picture}
@@ -84,7 +84,7 @@ const Profile = ({ location, navigate }) => {
                     <Link to="edit">
                       {/* EDIT ICON */}
                       <svg
-                        className="ml-3"
+                        className="ml-3 mt-6"
                         width="60"
                         height="40"
                         viewBox="0 0 30 30"
@@ -105,7 +105,7 @@ const Profile = ({ location, navigate }) => {
                     <Popup
                       trigger={
                         <button>
-                          <div style={iconSizing}>
+                          <div style={iconSizing} className='mt-8'>
                             <Icon size={60} type="TRASH" />
                           </div>
                         </button>

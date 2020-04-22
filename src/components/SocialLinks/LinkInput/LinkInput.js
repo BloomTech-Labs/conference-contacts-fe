@@ -13,8 +13,8 @@ const LinkInput = (props) => {
       <input
         type="text"
         name="link"
-        placeholder="Enter Account Username or Email"
-        className="w-full border border-r-0 rounded-r-none border-gray-400 rounded p-2 pr-10 z-10"
+        placeholder="Enter Username or Email"
+        className="w-full border border-r-0 rounded-r-none border-gray-400 rounded p-2 pr-10"
         onChange={handleFieldChange}
         value={fields.link || ''}
         //onKeyPress={handleNewLink}
