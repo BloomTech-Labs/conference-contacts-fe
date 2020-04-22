@@ -28,4 +28,9 @@ context('Navigation', () => {
 		cy.get('#menu').contains('Reviews').click();
 		cy.url().should('include', '/#reviews');
 	});
+	it('navigates to login page', () => {
+		cy.get('.fill-current').click();
+		cy.get('#menu').contains('Sign Up').click();
+		// cy.url().should('include', '/contacts');
+	});
 });
