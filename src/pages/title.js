@@ -32,18 +32,18 @@ export default function NavBarLanding() {
           </div>
         </div>
         <div className="flex items-center justify-center flex-wrap mb-20">
+          <div className="w-full md:w-1/2 pl-10">
+              <h4 className="text-3xl text-gray-800 font-bold mb-3">Stay in touch</h4>
+              <p className="text-gray-600 mb-8">
+                Keep all your business contacts in one place with all their important information and
+                preferred form of contact.
+              </p>
+            </div>
           <img
             src="https://i.ibb.co/qBrvpvL/undraw-online-chat-d7ek-1.png"
             alt="undraw-online-chat-d7ek-1"
             border="0"
           ></img>
-          <div className="w-full md:w-1/2 pl-10">
-            <h4 className="text-3xl text-gray-800 font-bold mb-3">Stay in touch</h4>
-            <p className="text-gray-600 mb-8">
-              Keep all your business contacts in one place with all their important information and
-              preferred form of contact.
-            </p>
-          </div>
         </div>
         <div className="flex items-center justify-center flex-wrap mb-20">
           <div className="w-full md:w-1/2 pl-10">

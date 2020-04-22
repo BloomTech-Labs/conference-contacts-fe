@@ -9,7 +9,7 @@ export default function TeamPage() {
       </h2>
 
       <div className="flex flex-wrap">
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -57,7 +57,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Team Leader/Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -103,7 +103,7 @@ export default function TeamPage() {
             {/* </div> */}
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -148,7 +148,7 @@ export default function TeamPage() {
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -194,7 +194,7 @@ export default function TeamPage() {
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -239,7 +239,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -287,7 +287,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -335,7 +335,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -383,7 +383,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -431,7 +431,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -479,7 +479,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">Software Engineer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -524,7 +524,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">IOS Developer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -569,7 +569,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">IOS Developer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-6">
+        <div className="w-64 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               
@@ -617,7 +617,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">IOS Developer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -662,7 +662,7 @@ export default function TeamPage() {
             <p className="text-gray-500 mb-8">UX Designer</p>
           </div>
         </div>
-        <div className="w-full md:w-1/3 px-2 mb-4">
+        <div className="w-64 md:w-1/3 px-2 mb-4">
           <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div className="grid-2 container hovereffect">
               <img
