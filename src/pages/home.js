@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation, useApolloClient } from '@apollo/react-hooks';
 import {
   FETCH_HOME_USER,
   DISMISS_NOTIFICATION,
+  CREATE_CONNECTION,
   ACCEPT_CONNECTION,
   DELETE_CONNECTION,
+  GET_USER_CONNECTIONS
 } from '../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import QRCode from 'qrcode.react';
+import gql from 'graphql-tag';
+
 
 // import pages
 import ErrorPage from './errorpage';
@@ -17,6 +21,7 @@ import UserInfo from '../components/userInfo';
 import ScanQrButton from '../components/scanQrButton';
 import NotificationsComponent from '../components/notificationsComponent';
 import EventsComponent from '../components/eventsComponent';
+import { set } from 'react-ga';
 
 const QRC = React.memo(QRCode);
 
@@ -32,14 +37,42 @@ const Home = ({ qr }) => {
     pollInterval: 3000,
   });
 
+  //ApolloCache Client to retrieve profileID
+  //see AddPublicProfileHandler helper function below
+  const client = useApolloClient();
+
+
+  //Use Effect
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
+  
+    //gets geolocation data
+    navigator.geolocation.getCurrentPosition(position => {
       setPosition(position);
+
+      //calls AddPublicProfileHandler()
+      //This is where the public profile id is checked and added to home user's connections
+      //public profile id comes from the add button located in Public Profile Component
+      AddPublicProfileHandler(position);
     });
     return () => {
       stopPolling();
     };
   }, [stopPolling]);
+
+  const [createConnection, { loading: newConnectLoading }] = useMutation(CREATE_CONNECTION, {
+    update(cache, { data: { createConnection: { connection } } }) {
+      const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
+      cache.writeQuery({
+        query: GET_USER_CONNECTIONS,
+        data: {
+          user: {
+            ...user,
+            pendingConnections: user.pendingConnections.concat(connection)
+          }
+        }
+      });
+    }
+  });
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
     update(
@@ -108,12 +141,39 @@ const Home = ({ qr }) => {
     },
   });
 
+  //Add Public Profile connection to Home User connections helper function
+  const AddPublicProfileHandler = async (position) => {
+    //geolocation coords
+    const {latitude, longitude} = await position.coords;
+
+    //query's the cache to retrieve the saved public profile id from PublicProfile Component
+    const {isProfileId} = await client.readQuery({
+
+    query: gql`
+        query ReadProfileId {
+          isProfileId
+        }
+      `
+    });
+
+    if(isProfileId !== ''){
+      await createConnection({
+        variables: {
+          userID: isProfileId,
+          senderCoords: { latitude, longitude }
+        }
+      });
+    }
+  }
+
+  //React Rendering Logic
   if (loading) {
     return (
       <div className="flex justify-center h-screen items-center">
         <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
-    );
+    
+    );  
   } else if (error) {
     console.error(error);
     return <ErrorPage />;

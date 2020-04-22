@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
 import Popup from 'reactjs-popup';
+
 const QRC = React.memo(QRCode);
 
 // Component Start
