@@ -24,91 +24,93 @@ context('BODY', () => {
 	});
 });
 
-context('CONNECT SEAMLESSLY', () => {
-	it('paragraph with correct heading', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3');
-		cy.get('h4').contains('Connect Seamlessly');
-	});
+context('BIG FEATURES', () => {
+	context('CONNECT SEAMLESSLY', () => {
+		it('paragraph with correct heading', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3');
+			cy.get('h4').contains('Connect Seamlessly');
+		});
 
-	it('image with correct src/alt attributes', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .ml-8');
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .ml-8 > img').should(
-			'have.attr',
-			'src',
-			'https://i.ibb.co/ckBNHs6/Connect-Seamlessly.png'
-		);
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .ml-8 > img').should(
-			'have.attr',
-			'alt',
-			'Connect-Seamlessly'
-		);
-	});
-	it('paragraph with correct content', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10');
-		cy.get('p').contains(
-			'Adding contacts had never been easier. Search by name, scan QR code or download the app and "Swaap" with bluetooth.'
-		);
-	});
-});
-
-context('STAY IN TOUCH', () => {
-	it('paragraph with correct content', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3')
-			.eq(1)
-			.get('p')
-			.eq(1)
-			.contains(
-				'Keep all your business contacts in one place with all their important information and preferred form of contact.'
+		it('image with correct src/alt attributes', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .ml-8');
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .ml-8 > img').should(
+				'have.attr',
+				'src',
+				'https://i.ibb.co/ckBNHs6/Connect-Seamlessly.png'
 			);
-	});
-
-	it('image with correct src/alt attributes', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20')
-			.eq(1)
-			.get('img')
-			.eq(2)
-			.should('have.attr', 'src', 'https://i.ibb.co/qBrvpvL/undraw-online-chat-d7ek-1.png')
-			.should('have.attr', 'alt', 'undraw-online-chat-d7ek-1');
-	});
-
-	it('appropriate heading', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10')
-			.eq(1)
-			.get('h4')
-			.eq(1)
-			.contains('Stay in touch');
-	});
-});
-
-context('NEVER FORGET A MEETING', () => {
-	it('paragraph with correct content', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3')
-			.eq(2)
-			.get('p')
-			.eq(2)
-			.contains(
-				'Remember when and where you met someone, keep track of events, and take notes of meetings so that you can look professional in follow ups.'
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .ml-8 > img').should(
+				'have.attr',
+				'alt',
+				'Connect-Seamlessly'
 			);
+		});
+		it('paragraph with correct content', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10');
+			cy.get('p').contains(
+				'Adding contacts had never been easier. Search by name, scan QR code or download the app and "Swaap" with bluetooth.'
+			);
+		});
 	});
 
-	it('image with correct src/alt attributes', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20')
-			.eq(2)
-			.get('img')
-			.eq(3)
-			.should('have.attr', 'src', 'https://i.ibb.co/RhdWXbB/Never-Forget-a-Meeting.png')
-			.should('have.attr', 'alt', 'Never-Forget-a-Meeting');
+	context('STAY IN TOUCH', () => {
+		it('paragraph with correct content', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3')
+				.eq(1)
+				.get('p')
+				.eq(1)
+				.contains(
+					'Keep all your business contacts in one place with all their important information and preferred form of contact.'
+				);
+		});
+
+		it('image with correct src/alt attributes', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20')
+				.eq(1)
+				.get('img')
+				.eq(2)
+				.should('have.attr', 'src', 'https://i.ibb.co/qBrvpvL/undraw-online-chat-d7ek-1.png')
+				.should('have.attr', 'alt', 'undraw-online-chat-d7ek-1');
+		});
+
+		it('appropriate heading', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10')
+				.eq(1)
+				.get('h4')
+				.eq(1)
+				.contains('Stay in touch');
+		});
 	});
 
-	it('appropriate heading', () => {
-		cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10')
-			.eq(2)
-			.get('h4')
-			.eq(2)
-			.contains('Never forget a meeting');
+	context('NEVER FORGET A MEETING', () => {
+		it('paragraph with correct content', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3')
+				.eq(2)
+				.get('p')
+				.eq(2)
+				.contains(
+					'Remember when and where you met someone, keep track of events, and take notes of meetings so that you can look professional in follow ups.'
+				);
+		});
+
+		it('image with correct src/alt attributes', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20')
+				.eq(2)
+				.get('img')
+				.eq(3)
+				.should('have.attr', 'src', 'https://i.ibb.co/RhdWXbB/Never-Forget-a-Meeting.png')
+				.should('have.attr', 'alt', 'Never-Forget-a-Meeting');
+		});
+
+		it('appropriate heading', () => {
+			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10')
+				.eq(2)
+				.get('h4')
+				.eq(2)
+				.contains('Never forget a meeting');
+		});
 	});
 });
-context('FEATURES', () => {
+context('SMALL FEATURES', () => {
 	it('appropriate heading', () => {
 		cy.get('#features').contains('Features');
 	});
@@ -135,7 +137,7 @@ context('FEATURES', () => {
 		});
 	});
 	context('ANY SIZE', () => {
-		it('appropriate icon 1 (any size)', () => {
+		it('appropriate icon (any size)', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12 > h4')
@@ -153,6 +155,54 @@ context('FEATURES', () => {
 				.get('p')
 				.eq(4)
 				.contains('We support every device orientation and size for multitasking.');
+		});
+	});
+	context('IMPORT', () => {
+		it('appropriate icon (import)', () => {
+			cy.get('#root > div > div > .container')
+				.eq(1)
+				.get('.p-5 > div > .mb-6 > .col-12 > h4')
+				.contains('Import')
+				.get('svg')
+				.eq(4)
+				.should('have.attr', 'width', '36')
+				.should('have.attr', 'height', '30')
+				.should('have.attr', 'fill', 'none');
+		});
+		it('appropriate paragraph (import)', () => {
+			cy.get('#root > div > div > .container')
+				.eq(1)
+				.get('.p-5 > div > .mb-6 > .col-12')
+				.get('p')
+				.eq(5)
+				.contains('Inport any picture you want on the app.');
+		});
+	});
+	context('FAST AND SIMPLE', () => {
+		it('appropriate icon (fast and simple)', () => {
+			cy.get('#root > div > div > .container')
+				.eq(1)
+				.get('.justify-between')
+				.eq(1)
+				.get('.flex-wrap > .mb-6 > .col-12 > h4')
+				.contains('Fast and Simple')
+				.get('img')
+				.eq(4)
+				.should('have.attr', 'alt', 'runer-silhouette-running-fast')
+				.should('have.attr', 'border', '0');
+		});
+		// /html/body/div[2]/div/div/div[2]/div[2]/div/div[1]/div/h4/img
+		it('appropriate paragraph (fast and simple)', () => {
+			cy.get('#root > div > div > .container')
+				.eq(1)
+				.get('.justify-between')
+				.eq(1)
+				.get('.flex-wrap > .mb-6 > .col-12')
+				.get('p')
+				.eq(6)
+				.contains(
+					'I only takes 5 minutes to set up account by going to auth0 and login with an email of your choice'
+				);
 		});
 	});
 });
