@@ -6,13 +6,13 @@ import { FETCH_PUBLIC_PROFILE } from '../../queries/index';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
+//components
 import ConnectionCount from '../PublicProfile/ConnectionCount';
 import PublicNavBar from '../../containers/publicnavbar';
+import AddButton from './AddButton/AddButton';
 
 const PublicProfile = () => {
   const params = useParams();
-
-  console.log(params.id);
 
   const { loading, error, data } = useQuery(FETCH_PUBLIC_PROFILE, {
     variables: { id: params.id },
@@ -92,9 +92,7 @@ const PublicProfile = () => {
               <ConnectionCount data={data} />
             </div>
           </div>
-          <div className="flex justify-center">
-            <button className="w-full py-5 bg-purple-700 text-white">Send Request</button>
-          </div>
+          <AddButton params={params} />
         </div>
       </div>
     </Fragment>
