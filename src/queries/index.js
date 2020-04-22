@@ -234,6 +234,32 @@ export const FETCH_USER_PROFILE = gql`
 	}
 `;
 
+export const FETCH_PUBLIC_PROFILE = gql`
+query FetchPublicProfile($id: ID) {
+	user(id: $id) {
+		id
+		name
+		picture
+		birthdate
+		location
+		industry
+		jobtitle
+		tagline
+		bio
+		connections {
+			id
+		}
+		profile {
+				id
+				value
+				type
+				privacy
+				preferredContact
+			}
+	}
+}
+`;
+
 export const NAVBAR_PROFILE = gql`
 	query FetchNavbarProfile {
 		user {

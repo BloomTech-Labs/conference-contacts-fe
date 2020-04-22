@@ -1,19 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Popup from 'reactjs-popup';
+import { useParams } from '@reach/router';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { FETCH_USER_PROFILE, FETCH_HOME_USER, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../../queries/index';
+import { FETCH_PUBLIC_PROFILE } from '../../queries/index';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
 import ConnectionCount from '../PublicProfile/ConnectionCount';
 import PublicNavBar from '../../containers/publicnavbar';
 
-const iconSizing = {
-    transform: 'scale(1.5)',
-  };
-
 const PublicProfile = () => {
-    const { loading, error, data } = useQuery(FETCH_USER_PROFILE);
+  
+    const params = useParams();
+
+    console.log(params.id)
+
+    const { loading, error, data } = useQuery(FETCH_PUBLIC_PROFILE, {
+      variables: { id: params.id }
+    });
 
     if (loading || !data)
       return (
@@ -36,7 +40,7 @@ const PublicProfile = () => {
           <div className="container pt-5 flex flex-col overflow-hidden px-6 -mt-8 desktop:ml-8">
             <div className="p-0 flex flex-col">
               {/* IMG ROUND LARGE */}
-              <div className="self-end -mr-8 mb-4">
+              <div className={`self-end -mr-8 mb-4`} >
                 <img
                   className="rounded-full shadow-lg object-cover "
                   src={data.user.picture}
@@ -83,7 +87,7 @@ const PublicProfile = () => {
                 )}
               </div>
               <div className="my-4">
-                <ConnectionCount />
+                <ConnectionCount data={data} />
               </div>
             </div>
             <div className="bg-gray-300 -mx-6">
