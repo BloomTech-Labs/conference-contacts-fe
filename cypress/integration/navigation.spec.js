@@ -9,6 +9,7 @@ context('Navigation', () => {
           localStorage.setItem('token', body.access_token);
         });
     */
+		cy.clearCookies();
 		cy.visit('http://localhost:3000/');
 	});
 
@@ -26,10 +27,5 @@ context('Navigation', () => {
 	it('navigates to reviews page', () => {
 		cy.get('#menu').contains('Reviews').click();
 		cy.url().should('include', '/#reviews');
-	});
-
-	it('navigates to login page', () => {
-		cy.get('#menu').contains('Sign Up').click();
-		// cy.url().should('include', '/contacts');
 	});
 });
