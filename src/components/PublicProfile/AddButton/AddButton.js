@@ -27,16 +27,23 @@ const AddButton  = ({params}) => {
 
     //Btn OnClickHandler
     const connectUser = async () => {
-    
-        await client.writeData({data: { isProfileId: params.id} });
+        
 
+        //creates session storage with param id or profile id
+        sessionStorage.setItem('isProfileId', params.id);
+
+        //checks if user is logged in
         if(isLoggedIn){
+            //navigates to home/dashboard page
             navigate('/');
         }else{
+            //redirects to Auth0 Login/Registration page
             loginWithRedirect();
         }
         
     }
+
+    console.log(client.cache.data);
 
     return(
         <div className="flex justify-center">
