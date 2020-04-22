@@ -1,22 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { FETCH_HOME_USER, FETCH_USER_PROFILE } from '../../queries/index';
+import React from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
 import ErrorPage from '../../pages/errorpage';
 
-export default function ConnectionCount () {
-    const { loading, data, error } = useQuery(FETCH_HOME_USER, )
-
-    if (loading) {
+export default function ConnectionCount (props) {
+    const { data, loading, error } = props;
+    
+    if (loading) 
         return (
             <div className="flex justify-center h-screen items-center">
                 <BeatLoader size={35} loading={loading} color="#7B41FF" />
             </div>
         );
-    } else if (error) {
-        console.log(error);
-        return <ErrorPage />
-    } else {
+    
         return (
             <div>
                 {/* Counts the number of connections a user has */}
@@ -51,7 +46,7 @@ export default function ConnectionCount () {
                         </linearGradient>
                         </defs>
                     </svg>
-                    {/* {data.user.id} */}
+                    {/* {data.user.name} */}
                         {data.user.connections.length === 1 ? (
                             <p>{data.user.connections.length} swaaps</p>
                             ) : data.user.connections.length === 0 ? (
@@ -62,6 +57,5 @@ export default function ConnectionCount () {
                             )}
                     </div>
             </div>
-        );
-    }
+    );
 };
