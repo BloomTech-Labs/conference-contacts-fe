@@ -21,12 +21,22 @@ export default function NavComponent(props) {
 
   const [copySuccess, setCopySuccess] = useState('');
 
-  const source = document.querySelector('div.source');
-  source.addEventListener('copy', (e) => {
-    const selection = document.getSelection();
-    e.clipboardData.setData('text/plain', selection.toString());
-    e.preventDefault()
-  })
+
+  function copyToClipboard() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput");
+  
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+  
+    /* Alert the copied text */
+    // alert("Copied the text: " + copyText.value);
+    setCopySuccess('Copied!')
+  }
  
   return (
     <nav
@@ -35,7 +45,7 @@ export default function NavComponent(props) {
           ? ''
           : 'mobile:hidden py-8 profile-card bg-white m-0 shadow-md overflow-hidden w-3/12 mt-24'
       }
-      style={inHeader ? null : { height: '700px' }}
+      style={inHeader ? null : { height: '720px' }}
     >
       <div
         className={inHeader ? 'mainNav pt-20' : ''}
@@ -73,24 +83,17 @@ export default function NavComponent(props) {
               >
                 Public Profile link
               </a> */}
-              <a href={`/public-profile/${data.user.id}`} className=" p-0">
-                  <div className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                        Public Profile link
-                  </div>
-              </a>
+              
             </div>
           )}
           {/* personal link information */}
-          <div>
             {document.queryCommandSupported('copy') && 
-            <div>
-              <button onClick={source}>Copy</button>{copySuccess}</div>}
-              <NavLink to={`/public-profile/${data.user.id}`} onClick={source}>http://swaap.co/profile/{data.user.id}</NavLink>
+              <div className='-mt-6 text-center'>
+                <input className='opacity-0' type='text' defaultValue={qrPubLink} id='myInput' />
+                <button className='text-blue-500 text-xs' onClick={copyToClipboard}>Click to Copy Profile Link</button>
+                <div className='text-green-600 text-sm'>{copySuccess}</div>
+              </div>}
           </div>
-          {/* </div> */}
-          {/* <div>Share Your Link!</div>
-          <NavLink to='/public-profile/${data.user.id}'>http://swaap.co/public-profile/{data.user.id}</NavLink> */}
-        </div>
         <ul className="mt-8">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>
             <li className="flex pl-6">
