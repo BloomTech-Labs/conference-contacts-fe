@@ -19,15 +19,6 @@ export default function NavComponent(props) {
     isCurrent,
   } = props;
 
-  const [copySuccess, setCopySuccess] = useState('');
-
-  const source = document.querySelector('div.source');
-  source.addEventListener('copy', (e) => {
-    const selection = document.getSelection();
-    e.clipboardData.setData('text/plain', selection.toString());
-    e.preventDefault()
-  })
- 
   return (
     <nav
       className={
@@ -73,25 +64,15 @@ export default function NavComponent(props) {
               >
                 Public Profile link
               </a> */}
-              <a href={`/public-profile/${data.user.id}`} className=" p-0">
-                  <div className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                        Public Profile link
-                  </div>
+              <a href={`/public-profile/${data.user.id}`} target="_blank" className="p-0">
+                <div className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                  Public Profile link
+                </div>
               </a>
             </div>
           )}
-          {/* personal link information */}
-          <div>
-            {document.queryCommandSupported('copy') && 
-            <div>
-              <button onClick={source}>Copy</button>{copySuccess}</div>}
-              <NavLink to={`/public-profile/${data.user.id}`} onClick={source}>http://swaap.co/profile/{data.user.id}</NavLink>
-          </div>
-          {/* </div> */}
-          {/* <div>Share Your Link!</div>
-          <NavLink to='/public-profile/${data.user.id}'>http://swaap.co/public-profile/{data.user.id}</NavLink> */}
         </div>
-        <ul className="mt-8">
+        <ul className="mt-4">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>
             <li className="flex pl-6">
               <svg
