@@ -44,21 +44,22 @@ const Home = ({ qr }) => {
 
   //Use Effect
   useEffect(() => {
-    //calls AddPublicProfileHandler()
-    //This is where the public profile id is checked and added to home user's connections
-    //public profile id comes from the add button located in Public Profile Component
-    AddPublicProfileHandler();
-
+  
     //gets geolocation data
     navigator.geolocation.getCurrentPosition(position => {
       setPosition(position);
+
+      //calls AddPublicProfileHandler()
+      //This is where the public profile id is checked and added to home user's connections
+      //public profile id comes from the add button located in Public Profile Component
+      AddPublicProfileHandler(position);
     });
     return () => {
       stopPolling();
     };
   }, [stopPolling]);
 
-  const [createConnection, { loading: newConnectLoading, called }] = useMutation(CREATE_CONNECTION, {
+  const [createConnection, { loading: newConnectLoading }] = useMutation(CREATE_CONNECTION, {
     update(cache, { data: { createConnection: { connection } } }) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       cache.writeQuery({
@@ -141,20 +142,30 @@ const Home = ({ qr }) => {
   });
 
   //Add Public Profil connection to Home User connections helper function
-  const AddPublicProfileHandler = async () => {
+  const AddPublicProfileHandler = async (position) => {
+    //geolocation coords
+    const {latitude, longitude} = await position.coords;
+
     //query's the cache to retrieve the saved public profile id from PublicProfile Component
     const {isProfileId} = await client.readQuery({
+
     query: gql`
         query ReadProfileId {
-          isProfileId @client 
+          isProfileId
         }
       `
     });
 
-
-    console.log('Home.js: ', newConnectLoading);
-    
+    if(isProfileId !== ''){
+      await createConnection({
+        variables: {
+          userID: isProfileId,
+          senderCoords: { latitude, longitude }
+        }
+      });
+    }
   }
+
 
   //React Rendering Logic
   if (loading) {
@@ -162,7 +173,8 @@ const Home = ({ qr }) => {
       <div className="flex justify-center h-screen items-center">
         <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
-    );
+    
+    );  
   } else if (error) {
     console.error(error);
     return <ErrorPage />;

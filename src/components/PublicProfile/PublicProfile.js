@@ -14,8 +14,6 @@ import AddButton from './AddButton/AddButton';
 const PublicProfile = () => {
     const params = useParams();
 
-    console.log(params.id)
-
     const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
       variables: { id: params.id }
     });

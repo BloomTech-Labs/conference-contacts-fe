@@ -28,6 +28,8 @@ const AddButton  = ({params}) => {
         navigate('/');
     }
 
+    console.log(client.cache);
+
     return(
         <div className="flex justify-center">
             {isLoggedIn &&
