@@ -68,7 +68,18 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.find('a')
 				.eq(1)
 				.should('have.attr', 'href')
-				.and('contains', 'linkedin');
+                .and('contains', 'linkedin');
+            
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Bobby Hall 1', () => {
@@ -124,6 +135,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(1)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Tyler Quinn 2', () => {
@@ -179,6 +201,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(2)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Zachary Peasley 3', () => {
@@ -234,6 +267,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(3)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Jarvise Billups-Brown 4', () => {
@@ -289,6 +333,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(4)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Corey Gumbs 5', () => {
@@ -344,6 +399,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(5)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Erica Ingram 6', () => {
@@ -399,6 +465,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(6)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Roberto Banbanaste 7', () => {
@@ -454,6 +531,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(7)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Sierra Curtis 8', () => {
@@ -509,6 +597,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(8)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Tristan Depew 9', () => {
@@ -564,6 +663,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(9)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Marlon Raskin 10', () => {
@@ -619,6 +729,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(10)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Michael Redig 11', () => {
@@ -674,6 +795,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(11)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Chad Rutherford 12', () => {
@@ -729,6 +861,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(12)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Tyler Nishida 13', () => {
@@ -784,6 +927,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(13)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 	context('team member:  Emily Arias 14', () => {
@@ -839,6 +993,17 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .px-24')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
 });
