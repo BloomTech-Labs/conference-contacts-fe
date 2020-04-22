@@ -17,6 +17,12 @@ context('BODY', () => {
 		cy.get('.container');
 		cy.get('h2').contains('Leave the business cards at home');
 	});
+	it('appropriate subheading', () => {
+		cy.get('.container');
+		cy.get('h3').contains(
+			'Business cards get thrown in the trash. Swaap makes trading business information effortless'
+		);
+	});
 	it('hero image with correct src/alt attributes', () => {
 		cy.get('.container');
 		cy.get('img').should('have.attr', 'src', 'https://i.ibb.co/TgYq6kk/Hero-Image.png');
@@ -26,7 +32,7 @@ context('BODY', () => {
 
 context('BIG FEATURES', () => {
 	context('CONNECT SEAMLESSLY', () => {
-		it('paragraph with correct heading', () => {
+		it('correct heading', () => {
 			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10 > .mb-3');
 			cy.get('h4').contains('Connect Seamlessly');
 		});
@@ -115,7 +121,7 @@ context('SMALL FEATURES', () => {
 		cy.get('#features').contains('Features');
 	});
 	context('MAKE FRIENDS', () => {
-		it('appropriate icon (make friends)', () => {
+		it('appropriate icon', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12 > h4')
@@ -127,7 +133,7 @@ context('SMALL FEATURES', () => {
 				.should('have.attr', 'fill', 'none');
 		});
 
-		it('appropriate paragraph (make friends)', () => {
+		it('appropriate paragraph', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12')
@@ -137,7 +143,7 @@ context('SMALL FEATURES', () => {
 		});
 	});
 	context('ANY SIZE', () => {
-		it('appropriate icon (any size)', () => {
+		it('appropriate icon', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12 > h4')
@@ -148,7 +154,7 @@ context('SMALL FEATURES', () => {
 				.should('have.attr', 'height', '30')
 				.should('have.attr', 'fill', 'none');
 		});
-		it('appropriate paragraph (any size)', () => {
+		it('appropriate paragraph', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12')
@@ -158,7 +164,7 @@ context('SMALL FEATURES', () => {
 		});
 	});
 	context('IMPORT', () => {
-		it('appropriate icon (import)', () => {
+		it('appropriate icon', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12 > h4')
@@ -169,7 +175,7 @@ context('SMALL FEATURES', () => {
 				.should('have.attr', 'height', '30')
 				.should('have.attr', 'fill', 'none');
 		});
-		it('appropriate paragraph (import)', () => {
+		it('appropriate paragraph', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.p-5 > div > .mb-6 > .col-12')
@@ -179,7 +185,7 @@ context('SMALL FEATURES', () => {
 		});
 	});
 	context('FAST AND SIMPLE', () => {
-		it('appropriate icon (fast and simple)', () => {
+		it('appropriate icon', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.justify-between')
@@ -191,8 +197,7 @@ context('SMALL FEATURES', () => {
 				.should('have.attr', 'alt', 'runer-silhouette-running-fast')
 				.should('have.attr', 'border', '0');
 		});
-		// /html/body/div[2]/div/div/div[2]/div[2]/div/div[1]/div/h4/img
-		it('appropriate paragraph (fast and simple)', () => {
+		it('appropriate paragraph', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.justify-between')
@@ -203,6 +208,32 @@ context('SMALL FEATURES', () => {
 				.contains(
 					'I only takes 5 minutes to set up account by going to auth0 and login with an email of your choice'
 				);
+		});
+	});
+	context('EDITING', () => {
+		it('appropriate icon', () => {
+			cy.get('#root > div > div > .container')
+				.eq(1)
+				.get('.justify-between')
+				.eq(2)
+				.get('.flex-wrap > .mb-6 > .col-12 > h4')
+				.eq(4)
+				.contains('Editing')
+				.get('svg')
+				.eq(5)
+				.should('have.attr', 'width', '35')
+				.should('have.attr', 'height', '35')
+				.should('have.attr', 'fill', 'none');
+		});
+		it('appropriate paragraph', () => {
+			cy.get('#root > div > div > .container')
+				.eq(1)
+				.get('.justify-between')
+				.eq(1)
+				.get('.flex-wrap > .mb-6 > .col-12')
+				.get('p')
+				.eq(7)
+				.contains('Simply two finger drag down to bulk edit lists or items.');
 		});
 	});
 });
