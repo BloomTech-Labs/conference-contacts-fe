@@ -80,6 +80,7 @@ context('Navigation', () => {
 	});
 
 	it('navigates to login page', () => {
+		cy.get('label').click();
 		cy.get('#menu').find('nav').find('ul > li').eq(4).find('button').contains('Sign Up').click();
 		// cy.url().should('include', '/contacts');
 	});
