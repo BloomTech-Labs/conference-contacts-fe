@@ -1,5 +1,18 @@
 import gql from 'graphql-tag';
 
+export const USER_FILTER = gql`
+  query userFilter($id: ID!) {
+    user {
+      id
+      profile {
+        id
+        value 
+      }
+    }
+  }
+`;
+
+
 export const FETCH_QRCODE_DATA = gql`
 	query FetchQRCodeData($id: ID!) {
 		qrcode(id: $id) {

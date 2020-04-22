@@ -246,12 +246,12 @@ export default function ProfileEdit(props) {
 
   return (
     <div className="px-6 mt-24">
-      <div>
+      <div className=''>
         <div
-          className="flex justify-between mx-auto rounded desktop:w-full mobile:w-96 mobile:inset-x-0"
+          className="flex justify-between mx-auto rounded desktop:w-full mobile:w-full mobile:inset-x-0"
           style={{
             position: 'fixed',
-            bottom: '20px',
+            bottom: '0',
             background: '#fff',
             height: '64px',
             maxWidth: '751px',
@@ -275,7 +275,7 @@ export default function ProfileEdit(props) {
             Save
           </button>
         </div>
-        <div className="flex justify-center items-center mt-2">
+        <div className="flex justify-center items-center m-2">
           <div
             alt="profile"
             className="rounded-full shadow-lg w-56 h-56 flex justify-center items-center"
@@ -292,31 +292,61 @@ export default function ProfileEdit(props) {
       </div>
 
       {/* Link Section Starts */}
-      <div className="mt-4 text-2xl">
+      <div className="mt-8 mb-8 text-2xl">
         <div className="flex justify-between items-center">
-          <label className="block uppercase text-sm text-gray-700 tracking-widest mb-1 mobile:text-lg">
+          <label className="block uppercase text-md text-gray-700 tracking-widest mb-1 mobile:text-lg">
             Contact Methods
           </label>
-          <button
-            type="button"
-            className="text-base text-blue-500 focus:outline-none mobile:text-lg"
-            onClick={() => {
-              setShowEditLink(false);
-              setLinkInput(!showLinkInput);
-              setFields({
-                ...fields,
-                link: '',
-              });
-              setLink('');
-            }}
-          >
-            &#43; add contact
-          </button>
         </div>
-        <ul className="text-xs m-0 text-gray-500">
-          <li>click on the star to set your prefered contact method</li>
-          <li>select the lock to set link private or public</li>
+        <ul className="text-sm m-0 text-gray-500 w-4/4">
+          <li>Click on the star to set your prefered contact method</li>
+          <li>Select the lock to set link to private or public</li>
+          <li>Press on contact method to update</li>
         </ul>
+        <div className='flex justify-end desktop:justify-start'>
+          <button
+              type="button"
+              className="text-base text-blue-500 w-full desktop:w-1/2 mt-8 mb-6 bg-gray-400 px-4 py-2 rounded-lg focus:outline-none mobile:text-lg"
+              onClick={() => {
+                setShowEditLink(false);
+                setLinkInput(!showLinkInput);
+                setFields({
+                  ...fields,
+                  link: '',
+                });
+                setLink('');
+              }}
+            >
+              &#43; Add Contact Method
+            </button>
+        </div>
+        <div className='text-sm'>
+          {/* Link Form Input Starts */}
+          <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
+            <SocialLinks
+              updateLink={updateLink}
+              field={linkToEdit}
+              fields={fields}
+              handleFieldChange={handleFieldChange}
+              link={link}
+              setLink={setLink}
+              linkError={linkError}
+              preferredContact={preferredContact}
+            />
+          </CSSTransition>
+          {/* Social Links Component */}
+          <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
+            <SocialLinks
+              handleNewLink={handleNewLink}
+              fields={fields}
+              handleFieldChange={handleFieldChange}
+              link={link}
+              setLink={setLink}
+              linkError={linkError}
+              preferredContact={preferredContact}
+            />
+          </CSSTransition>
+        </div>
 
         {/* User privacy drop down menu */}
         <LinkStatusModal
@@ -330,7 +360,7 @@ export default function ProfileEdit(props) {
       </div>
       {/* Link Section ENDS */}
       {/* Link Form Input Starts */}
-      <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
+      {/* <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
         <SocialLinks
           updateLink={updateLink}
           field={linkToEdit}
@@ -341,9 +371,9 @@ export default function ProfileEdit(props) {
           linkError={linkError}
           preferredContact={preferredContact}
         />
-      </CSSTransition>
+      </CSSTransition> */}
       {/* Social Links Component */}
-      <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
+      {/* <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
         <SocialLinks
           handleNewLink={handleNewLink}
           fields={fields}
@@ -353,7 +383,7 @@ export default function ProfileEdit(props) {
           linkError={linkError}
           preferredContact={preferredContact}
         />
-      </CSSTransition>
+      </CSSTransition> */}
       {/* Start of profile inputs, span to animate */}
 
       <InputsComponent
