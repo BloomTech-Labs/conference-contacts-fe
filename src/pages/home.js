@@ -150,7 +150,7 @@ const Home = ({ qr }) => {
     //retrieves profile id from session storage
     const isProfileId = sessionStorage.getItem('isProfileId');
 
-    if(isProfileId !== ''){
+    if(isProfileId){
       await createConnection({
         variables: {
           userID: isProfileId,
