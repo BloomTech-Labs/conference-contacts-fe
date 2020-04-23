@@ -150,16 +150,6 @@ const Home = ({ qr }) => {
     //retrieves profile id from session storage
     const isProfileId = sessionStorage.getItem('isProfileId');
 
-    // //query's the cache to retrieve the saved public profile id from PublicProfile Component
-    // const {isProfileId} = await client.readQuery({
-
-    // query: gql`
-    //     query ReadProfileId {
-    //       isProfileId
-    //     }
-    //   `
-    // });
-
     if(isProfileId !== ''){
       await createConnection({
         variables: {
