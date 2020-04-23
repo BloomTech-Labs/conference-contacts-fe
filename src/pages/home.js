@@ -186,8 +186,8 @@ const Home = ({ qr }) => {
       : `https://swaap.co/qrLink/${qrcData || qr}`;
 
     const qrPubLink = inDevelopment
-      ? `https://staging.swaap.co/public/${data.user.id}`
-      : `https://swaap.co/public/${data.user.id}`;
+      ? `https://staging.swaap.co/public-profile/${data.user.id}`
+      : `https://swaap.co/public-profile/${data.user.id}`;
 
     return (
       <div className="mobile:pb-6 flex flex-col mt-24">

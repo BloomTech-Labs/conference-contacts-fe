@@ -22,23 +22,22 @@ export default function NavComponent(props) {
 
   const [copySuccess, setCopySuccess] = useState('');
 
-
   function copyToClipboard() {
     /* Get the text field */
-    var copyText = document.getElementById("myInput");
-  
+    var copyText = document.getElementById('myInput');
+
     /* Select the text field */
     copyText.select();
     copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-  
+
     /* Copy the text inside the text field */
-    document.execCommand("copy");
-  
+    document.execCommand('copy');
+
     /* Alert the copied text */
     // alert("Copied the text: " + copyText.value);
-    setCopySuccess('Copied!')
+    setCopySuccess('Copied!');
   }
- 
+
   return (
     <nav
       className={
@@ -84,17 +83,19 @@ export default function NavComponent(props) {
               >
                 Public Profile link
               </a> */}
-              
             </div>
           )}
           {/* personal link information */}
-            {document.queryCommandSupported('copy') && 
-              <div className='-mt-6 text-center'>
-                <input className='opacity-0' type='text' defaultValue={qrPubLink} id='myInput' />
-                <button className='text-blue-500 text-xs' onClick={copyToClipboard}>Click to Copy Profile Link</button>
-                <div className='text-green-600 text-sm'>{copySuccess}</div>
-              </div>}
-          </div>
+          {document.queryCommandSupported('copy') && (
+            <div className="-mt-6 text-center">
+              <input className="opacity-0" type="text" defaultValue={qrPubLink} id="myInput" />
+              <button className="text-blue-500 text-xs" onClick={copyToClipboard}>
+                Click to Copy Profile Link
+              </button>
+              <div className="text-green-600 text-sm">{copySuccess}</div>
+            </div>
+          )}
+        </div>
         <ul className="mt-8">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>
             <li className="flex pl-6">

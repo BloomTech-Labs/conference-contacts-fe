@@ -31,8 +31,8 @@ export default function NavBar({ inHeader, qr }) {
     qrLink = `https://staging.swaap.co/qrLink/${qrcData}`;
     qrPubLink = `https://staging.swaap.co/public/${data.user.id}`;
   } else {
-    qrLink = `https://swaap.co/qrLink/${qrcData}`;
-    qrPubLink = `https://swaap.co/public/${data.user.id}`;
+    qrLink = `https://swaap.co/public-profile/${qrcData}`;
+    qrPubLink = `https://swaap.co/public-profile/${data.user.id}`;
   }
 
   const handleLogout = () => {
