@@ -27,8 +27,6 @@ const AddButton  = ({params}) => {
 
     //Btn OnClickHandler
     const connectUser = async () => {
-        
-
         //creates session storage with param id or profile id
         sessionStorage.setItem('isProfileId', params.id);
 
@@ -42,8 +40,6 @@ const AddButton  = ({params}) => {
         }
         
     }
-
-    console.log(client.cache.data);
 
     return(
         <div className="flex justify-center">
