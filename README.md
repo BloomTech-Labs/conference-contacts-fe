@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/68404cfcc6a6827234d1/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/conference-contacts-fe/maintainability)
+
 # Swaap
 
 ### You can find the deployed project at https://staging.swaap.co
