@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useParams } from '@reach/router';
 // apollo imports
 import { gql } from 'apollo-boost';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
@@ -43,9 +43,7 @@ export default function App(props) {
 
   // isLoggedIn set to True
   const isLoggedInStateHandler = () => {
-    //isProfileId is used to save the public-profile id paramafor usage in the public-profile link. 
-    //see home.js & AddButton component in Public Profile Component - corey
-    client.writeData({ data: { isLoggedIn: true, isProfileId: '' } });
+      client.writeData({ data: { isLoggedIn: true } });
   };
 
   // CreateUser mutation, creates a user from auth0 user info
@@ -79,7 +77,6 @@ export default function App(props) {
   useEffect(() => {
     if (user) {
       isLoggedInStateHandler();
-
       createUserMutationHandler();
     }
   }, [user]);

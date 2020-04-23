@@ -59,6 +59,7 @@ const Home = ({ qr }) => {
     };
   }, [stopPolling]);
 
+
   const [createConnection, { loading: newConnectLoading }] = useMutation(CREATE_CONNECTION, {
     update(cache, { data: { createConnection: { connection } } }) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
@@ -146,15 +147,8 @@ const Home = ({ qr }) => {
     //geolocation coords
     const {latitude, longitude} = await position.coords;
 
-    //query's the cache to retrieve the saved public profile id from PublicProfile Component
-    const {isProfileId} = await client.readQuery({
-
-    query: gql`
-        query ReadProfileId {
-          isProfileId
-        }
-      `
-    });
+    //retrieves profile id from session storage
+    const isProfileId = sessionStorage.getItem('isProfileId');
 
     if(isProfileId !== ''){
       await createConnection({
