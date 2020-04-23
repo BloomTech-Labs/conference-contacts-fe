@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
+import ClipboardJS from 'clipboard';
+import ProfileLink from '../components/profilelink';
 
 export default function UserInfo(props) {
   const { data, qrcData, qrLink, qrPubLink, QRC } = props;
   // false means the QR code is set to the one for SWAAP users
   const [toggleQR, setToggleQR] = useState(true);
+
+  // copy to clipboard
+  const [copySuccess, setCopySuccess] = useState('');
+
+  var clipboard = new ClipboardJS('.btn');
+  
+  clipboard.on('success', function(e) {
+    setCopySuccess('Copied!');
+      e.clearSelection();
+  });
+    
   return (
     <div className="desktop:hidden profile-card pb-4 bg-white mx-6 desktop:m-0 desktop:w-1/4 shadow-md mt-0 overflow-hidden">
       <div className="flex justify-between">
@@ -82,43 +95,49 @@ export default function UserInfo(props) {
               />
             </span>
           </div>
-          <Popup
-            trigger={
-              <span className="cursor-pointer underline text-blue-400">
-                click here for your public qr code
-              </span>
-            }
-            modal
-            position="top left"
-          >
-            {(close) => (
-              <div className="modal text-center my-4 w-full object-contain rounded">
-                Public QR code <br />{' '}
-                <span className="text-xs">(share your info with non swaap users)</span>
-                <div className="">
-                  <div className="flex justify-center my-6">
-                    <span className="qr-box p-4">
-                      <QRC
-                        includeMargin={false}
-                        level="Q"
-                        renderAs="svg"
-                        value={qrPubLink}
-                        fgColor="#6640FF"
-                      />
-                    </span>
+          <div className="mb-3">Share Your Profile!</div>
+          <div className="flex items-end justify-between px-12 mx-20">
+            <Popup
+              trigger={
+                <button className="cursor-pointer w-1/3  bg-blue-300 shadow text-center rounded-lg text-sm py-1">
+                  click here for your public qr code
+                </button>
+              }
+              modal
+              position="top left"
+            >
+              {(close) => (
+                <div className="modal text-center my-4 w-full object-contain rounded">
+                  Public QR code <br />{' '}
+                  <span className="text-xs">(share your info with non swaap users)</span>
+                  <div className="">
+                    <div className="flex justify-center my-6">
+                      <span className="qr-box p-4">
+                        <QRC
+                          includeMargin={false}
+                          level="Q"
+                          renderAs="svg"
+                          value={qrPubLink}
+                          fgColor="#6640FF"
+                        />
+                      </span>
+                    </div>
+                    <button
+                      className="flex-1 bg-green-600 hover:bg-green-900 font-bold py-2 px-4 rounded"
+                      onClick={() => {
+                        close();
+                      }}
+                    >
+                      Done
+                    </button>
                   </div>
-                  <button
-                    className="flex-1 bg-green-600 hover:bg-green-900 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => {
-                      close();
-                    }}
-                  >
-                    Done
-                  </button>
                 </div>
-              </div>
-            )}
-          </Popup>
+              )}
+            </Popup>
+            <div className='desktop:hidden px-4 w-1/3 text-center bg-blue-300 text-sm shadow text-center rounded-lg py-1'>
+              <ProfileLink qrPubLink={qrPubLink} />
+            </div>
+          </div>
         </div>
       )}
     </div>
