@@ -31,7 +31,7 @@ export default function ProfileLink(props) {
     <button class="btn" data-clipboard-text={qrPubLink}>
       click to copy profile link
     </button>
-    <div className="text-green-800 text-sm">
+    <div className="desktop:text-green-800 mobile:text-white text-sm">
       {copySuccess}
     </div>
   </div>
