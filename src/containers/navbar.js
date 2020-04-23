@@ -12,12 +12,9 @@ export default function NavBar({ inHeader, qr }) {
   const [open, setOpen] = useState(false);
 
   const qrcData = localStorage.getItem('qrCode');
+
   const inDevelopment =
     process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
-
-  const qrLink = inDevelopment
-    ? `https://staging.swaap.co/qrLink/${qrcData || qr}`
-    : `https://swaap.co/qrLink/${qrcData || qr}`;
 
   const client = useApolloClient();
   const { logout } = useAuth0();
@@ -26,11 +23,23 @@ export default function NavBar({ inHeader, qr }) {
   if (loading || !data) return null;
   if (error) return <ErrorPage />;
 
+  // set qr code links
+  let qrLink;
+  let qrPubLink;
+
+  if (inDevelopment) {
+    qrLink = `https://staging.swaap.co/qrLink/${qrcData}`;
+    qrPubLink = `https://staging.swaap.co/public-profile/${data.user.id}`;
+  } else {
+    qrLink = `https://swaap.co/qrLink/${qrcData}`;
+    qrPubLink = `https://swaap.co/public-profile/${data.user.id}`;
+  }
+
   const handleLogout = () => {
     const hosts = {
       'localhost:3000': 'http://localhost:3000',
       'swaap.co': 'https://swaap.co',
-      'staging.swaap.co': 'https://staging.swaap.co'
+      'staging.swaap.co': 'https://staging.swaap.co',
     };
     client.writeData({ data: { isLoggedIn: false } });
     localStorage.clear();
@@ -43,7 +52,7 @@ export default function NavBar({ inHeader, qr }) {
   // }
 
   // Changes page link background to grey when on that page - tristan depew
-  const NavLink = props => (
+  const NavLink = (props) => (
     <Link
       {...props}
       getProps={({ isCurrent }) => {
@@ -51,8 +60,8 @@ export default function NavBar({ inHeader, qr }) {
           style: {
             background: isCurrent ? 'whiteSmoke' : 'white',
             padding: '10px',
-            borderRadius: isCurrent ? '5px' : '0px'
-          }
+            borderRadius: isCurrent ? '5px' : '0px',
+          },
         };
       }}
     />
@@ -94,6 +103,7 @@ export default function NavBar({ inHeader, qr }) {
               setOpen={setOpen}
               inHeader={true}
               qrLink={qrLink}
+              qrPubLink={qrPubLink}
               qrcData={qrcData}
               handleLogout={handleLogout}
               data={data}
@@ -124,6 +134,7 @@ export default function NavBar({ inHeader, qr }) {
       <NavComponent
         inHeader={false}
         qrLink={qrLink}
+        qrPubLink={qrPubLink}
         qrcData={qrcData}
         handleLogout={handleLogout}
         data={data}

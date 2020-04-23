@@ -16,6 +16,7 @@ const Profile = ({ location, navigate }) => {
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
     variables: { id: location.state.userId },
   });
+
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(
       cache,

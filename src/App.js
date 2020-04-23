@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useParams } from '@reach/router';
 // apollo imports
 import { gql } from 'apollo-boost';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
@@ -24,10 +24,10 @@ export default function App(props) {
   const [trackUserCreation, setUserCreation] = useState(false);
   const [createQRCode] = useMutation(CREATE_QRCODE, {
     variables: { label: 'homepage' },
-    onCompleted: qrcData => {
+    onCompleted: (qrcData) => {
       localStorage.setItem('qrCode', qrcData.createQRCode.qrcode.id);
       return setQRCode(qrcData.createQRCode.qrcode.id);
-    }
+    },
   });
 
   //function to create a qrCode
@@ -43,7 +43,7 @@ export default function App(props) {
 
   // isLoggedIn set to True
   const isLoggedInStateHandler = () => {
-    client.writeData({ data: { isLoggedIn: true } });
+      client.writeData({ data: { isLoggedIn: true } });
   };
 
   // CreateUser mutation, creates a user from auth0 user info
@@ -61,9 +61,9 @@ export default function App(props) {
           user: {
             name: user.name,
             picture: user.picture,
-            email: user.email
-          }
-        }
+            email: user.email,
+          },
+        },
       })
       .then(() => {
         // setusercreate
@@ -77,15 +77,12 @@ export default function App(props) {
   useEffect(() => {
     if (user) {
       isLoggedInStateHandler();
-
       createUserMutationHandler();
     }
   }, [user]);
 
-  return(
-
+  return (
     // Router Component
     <MainRouter trackUserCreation={trackUserCreation} />
-
   );
 }

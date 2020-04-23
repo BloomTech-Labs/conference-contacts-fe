@@ -1,12 +1,42 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from '@reach/router';
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
+import Popup from 'reactjs-popup';
+
 const QRC = React.memo(QRCode);
 
 // Component Start
 export default function NavComponent(props) {
-  const { open, setOpen, inHeader, qrLink, qrcData, handleLogout, data, isCurrent } = props;
+  const {
+    open,
+    setOpen,
+    inHeader,
+    qrLink,
+    qrPubLink,
+    qrcData,
+    handleLogout,
+    data,
+    isCurrent,
+  } = props;
+
+  const [copySuccess, setCopySuccess] = useState('');
+
+  function copyToClipboard() {
+    /* Get the text field */
+    var copyText = document.getElementById('myInput');
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand('copy');
+
+    /* Alert the copied text */
+    // alert("Copied the text: " + copyText.value);
+    setCopySuccess('Copied!');
+  }
 
   return (
     <nav
@@ -15,7 +45,7 @@ export default function NavComponent(props) {
           ? ''
           : 'mobile:hidden py-8 profile-card bg-white m-0 shadow-md overflow-hidden w-3/12 mt-24'
       }
-      style={inHeader ? null : { height: '700px' }}
+      style={inHeader ? null : { height: '720px' }}
     >
       <div
         className={inHeader ? 'mainNav pt-20' : ''}
@@ -29,19 +59,40 @@ export default function NavComponent(props) {
               src={data.user.picture}
               alt={`avatar of ${data.user.name}`}
             />
-            <p className="py-6 text-4xl desktop:text-lg text-center">{data.user.name}</p>
+            <p className="py-3 text-4xl desktop:text-base text-center">{data.user.name}</p>
           </div>
           {qrcData && (
-            <div className="flex justify-center">
-              <span className="qr-box p-2">
-                <QRC
-                  includeMargin={false}
-                  level="Q"
-                  renderAs="svg"
-                  value={qrLink}
-                  fgColor="#6640FF"
-                />
-              </span>
+            <div className="text-center text-sm text-white">
+              <span className="text-black">Swaap QR Code</span>
+              {/* <br /> <span className="text-xs">(for use between Swaap members)</span> */}
+              <div className="flex justify-center ">
+                <span className="qr-box p-2 my-2">
+                  <QRC
+                    includeMargin={false}
+                    level="Q"
+                    renderAs="svg"
+                    value={qrLink}
+                    fgColor="#6640FF"
+                  />
+                </span>
+              </div>
+              {/* <a
+                href={qrPubLink}
+                target="_blank"
+                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+              >
+                Public Profile link
+              </a> */}
+            </div>
+          )}
+          {/* personal link information */}
+          {document.queryCommandSupported('copy') && (
+            <div className="-mt-6 text-center">
+              <input className="opacity-0" type="text" defaultValue={qrPubLink} id="myInput" />
+              <button className="text-blue-500 text-xs" onClick={copyToClipboard}>
+                Click to Copy Profile Link
+              </button>
+              <div className="text-green-600 text-sm">{copySuccess}</div>
             </div>
           )}
         </div>
