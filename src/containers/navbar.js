@@ -29,9 +29,9 @@ export default function NavBar({ inHeader, qr }) {
 
   if (inDevelopment) {
     qrLink = `https://staging.swaap.co/qrLink/${qrcData}`;
-    qrPubLink = `https://staging.swaap.co/public/${data.user.id}`;
+    qrPubLink = `https://staging.swaap.co/public-profile/${data.user.id}`;
   } else {
-    qrLink = `https://swaap.co/public-profile/${qrcData}`;
+    qrLink = `https://swaap.co/qrLink/${qrcData}`;
     qrPubLink = `https://swaap.co/public-profile/${data.user.id}`;
   }
 

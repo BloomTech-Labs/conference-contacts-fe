@@ -6,12 +6,11 @@ import {
   CREATE_CONNECTION,
   ACCEPT_CONNECTION,
   DELETE_CONNECTION,
-  GET_USER_CONNECTIONS
+  GET_USER_CONNECTIONS,
 } from '../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import QRCode from 'qrcode.react';
 import gql from 'graphql-tag';
-
 
 // import pages
 import ErrorPage from './errorpage';
@@ -41,12 +40,10 @@ const Home = ({ qr }) => {
   //see AddPublicProfileHandler helper function below
   const client = useApolloClient();
 
-
   //Use Effect
   useEffect(() => {
-  
     //gets geolocation data
-    navigator.geolocation.getCurrentPosition(position => {
+    navigator.geolocation.getCurrentPosition((position) => {
       setPosition(position);
 
       //calls AddPublicProfileHandler()
@@ -59,20 +56,26 @@ const Home = ({ qr }) => {
     };
   }, [stopPolling]);
 
-
   const [createConnection, { loading: newConnectLoading }] = useMutation(CREATE_CONNECTION, {
-    update(cache, { data: { createConnection: { connection } } }) {
+    update(
+      cache,
+      {
+        data: {
+          createConnection: { connection },
+        },
+      }
+    ) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
           user: {
             ...user,
-            pendingConnections: user.pendingConnections.concat(connection)
-          }
-        }
+            pendingConnections: user.pendingConnections.concat(connection),
+          },
+        },
       });
-    }
+    },
   });
 
   const [dismissNotification, { loading: dismissLoading }] = useMutation(DISMISS_NOTIFICATION, {
@@ -145,20 +148,20 @@ const Home = ({ qr }) => {
   //Add Public Profile connection to Home User connections helper function
   const AddPublicProfileHandler = async (position) => {
     //geolocation coords
-    const {latitude, longitude} = await position.coords;
+    const { latitude, longitude } = await position.coords;
 
     //retrieves profile id from session storage
     const isProfileId = sessionStorage.getItem('isProfileId');
 
-    if(isProfileId){
+    if (isProfileId) {
       await createConnection({
         variables: {
           userID: isProfileId,
-          senderCoords: { latitude, longitude }
-        }
+          senderCoords: { latitude, longitude },
+        },
       });
     }
-  }
+  };
 
   //React Rendering Logic
   if (loading) {
@@ -166,8 +169,7 @@ const Home = ({ qr }) => {
       <div className="flex justify-center h-screen items-center">
         <BeatLoader size={35} loading={loading} color="#7B41FF" />
       </div>
-    
-    );  
+    );
   } else if (error) {
     console.error(error);
     return <ErrorPage />;
