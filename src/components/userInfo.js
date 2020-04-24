@@ -7,16 +7,6 @@ export default function UserInfo(props) {
   const { data, qrcData, qrLink, qrPubLink, QRC } = props;
   // false means the QR code is set to the one for SWAAP users
   const [toggleQR, setToggleQR] = useState(true);
-
-  // copy to clipboard
-  const [copySuccess, setCopySuccess] = useState('');
-
-  var clipboard = new ClipboardJS('.btn');
-  
-  clipboard.on('success', function(e) {
-    setCopySuccess('Copied!');
-      e.clearSelection();
-  });
     
   return (
     <div className="desktop:hidden profile-card pb-4 bg-white mx-6 desktop:m-0 desktop:w-1/4 shadow-md mt-0 overflow-hidden">
@@ -96,11 +86,11 @@ export default function UserInfo(props) {
             </span>
           </div>
           <div className="mb-3">Share Your Profile!</div>
-          <div className="flex items-end justify-between px-12 mx-20">
+          <div className="flex items-end justify-between px-12 mx-16">
             <Popup
               trigger={
-                <button className="cursor-pointer w-1/3  bg-blue-300 shadow text-center rounded-lg text-sm py-1">
-                  click here for your public qr code
+                <button className="cursor-pointer w-1/3 bg-purple-700 text-white shadow text-center rounded-lg py-2 px-4">
+                  Public QR
                 </button>
               }
               modal
@@ -134,7 +124,7 @@ export default function UserInfo(props) {
                 </div>
               )}
             </Popup>
-            <div className='desktop:hidden px-4 w-1/3 text-center bg-blue-300 text-sm shadow text-center rounded-lg py-1'>
+            <div className='px-4 py-2 w-1/3 text-center bg-purple-700 shadow text-white rounded-lg py-1'>
               <ProfileLink qrPubLink={qrPubLink} />
             </div>
           </div>
