@@ -6,7 +6,7 @@ export default function UserInfo(props) {
   // false means the QR code is set to the one for SWAAP users
   const [toggleQR, setToggleQR] = useState(true);
   return (
-    <div className="desktop:hidden profile-card pb-4 bg-white mx-6 desktop:m-0 desktop:w-1/4 shadow-md mt-0 overflow-hidden">
+    <div className="desktop:hidden profile-card pb-4 bg-white desktop:m-0 shadow-md mt-0 overflow-hidden">
       <div className="flex justify-between">
         <div className="flex pl-2 pt-4">
           <svg
@@ -59,13 +59,13 @@ export default function UserInfo(props) {
           /> */}
         {/* EXPLORATION IMAGE -> */}
         <img
-          className="rounded-full shadow-lg w-96 h-96 object-cover -mt-12  -mr-12 desktop:-mt-4  desktop:-mr-4 desktop:w-56 desktop:h-56 desktop:rounded-tr-md"
+          className="rounded-full shadow-lg w-96 h-96 object-cover -mt-12  -mr-12 mobile:w-64 mobile:h-64 "
           src={data.user.picture}
           alt={`profile picuture of ${data.user.name}`}
         />
       </div>
       <div className="flex justify-center">
-        <h1 className="text-3xl pt-10 desktop:text-xl">{data.user.name}</h1>
+        <h1 className="text-3xl pt-6 desktop:text-xl">{data.user.name}</h1>
       </div>
       {qrcData && (
         <div className="text-center mt-6">
@@ -92,7 +92,7 @@ export default function UserInfo(props) {
             position="top left"
           >
             {(close) => (
-              <div className="modal text-center my-4 w-full object-contain rounded">
+              <div className="text-center my-4 px-2 object-contain rounded">
                 Public QR code <br />{' '}
                 <span className="text-xs">(share your info with non swaap users)</span>
                 <div className="">
@@ -108,7 +108,7 @@ export default function UserInfo(props) {
                     </span>
                   </div>
                   <button
-                    className="flex-1 bg-green-600 hover:bg-green-900 text-white font-bold py-2 px-4 rounded"
+                    className="flex-1 bg-purple-600 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
                     onClick={() => {
                       close();
                     }}

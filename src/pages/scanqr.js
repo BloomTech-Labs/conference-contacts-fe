@@ -12,38 +12,44 @@ const ScanQr = () => {
   const [errors, setErrors] = useState([]);
 
   const [createConnection, { loading: connectLoading, called }] = useMutation(CREATE_CONNECTION, {
-    update(cache, { data: { createConnection: { connection } } }) {
+    update(
+      cache,
+      {
+        data: {
+          createConnection: { connection },
+        },
+      }
+    ) {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
           user: {
             ...user,
-            pendingConnections: user.pendingConnections.concat(connection)
-          }
-        }
+            pendingConnections: user.pendingConnections.concat(connection),
+          },
+        },
       });
-    }
+    },
   });
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async position => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
       setPosition(position);
     });
   }, []);
 
-  const handleScan = async scan => {
+  const handleScan = async (scan) => {
     if (!scan) return;
 
     const qrMatch = scan.match(qrRxp);
 
-    const inDevelopment = process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+    const inDevelopment =
+      process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
 
     // ? do we have the right qrcode for our environment
     if ((!inDevelopment && qrMatch[1]) || (inDevelopment && !qrMatch[1])) {
-      return setErrors([
-        'Environment Mismatch'
-      ]);
+      return setErrors(['Environment Mismatch']);
     }
 
     const qrCode = qrMatch[2];
@@ -57,8 +63,8 @@ const ScanQr = () => {
         await createConnection({
           variables: {
             userID: data?.qrcode?.user.id,
-            senderCoords: { latitude, longitude }
-          }
+            senderCoords: { latitude, longitude },
+          },
         });
       } else if (data && !data?.qrcode?.user) {
         setErrors(['Invalid QR Code']);
@@ -66,7 +72,7 @@ const ScanQr = () => {
     }
   };
 
-  const handleError = err => {
+  const handleError = (err) => {
     console.log(err);
   };
 
@@ -77,16 +83,19 @@ const ScanQr = () => {
         onError={handleError}
         onScan={handleScan}
         facingMode="environment"
-        className="mb-6 mt-16 qrsizing smcustom:w-full smcustom:mt-12"
+        className="mb-6 mt-16 qrsizing"
         showViewFinder={true}
       />
       {errors.length > 0 && (
-        <pre className="text-red-500">{errors.map((message, i) => (
-          <span key={i}>{message}</span>
-        ))}
+        <pre className="text-red-500">
+          {errors.map((message, i) => (
+            <span key={i}>{message}</span>
+          ))}
         </pre>
       )}
-      {called && !connectLoading && <pre className="text-green-500 text-sm">Connection request successful!</pre>}
+      {called && !connectLoading && (
+        <pre className="text-green-500 text-sm">Connection request successful!</pre>
+      )}
       <p className="text-xl m-auto w-3/4 border-b-4 mt-2 pb-4 text-center mx-2">
         Align QR code to swaap information
       </p>

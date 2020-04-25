@@ -66,9 +66,9 @@ const Profile = ({ location, navigate }) => {
           )}
           <div className="flex flex-col desktop:flex-row-reverse justify-between">
             {/* IMG ROUND LARGE */}
-            <div className="self-end -mt-16 -mr-20 desktop:m-0">
+            <div className="self-end -mt-12 -mr-12 desktop:m-0">
               <img
-                className="rounded-full shadow-lg w-96 h-96 object-cover "
+                className="rounded-full shadow-lg w-96 h-96 object-cover mobile:w-64 mobile:h-64"
                 src={data.user.picture}
                 alt={`profile picuture of ${data.user.name}`}
               />
@@ -106,7 +106,7 @@ const Profile = ({ location, navigate }) => {
                     <Popup
                       trigger={
                         <button>
-                          <div style={iconSizing} className='mt-8'>
+                          <div style={iconSizing} className="mt-8">
                             <Icon size={60} type="TRASH" />
                           </div>
                         </button>

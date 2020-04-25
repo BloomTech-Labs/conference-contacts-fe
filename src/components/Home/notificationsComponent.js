@@ -11,11 +11,11 @@ export default function NotificationsComponent(props) {
     position,
     connectLoading,
     deleteConnection,
-    deleteLoading
+    deleteLoading,
   } = props;
 
   return (
-    <div className="profile-card bg-white w-11/12 pb-4 mx-auto desktop:w-1/2">
+    <div className="profile-card bg-white pb-4 mobile:mx-auto desktop:ml-16 desktop:w-1/2">
       <div className="flex mx-4 pt-4 my-6 items-center">
         <div className="relative flex-grow-0">
           <svg
@@ -68,7 +68,7 @@ export default function NotificationsComponent(props) {
         </div>
       ) : (
         <ul className="my-5">
-          {data.user.notifications.map(n => (
+          {data.user.notifications.map((n) => (
             <li
               key={n.id}
               className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg"
@@ -87,10 +87,10 @@ export default function NotificationsComponent(props) {
                         message: 'Notification dismissed successfully',
                         notification: {
                           __typename: 'Notification',
-                          id: n.id
-                        }
-                      }
-                    }
+                          id: n.id,
+                        },
+                      },
+                    },
                   })
                 }
                 disabled={dismissLoading}
@@ -167,7 +167,7 @@ export default function NotificationsComponent(props) {
         </div>
       ) : (
         <ul className="my-5">
-          {receivedConnections.map(c => (
+          {receivedConnections.map((c) => (
             <li
               key={c.id}
               className="flex items-center justify-between mx-4 bg-gray-100 p-3 rounded-lg mt-3"
@@ -186,7 +186,7 @@ export default function NotificationsComponent(props) {
                     acceptConnection({
                       variables: {
                         id: c.id,
-                        receiverCoords: { latitude, longitude }
+                        receiverCoords: { latitude, longitude },
                       },
                       optimisticResponse: {
                         __typename: 'Mutation',
@@ -200,10 +200,10 @@ export default function NotificationsComponent(props) {
                             id: c.id,
                             location: c.location,
                             sender: c.sender,
-                            receiver: c.receiver
-                          }
-                        }
-                      }
+                            receiver: c.receiver,
+                          },
+                        },
+                      },
                     });
                   }}
                   disabled={connectLoading}
@@ -224,10 +224,10 @@ export default function NotificationsComponent(props) {
                           message: 'Connection deleted successfully',
                           connection: {
                             __typename: 'Connection',
-                            id: c.id
-                          }
-                        }
-                      }
+                            id: c.id,
+                          },
+                        },
+                      },
                     })
                   }
                   disabled={deleteLoading}

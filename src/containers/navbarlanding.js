@@ -35,7 +35,6 @@ export default function NavBarLanding() {
                     y2="37.337"
                     gradientUnits="userSpaceOnUse"
                   >
-                    
                     <stop stopColor="#933EFF" />
                     <stop offset="1" stopColor="#0047FF" />
                   </linearGradient>
@@ -102,7 +101,7 @@ export default function NavBarLanding() {
                       onClick={loginWithRedirect}
                     >
                       Sign Up
-                      </button>
+                    </button>
                   </div>
                 </div>
               </li>

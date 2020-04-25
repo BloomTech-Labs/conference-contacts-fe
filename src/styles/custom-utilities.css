@@ -1,5 +1,9 @@
-/* navbar and sidenav */
+html,
+body {
+  overflow-x: hidden; /*REMOVES HORIZONTAL SCROLLBAR THE ABOVE CREATES*/
+}
 
+/* navbar and sidenav */
 .header {
   position: fixed;
   top: 0;
@@ -328,7 +332,6 @@ li svg #white-svg:hover {
   color: #ffffff;
   line-height: 40px;
   font-weight: 500;
-  border-radius: 10px 10px 10px 10px;
   margin-right: -20px;
 }
 

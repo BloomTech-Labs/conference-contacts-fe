@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 import NavBar from '../containers/navbar';
-import NavComponent from '../components/navComponent';
+import NavComponent from '../components/Nav/navComponent';
 import Profile from './profile';
 import ProfileEdit from './profile-edit';
 import Home from './home';

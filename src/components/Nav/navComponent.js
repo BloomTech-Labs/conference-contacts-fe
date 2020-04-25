@@ -59,7 +59,7 @@ export default function NavComponent(props) {
               src={data.user.picture}
               alt={`avatar of ${data.user.name}`}
             />
-            <p className="py-3 text-4xl desktop:text-base text-center">{data.user.name}</p>
+            <p className="py-3 mobile:text-lg desktop:text-base text-center">{data.user.name}</p>
           </div>
           {qrcData && (
             <div className="text-center text-sm text-white">
