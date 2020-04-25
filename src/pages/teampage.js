@@ -119,7 +119,7 @@ export default function TeamPage() {
   return (
     // container
     <div className="container mx-auto">
-      <h2 className="ml-6 text-4xl ont-sembold text-black-600 mb-6" id="team">
+      <h2 className="ml-6 text-4xl ont-sembold text-black-600" id="team">
         Team
       </h2>
 
