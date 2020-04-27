@@ -5,6 +5,7 @@ import { Link } from '@reach/router';
 import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../../queries/index';
 import Icon from '../../components/icon';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
+import DisplayValue from '../../components/Profile/DisplayValue';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
 
@@ -51,9 +52,8 @@ const Profile = ({ location, navigate }) => {
   const contacts = preferredContact
     ? data.user.profile.filter((field) => field.id !== preferredContact.id)
     : data.user.profile;
+
   return (
-    // following two divs add card style
-    // to profile page
     <div className="pb-6  mt-24 desktop:flex desktop:justify-end">
       <div className="profile-card pb-4 bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
         <div className="pt-5 desktop:pt-0 flex flex-col overflow-hidden px-6 pb-8">
@@ -73,8 +73,6 @@ const Profile = ({ location, navigate }) => {
                 alt={`profile picuture of ${data.user.name}`}
               />
             </div>
-
-            {/* BLACK TEXT XL-4XL */}
 
             <div className="flex flex-col pl-0 m-0">
               {/* name, industry, and edit icon if on own profile */}
@@ -154,12 +152,7 @@ const Profile = ({ location, navigate }) => {
               </section>
               {/* job title */}
               <section className="mt-10">
-                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
-                  Job Title
-                </h2>
-                <p className=" text-xl">
-                  {data.user.jobtitle ? data.user.jobtitle : <span>None</span>}
-                </p>
+                <DisplayValue title="Job Title" value={data.user.jobtitle} />
               </section>
               {/* preffered contact method if user has one selected */}
               {preferredContact && (
@@ -229,46 +222,25 @@ const Profile = ({ location, navigate }) => {
               </section>
             </div>
           </div>
+          {/* lower half of profile card on desktop */}
           <div className="desktop:flex desktop:justify-between">
             <div className="">
               {/* location */}
               <section className="mt-10">
-                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
-                  Location
-                </h2>
-                <p className=" text-xl">
-                  {data.user.location ? data.user.location : <span>None</span>}
-                </p>
+                <DisplayValue title="Location" value={data.user.location} />
               </section>
               {/* DOB */}
               <section className="mt-10">
-                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
-                  Birthdate
-                </h2>
-                <p className=" text-xl">
-                  {data.user.birthdate ? (
-                    moment(data.user.birthdate).format('L')
-                  ) : (
-                    <span>None</span>
-                  )}
-                </p>
+                <DisplayValue title="Birthdate" value={data.user.birthdate} />
               </section>
               {/* tagline */}
               <section className="mt-10">
-                <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
-                  Tagline
-                </h2>
-                <p className=" text-xl">
-                  {data.user.tagline ? data.user.tagline : <span>None</span>}
-                </p>
+                <DisplayValue title="Tagline" value={data.user.tagline} />
               </section>
             </div>
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
-                Bio
-              </h2>
-              <p className=" text-xl">{data.user.bio ? data.user.bio : <span>None</span>}</p>
+              <DisplayValue title="BirthdBioate" value={data.user.bio} />
             </section>
           </div>
         </div>

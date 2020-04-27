@@ -359,31 +359,6 @@ export default function ProfileEdit(props) {
         {/* User privacy drop down menu ends */}
       </div>
       {/* Link Section ENDS */}
-      {/* Link Form Input Starts */}
-      {/* <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
-        <SocialLinks
-          updateLink={updateLink}
-          field={linkToEdit}
-          fields={fields}
-          handleFieldChange={handleFieldChange}
-          link={link}
-          setLink={setLink}
-          linkError={linkError}
-          preferredContact={preferredContact}
-        />
-      </CSSTransition> */}
-      {/* Social Links Component */}
-      {/* <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
-        <SocialLinks
-          handleNewLink={handleNewLink}
-          fields={fields}
-          handleFieldChange={handleFieldChange}
-          link={link}
-          setLink={setLink}
-          linkError={linkError}
-          preferredContact={preferredContact}
-        />
-      </CSSTransition> */}
       {/* Start of profile inputs, span to animate */}
 
       <InputsComponent
