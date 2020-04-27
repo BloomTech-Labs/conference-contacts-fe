@@ -6,7 +6,7 @@ import { NAVBAR_PROFILE } from '../queries/index';
 
 // import components
 import ErrorPage from '../pages/errorpage';
-import NavComponent from '../components/navComponent';
+import NavComponent from '../components/Nav/navComponent';
 
 export default function NavBar({ inHeader, qr }) {
   const [open, setOpen] = useState(false);

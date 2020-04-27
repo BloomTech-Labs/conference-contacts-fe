@@ -4,12 +4,17 @@ import React from 'react';
 export default function NavBarLanding() {
   return (
     <div className="text-center container mx-auto">
-      <h2 className="mx-auto m-auto text-6xl font-bold mb-2 text-black">Leave the business cards at home</h2>
-      <h3 className="mx-auto m-auto text-3xl mb-8 text-black-200">
-        Business cards get thrown in the trash. Swaap makes trading business information effortless
-      </h3>
+      <div className="">
+        <h2 className="mx-auto m-auto mt-16 desktop:text-5xl mobile:text-3xl font-bold mb-2 text-black">
+          Leave the business cards at home
+        </h2>
+        <h3 className="mx-auto m-auto desktop:text-2xl mobile:text-lg mb-8 text-black-200">
+          Business cards get thrown in the trash. Swaap makes trading business information
+          effortless
+        </h3>
+      </div>
       <img
-        className="mx-auto"
+        className="mx-auto w-1/2"
         src="https://i.ibb.co/TgYq6kk/Hero-Image.png"
         alt="Hero-Image"
         border="0"
@@ -33,12 +38,12 @@ export default function NavBarLanding() {
         </div>
         <div className="flex items-center justify-center flex-wrap mb-20">
           <div className="w-full md:w-1/2 pl-10">
-              <h4 className="text-3xl text-gray-800 font-bold mb-3">Stay in touch</h4>
-              <p className="text-gray-600 mb-8">
-                Keep all your business contacts in one place with all their important information and
-                preferred form of contact.
-              </p>
-            </div>
+            <h4 className="text-3xl text-gray-800 font-bold mb-3">Stay in touch</h4>
+            <p className="text-gray-600 mb-8">
+              Keep all your business contacts in one place with all their important information and
+              preferred form of contact.
+            </p>
+          </div>
           <img
             src="https://i.ibb.co/qBrvpvL/undraw-online-chat-d7ek-1.png"
             alt="undraw-online-chat-d7ek-1"

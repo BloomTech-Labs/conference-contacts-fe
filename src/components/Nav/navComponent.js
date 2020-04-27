@@ -4,10 +4,9 @@ import NavLink from './navlink';
 import QRCode from 'qrcode.react';
 import Popup from 'reactjs-popup';
 import ClipboardJS from 'clipboard';
-import ProfileLink from '../components/profilelink';
+import ProfileLink from '../PublicProfile/profilelink';
 
 const QRC = React.memo(QRCode);
-
 
 // Component Start
 export default function NavComponent(props) {
@@ -22,26 +21,26 @@ export default function NavComponent(props) {
     data,
     isCurrent,
   } = props;
-  
+
   const [copySuccess, setCopySuccess] = useState('');
-  const [copyFailed, setCopyFailed] = useState('')
+  const [copyFailed, setCopyFailed] = useState('');
 
   var clipboard = new ClipboardJS('.btn');
-  console.log("clipboard", clipboard)
-  
-  clipboard.on('success', function(e) {
+  console.log('clipboard', clipboard);
+
+  clipboard.on('success', function (e) {
     setCopySuccess('Copied!');
-      console.info('Action:', e.action);
-      console.info('Text:', e.text);
-      console.info('Trigger:', e.trigger);
-  
-      e.clearSelection();
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
   });
-  
-  clipboard.on('error', function(e) {
-    setCopyFailed('Copied Unsuccessful!')
-      console.error('Action:', e.action);
-      console.error('Trigger:', e.trigger);
+
+  clipboard.on('error', function (e) {
+    setCopyFailed('Copied Unsuccessful!');
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
   });
 
   return (
@@ -65,7 +64,7 @@ export default function NavComponent(props) {
               src={data.user.picture}
               alt={`avatar of ${data.user.name}`}
             />
-            <p className="py-3 text-4xl desktop:text-base text-center">{data.user.name}</p>
+            <p className="py-3 mobile:text-lg desktop:text-base text-center">{data.user.name}</p>
           </div>
           {qrcData && (
             <div className="text-center text-sm text-white">
@@ -92,7 +91,7 @@ export default function NavComponent(props) {
             </div>
           )}
           {/* personal link information */}
-          <div className='mobile:hidden mt-0 -mb-6 text-center text-blue-500 text-xs'>
+          <div className="mobile:hidden mt-0 -mb-6 text-center text-blue-500 text-xs">
             <ProfileLink qrPubLink={qrPubLink} />
           </div>
         </div>

@@ -6,15 +6,15 @@ import {
   CREATE_PROFILE_FIELD,
   UPDATE_PROFILE_FIELD,
   DELETE_PROFILE_FIELD,
-} from '../queries';
-import Icon from '../components/icon';
+} from '../../queries';
+import Icon from '../../components/icon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { CSSTransition } from 'react-transition-group';
 
 // components
-import InputsComponent from '../components/editComponents/inputsComponent';
-import SocialLinks from '../components/SocialLinks/SocialLinks';
-import LinkStatusModal from '../components/SocialLinks/LinkStatusModal/LinkStatusModal';
+import InputsComponent from '../../components/editComponents/inputsComponent';
+import SocialLinks from '../../components/SocialLinks/SocialLinks';
+import LinkStatusModal from '../../components/SocialLinks/LinkStatusModal/LinkStatusModal';
 
 export default function ProfileEdit(props) {
   //State
@@ -246,7 +246,7 @@ export default function ProfileEdit(props) {
 
   return (
     <div className="px-6 mt-24">
-      <div className=''>
+      <div className="">
         <div
           className="flex justify-between mx-auto rounded desktop:w-full mobile:w-full mobile:inset-x-0"
           style={{
@@ -303,24 +303,24 @@ export default function ProfileEdit(props) {
           <li>Select the lock to set link to private or public</li>
           <li>Press on contact method to update</li>
         </ul>
-        <div className='flex justify-end desktop:justify-start'>
+        <div className="flex justify-end desktop:justify-start">
           <button
-              type="button"
-              className="text-base text-blue-500 w-full desktop:w-1/2 mt-8 mb-6 bg-gray-400 px-4 py-2 rounded-lg focus:outline-none mobile:text-lg"
-              onClick={() => {
-                setShowEditLink(false);
-                setLinkInput(!showLinkInput);
-                setFields({
-                  ...fields,
-                  link: '',
-                });
-                setLink('');
-              }}
-            >
-              &#43; Add Contact Method
-            </button>
+            type="button"
+            className="text-base text-blue-500 w-full desktop:w-1/2 mt-8 mb-6 bg-gray-400 px-4 py-2 rounded-lg focus:outline-none mobile:text-lg"
+            onClick={() => {
+              setShowEditLink(false);
+              setLinkInput(!showLinkInput);
+              setFields({
+                ...fields,
+                link: '',
+              });
+              setLink('');
+            }}
+          >
+            &#43; Add Contact Method
+          </button>
         </div>
-        <div className='text-sm'>
+        <div className="text-sm">
           {/* Link Form Input Starts */}
           <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
             <SocialLinks
@@ -359,31 +359,6 @@ export default function ProfileEdit(props) {
         {/* User privacy drop down menu ends */}
       </div>
       {/* Link Section ENDS */}
-      {/* Link Form Input Starts */}
-      {/* <CSSTransition in={showEditLink} classNames="inputs" timeout={300} unmountOnExit>
-        <SocialLinks
-          updateLink={updateLink}
-          field={linkToEdit}
-          fields={fields}
-          handleFieldChange={handleFieldChange}
-          link={link}
-          setLink={setLink}
-          linkError={linkError}
-          preferredContact={preferredContact}
-        />
-      </CSSTransition> */}
-      {/* Social Links Component */}
-      {/* <CSSTransition in={showLinkInput} classNames="inputs" timeout={300} unmountOnExit>
-        <SocialLinks
-          handleNewLink={handleNewLink}
-          fields={fields}
-          handleFieldChange={handleFieldChange}
-          link={link}
-          setLink={setLink}
-          linkError={linkError}
-          preferredContact={preferredContact}
-        />
-      </CSSTransition> */}
       {/* Start of profile inputs, span to animate */}
 
       <InputsComponent

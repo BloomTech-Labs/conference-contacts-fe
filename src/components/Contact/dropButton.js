@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alphabetical, Recent } from '../components/contactList';
+import { Alphabetical, Recent } from './contactList';
 
 const DrpBtn = ({ connections, navigate }) => {
   console.log({ connections });

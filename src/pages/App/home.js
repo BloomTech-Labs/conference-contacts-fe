@@ -7,20 +7,18 @@ import {
   ACCEPT_CONNECTION,
   DELETE_CONNECTION,
   GET_USER_CONNECTIONS,
-} from '../queries/index';
+} from '../../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import QRCode from 'qrcode.react';
-import gql from 'graphql-tag';
 
 // import pages
-import ErrorPage from './errorpage';
+import ErrorPage from '../errorpage';
 
 // import components
-import UserInfo from '../components/userInfo';
-import ScanQrButton from '../components/scanQrButton';
-import NotificationsComponent from '../components/notificationsComponent';
-import EventsComponent from '../components/eventsComponent';
-import { set } from 'react-ga';
+import UserInfo from '../../components/Home/userInfo';
+import ScanQrButton from '../../components/Home/scanQrButton';
+import NotificationsComponent from '../../components/Home/notificationsComponent';
+//import EventsComponent from '../components/eventsComponent';
 
 const QRC = React.memo(QRCode);
 
@@ -163,7 +161,7 @@ const Home = ({ qr }) => {
     }
   };
 
-  //React Rendering Logic
+  // React Rendering Logic for loading, error, and home component
   if (loading) {
     return (
       <div className="flex justify-center h-screen items-center">
@@ -178,7 +176,7 @@ const Home = ({ qr }) => {
 
     let notificationCount = receivedConnections.length + data.user.notifications.length;
 
-    // note to future self: stop using netlify - this environment issue caused much grief
+    // set wether in staging/localhost or in production
     const inDevelopment =
       process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
 
@@ -192,8 +190,8 @@ const Home = ({ qr }) => {
       : `https://swaap.co/card/${data.user.id}`;
 
     return (
-      <div className="mobile:pb-6 flex flex-col mt-24">
-        <div className="container desktop:w-full  desktop:items-start desktop:flex desktop:flex-row desktop:justify-end">
+      <div className="container mobile:pb-6 flex justify-center desktop:mt-24 mobile:mt-20">
+        <div className="desktop:w-full mobile:w-10/12 desktop:items-start desktop:flex desktop:flex-row desktop:justify-start">
           {/* qrcode and user info display component */}
           <UserInfo data={data} qrcData={qrcData} qrLink={qrLink} qrPubLink={qrPubLink} QRC={QRC} />
           {/* open camera / scane qr component */}
@@ -211,8 +209,6 @@ const Home = ({ qr }) => {
             deleteConnection={deleteConnection}
             deleteLoading={deleteLoading}
           />
-          {/* events component */}
-          {/* <EventsComponent /> */}
         </div>
       </div>
     );

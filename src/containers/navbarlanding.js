@@ -7,7 +7,7 @@ export default function NavBarLanding() {
 
   return (
     <section className="antialiased bg-gray-200 mx-auto">
-      <div className="lg:px-16 px-2 bg-white flex flex-wrap items-center lg:py-0 py-2 mx-auto">
+      <div className="desktop:px-16 px-2 bg-white flex flex-wrap items-center desktop:py-0 py-2 mx-auto">
         <div className="flex-1 flex justify-between items-center mx-auto">
           <nav>
             <div className="flex justify-between items-center container mx-auto">
@@ -35,7 +35,6 @@ export default function NavBarLanding() {
                     y2="37.337"
                     gradientUnits="userSpaceOnUse"
                   >
-                    
                     <stop stopColor="#933EFF" />
                     <stop offset="1" stopColor="#0047FF" />
                   </linearGradient>
@@ -45,7 +44,7 @@ export default function NavBarLanding() {
           </nav>
         </div>
 
-        <label htmlFor="menu-toggle" className="pointer-cursor lg:hidden block">
+        <label htmlFor="menu-toggle" className="pointer-cursor desktop:hidden block">
           <svg
             className="fill-current text-gray-900"
             xmlns="http://www.w3.org/2000/svg"
@@ -59,12 +58,12 @@ export default function NavBarLanding() {
         </label>
         <input className="hidden" type="checkbox" id="menu-toggle" />
 
-        <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+        <div className="hidden desktop:flex desktop:items-center desktop:w-auto w-full" id="menu">
           <nav>
-            <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+            <ul className="desktop:flex items-center justify-between text-base text-gray-700 pt-4 desktop:pt-0">
               <li>
                 <a
-                  className="lg:p-12 py-4 px-0 flex justify-center border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  className="desktop:px-8 py-4 px-0 flex justify-center border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#features"
                 >
                   Features
@@ -72,7 +71,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  className="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  className="desktop:px-8 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#demo"
                 >
                   Demo
@@ -80,7 +79,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  className="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  className="desktop:px-8 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#reviews"
                 >
                   Reviews
@@ -88,7 +87,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  className="lg:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 text-blue-600"
+                  className="desktop:px-8 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 desktop:mb-0 mb-2 text-blue-600"
                   href="#team"
                 >
                   Team
@@ -96,13 +95,25 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <div>
-                  <div className="lg:p-12 py-3 px-0 flex justify-center">
+                  <div className="desktop:px-8 py-3 px-0 flex justify-center">
+                    <button
+                      className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      onClick={loginWithRedirect}
+                    >
+                      Login
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <div className="desktop:px-8 py-3 px-0 flex justify-center">
                     <button
                       className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                       onClick={loginWithRedirect}
                     >
                       Sign Up
-                      </button>
+                    </button>
                   </div>
                 </div>
               </li>

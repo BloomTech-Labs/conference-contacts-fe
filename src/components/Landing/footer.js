@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function NavBarLanding() {
+export default function Footer() {
   return (
     <footer className="footer text-center">
       <div className="text-center container mx-auto px-6 pt-10 pb-6">

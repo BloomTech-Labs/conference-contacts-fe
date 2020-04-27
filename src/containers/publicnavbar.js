@@ -6,7 +6,7 @@ import { NAVBAR_PROFILE } from '../queries/index';
 
 // import components
 import ErrorPage from '../pages/errorpage';
-import PublicNav from '../components/publicnavcomponent';
+import PublicNav from '../components/Nav/publicnavcomponent';
 
 export default function PublicNavBar({ inHeader }) {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function PublicNavBar({ inHeader }) {
   if (loading || !data) return null;
   if (error) return <ErrorPage />;
 
-  const NavLink = props => (
+  const NavLink = (props) => (
     <Link
       {...props}
       getProps={({ isCurrent }) => {
@@ -24,8 +24,8 @@ export default function PublicNavBar({ inHeader }) {
           style: {
             background: isCurrent ? 'whiteSmoke' : 'white',
             padding: '10px',
-            borderRadius: isCurrent ? '5px' : '0px'
-          }
+            borderRadius: isCurrent ? '5px' : '0px',
+          },
         };
       }}
     />
@@ -62,12 +62,7 @@ export default function PublicNavBar({ inHeader }) {
               </svg>
             </Link>
 
-            <PublicNav
-              open={open}
-              setOpen={setOpen}
-              inHeader={true}
-              data={data}
-            />
+            <PublicNav open={open} setOpen={setOpen} inHeader={true} data={data} />
 
             <button
               open={open}
@@ -90,11 +85,6 @@ export default function PublicNavBar({ inHeader }) {
       </>
     );
   } else if (!inHeader) {
-    return (
-      <PublicNav
-        inHeader={false}
-        data={data}
-      />
-    );
+    return <PublicNav inHeader={false} data={data} />;
   }
 }
