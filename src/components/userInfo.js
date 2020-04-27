@@ -86,7 +86,7 @@ export default function UserInfo(props) {
             </span>
           </div>
           <div className="mb-3">Share Your Profile!</div>
-          <div className="flex items-end justify-between px-12 mx-16">
+          <div className="flex items-end justify-between px-12 min-w-full">
             <Popup
               trigger={
                 <button className="cursor-pointer w-1/3 bg-purple-700 text-white shadow text-center rounded-lg py-2 px-4">
