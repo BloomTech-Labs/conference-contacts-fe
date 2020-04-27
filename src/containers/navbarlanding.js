@@ -63,7 +63,7 @@ export default function NavBarLanding() {
             <ul className="desktop:flex items-center justify-between text-base text-gray-700 pt-4 desktop:pt-0">
               <li>
                 <a
-                  className="desktop:p-12 py-4 px-0 flex justify-center border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  className="desktop:px-8 py-4 px-0 flex justify-center border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#features"
                 >
                   Features
@@ -71,7 +71,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  className="desktop:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  className="desktop:px-8 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#demo"
                 >
                   Demo
@@ -79,7 +79,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  className="desktop:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
+                  className="desktop:px-8 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 text-blue-600"
                   href="#reviews"
                 >
                   Reviews
@@ -87,7 +87,7 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <a
-                  className="desktop:p-12 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 desktop:mb-0 mb-2 text-blue-600"
+                  className="desktop:px-8 py-3 px-0 flex justify-center  border-b-2 border-transparent hover:border-indigo-400 desktop:mb-0 mb-2 text-blue-600"
                   href="#team"
                 >
                   Team
@@ -95,7 +95,19 @@ export default function NavBarLanding() {
               </li>
               <li>
                 <div>
-                  <div className="desktop:p-12 py-3 px-0 flex justify-center">
+                  <div className="desktop:px-8 py-3 px-0 flex justify-center">
+                    <button
+                      className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      onClick={loginWithRedirect}
+                    >
+                      Login
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <div className="desktop:px-8 py-3 px-0 flex justify-center">
                     <button
                       className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                       onClick={loginWithRedirect}
