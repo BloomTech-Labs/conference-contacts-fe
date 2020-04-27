@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ClipboardJS from 'clipboard';
 
 // Component Start
@@ -6,14 +6,14 @@ export default function ProfileLink(props) {
     const {qrPubLink } = props;
     
     const [copySuccess, setCopySuccess] = useState('');
-    const [copyFailed, setCopyFailed] = useState('');
+
+    useEffect(() => {
+      setCopySuccess('')
+    }, []);
 
     var clipboard = new ClipboardJS('.btn');
     
     clipboard.on('success', function(e) {
-        
-        setCopySuccess(alert('Link Copied to Your Clipboard!'));
-
         // let timeId = setInterval(3000);
         // setTimeout(() => { clearInterval(timeId) }, 1000)   
     
@@ -24,17 +24,11 @@ export default function ProfileLink(props) {
 
         e.clearSelection();
     });
-  
-    // clipboard.on('error', function(e) {
-    //     setCopyFailed('Copied Unsuccessful!')
-    //     console.error('Action:', e.action);
-    //     console.error('Trigger:', e.trigger);
-    // });
 
   return (
       <div className=''>
         <div className="mobile:hidden">
-            <button class="btn" data-clipboard-text={qrPubLink}>
+            <button class="btn" data-clipboard-text={qrPubLink} onClick={() => setCopySuccess(alert('Link Copied to Your Clipboard!'))}>
                 click to copy profile link
             </button>
             {/* <div className="desktop:text-green-800 text-sm">
@@ -46,7 +40,7 @@ export default function ProfileLink(props) {
             {copySuccess}
           </div> */}
           <div classname="">
-            <button class="btn" data-clipboard-text={qrPubLink}>
+            <button class="btn" data-clipboard-text={qrPubLink} onClick={() => setCopySuccess(alert('Link Copied to Your Clipboard!'))}>
                 Share Link
             </button>
             </div>
