@@ -13,25 +13,25 @@ export default function ProfileLink(props) {
   clipboard.on('success', function (e) {
     setCopySuccess(alert('Link Copied to Your Clipboard!'));
 
-    // let timeId = setInterval(, 3000);
-    // setTimeout(() => { clearInterval(timeId) }, 3000)
+    // let timeId = setInterval(3000);
+    // setTimeout(() => { clearInterval(timeId) }, 1000)
 
-    console.info('Action:', e.action);
-    console.info('Text:', e.text);
-    console.info('Trigger:', e.trigger);
-    console.log(e);
+    // console.info('Action:', e.action);
+    // console.info('Text:', e.text);
+    // console.info('Trigger:', e.trigger);
+    // console.log(e);
 
     e.clearSelection();
   });
 
-  clipboard.on('error', function (e) {
-    setCopyFailed('Copied Unsuccessful!');
-    console.error('Action:', e.action);
-    console.error('Trigger:', e.trigger);
-  });
+  // clipboard.on('error', function(e) {
+  //     setCopyFailed('Copied Unsuccessful!')
+  //     console.error('Action:', e.action);
+  //     console.error('Trigger:', e.trigger);
+  // });
 
   return (
-    <div>
+    <div className="">
       <div className="mobile:hidden">
         <button class="btn" data-clipboard-text={qrPubLink}>
           click to copy profile link
