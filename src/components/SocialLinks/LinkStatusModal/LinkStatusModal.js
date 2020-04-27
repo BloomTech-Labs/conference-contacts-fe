@@ -3,7 +3,6 @@ import Popup from 'reactjs-popup';
 import SVGIcon from '../SocialIcons/SVGIcon';
 
 const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, toggleEdit }) => {
-  console.log('inside link status modal\n', fields);
   const updatePrivacy = (field) => {
     if (field.privacy === 'PRIVATE') {
       updateLink(field, { privacy: 'PUBLIC' });
