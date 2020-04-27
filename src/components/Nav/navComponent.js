@@ -3,6 +3,8 @@ import { Link } from '@reach/router';
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
 import Popup from 'reactjs-popup';
+import ClipboardJS from 'clipboard';
+import ProfileLink from '../profilelink';
 
 const QRC = React.memo(QRCode);
 
@@ -21,22 +23,25 @@ export default function NavComponent(props) {
   } = props;
 
   const [copySuccess, setCopySuccess] = useState('');
+  const [copyFailed, setCopyFailed] = useState('');
 
-  function copyToClipboard() {
-    /* Get the text field */
-    var copyText = document.getElementById('myInput');
+  var clipboard = new ClipboardJS('.btn');
+  console.log('clipboard', clipboard);
 
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-    /* Copy the text inside the text field */
-    document.execCommand('copy');
-
-    /* Alert the copied text */
-    // alert("Copied the text: " + copyText.value);
+  clipboard.on('success', function (e) {
     setCopySuccess('Copied!');
-  }
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
+  });
+
+  clipboard.on('error', function (e) {
+    setCopyFailed('Copied Unsuccessful!');
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+  });
 
   return (
     <nav
@@ -86,15 +91,9 @@ export default function NavComponent(props) {
             </div>
           )}
           {/* personal link information */}
-          {document.queryCommandSupported('copy') && (
-            <div className="-mt-6 text-center">
-              <input className="opacity-0" type="text" defaultValue={qrPubLink} id="myInput" />
-              <button className="text-blue-500 text-xs" onClick={copyToClipboard}>
-                Click to Copy Profile Link
-              </button>
-              <div className="text-green-600 text-sm">{copySuccess}</div>
-            </div>
-          )}
+          <div className="mobile:hidden mt-0 -mb-6 text-center text-blue-500 text-xs">
+            <ProfileLink qrPubLink={qrPubLink} />
+          </div>
         </div>
         <ul className="mt-8">
           <NavLink to="/" onClick={inHeader ? () => setOpen(!open) : null}>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
+import ClipboardJS from 'clipboard';
+import ProfileLink from '../profilelink';
 
 export default function UserInfo(props) {
   const { data, qrcData, qrLink, qrPubLink, QRC } = props;
   // false means the QR code is set to the one for SWAAP users
   const [toggleQR, setToggleQR] = useState(true);
+
   return (
     <div className="desktop:hidden profile-card pb-4 bg-white desktop:m-0 shadow-md mt-0 overflow-hidden">
       <div className="flex justify-between">
@@ -82,43 +85,49 @@ export default function UserInfo(props) {
               />
             </span>
           </div>
-          <Popup
-            trigger={
-              <span className="cursor-pointer underline text-blue-400">
-                click here for your public qr code
-              </span>
-            }
-            modal
-            position="top left"
-          >
-            {(close) => (
-              <div className="text-center my-4 px-2 object-contain rounded">
-                Public QR code <br />{' '}
-                <span className="text-xs">(share your info with non swaap users)</span>
-                <div className="">
-                  <div className="flex justify-center my-6">
-                    <span className="qr-box p-4">
-                      <QRC
-                        includeMargin={false}
-                        level="Q"
-                        renderAs="svg"
-                        value={qrPubLink}
-                        fgColor="#6640FF"
-                      />
-                    </span>
+          <div className="mb-3">Share Your Profile!</div>
+          <div className="flex items-end justify-between px-12 mx-16">
+            <Popup
+              trigger={
+                <button className="cursor-pointer w-1/3 bg-purple-700 text-white shadow text-center rounded-lg py-2 px-4">
+                  Public QR
+                </button>
+              }
+              modal
+              position="top left"
+            >
+              {(close) => (
+                <div className="modal text-center my-4 w-full object-contain rounded">
+                  Public QR code <br />{' '}
+                  <span className="text-xs">(share your info with non swaap users)</span>
+                  <div className="">
+                    <div className="flex justify-center my-6">
+                      <span className="qr-box p-4">
+                        <QRC
+                          includeMargin={false}
+                          level="Q"
+                          renderAs="svg"
+                          value={qrPubLink}
+                          fgColor="#6640FF"
+                        />
+                      </span>
+                    </div>
+                    <button
+                      className="flex-1 bg-green-600 hover:bg-green-900 font-bold py-2 px-4 rounded"
+                      onClick={() => {
+                        close();
+                      }}
+                    >
+                      Done
+                    </button>
                   </div>
-                  <button
-                    className="flex-1 bg-purple-600 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => {
-                      close();
-                    }}
-                  >
-                    Done
-                  </button>
                 </div>
-              </div>
-            )}
-          </Popup>
+              )}
+            </Popup>
+            <div className="px-4 py-2 w-1/3 text-center bg-purple-700 shadow text-white rounded-lg py-1">
+              <ProfileLink qrPubLink={qrPubLink} />
+            </div>
+          </div>
         </div>
       )}
     </div>
