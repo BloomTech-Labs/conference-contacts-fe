@@ -7,20 +7,18 @@ import {
   ACCEPT_CONNECTION,
   DELETE_CONNECTION,
   GET_USER_CONNECTIONS,
-} from '../queries/index';
+} from '../../queries/index';
 import BeatLoader from 'react-spinners/BeatLoader';
 import QRCode from 'qrcode.react';
-import gql from 'graphql-tag';
 
 // import pages
-import ErrorPage from './errorpage';
+import ErrorPage from '../errorpage';
 
 // import components
-import UserInfo from '../components/Home/userInfo';
-import ScanQrButton from '../components/Home/scanQrButton';
-import NotificationsComponent from '../components/Home/notificationsComponent';
-import EventsComponent from '../components/eventsComponent';
-import { set } from 'react-ga';
+import UserInfo from '../../components/Home/userInfo';
+import ScanQrButton from '../../components/Home/scanQrButton';
+import NotificationsComponent from '../../components/Home/notificationsComponent';
+//import EventsComponent from '../components/eventsComponent';
 
 const QRC = React.memo(QRCode);
 

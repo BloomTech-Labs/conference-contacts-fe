@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 import NavBar from '../containers/navbar';
-import Profile from './profile';
-import ProfileEdit from './profile-edit';
-import Home from './home';
-import Contacts from './contacts';
-import ScanQr from './scanqr';
+import Profile from './App/profile';
+import ProfileEdit from './App/profile-edit';
+import Home from './App/home';
+import Contacts from './App/contacts';
+import ScanQr from './App/scanqr';
 
 export default function Pages(props) {
   return (
@@ -17,13 +17,11 @@ export default function Pages(props) {
           <Router className="w-full">
             <Home path="/" qr={props.qr} />
             <Profile path="profile" />
-            <Profile path="profile" />
             <ProfileEdit path="profile/edit" />
             <Contacts path="contacts" />
             {/* <Messages path="messages" /> */}
             {/* <Settings path="settings" /> */}
             <ScanQr path="scanqr" />
-            {/* <ReadQr path="readqr" /> */}
           </Router>
         </div>
       </div>

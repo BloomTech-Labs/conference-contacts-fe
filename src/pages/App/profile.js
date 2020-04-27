@@ -2,9 +2,9 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from '@reach/router';
-import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../queries/index';
-import Icon from '../components/icon';
-import SVGIcon from '../components/SocialLinks/SocialIcons/SVGIcon';
+import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../../queries/index';
+import Icon from '../../components/icon';
+import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 import * as moment from 'moment';
 
