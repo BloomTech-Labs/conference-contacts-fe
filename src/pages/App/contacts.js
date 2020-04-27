@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { GET_USER_CONNECTIONS } from '../../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 import BeatLoader from 'react-spinners/BeatLoader';
-import DrpBtn from '../../components/dropButton';
+import DrpBtn from '../../components/Contact/dropButton';
+import ContactButton from '../../components/Contact/ContactButton';
 // import { AtoZ, Recent, ContactList } from '../../components/contactList';
 
 // import components
@@ -106,39 +107,7 @@ const Contacts = ({ navigate }) => {
         </div>
         {pendingConnections.length ? (
           pendingConnections.map((connection) => (
-            <button
-              key={connection.id}
-              onClick={() =>
-                navigate('/profile', {
-                  state: {
-                    userId: connection.contact.id,
-                    connectionId: connection.id,
-                    location: connection.location,
-                    status: 'PENDING',
-                  },
-                })
-              }
-              className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
-            >
-              <div>
-                <img
-                  className="rounded-full w-12 h-12 object-cover mr-6"
-                  src={connection.contact.picture}
-                  alt={connection.contact.name}
-                />
-              </div>
-              <div className="flex flex-col items-start">
-                <span>
-                  {connection.contact.name}
-                  {connection.receiver.id === connection.contact.id ? (
-                    <small> (Sent)</small>
-                  ) : (
-                    <small> (Received)</small>
-                  )}
-                </span>
-                <small>{connection.contact.industry}</small>
-              </div>
-            </button>
+            <ContactButton connection={connection} navigate={navigate} />
           ))
         ) : (
           <p className="ml-4 my-2">None</p>

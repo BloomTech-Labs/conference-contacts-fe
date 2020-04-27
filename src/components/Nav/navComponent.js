@@ -4,7 +4,7 @@ import NavLink from './navlink';
 import QRCode from 'qrcode.react';
 import Popup from 'reactjs-popup';
 import ClipboardJS from 'clipboard';
-import ProfileLink from '../profilelink';
+import ProfileLink from '../PublicProfile/profilelink';
 
 const QRC = React.memo(QRCode);
 

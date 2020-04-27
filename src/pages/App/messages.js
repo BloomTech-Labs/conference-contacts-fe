@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { GET_USER_CONNECTIONS } from '../queries/index';
+import { GET_USER_CONNECTIONS } from '../../queries/index';
 import { useQuery } from '@apollo/react-hooks';
 import BeatLoader from 'react-spinners/BeatLoader';
 
 // import components
-import ErrorPage from './errorpage';
+import ErrorPage from '../errorpage';
 
 const Messages = () => {
   let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
@@ -17,7 +17,7 @@ const Messages = () => {
       </div>
     );
 
-  const handleSearch = e => {
+  const handleSearch = (e) => {
     setName(e.target.value);
   };
 
@@ -26,7 +26,9 @@ const Messages = () => {
   let connections = data.user.connections;
 
   if (name?.length > 0)
-    connections = connections.filter(c => c.sender.name.toLowerCase().includes(name.toLowerCase()));
+    connections = connections.filter((c) =>
+      c.sender.name.toLowerCase().includes(name.toLowerCase())
+    );
 
   return (
     <div>
@@ -59,7 +61,7 @@ const Messages = () => {
       </div>
       <div className="mt-10">
         {/* switch connections with relevant query */}
-        {connections.map(connection => (
+        {connections.map((connection) => (
           <button
             onClick={() => console.log(`staging.swaap.co/profile`)}
             className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"

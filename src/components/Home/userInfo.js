@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
-import ClipboardJS from 'clipboard';
-import ProfileLink from '../profilelink';
+import ProfileLink from '../PublicProfile/profilelink';
 
 export default function UserInfo(props) {
   const { data, qrcData, qrLink, qrPubLink, QRC } = props;
@@ -9,7 +8,7 @@ export default function UserInfo(props) {
   const [toggleQR, setToggleQR] = useState(true);
 
   return (
-    <div className="desktop:hidden profile-card pb-4 bg-white desktop:m-0 shadow-md mt-0 overflow-hidden">
+    <div className="desktop:hidden profile-card bg-white desktop:m-0 shadow-md mt-0 overflow-hidden">
       <div className="flex justify-between">
         <div className="flex pl-2 pt-4">
           <svg
@@ -85,11 +84,13 @@ export default function UserInfo(props) {
               />
             </span>
           </div>
-          <div className="mb-3">Share Your Profile!</div>
-          <div className="flex items-end justify-between px-12 min-w-full">
+          <div className="mb-2 text-gray-400 uppercase text-sm tracking-widest">
+            Share Your Profile
+          </div>
+          <div className="flex items-end justify-between min-w-full">
             <Popup
               trigger={
-                <button className="cursor-pointer w-1/3 bg-purple-700 text-white shadow text-center rounded-lg py-2 px-4">
+                <button className="cursor-pointer w-full bg-gray-100 border border-blue-200 border-l-0 border-b-0 text-black shadow text-center py-2">
                   Public QR
                 </button>
               }
@@ -124,7 +125,7 @@ export default function UserInfo(props) {
                 </div>
               )}
             </Popup>
-            <div className="px-4 py-2 w-1/3 text-center bg-purple-700 shadow text-white rounded-lg py-1">
+            <div className="w-full text-center bg-gray-100 border border-blue-200 border-r-0 border-l-0 border-b-0 text-black shadow py-2">
               <ProfileLink qrPubLink={qrPubLink} />
             </div>
           </div>

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import Icon from '../components/icon';
+import Icon from '../../components/icon';
 import { Link } from '@reach/router';
 
 export default function Settings(props) {
   const [fields, setFields] = useState({
-    autoconnect: true
+    autoconnect: true,
   });
 
-  const handleToggle = setting => {
+  const handleToggle = (setting) => {
     return () => {
       setFields({
         ...fields,
-        [setting]: !fields[setting]
+        [setting]: !fields[setting],
       });
     };
   };
@@ -87,8 +87,8 @@ export default function Settings(props) {
             {!fields.autoconnect ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-                <Icon type="TOGGLE ON" size="30" />
-              )}
+              <Icon type="TOGGLE ON" size="30" />
+            )}
           </button>
           <p className="ml-2">Automatically connect after scan</p>
         </div>
@@ -98,8 +98,8 @@ export default function Settings(props) {
           {!fields.darkmode ? (
             <Icon type="TOGGLE OFF" size="30" />
           ) : (
-              <Icon type="TOGGLE ON" size="30" />
-            )}
+            <Icon type="TOGGLE ON" size="30" />
+          )}
         </button>
         <p className="ml-2">Dark mode</p>
       </div>
@@ -112,8 +112,8 @@ export default function Settings(props) {
             {!fields.browser ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-                <Icon type="TOGGLE ON" size="30" />
-              )}
+              <Icon type="TOGGLE ON" size="30" />
+            )}
           </button>
           <p className="ml-2">Browser</p>
         </div>
@@ -122,8 +122,8 @@ export default function Settings(props) {
             {!fields.email ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-                <Icon type="TOGGLE ON" size="30" />
-              )}
+              <Icon type="TOGGLE ON" size="30" />
+            )}
           </button>
           <p className="ml-2">Email</p>
         </div>
@@ -132,8 +132,8 @@ export default function Settings(props) {
             {!fields.sms ? (
               <Icon type="TOGGLE OFF" size="30" />
             ) : (
-                <Icon type="TOGGLE ON" size="30" />
-              )}
+              <Icon type="TOGGLE ON" size="30" />
+            )}
           </button>
           <p className="ml-2">SMS</p>
         </div>

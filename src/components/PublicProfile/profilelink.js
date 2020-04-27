@@ -45,7 +45,7 @@ export default function ProfileLink(props) {
             {copySuccess}
           </div> */}
         <div classname="">
-          <button class="btn" data-clipboard-text={qrPubLink}>
+          <button class="btn w-full" data-clipboard-text={qrPubLink}>
             Share Link
           </button>
         </div>
