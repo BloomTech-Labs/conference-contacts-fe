@@ -3,7 +3,7 @@ import { Alphabetical, Recent } from './contactList';
 
 const DrpBtn = ({ connections, navigate }) => {
   console.log({ connections });
-  const [sortBy, setSortBy] = useState('alphabetical');
+  const [sortBy, setSortBy] = useState('recent');
 
   const handleSort = (e) => {
     setSortBy(e.target.value);
