@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ClipboardJS from 'clipboard';
+import Popup from 'reactjs-popup';
 
 // Component Start
 export default function ProfileLink(props) {
@@ -7,9 +8,9 @@ export default function ProfileLink(props) {
     
     const [copySuccess, setCopySuccess] = useState('');
 
-    useEffect(() => {
-      setCopySuccess('')
-    }, []);
+    // useEffect(() => {
+    //   setCopySuccess('')
+    // }, []);
 
     var clipboard = new ClipboardJS('.btn');
     
@@ -26,24 +27,48 @@ export default function ProfileLink(props) {
     });
 
   return (
-      <div className=''>
+      <div>
         <div className="mobile:hidden">
-            <button class="btn" data-clipboard-text={qrPubLink} onClick={() => setCopySuccess(alert('Link Copied to Your Clipboard!'))}>
-                click to copy profile link
-            </button>
-            {/* <div className="desktop:text-green-800 text-sm">
-            {copySuccess}
-            </div> */}
+        <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}>
+          <a classname="text-blue-500">click to copy profile link</a>
+            </button>} 
+            modal
+            position="center center">
+              {(close) => (
+                <div>
+                  <br />
+                  <div classname="">Link Copied to Your Clipboard!</div>
+                  <br />
+                  <button
+                  className="my-4 text-white bg-purple-600 hover:bg-purple-900 font-bold py-2 px-4 rounded"
+                  onClick={() => {
+                    close();
+                  }}> Ok
+                  </button>
+                </div>
+              )}
+            </Popup>
         </div>
         <div className="desktop:hidden">
-          {/* <div classname="mobile:mt-1 mobile:text-green-600 ">
-            {copySuccess}
-          </div> */}
-          <div classname="">
-            <button class="btn" data-clipboard-text={qrPubLink} onClick={() => setCopySuccess(alert('Link Copied to Your Clipboard!'))}>
+          <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}>
                 Share Link
-            </button>
-            </div>
+            </button>} 
+            modal
+            position="center center">
+              {(close) => (
+                <div classname="text-center mt-8 text-blue-500">
+                  <br />
+                  <div classname="">Link Copied to Your Clipboard!</div>
+                  <br />
+                  <button
+                  className="my-4 text-white bg-purple-600 hover:bg-purple-900 font-bold py-2 px-4 rounded"
+                  onClick={() => {
+                    close();
+                  }}> Ok
+                  </button>
+                </div>
+              )}
+            </Popup>
         </div>
     </div>
   )
