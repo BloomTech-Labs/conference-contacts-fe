@@ -217,6 +217,11 @@
   border-radius: 16px;
 }
 
+/* DELETE MODAL */
+.popup-content {
+  width: 20%;
+}
+
 .qr-box {
   background: #ffffff;
   border: 1px solid #bfbfbf;

@@ -20,7 +20,7 @@ import App from './App';
 // stylesheet
 import './styles/index.css';
 
-const onRedirectCallback = appState => {
+const onRedirectCallback = (appState) => {
   history.navigate(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
 };
 
