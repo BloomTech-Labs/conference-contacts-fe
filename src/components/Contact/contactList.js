@@ -15,6 +15,10 @@ export const Alphabetical = ({ connections, navigate }) => {
                 connectionId: connection.id,
                 location: connection.location,
                 status: 'CONNECTED',
+                senderLat: connection.senderLat,
+                senderLon: connection.senderLon,
+                receiverLat: connection.receiverLat,
+                receiverLon: connection.receiverLon,
               },
             })
           }
@@ -51,6 +55,10 @@ export const Recent = ({ connections, navigate }) => {
               connectionId: connection.id,
               location: connection.location,
               status: 'CONNECTED',
+              senderLat: connection.senderLat,
+              senderLon: connection.senderLon,
+              receiverLat: connection.receiverLat,
+              receiverLon: connection.receiverLon,
             },
           })
         }

@@ -327,7 +327,11 @@ export const GET_USER_CONNECTIONS = gql`
       }
       connections {
         id
-        location
+        location 
+        senderLon
+        senderLat
+        receiverLat
+        receiverLon
         sender {
           id
           name
