@@ -20,7 +20,7 @@ export default function Landing() {
       <Features />
 
       {/* App Screenshots */}
-      <h2 className="text-4xl flex justify-center font-sembold text-black-600 py-12" id="demo">
+      <h2 className="text-4xl flex justify-center font-sembold text-black-600 pt-12" id="demo">
         App Screenshots
       </h2>
       <Screenshot />

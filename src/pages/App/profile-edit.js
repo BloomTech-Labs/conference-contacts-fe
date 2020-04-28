@@ -275,7 +275,7 @@ export default function ProfileEdit(props) {
             Save
           </button>
         </div>
-        <div className="flex justify-center items-center m-2">
+        <div className="flex justify-center items-center m-2" stlye={{ border: 'solid 1px red' }}>
           <div
             alt="profile"
             className="rounded-full shadow-lg w-56 h-56 flex justify-center items-center"

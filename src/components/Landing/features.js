@@ -9,7 +9,7 @@ export default function Features() {
 
       <div className="flex justify-between text-center p-5">
         <div className="flex flex-wrap">
-          <div className="single-special w-full md:w-1/3 px-2 mb-6">
+          <div className="single-special w-full desktop:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <svg
@@ -32,7 +32,7 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="single-special w-full md:w-1/3 px-2 mb-6">
+          <div className="single-special w-full desktop:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <svg
@@ -57,7 +57,7 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="single-special w-full md:w-1/3 px-2 mb-6">
+          <div className="single-special w-full desktop:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <svg
@@ -84,7 +84,7 @@ export default function Features() {
 
       <div className="flex justify-between text-center">
         <div className="flex flex-wrap">
-          <div className="single-special w-full md:w-1/3 px-2 mb-6">
+          <div className="single-special w-full desktop:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <img
@@ -97,13 +97,13 @@ export default function Features() {
               </h4>
 
               <p className="mb-8 p-2 ">
-                I only takes 5 minutes to set up account by going to swaap.co and login with an email
-                of your choice
+                I only takes 5 minutes to set up account by going to swaap.co and login with an
+                email of your choice
               </p>
             </div>
           </div>
 
-          <div className="single-special w-full md:w-1/3 px-2 mb-6">
+          <div className="single-special w-full desktop:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <svg
@@ -128,7 +128,7 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="single-special w-full md:w-1/3 px-2 mb-6">
+          <div className="single-special w-full desktop:w-1/3 px-2 mb-6">
             <div className="col-12 col-sm-6 col-lg-6">
               <h4 className="p-2 font-sembold text-purple-500">
                 <svg
