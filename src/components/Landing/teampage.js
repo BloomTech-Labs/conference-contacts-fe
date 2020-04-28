@@ -118,13 +118,13 @@ export default function TeamPage() {
 
   return (
     // container
-    <div className="mx-auto px-24 text-center">
+    <div className="mx-auto text-center container">
       <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-12" id="team">
         Team
       </h2>
 
       <div className="flex flex-wrap justify-center">
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -136,9 +136,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/macjabeth">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -152,8 +152,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/macjabeth/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -167,11 +167,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Jonathan Picazo</h4>
-            <p className="text-gray-500 mb-8">Team Leader/Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Jonathan Picazo</h4>
+            <p className="text-gray-500 mb-8 text-sm">Team Leader</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -183,9 +183,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/bobbyhalljr">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -198,8 +198,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/bobby-hall-jr-339091143/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -212,12 +212,12 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Bobby Hall</h4>
-            <p className="text-gray-500 mb-8">Team Leader/Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Bobby Hall</h4>
+            <p className="text-gray-500 mb-8 text-sm">Team Leader</p>
             {/* </div> */}
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -228,9 +228,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/Bangstry">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -243,8 +243,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/tyler-quinn-b78a41195/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -257,12 +257,12 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Tyler Quinn</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Tyler Quinn</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
 
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -274,9 +274,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/zpallday">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -289,8 +289,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/zachary-peasley-b8b057194/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -303,12 +303,12 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Zachary Peasley</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Zachary Peasley</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
 
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -320,9 +320,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/Fullmetal235">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -335,8 +335,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -349,11 +349,11 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Jarvise Billups-Brown</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Jarvise Billups-Brown</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -365,9 +365,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/CoreyGumbs">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -381,8 +381,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/coreygumbs/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -396,11 +396,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Corey Gumbs</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Corey Gumbs</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -412,9 +412,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/evoingram">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -428,8 +428,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/aquocotrans/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -443,11 +443,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Erica Ingram</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Erica Ingram</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -459,9 +459,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/Banbanaste">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -475,8 +475,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/roberto-banbanaste-2a1627132/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -490,11 +490,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Roberto Banbanaste</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Roberto Banbanaste</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -506,9 +506,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/scurtis6">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -522,8 +522,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/sierra-curtis/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -537,11 +537,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Sierra Curtis</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Sierra Curtis</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -553,9 +553,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/tadepew">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -569,8 +569,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/tristan-depew-60a2b28/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -584,11 +584,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Tristan Depew</h4>
-            <p className="text-gray-500 mb-8">Software Engineer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Tristan Depew</h4>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -600,9 +600,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/marlonjames71">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -615,8 +615,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/marlon-raskin/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -629,11 +629,11 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Marlon Raskin</h4>
-            <p className="text-gray-500 mb-8">IOS Developer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Marlon Raskin</h4>
+            <p className="text-gray-500 mb-8 text-sm">IOS Developer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -645,9 +645,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/mredig">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -660,8 +660,8 @@ export default function TeamPage() {
                 </a>
                 <a href="http://www.linkedin.com/in/michael-redig">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -674,11 +674,11 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Michael Redig</h4>
-            <p className="text-gray-500 mb-8">IOS Developer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Michael Redig</h4>
+            <p className="text-gray-500 mb-8 text-sm">IOS Developer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-6">
+        <div className="w-48 md:w-1/3 px-2 mb-6">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -690,9 +690,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/chadarutherford">
                   <svg
-                    className="mr-8 mx-auto"
-                    width="65"
-                    height="65"
+                    className="mr-4 mx-auto"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -706,8 +706,8 @@ export default function TeamPage() {
                 <a href="https://www.linkedin.com/in/chadarutherford/">
                   <svg
                     className="mx-auto"
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -721,11 +721,11 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Chad Rutherford</h4>
-            <p className="text-gray-500 mb-8">IOS Developer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Chad Rutherford</h4>
+            <p className="text-gray-500 mb-8 text-sm">IOS Developer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-12 col-sm-6 col-lg-4">
             <div className="grid-2 container hovereffect">
               <img
@@ -737,9 +737,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/tylernishida">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -752,8 +752,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/tyler-nishida/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -766,11 +766,11 @@ export default function TeamPage() {
                 </a>
               </div>
             </div>
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Tyler Nishida</h4>
-            <p className="text-gray-500 mb-8">UX Designer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Tyler Nishida</h4>
+            <p className="text-gray-500 mb-8 text-sm">UX Designer</p>
           </div>
         </div>
-        <div className="w-64 md:w-1/3 px-2 mb-4">
+        <div className="w-48 md:w-1/3 px-2 mb-4">
           <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div className="grid-2 container hovereffect">
               <img
@@ -782,9 +782,9 @@ export default function TeamPage() {
               <div className="middle flex">
                 <a href="https://github.com/Ehuntwork">
                   <svg
-                    className="mr-8"
-                    width="65"
-                    height="65"
+                    className="mr-4"
+                    width="40"
+                    height="40"
                     viewBox="0 0 65 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -797,8 +797,8 @@ export default function TeamPage() {
                 </a>
                 <a href="https://www.linkedin.com/in/emily-arias-921924181/">
                   <svg
-                    width="64"
-                    height="65"
+                    width="40"
+                    height="40"
                     viewBox="0 0 64 65"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -812,8 +812,8 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <h4 className="text-xl text-gray-800 font-bold mt-2">Emily Arias</h4>
-            <p className="text-gray-500 mb-8">UX Designer</p>
+            <h4 className="text-base text-gray-800 font-bold mt-2">Emily Arias</h4>
+            <p className="text-gray-500 mb-8 text-sm">UX Designer</p>
           </div>
         </div>
       </div>
