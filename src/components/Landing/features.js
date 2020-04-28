@@ -76,7 +76,7 @@ export default function Features() {
                 Import
               </h4>
 
-              <p className="mb-8 p-2 ">Inport any picture you want on the app.</p>
+              <p className="mb-8 p-2 ">Import any picture you want on the app.</p>
             </div>
           </div>
         </div>

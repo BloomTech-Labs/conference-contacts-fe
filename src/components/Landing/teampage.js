@@ -134,7 +134,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/macjabeth">
+                <a href="https://github.com/macjabeth" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -149,7 +149,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/macjabeth/">
+                <a href="https://www.linkedin.com/in/macjabeth/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -181,7 +181,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/bobbyhalljr">
+                <a href="https://github.com/bobbyhalljr" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -196,7 +196,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/bobby-hall-jr-339091143/">
+                <a href="https://www.linkedin.com/in/bobby-hall-jr-339091143/" target="_blank">
                   <svg
                     width="40"
                     height="40"
@@ -226,7 +226,7 @@ export default function TeamPage() {
                 alt="Tyler"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Bangstry">
+                <a href="https://github.com/Bangstry" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -241,7 +241,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tyler-quinn-b78a41195/">
+                <a href="https://www.linkedin.com/in/tyler-quinn-b78a41195/" target="_blank">
                   <svg
                     width="40"
                     height="40"
@@ -272,7 +272,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/zpallday">
+                <a href="https://github.com/zpallday" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -287,7 +287,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/zachary-peasley-b8b057194/">
+                <a href="https://www.linkedin.com/in/zachary-peasley-b8b057194/" target="_blank">
                   <svg
                     width="40"
                     height="40"
@@ -318,7 +318,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Fullmetal235">
+                <a href="https://github.com/Fullmetal235" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -333,7 +333,10 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/">
+                <a
+                  href="https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/"
+                  target="_blank"
+                >
                   <svg
                     width="40"
                     height="40"
@@ -363,7 +366,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/CoreyGumbs">
+                <a href="https://github.com/CoreyGumbs" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -378,7 +381,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/coreygumbs/">
+                <a href="https://www.linkedin.com/in/coreygumbs/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -410,7 +413,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/evoingram">
+                <a href="https://github.com/evoingram" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -425,7 +428,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/aquocotrans/">
+                <a href="https://www.linkedin.com/in/aquocotrans/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -457,7 +460,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Banbanaste">
+                <a href="https://github.com/Banbanaste" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -472,7 +475,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/roberto-banbanaste-2a1627132/">
+                <a href="https://www.linkedin.com/in/roberto-banbanaste-2a1627132/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -504,7 +507,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/scurtis6">
+                <a href="https://github.com/scurtis6" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -519,7 +522,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/sierra-curtis/">
+                <a href="https://www.linkedin.com/in/sierra-curtis/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -551,7 +554,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/tadepew">
+                <a href="https://github.com/tadepew" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -566,7 +569,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tristan-depew-60a2b28/">
+                <a href="https://www.linkedin.com/in/tristan-depew-60a2b28/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -598,7 +601,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/marlonjames71">
+                <a href="https://github.com/marlonjames71" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -613,7 +616,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/marlon-raskin/">
+                <a href="https://www.linkedin.com/in/marlon-raskin/" target="_blank">
                   <svg
                     width="40"
                     height="40"
@@ -643,7 +646,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/mredig">
+                <a href="https://github.com/mredig" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -658,7 +661,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="http://www.linkedin.com/in/michael-redig">
+                <a href="http://www.linkedin.com/in/michael-redig" target="_blank">
                   <svg
                     width="40"
                     height="40"
@@ -688,7 +691,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/chadarutherford">
+                <a href="https://github.com/chadarutherford" target="_blank">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -703,7 +706,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/chadarutherford/">
+                <a href="https://www.linkedin.com/in/chadarutherford/" target="_blank">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -735,7 +738,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/tylernishida">
+                <a href="https://github.com/tylernishida" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -750,7 +753,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tyler-nishida/">
+                <a href="https://www.linkedin.com/in/tyler-nishida/" target="_blank">
                   <svg
                     width="40"
                     height="40"
@@ -780,7 +783,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Ehuntwork">
+                <a href="https://github.com/Ehuntwork" target="_blank">
                   <svg
                     className="mr-4"
                     width="40"
@@ -795,7 +798,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/emily-arias-921924181/">
+                <a href="https://www.linkedin.com/in/emily-arias-921924181/" target="_blank">
                   <svg
                     width="40"
                     height="40"
