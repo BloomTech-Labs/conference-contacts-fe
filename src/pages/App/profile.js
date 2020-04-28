@@ -7,6 +7,7 @@ import Icon from '../../components/icon';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import DisplayValue from '../../components/Profile/DisplayValue';
 import BeatLoader from 'react-spinners/BeatLoader';
+import ConnectionMap from '../../components/Profile/map';
 import * as moment from 'moment';
 
 const iconSizing = {
@@ -243,6 +244,10 @@ const Profile = ({ location, navigate }) => {
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
           </div>
+        </div>
+        {/* Rendering map */}
+        <div className="flex justify-center">
+          <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
       </div>

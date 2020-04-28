@@ -38,8 +38,6 @@ const Contacts = ({ navigate }) => {
     return acc.concat({ ...cur, contact });
   }, []);
 
-  connections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
-
   if (name?.length > 0) {
     const pattern = new RegExp(name, 'i');
     pendingConnections = pendingConnections.filter(
