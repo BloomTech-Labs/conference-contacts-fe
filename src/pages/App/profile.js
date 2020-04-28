@@ -240,7 +240,7 @@ const Profile = ({ location, navigate }) => {
             </div>
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="BirthdBioate" value={data.user.bio} />
+              <DisplayValue title="Bio" value={data.user.bio} />
             </section>
           </div>
         </div>
