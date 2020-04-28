@@ -66,7 +66,7 @@ const Profile = ({ location, navigate }) => {
           )}
           <div className="flex flex-col desktop:flex-row-reverse justify-between">
             {/* IMG ROUND LARGE */}
-            <div className="self-end -mt-12 -mr-12 desktop:m-0">
+            <div className="self-end desktop:self-center -mt-12 -mr-12 desktop:m-0">
               <img
                 className="rounded-full shadow-lg w-96 h-96 object-cover mobile:w-64 mobile:h-64"
                 src={data.user.picture}
@@ -74,7 +74,7 @@ const Profile = ({ location, navigate }) => {
               />
             </div>
 
-            <div className="flex flex-col pl-0 m-0">
+            <div className="flex flex-col pl-0 m-0  desktop:max-w-xs">
               {/* name, industry, and edit icon if on own profile */}
               <section className="mt-12">
                 <div className="flex justify-between items-center">
@@ -187,12 +187,12 @@ const Profile = ({ location, navigate }) => {
                   Contact Methods
                 </h2>
                 {/* loop through links and check what they are to construct the correct anchor href */}
-                <div className="flex flex-no-wrap ">
+                <div className="flex flex-wrap ">
                   {contacts.length ? (
                     contacts.map((field) => {
                       return (
                         <a
-                          className="text-blue-500 hover:text-blue-800 duration-200 mr-8"
+                          className="text-blue-500 hover:text-blue-800 duration-200 mr-8 mb-2"
                           href={
                             field.type == 'EMAIL'
                               ? `mailto:${field.value}`
