@@ -1,11 +1,11 @@
 import React from 'react';
 import { Gallery, GalleryImage } from 'react-gesture-gallery';
 
-const images = [
-  'https://i.ibb.co/4sPC32f/image.png',
-  'https://i.ibb.co/Dwj7BjP/image-1.png',
-  'https://i.ibb.co/k9659RJ/image-6.png',
-];
+import home from '../../images/home.png';
+import profile from '../../images/profile.png';
+import scanqr from '../../images/scanqr.png';
+
+const images = [home, scanqr, profile];
 
 const GalleryImg = React.memo(GalleryImage);
 
@@ -41,7 +41,7 @@ function Screenshot() {
       }}
     >
       {images.map((image) => (
-        <GalleryImg objectFit="contain" key={image} src={image} />
+        <GalleryImg objectFit="cover" key={image} src={image} />
       ))}
     </Gallery>
   );
