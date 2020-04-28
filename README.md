@@ -1,5 +1,8 @@
 <img src="public/swaaplogoblue.svg" width="400">
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/68404cfcc6a6827234d1/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/conference-contacts-fe/maintainability)
+
+
 ## 15 Contributors
 
 # Labs 18
