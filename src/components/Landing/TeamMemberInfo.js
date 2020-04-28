@@ -11,10 +11,18 @@ export default function TeamMemberInfo({ img, name, title, linkedin, github }) {
           <h4 className="text-lg text-gray-800 font-bold">{name}</h4>
           <p className="text-sm text-gray-500 mb-2">{title}</p>
           <div className="flex">
-            <a href={linkedin} className="text-2xl mr-4 duration-300 hover:text-gray-400">
+            <a
+              href={linkedin}
+              className="text-2xl mr-4 duration-300 hover:text-gray-400"
+              target="_blank"
+            >
               <AiOutlineLinkedin />
             </a>
-            <a href={github} className="text-2xl mr-4 duration-300 hover:text-gray-400">
+            <a
+              href={github}
+              className="text-2xl mr-4 duration-300 hover:text-gray-400"
+              target="_blank"
+            >
               <AiFillGithub />
             </a>
           </div>

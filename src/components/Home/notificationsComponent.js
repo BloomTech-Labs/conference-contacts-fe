@@ -206,7 +206,6 @@ export default function NotificationsComponent(props) {
                       },
                     });
                   }}
-                  disabled={connectLoading}
                 >
                   Accept
                 </button>
