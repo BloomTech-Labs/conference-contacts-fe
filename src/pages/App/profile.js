@@ -200,7 +200,7 @@ const Profile = ({ location, navigate }) => {
                               ? `tel:${field.value}`
                               : field.type == 'SMS'
                               ? `sms:${field.value}`
-                              : ''
+                              : field.value
                           }
                           target="_blank"
                         >
