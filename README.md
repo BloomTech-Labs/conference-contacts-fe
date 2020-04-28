@@ -1,66 +1,37 @@
-# Swaap
+<img src="public/swaaplogoblue.svg" width="400">
 
-### You can find the deployed project at https://staging.swaap.co
+[![Maintainability](https://api.codeclimate.com/v1/badges/68404cfcc6a6827234d1/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/conference-contacts-fe/maintainability)
 
-## Contributors
 
-### The contributors for Swaap.
+## 15 Contributors
 
-**Bobby Hall**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/bobbyhalljr)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/bobby-hall-jr-339091143/)
+# Labs 18
+---
+| Bobby Hall  |  Tyler Quinn  |  Jonathan Picazo  |  Zachary Peasley  |  Jarvise Billups-Brown  |  Emily Arias  |  Marlon Raskin  |  Tyler Nishida  |  Michael Redig  |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|  <img src="https://avatars1.githubusercontent.com/u/29504858?s=400&v=4" width = "150" />  |  <img src="https://avatars3.githubusercontent.com/u/52711778?s=400&v=4" width = "150" />  |  <img src="https://avatars0.githubusercontent.com/u/8473052?s=400&v=4" width = "150" />  |  <img src="https://ca.slack-edge.com/T4JUEB3ME-UJG8RLWKG-3766d295008c-512" width = "150" />  |  <img src="https://ca.slack-edge.com/T4JUEB3ME-UHV013MQF-3a9d77644b52-512" width = "150" />  |  <img src="https://ca.slack-edge.com/T4JUEB3ME-UGVBY5QK0-0322eb799fbf-512" width = "150" />  |  <img src="https://ca.slack-edge.com/T4JUEB3ME-UHUR873EV-d88881406d1d-512" width = "150" />  |  <img src="https://avatars3.githubusercontent.com/u/49229588?s=400&v=4" width = "150" />  |  <img src="https://ca.slack-edge.com/T4JUEB3ME-UHF67A9T9-a3fb05aba2cd-512" width = "150" />  |
+|  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/bobbyhalljr)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/bobby-hall-jr-339091143/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Bangstry)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-quinn-b78a41195/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/macjabeth)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/macjabeth/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/zpallday)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/zachary-peasley-b8b057194/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Fullmetal235)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Ehuntwork)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/emily-arias-921924181/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/marlonjames71)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/marlon-raskin/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tylernishida)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-nishida/)  |  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/mredig)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/michael-redig/)  |
 
-**Tyler Quinn**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Bangstry)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-quinn-b78a41195/)
 
-**Jonathan Picazo**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/macjabeth)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/macjabeth/)
+# Labs 22
+---
+| Erica Ingram  |  Tristan Depew  |  Sierra Curtis  |  Roberto Banbanaste  |  Corey Gumbs  |  Chad Rutherford  |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| <img src="https://avatars2.githubusercontent.com/u/24205051?s=400&u=d408dd53d0177e38912d88fc92e0f5f978be47dc&v=4" width = "300" />  |  <img src="https://avatars3.githubusercontent.com/u/57115535?s=400&v=4" width = "300" />  |  <img src="https://avatars0.githubusercontent.com/u/49458951?s=400&u=324e01b65df650dc68c8d1d4c2e7570fb597eecc&v=4" width = "300" />  |  <img src="https://avatars2.githubusercontent.com/u/29408647?s=400&u=0d3235b6c77700524e2c5ac60c99049153f8d7f1&v=4" width = "300" />  |  <img src="https://avatars0.githubusercontent.com/u/5513859?s=400&u=052da10ccf63aee78fa180c37508b858dd63bf8c&v=4" width = "300" />  |  <img src="https://avatars2.githubusercontent.com/u/16213161?s=400&u=e61da9f734de6454e61f4eff08eb913aa5e33be3&v=4" width = "300" />  | 
+| [<img src="https://github.com/favicon.ico" width="25"> ](https://github.com/evoingram)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="25"> ](https://http://www.linkedin.com/in/aquocotrans/)  |  [<img src="https://github.com/favicon.ico" width="25"> ](https://github.com/tadepew)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="25"> ](https://www.linkedin.com/in/tristan-depew-60a2b28/)  |  [<img src="https://github.com/favicon.ico" width="25"> ](https://github.com/scurtis6)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="25"> ](https://www.linkedin.com/in/sierra-curtis/)	|  [<img src="https://github.com/favicon.ico" width="25"> ](https://github.com/Banbanaste)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="25"> ](https://www.linkedin.com/in/roberto-banbanaste-2a1627132/)  |  [<img src="https://github.com/favicon.ico" width="25"> ](https://github.com/CoreyGumbs)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="25"> ](https://www.linkedin.com/in/coreygumbs/)  |  [<img src="https://github.com/favicon.ico" width="25">](https://github.com/chadarutherford)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="25"> ](https://https://www.linkedin.com/in/chadarutherford/)  |
 
-**Zachary Peasley**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/zpallday)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/zachary-peasley-b8b057194/)
 
-**Jarvise Billups-Brown**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Fullmetal235)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/)
+## Product Overview
 
-**Emily Arias**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Ehuntwork)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/emily-arias-921924181/)
+* You can find the deployed project at https://staging.swaap.co
 
-**Marlon Raskin**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/marlonjames71)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/marlon-raskin/)
+* Trello Boards: 
+    - [Labs 18](https://trello.com/b/Jh8cS46t/conference-contacts)
+    - [Labs 22](https://trello.com/b/PSg0U9VH/labs-22-swaap)
 
-**Tyler Nishida**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tylernishida)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-nishida/)
+* [Product Canvas](https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615)
 
-**Michael Redig**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/mredig)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/michael-redig/)
-
-**Chad Rutherford**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/chadarutherford)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://https://www.linkedin.com/in/chadarutherford/)
-
-**Erica Ingram**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/evoingram)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://http://www.linkedin.com/in/aquocotrans/)
-
-**Tristan Depew**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tadepew)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tristan-depew-60a2b28/)
-
-**Sierra Curtis**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/scurtis6)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sierra-curtis/)
-
-**Roberto Banbanaste**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Banbanaste)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/roberto-banbanaste-2a1627132/)
-
-**Corey Gumbs**
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CoreyGumbs)[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/coreygumbs/)
-
-## Project Overview
-
-#### Trello Board: 
-https://trello.com/b/Jh8cS46t/conference-contacts
-
-#### Product Canvas: 
-https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615
-
-#### Design Files:
-https://www.figma.com/file/CkvwWMzxcI4lI4udHm8QiH/Labs18_Conference-Contacts%2C-Emily%2CTylerr?node-id=877%3A72346
+* [Design Files](https://www.figma.com/file/CkvwWMzxcI4lI4udHm8QiH/Labs18_Conference-Contacts%2C-Emily%2CTylerr?node-id=877%3A72346)
 
 # Project Description
 
@@ -77,52 +48,13 @@ To make the social and connecting aspect of events effortless, seamless and fun 
 
 ## Tech Stack
 
-Front end built using:
-
-- React
-- Auth0
-- Reach Router
-- Apollo
-- Tailwind css
-- npm-check-updates
-
 Front end deployed to `Netlify` and built using:
 
-### React
-
-https://www.apollographql.com/
-
-- ReactJS is an open-source JavaScript library which is used for building user interfaces specifically for single page applications. It's used for handling view layer for web and mobile apps. React also allows us to create reusable UI components.
-
-### Auth0 
-
-https://auth0.com/
-
-- Auth0 provides authentication and authorization as a service. We are here to give developers and companies the building blocks they need to secure their applications without having to become security experts.
-
-### Reach Router 
-
-https://reach.tech/router
-
-- The structure of Reach Router is really simple. Routers select a child to render based on the child's path. You as the developer simply specify your desired slug (a slug is the part of a URL which identifies a page using human-readable keywords).
-
-### Apollo 
-
-https://www.apollographql.com/
-
-- The Apollo platform is an implementation of GraphQL that can transfer data between the cloud (server) to the UI of your app. In fact, Apollo builds its environment in such a way that we can use it to handle GraphQL on the client as well as the server side of the application. 
-
-### Tailwind css
-
-https://tailwindcss.com/
-
-- Tailwind is a collection of low-level utility classes. They can be used like lego bricks to build any kind of component. The collection covers the most important CSS properties, but it can be easily extended in a variety of ways. With Tailwind, customization isn’t pain in the neck anymore. The framework has great documentation, covering every class utility in detail and showing the ways it can be customized. All modern browsers, and IE11+, are supported.
-
-### npm-check-updates
-
-https://www.npmjs.com/package/npm-check-updates
-
-- npm-check-updates is a package that find newer versions of dependencies than what your package.json or bower.json allows
+- [React](https://www.apollographql.com/): ReactJS is an open-source JavaScript library which is used for building user interfaces specifically for single page applications. It's used for handling view layer for web and mobile apps. React also allows us to create reusable UI components.
+- [Auth0](https://auth0.com/): Auth0 provides authentication and authorization as a service. We are here to give developers and companies the building blocks they need to secure their applications without having to become security experts.
+- [Reach Router](https://reach.tech/router): The structure of Reach Router is really simple. Routers select a child to render based on the child's path. You as the developer simply specify your desired slug (a slug is the part of a URL which identifies a page using human-readable keywords).
+- [Apollo](https://www.apollographql.com/): The Apollo platform is an implementation of GraphQL that can transfer data between the cloud (server) to the UI of your app. In fact, Apollo builds its environment in such a way that we can use it to handle GraphQL on the client as well as the server side of the application.
+- [Tailwind css](https://tailwindcss.com/): Tailwind is a collection of low-level utility classes. They can be used like lego bricks to build any kind of component. The collection covers the most important CSS properties, but it can be easily extended in a variety of ways. With Tailwind, customization isn’t pain in the neck anymore. The framework has great documentation, covering every class utility in detail and showing the ways it can be customized. All modern browsers, and IE11+, are supported.
 
 ## Extensions
 
@@ -165,9 +97,7 @@ You don’t have to ever use eject. The curated feature set is suitable for smal
 
 ## Auth0 authentication API 
 
-Auth0 provides authentication and authorization as a service.
-
-https://auth0.com/
+[Auth0](https://auth0.com/) provides authentication and authorization as a service.
 
 You can connect any application (written in any language or on any stack) to Auth0 and define the identity providers you want to use (how you want your users to log in).
 
@@ -177,27 +107,17 @@ In order for the app to function correctly, you must set up your own environment
 
 #### Variables:
 
-REACT_APP_AUTH0_DOMAIN - 
-   Domain at which the application is set accordingly with Auth0, for proper authentication.
+- REACT_APP_AUTH0_DOMAIN - Domain at which the application is set accordingly with Auth0, for proper authentication.
+- REACT_APP_AUTH0_CLIENT_ID - Unique ID provided by Auth0 to be used with the applicaiton.
+- REACT_APP_APOLLO_URI - The location at which the application's backend server is located.
+- REACT_APP_CLOUDINARY_NAME - The name of the cloud, being used on Cloudinary.
+- REACT_APP_CLOUDINARY_PRESET - The preset of the cloud, being used on Cloudinary.
    
-REACT_APP_AUTH0_CLIENT_ID -
-   Unique ID provided by Auth0 to be used with the applicaiton.
-REACT_APP_APOLLO_URI -
-   The location at which the application's backend server is located.
-REACT_APP_CLOUDINARY_NAME -
-   The name of the cloud, being used on Cloudinary.
-REACT_APP_CLOUDINARY_PRESET -
-   The preset of the cloud, being used on Cloudinary.
-   
-
-
 # Testing
 
 ## Cypress
 
-We use cypress to for end to end tests on the frontend.
-
-https://www.cypress.io/
+We use [cypress](https://www.cypress.io/) to for end to end tests on the frontend.
 
 Writing end-to-end tests takes a lot of different tools to work together. With Cypress you get multiple tools in one.
 
