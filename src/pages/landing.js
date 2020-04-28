@@ -1,11 +1,11 @@
 import React from 'react';
-import Screenshot from '../components/screenshot';
+import Screenshot from '../components/Landing/screenshot';
 import NavbarLanding from '../containers/navbarlanding';
-import Team from './teampage';
-import Footer from './footer';
-import Features from './features';
-import Title from './title';
-import Review from './review';
+import Team from '../components/Landing/teampage';
+import Footer from '../components/Landing/footer';
+import Features from '../components/Landing/features';
+import Title from '../components/Landing/title';
+import Review from '../components/Landing/review';
 
 export default function Landing() {
   return (
@@ -20,7 +20,7 @@ export default function Landing() {
       <Features />
 
       {/* App Screenshots */}
-      <h2 className="text-4xl flex justify-center font-sembold text-black-600 py-12" id="demo">
+      <h2 className="text-4xl flex justify-center font-sembold text-black-600 pt-12" id="demo">
         App Screenshots
       </h2>
       <Screenshot />
