@@ -21,7 +21,7 @@ export default function NavBarLanding() {
       ></img>
       <section className="container padding-title mx-auto px-5 p-10">
         <div className="flex items-center justify-center flex-wrap mb-20">
-          <div className="w-full md:w-1/2 pl-10">
+          <div className="w-full desktop:w-1/2 pl-10">
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Connect Seamlessly</h4>
             <p className="text-gray-600 mb-8">
               Adding contacts had never been easier. Search by name, scan QR code or download the
@@ -37,7 +37,7 @@ export default function NavBarLanding() {
           </div>
         </div>
         <div className="flex items-center justify-center flex-wrap mb-20">
-          <div className="w-full md:w-1/2 pl-10">
+          <div className="w-full desktop:w-1/2 pl-10">
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Stay in touch</h4>
             <p className="text-gray-600 mb-8">
               Keep all your business contacts in one place with all their important information and
@@ -51,7 +51,7 @@ export default function NavBarLanding() {
           ></img>
         </div>
         <div className="flex items-center justify-center flex-wrap mb-20">
-          <div className="w-full md:w-1/2 pl-10">
+          <div className="w-full desktop:w-1/2 pl-10">
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Never forget a meeting</h4>
             <p className="text-gray-600 mb-8">
               Remember when and where you met someone, keep track of events, and take notes of
