@@ -31,7 +31,7 @@ const Contacts = ({ navigate }) => {
       return acc.concat({ ...cur, contact });
     }, []);
 
-    pendingConnections?.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
+    pendingConnections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
 
     let connections = data.user.connections?.reduce((acc, cur) => {
       const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
