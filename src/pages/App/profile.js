@@ -246,7 +246,7 @@ const Profile = ({ location, navigate }) => {
           </div>
         </div>
         {/* Rendering map */}
-        <div className="flex justify-center">
+        <div className="mt-4 flex justify-center">
           <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
