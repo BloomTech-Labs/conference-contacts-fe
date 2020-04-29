@@ -17,7 +17,7 @@ const Contacts = ({ navigate }) => {
     setName(e.target.value);
   };
 
-  if (loading || !data) {
+  if (loading) {
     return (
       <div className="flex justify-center h-screen items-center">
         <BeatLoader size={35} loading={loading} color="#7B41FF" />
