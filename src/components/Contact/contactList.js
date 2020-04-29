@@ -59,6 +59,10 @@ export const Recent = ({ connections, navigate }) => {
               senderLon: connection.senderLon,
               receiverLat: connection.receiverLat,
               receiverLon: connection.receiverLon,
+              sender: connection.sender.id,
+              receiver: connection.receiver.id,
+              senderName: connection.sender.name,
+              receiverName: connection.receiver.name,
             },
           })
         }
