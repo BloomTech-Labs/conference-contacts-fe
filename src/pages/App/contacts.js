@@ -26,14 +26,14 @@ const Contacts = ({ navigate }) => {
   } else if (error) {
     return <ErrorPage />;
   } else {
-    let pendingConnections = data.user.pendingConnections?.reduce((acc, cur) => {
+    let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
       const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
       return acc.concat({ ...cur, contact });
     }, []);
 
     pendingConnections.sort((a, b) => (a.contact.name > b.contact.name ? 1 : -1));
 
-    let connections = data.user.connections?.reduce((acc, cur) => {
+    let connections = data.user.connections.reduce((acc, cur) => {
       const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
       return acc.concat({ ...cur, contact });
     }, []);
