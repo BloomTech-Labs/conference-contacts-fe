@@ -56,7 +56,7 @@ const Profile = ({ location, navigate }) => {
 
   return (
     <div className="pb-6  mt-24 desktop:flex desktop:justify-end">
-      <div className="profile-card pb-4 bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
+      <div className="profile-card bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
         <div className="pt-5 desktop:pt-0 flex flex-col overflow-hidden px-6 pb-8">
           {viewingContact && (
             <div className="absolute desktop:pt-4">
@@ -67,7 +67,7 @@ const Profile = ({ location, navigate }) => {
           )}
           <div className="flex flex-col desktop:flex-row-reverse justify-between">
             {/* IMG ROUND LARGE */}
-            <div className="self-end -mt-12 -mr-12 desktop:m-0">
+            <div className="self-end desktop:self-center -mt-12 -mr-12 desktop:m-0">
               <img
                 className="rounded-full shadow-lg w-96 h-96 object-cover mobile:w-64 mobile:h-64"
                 src={data.user.picture}
@@ -75,7 +75,7 @@ const Profile = ({ location, navigate }) => {
               />
             </div>
 
-            <div className="flex flex-col pl-0 m-0">
+            <div className="flex flex-col pl-0 m-0  desktop:max-w-xs">
               {/* name, industry, and edit icon if on own profile */}
               <section className="mt-12">
                 <div className="flex justify-between items-center">
@@ -188,12 +188,12 @@ const Profile = ({ location, navigate }) => {
                   Contact Methods
                 </h2>
                 {/* loop through links and check what they are to construct the correct anchor href */}
-                <div className="flex flex-no-wrap ">
+                <div className="flex flex-wrap ">
                   {contacts.length ? (
                     contacts.map((field) => {
                       return (
                         <a
-                          className="text-blue-500 hover:text-blue-800 duration-200 mr-8"
+                          className="text-blue-500 hover:text-blue-800 duration-200 mr-8 mb-2"
                           href={
                             field.type == 'EMAIL'
                               ? `mailto:${field.value}`
@@ -201,7 +201,7 @@ const Profile = ({ location, navigate }) => {
                               ? `tel:${field.value}`
                               : field.type == 'SMS'
                               ? `sms:${field.value}`
-                              : ''
+                              : field.value
                           }
                           target="_blank"
                         >
@@ -241,7 +241,7 @@ const Profile = ({ location, navigate }) => {
             </div>
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="BirthdBioate" value={data.user.bio} />
+              <DisplayValue title="Bio" value={data.user.bio} />
             </section>
           </div>
         </div>
