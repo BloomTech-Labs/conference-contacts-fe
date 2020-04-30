@@ -26,7 +26,6 @@ export default function NavComponent(props) {
   const [copyFailed, setCopyFailed] = useState('');
 
   var clipboard = new ClipboardJS('.btn');
-  console.log('clipboard', clipboard);
 
   clipboard.on('success', function (e) {
     setCopySuccess('Copied!');

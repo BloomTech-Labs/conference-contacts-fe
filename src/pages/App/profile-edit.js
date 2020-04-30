@@ -116,7 +116,7 @@ export default function ProfileEdit(props) {
     const profileData = {
       value: fields.link,
       type: link,
-      privacy: 'PRIVATE',
+      privacy: 'PUBLIC',
       preferredContact: false,
     };
 

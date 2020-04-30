@@ -27,6 +27,7 @@ const Contacts = ({ navigate }) => {
     return <ErrorPage />;
   } else {
     let pendingConnections = data.user.pendingConnections.reduce((acc, cur) => {
+      console.log(cur.sender);
       const contact = cur.sender.id === data.user.id ? cur.receiver : cur.sender;
       return acc.concat({ ...cur, contact });
     }, []);

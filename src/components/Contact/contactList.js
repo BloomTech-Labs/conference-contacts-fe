@@ -1,7 +1,7 @@
 import React from 'react';
 
+//BELOW SORTS CONTACTS ALPHABETICALLY
 export const Alphabetical = ({ connections, navigate }) => {
-  console.log(connections, 'a to z');
   return connections.length > 0 ? (
     [...connections]
       .sort((a, b) => a.contact.name.localeCompare(b.contact.name))
@@ -42,8 +42,8 @@ export const Alphabetical = ({ connections, navigate }) => {
   );
 };
 
+//BELWO SORTS CONTACTS BY MOST RECENT.
 export const Recent = ({ connections, navigate }) => {
-  console.log(connections, 'recent');
   return connections.length > 0 ? (
     [...connections].reverse().map((connection) => (
       <button
