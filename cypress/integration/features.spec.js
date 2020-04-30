@@ -163,7 +163,7 @@ context('SMALL FEATURES', () => {
 				.get('.p-5 > div > .mb-6 > .col-12')
 				.get('p')
 				.eq(5)
-				.contains('Inport any picture you want on the app.');
+				.contains('Import any picture you want on the app.');
 		});
 	});
 	context('FAST AND SIMPLE', () => {
@@ -188,111 +188,114 @@ context('SMALL FEATURES', () => {
 				.get('p')
 				.eq(6)
 				.contains(
-					'I only takes 5 minutes to set up account by going to auth0 and login with an email of your choice'
+					'I only takes 5 minutes to set up account by going to swaap.co and login with an email of your choice'
 				);
 		});
 	});
-	context('EDITING', () => {
-		it('appropriate icon', () => {
-			cy.get('#root > div > div > .container')
-				.eq(1)
-				.get('.justify-between')
-				.eq(2)
-				.get('.flex-wrap > .mb-6 > .col-12 > h4')
-				.eq(4)
-				.contains('Editing')
-				.get('svg')
-				.eq(5)
-				.should('have.attr', 'width', '35')
-				.should('have.attr', 'height', '35')
-				.should('have.attr', 'fill', 'none');
-		});
-		it('appropriate paragraph', () => {
-			cy.get('#root > div > div > .container')
-				.eq(1)
-				.get('.justify-between')
-				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12')
-				.get('p')
-				.eq(7)
-				.contains('Simply two finger drag down to bulk edit lists or items.');
-		});
-	});
-	context('DARK MODE', () => {
-		it('appropriate icon', () => {
-			cy.get('#root > div > div > .container')
-				.eq(1)
-				.get('.justify-between')
-				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12 > h4')
-				.eq(5)
-				.contains('DarkMode')
-				.get('svg')
-				.eq(6)
-				.should('have.attr', 'width', '36')
-				.should('have.attr', 'height', '36')
-				.should('have.attr', 'fill', 'none');
-		});
-		it('appropriate paragraph', () => {
-			cy.get('#root > div > div > .container')
-				.eq(1)
-				.get('.justify-between')
-				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12')
-				.get('p')
-				.eq(8)
-				.contains('Turn out the lights with our gorgeous dark mode support.');
-		});
-	});
-	context('CONFERENCE UPDATES', () => {
-		it('appropriate icon', () => {
-			cy.get('#root > div > div > .container')
-				.eq(1)
-				.get('.justify-between')
-				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12 > h4')
-				.eq(6)
-				.contains('Conference Updates')
-				.get('svg')
-				.eq(7)
-				.should('have.attr', 'width', '35')
-				.should('have.attr', 'height', '48')
-				.should('have.attr', 'fill', 'none');
-		});
-		it('appropriate paragraph', () => {
-			cy.get('#root > div > div > .container')
-				.eq(1)
-				.get('.justify-between')
-				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12')
-				.get('p')
-				.eq(9)
-				.contains('See up-to-date news on what is going on at any participation conferences.');
-		});
-	});
+	// context('EDITING', () => {
+	// 	it('appropriate icon', () => {
+	// 		cy.get('#root > div > div > .container')
+	// 			.eq(1)
+	// 			.get('.justify-between')
+	// 			.eq(2)
+	// 			.get('.flex-wrap > .mb-6 > .col-12 > h4')
+	// 			.eq(4)
+	// 			.contains('Editing')
+	// 			.get('svg')
+	// 			.eq(5)
+	// 			.should('have.attr', 'width', '35')
+	// 			.should('have.attr', 'height', '35')
+	// 			.should('have.attr', 'fill', 'none');
+	// 	});
+	// 	it('appropriate paragraph', () => {
+	// 		cy.get('#root > div > div > .container')
+	// 			.eq(1)
+	// 			.get('.justify-between')
+	// 			.eq(1)
+	// 			.get('.flex-wrap > .mb-6 > .col-12')
+	// 			.get('p')
+	// 			.eq(7)
+	// 			.contains('Simply two finger drag down to bulk edit lists or items.');
+	// 	});
+	// });
+	// context('DARK MODE', () => {
+	// 	it('appropriate icon', () => {
+	// 		cy.get('#root > div > div > .container')
+	// 			.eq(1)
+	// 			.get('.justify-between')
+	// 			.eq(1)
+	// 			.get('.flex-wrap > .mb-6 > .col-12 > h4')
+	// 			.eq(5)
+	// 			.contains('DarkMode')
+	// 			.get('svg')
+	// 			.eq(6)
+	// 			.should('have.attr', 'width', '36')
+	// 			.should('have.attr', 'height', '36')
+	// 			.should('have.attr', 'fill', 'none');
+	// 	});
+	// 	it('appropriate paragraph', () => {
+	// 		cy.get('#root > div > div > .container')
+	// 			.eq(1)
+	// 			.get('.justify-between')
+	// 			.eq(1)
+	// 			.get('.flex-wrap > .mb-6 > .col-12')
+	// 			.get('p')
+	// 			.eq(8)
+	// 			.contains('Turn out the lights with our gorgeous dark mode support.');
+	// 	});
+	// });
+	// context('CONFERENCE UPDATES', () => {
+	// 	it('appropriate icon', () => {
+	// 		cy.get('#root > div > div > .container')
+	// 			.eq(1)
+	// 			.get('.justify-between')
+	// 			.eq(1)
+	// 			.get('.flex-wrap > .mb-6 > .col-12 > h4')
+	// 			.eq(6)
+	// 			.contains('Conference Updates')
+	// 			.get('svg')
+	// 			.eq(7)
+	// 			.should('have.attr', 'width', '35')
+	// 			.should('have.attr', 'height', '48')
+	// 			.should('have.attr', 'fill', 'none');
+	// 	});
+	// 	it('appropriate paragraph', () => {
+	// 		cy.get('#root > div > div > .container')
+	// 			.eq(1)
+	// 			.get('.justify-between')
+	// 			.eq(1)
+	// 			.get('.flex-wrap > .mb-6 > .col-12')
+	// 			.get('p')
+	// 			.eq(9)
+	// 			.contains('See up-to-date news on what is going on at any participation conferences.');
+	// 	});
+	// });
 	context('QR SCANS', () => {
 		it('appropriate icon', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.justify-between')
 				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12 > h4')
-				.eq(7)
+				.get('.flex-wrap > .mb-6')
+				.eq(1)
+				.get('.col-12 > h4')
 				.contains('QR Scans')
 				.get('svg')
-				.eq(8)
+				.eq(5)
 				.should('have.attr', 'width', '24')
 				.should('have.attr', 'height', '48')
-				.should('have.attr', 'fill', 'none');
+				.should('have.attr', 'fill', 'none')
+				.should('have.attr', 'viewBox', '0 0 48 48');
 		});
 		it('appropriate paragraph', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.justify-between')
 				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12')
-				.get('p')
-				.eq(10)
+				.get('.flex-wrap > .mb-6')
+				.eq(1)
+				.get('.col-12 > p')
+				.eq(4)
 				.contains('Scan QR codes from any users to receive contacts and references');
 		});
 	});
@@ -302,23 +305,26 @@ context('SMALL FEATURES', () => {
 				.eq(1)
 				.get('.justify-between')
 				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12 > h4')
-				.eq(8)
+				.get('.flex-wrap > .mb-6')
+				.eq(2)
+				.get('.col-12 > h4')
 				.contains('Customizability')
 				.get('svg')
-				.eq(9)
+				.eq(6)
 				.should('have.attr', 'width', '24')
 				.should('have.attr', 'height', '48')
-				.should('have.attr', 'fill', 'none');
+				.should('have.attr', 'fill', 'none')
+				.should('have.attr', 'viewBox', '0 0 35 35');
 		});
 		it('appropriate paragraph', () => {
 			cy.get('#root > div > div > .container')
 				.eq(1)
 				.get('.justify-between')
 				.eq(1)
-				.get('.flex-wrap > .mb-6 > .col-12')
-				.get('p')
-				.eq(11)
+				.get('.flex-wrap > .mb-6')
+				.eq(1)
+				.get('.col-12 > p')
+				.eq(5)
 				.contains(
 					'We build pretty complex tools and this allows us to take designs and turn them information functional quickly and easily'
 				);
