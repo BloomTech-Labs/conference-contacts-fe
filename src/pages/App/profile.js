@@ -232,10 +232,7 @@ const Profile = ({ location, navigate }) => {
               </section>
               {/* DOB */}
               <section className="mt-10">
-                <DisplayValue
-                  title="Birthdate"
-                  value={data.user.birthdate ? moment(data.user.birthdate).format('L') : null}
-                />
+                <DisplayValue title="Birthdate" value={data.user.birthdate ? moment(data.user.birthdate).format('L') : null} />
               </section>
               {/* tagline */}
               <section className="mt-10">

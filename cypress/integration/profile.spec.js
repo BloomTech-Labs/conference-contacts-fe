@@ -2,7 +2,7 @@
 
 context('Profile form input updates', () => {
 	before(() => {
-		cy.clearCookies();
+		// cy.clearCookies();
 		cy.login()
 			.then(res => res.body)
 			.then(body => {

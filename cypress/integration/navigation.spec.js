@@ -80,8 +80,14 @@ context('Navigation', () => {
 	});
 
 	it('navigates to login page', () => {
-		cy.get('label').click();
-		cy.get('#menu').find('nav').find('ul > li').eq(4).find('button').contains('Sign Up').click();
+		cy.get('label').click({force: true});
+		cy.get('#menu').find('nav').find('ul > li').eq(4).find('button').contains('Login').click();
 		// cy.url().should('include', '/contacts');
 	});
+
+	it('navigates to sign up page', () => {
+		cy.visit('http://localhost:3000/')
+		cy.get('label').click({force: true});
+		cy.get('#menu').find('nav').find('ul > li').eq(5).find('button').contains('Sign Up').click();
+	})
 });
