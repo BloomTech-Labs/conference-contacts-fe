@@ -69,8 +69,8 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
           {/* Make Contact PRIVATE/PUBLIC toggle icons */}
           <div className="flex flex-wrap w-16">
             {field.privacy === 'PUBLIC' ? (
-              //field.privacy is public and will show unlock icon.
-              //ONCLICK changes from 'PUBLIC' Value to 'PRIVATE' value.
+              // field.privacy is PUBLIC on default, UNLOCK Icon will show by default.
+              //ONCLICK changes from 'PUBLIC' value to 'PRIVATE' value and 'UNLOCK' icon to 'LOCK'.
 
               <SVGIcon
                 divClass={'flex items-center content-center w-full'}
@@ -80,8 +80,7 @@ const LinkStatusModal = ({ fields, preferredContact, updateLink, removeLink, tog
                 onClick={() => updatePrivacy(field)}
               />
             ) : (
-              // field.privacy is PRIVATE on default, LOCK Icon will show by default.
-              //ONCLICK changes from 'PRIVATE' value to 'PUBLIC' value.
+              //ONCLICK below changes from 'PRIVATE' value to 'PUBLIC' value and 'LOCK' icon to 'UNLOCK'.
 
               <SVGIcon
                 divClass={'flex items-center content-center w-full'}

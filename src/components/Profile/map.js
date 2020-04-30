@@ -2,12 +2,11 @@ import React from 'react';
 import { Map, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 export default function connectionMap(props) {
   const { connection } = props;
-  console.log({ connection });
   const lat = connection.senderLat;
   const lng = connection.senderLon;
   const receiverLat = connection.receiverLat;
   const receiverLon = connection.receiverLon;
-  //displays sender's location when showing a remote swaap, right now there is no way to check who was the sender or receiver of a remote swaap
+  //displays in person connection point
   if (typeof connection.senderLat !== 'undefined' && connection.location !== 'REMOTE')
     return (
       <Map style={{ height: '300px', width: '100%' }} center={[lat, lng]} zoom={13}>
@@ -20,6 +19,7 @@ export default function connectionMap(props) {
         </Marker>
       </Map>
     );
+  //displays location that the user whose profile you are viewing swaaped if they are the receiver
   else if (typeof connection.senderLat !== 'undefined' && connection.receiver === connection.userId)
     return (
       <Map
@@ -36,6 +36,7 @@ export default function connectionMap(props) {
         </Circle>
       </Map>
     );
+  //displays location that the user whose profile you are viewing swaaped if they are the sender
   else if (typeof connection.senderLat !== 'undefined' && connection.sender === connection.userId)
     return (
       <Map
