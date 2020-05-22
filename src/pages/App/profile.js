@@ -31,6 +31,7 @@ const Profile = ({ location, navigate }) => {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       const connections = user.connections.filter((c) => c.id !== connection.id);
       const pendingConnections = user.pendingConnections.filter((c) => c.id !== connection.id);
+      
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
@@ -155,7 +156,7 @@ const Profile = ({ location, navigate }) => {
               <section className="mt-10">
                 <DisplayValue title="Job Title" value={data.user.jobtitle} />
               </section>
-              {/* preffered contact method if user has one selected */}
+              {/* preferred contact method if user has one selected */}
               {preferredContact && (
                 <section className="mt-10">
                   <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
@@ -242,6 +243,9 @@ const Profile = ({ location, navigate }) => {
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
               <DisplayValue title="Bio" value={data.user.bio} />
+            </section>
+            <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
+              <DisplayValue title="Note" value={data.user.connections[0].receiverNote} />
             </section>
           </div>
         </div>

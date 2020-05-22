@@ -236,6 +236,11 @@ export const FETCH_USER_PROFILE = gql`
       jobtitle
       tagline
       bio
+      connections {
+        id
+        senderNote
+        receiverNote
+      }
       profile {
         id
         value
@@ -261,6 +266,8 @@ export const FETCH_PUBLIC_PROFILE = gql`
       bio
       connections {
         id
+        senderNote
+        receiverNote
       }
       profile {
         id
@@ -332,6 +339,8 @@ export const GET_USER_CONNECTIONS = gql`
         senderLat
         receiverLat
         receiverLon
+        senderNote
+        receiverNote
         sender {
           id
           name
@@ -369,4 +378,5 @@ export const GET_USER_CONNECTIONS = gql`
       }
     }
   }
+
 `;
