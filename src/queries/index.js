@@ -279,7 +279,6 @@ export const NAVBAR_PROFILE = gql`
       name
       picture
       id
-      username
     }
   }
 `;
