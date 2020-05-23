@@ -29,10 +29,10 @@ export default function NavBar({ inHeader, qr }) {
 
   if (inDevelopment) {
     qrLink = `https://staging.swaap.co/qrLink/${qrcData}`;
-    qrPubLink = `https://staging.swaap.co/card/${data.user.username}`;
+    qrPubLink = `https://staging.swaap.co/card/${data.user.id}`;
   } else {
     qrLink = `https://swaap.co/qrLink/${qrcData}`;
-    qrPubLink = `https://swaap.co/card/${data.user.username}`;
+    qrPubLink = `https://swaap.co/card/${data.user.id}`;
   }
 
   const handleLogout = () => {
