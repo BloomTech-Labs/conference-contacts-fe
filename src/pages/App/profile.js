@@ -244,9 +244,19 @@ const Profile = ({ location, navigate }) => {
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
+            
+          {/* Notes */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="Note" value={data.user.connections[0].receiverNote} />
+              <DisplayValue title="Notes to remember me by..." value={data.connection.receiverNote}/>                
             </section>
+            
+            {/* {viewingContact && (
+              <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
+              <DisplayValue title="Notes to remember me by..." value={data.connection.receiverNote}/>                
+            </section>
+            )
+            } */}
+    
           </div>
         </div>
         {/* Rendering map */}
@@ -259,3 +269,6 @@ const Profile = ({ location, navigate }) => {
   );
 };
 export default Profile;
+  // if viewingContact = true 
+  // Display senderNote if connection.sender.id return senderNote
+  //else if connection.receiver.id  return receiverNote
