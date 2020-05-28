@@ -17,9 +17,18 @@ const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
     variables: { id: location.state.userId },
-  });
+});
 
-  const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
+const sender = () => {
+  if(data.user.connections.sender.id)
+  return true;
+}
+const receiver = () => {
+  if(data.user.connections.receiver.id)
+  return true;
+};
+
+const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(
       cache,
       {
@@ -72,7 +81,7 @@ const Profile = ({ location, navigate }) => {
               <img
                 className="rounded-full shadow-lg w-96 h-96 object-cover mobile:w-64 mobile:h-64"
                 src={data.user.picture}
-                alt={`profile picuture of ${data.user.name}`}
+                alt={`profile picture of ${data.user.name}`}
               />
             </div>
 
@@ -245,17 +254,25 @@ const Profile = ({ location, navigate }) => {
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
             
-          {/* Notes */}
+          {/* Notes
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="Notes to remember me by..." value={data.connection.receiverNote}/>                
-            </section>
+              <DisplayValue title="Notes to remember me by..." value={data.user.connections.receiverNote}/>                
+            </section> */}
             
-            {/* {viewingContact && (
+            {viewingContact && (
               <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="Notes to remember me by..." value={data.connection.receiverNote}/>                
+              <DisplayValue title="Notes to remember me by..." value={() => {
+                if(sender === true){
+                  return data.user.connections.senderNote
+                }else if(receiver === true){
+                  return data.user.connections.receiverNote
+                }else {
+                  return null;
+                }
+              }}/>                
             </section>
             )
-            } */}
+            }
     
           </div>
         </div>
