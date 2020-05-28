@@ -51,7 +51,7 @@ export default function App(props) {
     client
       .mutate({
         mutation: gql`
-          mutation 2($user: CreateUserInput!) {
+          mutation CreateUser($user: CreateUserInput!) {
             createUser(data: $user) {
               success
             }
@@ -79,7 +79,7 @@ export default function App(props) {
       isLoggedInStateHandler();
       createUserMutationHandler();
     }
-  }, []);
+  }, [user]);
 
   return (
     // Router Component
