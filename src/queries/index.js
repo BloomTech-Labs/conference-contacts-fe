@@ -76,6 +76,20 @@ export const UPDATE_USER_INFO = gql`
         jobtitle
         tagline
         bio
+        username
+      }
+    }
+  }
+`;
+
+export const UPDATE_USERNAME = gql`
+  mutation updateUser($data: UpdateUserInput!) {
+    updateUser(data:$data) {
+      code
+      success
+      message
+      user {
+        username
       }
     }
   }
@@ -279,6 +293,7 @@ export const NAVBAR_PROFILE = gql`
       name
       picture
       id
+      username
     }
   }
 `;
