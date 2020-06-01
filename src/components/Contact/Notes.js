@@ -22,11 +22,15 @@ export const Notes = ({ contacts }) => {
     const handleEditNoteClick = (e) => {
         e.preventDefault();
         editing ? (setEditing(false)
-        .then(setNote())
+        //.then(setNote())
         ): (setEditing(true));
         
     }
-
+ const handleNoteChange = (e) => {
+    e.preventDefault()
+    setNote(e.target.value)
+    console.log(e.target.value);
+ }
     
     return(     
 
@@ -52,10 +56,19 @@ export const Notes = ({ contacts }) => {
                         />
                       </svg>
                 {editing ? (
-                <DisplayValue title="Notes to remember me by..." value={note}>
-                     
-                     </DisplayValue> 
-                ) : (<DisplayValue title="Notes to forget me by..." value={note}/>)
+                
+                     <form>
+                         <input
+                            type="textarea"
+                            value={note}
+                            onChange={handleNoteChange}
+                            name="noteInput"
+                            />
+                     </form>
+                    
+                ) : (
+                <DisplayValue title="Notes to forget me by..." value={note}/>
+                )
                 }
           
         </section>
