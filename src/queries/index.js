@@ -148,6 +148,7 @@ export const FETCH_HOME_USER = gql`
       id
       name
       picture
+      username
       notifications {
         id
         message
@@ -250,6 +251,7 @@ export const FETCH_USER_PROFILE = gql`
       jobtitle
       tagline
       bio
+      username
       profile {
         id
         value
@@ -273,6 +275,7 @@ export const FETCH_PUBLIC_PROFILE = gql`
       jobtitle
       tagline
       bio
+      username
       connections {
         id
       }
