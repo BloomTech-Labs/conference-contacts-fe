@@ -6,6 +6,7 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../../components/icon';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import DisplayValue from '../../components/Profile/DisplayValue';
+import {Notes} from '../../components/Contact/Notes';
 import BeatLoader from 'react-spinners/BeatLoader';
 import ConnectionMap from '../../components/Profile/map';
 import * as moment from 'moment';
@@ -17,18 +18,9 @@ const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
     variables: { id: location.state.userId },
-});
+  });    
 
-const sender = () => {
-  if(data.user.connections.sender.id)
-  return true;
-}
-const receiver = () => {
-  if(data.user.connections.receiver.id)
-  return true;
-};
-
-const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
+  const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(
       cache,
       {
@@ -64,6 +56,8 @@ const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNEC
     ? data.user.profile.filter((field) => field.id !== preferredContact.id)
     : data.user.profile;
 
+    console.log("profile.js data", data);
+    console.log("connections", data.user.connections)
   return (
     <div className="pb-6  mt-24 desktop:flex desktop:justify-end">
       <div className="profile-card bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
@@ -254,25 +248,13 @@ const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNEC
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
             
-          {/* Notes
-            <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="Notes to remember me by..." value={data.user.connections.receiverNote}/>                
-            </section> */}
+          {/* Notes */}
+            
             
             {viewingContact && (
-              <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
-              <DisplayValue title="Notes to remember me by..." value={() => {
-                if(sender === true){
-                  return data.user.connections.senderNote
-                }else if(receiver === true){
-                  return data.user.connections.receiverNote
-                }else {
-                  return null;
-                }
-              }}/>                
-            </section>
+              <Notes contacts={data}/>
             )
-            }
+            } 
     
           </div>
         </div>
@@ -286,6 +268,4 @@ const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNEC
   );
 };
 export default Profile;
-  // if viewingContact = true 
-  // Display senderNote if connection.sender.id return senderNote
-  //else if connection.receiver.id  return receiverNote
+  
