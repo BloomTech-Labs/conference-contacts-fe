@@ -15,7 +15,7 @@ const PublicProfile = () => {
   const params = useParams();
 
   const { loading, error, data } = useQuery(FETCH_PUBLIC_PROFILE, {
-    variables: { username: params.username },
+    variables: { id: params.id },
   });
 
   if (loading || !data)
@@ -88,9 +88,12 @@ const PublicProfile = () => {
                 </section>
               )}
             </div>
+            {/*
+            Due to security concerns we have removed this funcionality.
+            Do not want to display personal data on the public profile.
             <div className="my-4">
               <ConnectionCount data={data} />
-            </div>
+            </div> */}
           </div>
           <AddButton params={params} />
         </div>

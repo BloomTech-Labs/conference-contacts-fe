@@ -183,7 +183,7 @@ const Home = ({ qr }) => {
     // set qr code links
     const qrLink = `https://swaap.co/qrLink/${qrcData || qr}`;
 
-    const qrPubLink = `https://swaap.co/card/${data.user.username}`;
+    const qrPubLink = `https://swaap.co/card/${data.user.id}`;
 
     return (
       <div className="container mobile:pb-6 flex justify-center desktop:mt-24 mobile:mt-20">
