@@ -252,7 +252,7 @@ const Profile = ({ location, navigate }) => {
             
             
             {viewingContact && (
-              <Notes contacts={data}/>
+              <Notes contacts={data} connectionId={location.state.connectionId}/>
             )
             } 
     
