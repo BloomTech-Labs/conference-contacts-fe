@@ -18,11 +18,8 @@ export const Notes = ({ connectionId, contacts }) => {
   //declare the note we want to render.
   const note = (userId === connection.sender.id) ? connection.senderNote : connection.receiverNote
   //decide if note is sender or receiver note
-  //TESTING AREA
-  console.log("userId", userId)
-  console.log("connection", connection)
-  console.log("id:", id)
-  //TESTING AREA
+ 
+  
   //set up an event handler for clicking on the edit icon on the connection note UI
   const handleEditNoteClick = (e) => {
     e.preventDefault();
