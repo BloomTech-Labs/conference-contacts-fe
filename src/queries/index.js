@@ -116,6 +116,27 @@ export const UPDATE_CONNECTION_NOTE = gql`
   }
 `
 
+export const UPDATE_CONNECTION_EVENT = gql`
+  mutation updateConnectionEvent($id: ID!, $senderEvent: String, $receiverEvent: String){
+    updateConnectionEvent(id: $id, senderEvent: $senderEvent, receiverEvent: $receiverEvent){
+      code
+      success
+      message
+      connection{
+        id
+        senderEvent
+        receiverEvent
+        sender{
+          id
+        }
+        receiver{
+          id
+        }
+      }
+    }
+  }
+`
+
 export const CREATE_PROFILE_FIELD = gql`
   mutation createProfileField($data: CreateProfileFieldInput!) {
     createProfileField(data: $data) {
@@ -276,6 +297,8 @@ export const FETCH_USER_PROFILE = gql`
         id
         senderNote
         receiverNote
+        senderEvent
+        receiverEvent
         sender{
           id
         }
