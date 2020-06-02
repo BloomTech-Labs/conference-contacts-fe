@@ -76,6 +76,20 @@ export const UPDATE_USER_INFO = gql`
         jobtitle
         tagline
         bio
+        username
+      }
+    }
+  }
+`;
+
+export const UPDATE_USERNAME = gql`
+  mutation updateUser($data: UpdateUserInput!) {
+    updateUser(data:$data) {
+      code
+      success
+      message
+      user {
+        username
       }
     }
   }
@@ -155,6 +169,7 @@ export const FETCH_HOME_USER = gql`
       id
       name
       picture
+      username
       notifications {
         id
         message
@@ -268,6 +283,7 @@ export const FETCH_USER_PROFILE = gql`
           id
         }
       }
+      username
       profile {
         id
         value
@@ -291,6 +307,7 @@ export const FETCH_PUBLIC_PROFILE = gql`
       jobtitle
       tagline
       bio
+      username
       connections {
         id
         senderNote
@@ -313,6 +330,7 @@ export const NAVBAR_PROFILE = gql`
       name
       picture
       id
+      username
     }
   }
 `;
@@ -406,4 +424,6 @@ export const GET_USER_CONNECTIONS = gql`
     }
   }
 
+
 `;
+

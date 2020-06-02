@@ -15,7 +15,7 @@ const PublicProfile = () => {
   const params = useParams();
 
   const { loading, error, data } = useQuery(FETCH_PUBLIC_PROFILE, {
-    variables: { id: params.id },
+    variables: { username: params.username },
   });
 
   if (loading || !data)
