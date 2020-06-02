@@ -7,6 +7,7 @@ import Icon from '../../components/icon';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import DisplayValue from '../../components/Profile/DisplayValue';
 import {Notes} from '../../components/Contact/Notes';
+import {Events} from '../../components/Contact/Events';
 import BeatLoader from 'react-spinners/BeatLoader';
 import ConnectionMap from '../../components/Profile/map';
 import * as moment from 'moment';
@@ -78,7 +79,13 @@ const Profile = ({ location, navigate }) => {
                 alt={`profile picture of ${data.user.name}`}
               />
             </div>
-
+        {/* Events */}
+            
+            
+        {viewingContact && (
+              <Events contacts={data} connectionId={location.state.connectionId}/>
+            )
+            } 
             <div className="flex flex-col pl-0 m-0  desktop:max-w-xs">
               {/* name, industry, and edit icon if on own profile */}
               <section className="mt-12">
@@ -225,6 +232,7 @@ const Profile = ({ location, navigate }) => {
                   )}
                 </div>
               </section>
+              
             </div>
           </div>
           {/* lower half of profile card on desktop */}
@@ -263,6 +271,9 @@ const Profile = ({ location, navigate }) => {
           <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
+
+
+
       </div>
     </div>
   );
