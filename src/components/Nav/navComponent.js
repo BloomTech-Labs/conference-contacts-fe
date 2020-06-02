@@ -47,7 +47,7 @@ export default function NavComponent(props) {
       className={
         inHeader
           ? ''
-          : 'mobile:hidden py-8 profile-card bg-white m-0 shadow-md overflow-hidden w-3/12 mt-24'
+          : 'mobile:hidden py-8 profile-card bg-white m-0 shadow-md w-auto m-auto my-32'
       }
       style={inHeader ? null : { height: '720px' }}
     >

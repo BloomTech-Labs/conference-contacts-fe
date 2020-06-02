@@ -18,12 +18,7 @@ export const Events = ({ connectionId, contacts }) => {
   //declare the event we want to render.
   const event = (userId === connection.sender.id) ? connection.senderEvent : connection.receiverEvent
   //decide if event is sender or receiver event
- //TESTING
- console.log("id", id)
- console.log("userId", userId)
- console.log("connection", connection)
- //TESTING
-  
+   
   //set up an event handler for clicking on the edit icon on the connection event UI
   const handleEditEventClick = (e) => {
     e.preventDefault();
@@ -71,7 +66,7 @@ export const Events = ({ connectionId, contacts }) => {
                 strokeLinejoin="round"
               />
             </svg>
-            <DisplayValue title="Where we met" value={event} />
+            <DisplayValue title="Circumstances of our meeting" value={event} />
           </>
         )
       }

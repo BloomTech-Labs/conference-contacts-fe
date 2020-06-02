@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { UPDATE_CONNECTION_NOTE, FETCH_USER_PROFILE } from '../../queries/index';
+import React, { useState } from 'react';
+import { UPDATE_CONNECTION_NOTE } from '../../queries/index';
 import { useMutation } from '@apollo/react-hooks';
 import DisplayValue from '../../components/Profile/DisplayValue';
 export const Notes = ({ connectionId, contacts }) => {

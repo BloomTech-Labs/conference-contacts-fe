@@ -57,8 +57,7 @@ const Profile = ({ location, navigate }) => {
     ? data.user.profile.filter((field) => field.id !== preferredContact.id)
     : data.user.profile;
 
-    console.log("profile.js data", data);
-    console.log("connections", data.user.connections)
+    
   return (
     <div className="pb-6  mt-24 desktop:flex desktop:justify-end">
       <div className="profile-card bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
@@ -79,13 +78,7 @@ const Profile = ({ location, navigate }) => {
                 alt={`profile picture of ${data.user.name}`}
               />
             </div>
-        {/* Events */}
-            
-            
-        {viewingContact && (
-              <Events contacts={data} connectionId={location.state.connectionId}/>
-            )
-            } 
+        
             <div className="flex flex-col pl-0 m-0  desktop:max-w-xs">
               {/* name, industry, and edit icon if on own profile */}
               <section className="mt-12">
@@ -147,7 +140,6 @@ const Profile = ({ location, navigate }) => {
                               <button
                                 className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
                                 onClick={() => {
-                                  console.log('modal closed');
                                   close();
                                 }}
                               >
@@ -162,6 +154,13 @@ const Profile = ({ location, navigate }) => {
                 </div>
                 <p className="text-gray-700 tracking-wide text-xl">{data.user.industry}</p>
               </section>
+
+          {/* Events */}            
+          {viewingContact && (
+              <Events contacts={data} connectionId={location.state.connectionId}/>
+            )
+            } 
+
               {/* job title */}
               <section className="mt-10">
                 <DisplayValue title="Job Title" value={data.user.jobtitle} />
