@@ -95,6 +95,27 @@ export const UPDATE_USERNAME = gql`
   }
 `;
 
+export const UPDATE_CONNECTION_NOTE = gql`
+  mutation updateConnectionNote($id: ID!, $senderNote: String, $receiverNote: String){
+    updateConnectionNote(id: $id, senderNote: $senderNote, receiverNote: $receiverNote){
+      code
+      success
+      message
+      connection{
+        id
+        senderNote
+        receiverNote
+        sender{
+          id
+        }
+        receiver{
+          id
+        }
+      }
+    }
+  }
+`
+
 export const CREATE_PROFILE_FIELD = gql`
   mutation createProfileField($data: CreateProfileFieldInput!) {
     createProfileField(data: $data) {
@@ -251,6 +272,17 @@ export const FETCH_USER_PROFILE = gql`
       jobtitle
       tagline
       bio
+      connections {
+        id
+        senderNote
+        receiverNote
+        sender{
+          id
+        }
+        receiver{
+          id
+        }
+      }
       username
       profile {
         id
@@ -278,6 +310,8 @@ export const FETCH_PUBLIC_PROFILE = gql`
       username
       connections {
         id
+        senderNote
+        receiverNote
       }
       profile {
         id
@@ -350,6 +384,8 @@ export const GET_USER_CONNECTIONS = gql`
         senderLat
         receiverLat
         receiverLon
+        senderNote
+        receiverNote
         sender {
           id
           name
@@ -387,4 +423,7 @@ export const GET_USER_CONNECTIONS = gql`
       }
     }
   }
+
+
 `;
+

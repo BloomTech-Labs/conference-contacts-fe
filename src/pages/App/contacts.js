@@ -10,7 +10,9 @@ import ContactButton from '../../components/Contact/ContactButton';
 import ErrorPage from '../errorpage';
 
 const Contacts = ({ navigate }) => {
+  
   let { loading, error, data } = useQuery(GET_USER_CONNECTIONS);
+  
   const [name, setName] = useState('');
 
   const handleSearch = (e) => {
