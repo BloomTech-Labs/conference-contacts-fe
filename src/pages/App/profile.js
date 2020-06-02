@@ -52,7 +52,6 @@ const Profile = ({ location, navigate }) => {
       </div>
     );
   if (error) return <p>There was an error: {error}</p>;
-  console.log("test", data)
   const preferredContact = data.user.profile.find((field) => field.preferredContact);
   const contacts = preferredContact
     ? data.user.profile.filter((field) => field.id !== preferredContact.id)
