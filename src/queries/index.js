@@ -284,34 +284,10 @@ export const DELETE_CONNECTION = gql`
 export const FETCH_USER_PROFILE = gql`
   query FetchUserProfile($id: ID) {
     user(id: $id) {
-      id
       name
       picture
-      birthdate
-      location
-      industry
-      jobtitle
-      tagline
       bio
-      connections {
-        id
-        senderNote
-        receiverNote
-        senderEvent
-        receiverEvent
-        sender{
-          id
-        }
-        receiver{
-          id
-        }
-      }
-      username
       profile {
-        id
-        value
-        type
-        privacy
         preferredContact
       }
     }
