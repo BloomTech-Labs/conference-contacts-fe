@@ -57,7 +57,7 @@ export default function NavComponent(props) {
       >
         <div className="px-6">
           <div className=" flex-col justify-center items-center">
-            {/* SMALL IMG ROUNG */}
+            {/* SMALL IMG ROUND */}
             <img
               className="rounded-full shadow-md mx-auto w-32 h-32 object-cover"
               src={data.user.picture}
