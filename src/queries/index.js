@@ -327,6 +327,9 @@ export const FETCH_PUBLIC_PROFILE = gql`
       bio
       profile {
         id
+        value
+        type
+        privacy
         preferredContact
       }
     }
