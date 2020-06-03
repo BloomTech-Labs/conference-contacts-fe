@@ -34,9 +34,20 @@ export default function ProfileEdit(props) {
 
   const [updateProfileField] = useMutation(UPDATE_PROFILE_FIELD);
 
+  
+  //remove "connections" from data to ensure we make a proper get request.
+  let updateProfileData 
+  if (data) {
+    const copy = JSON.stringify(data)
+    updateProfileData  = JSON.parse(copy)
+    delete updateProfileData.user.connections
+  }
+
   useEffect(() => {
-    setFields(data?.user || {});
+    setFields(updateProfileData?.user || {});
   }, [data]);
+
+
 
   //create profile link
   const [createProfileField] = useMutation(CREATE_PROFILE_FIELD, {
@@ -93,7 +104,6 @@ export default function ProfileEdit(props) {
   const handleSave = async () => {
     try {
       const { id, picture, link, profile, __typename, ...changes } = fields;
-      console.log(changes);
       await updateUserInfo({ variables: { data: changes } });
       props.navigate('/profile');
     } catch (error) {
@@ -111,7 +121,7 @@ export default function ProfileEdit(props) {
       setLinkError(false);
     }
 
-    console.log('inside handleNewLink | \n ', fields);
+
 
     const profileData = {
       value: fields.link,
