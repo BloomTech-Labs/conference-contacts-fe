@@ -324,23 +324,9 @@ export const FETCH_PUBLIC_PROFILE = gql`
       id
       name
       picture
-      birthdate
-      location
-      industry
-      jobtitle
-      tagline
       bio
-      username
-      connections {
-        id
-        senderNote
-        receiverNote
-      }
       profile {
         id
-        value
-        type
-        privacy
         preferredContact
       }
     }
