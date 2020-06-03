@@ -19,7 +19,7 @@ export default function Pages(props) {
             <Profile path="profile" />
             <ProfileEdit path="profile/edit" />
             <Contacts path="contacts" />
-            {/* <Messages path="messages" /> */}
+          
             {/* <Settings path="settings" /> */}
             <ScanQr path="scanqr" />
           </Router>

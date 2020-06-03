@@ -47,30 +47,35 @@ export const Notes = ({ connectionId, contacts }) => {
             }}
           />
           <button type="submit" className="w-3/6 py-5 bg-purple-700 text-white mx-4 mt-2">Save</button>
-          <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold shadow-sm">X</button>
+          <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold text-lg shadow-sm">X</button>
         </form>
       ) : (
-          <>
+          <div className="flex">
+            <div className="w-3/4">
+              <DisplayValue title="Notes to remember me by..." value={note} />
+            </div>
+            <div className="w-1/4">
             {/* EDIT ICON */}
-            <svg onClick={handleEditNoteClick}
-              className="ml-3 mt-6"
-              width="60"
-              height="40"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <path
-                d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <DisplayValue title="Notes to remember me by..." value={note} />
-          </>
+              <svg onClick={handleEditNoteClick}
+                className="ml-3 mt-6"
+                width="60"
+                height="40"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <path
+                  d="M15.4285 4.28564L19.7142 8.57136L8.57136 19.7142H4.28564V15.4285L15.4285 4.28564Z"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            
+          </div>
         )
       }
     </section>
