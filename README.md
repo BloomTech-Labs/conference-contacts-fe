@@ -83,6 +83,10 @@ You will also see any lint errors in the console.
 
 Launches test runner, and runs tests.
 
+### `npx cypress open'
+
+Launches the Cypress testing gui to run cypress tests. 
+
 ### `npm build`
 
 Builds the app for production to the build folder.
