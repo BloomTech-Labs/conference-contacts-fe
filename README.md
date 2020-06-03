@@ -24,11 +24,12 @@
 
 ## Product Overview
 
-* You can find the deployed project at https://staging.swaap.co
+* You can find the deployed project at https://swaap.co
 
 * Trello Boards: 
     - [Labs 18](https://trello.com/b/Jh8cS46t/conference-contacts)
     - [Labs 22](https://trello.com/b/PSg0U9VH/labs-22-swaap)
+    - [Labs 24](https://trello.com/b/8Fyl5J3F/labs-24-swaap)
 
 * [Product Canvas](https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615)
 
@@ -38,14 +39,15 @@
 
 A way for people to gather, collect and stay in contact with people that you meet.
 
-To make the social and connecting aspect of events effortless, seamless and fun to do. To give courage and ability to less outgoing people to connect and network more comfortably. To unify the social and personal networking aspect of events and put that in the hands of participants instead of vendors.
+To make the social and connecting effortless, seamless and fun to do. To give courage and ability to less outgoing people to connect and network more comfortably. To unify the social and personal networking aspect of everyday events. Events meaning any time, place, & circumstance.
 
 ## Key Features
 
-- Give users the ability to connect with each other     through the app.
+- Give users the ability to connect with each other through the app.
 - Get and Store contacts in a fast and simple way.
-- The ability to message contacts.
-- Find out where you met the contacts.
+- Make it easy to see where you met each contact. A map is displayed with geo-location tracking of where you swaaped. 
+- Have the ability to add an 'event' to each contact. Event meaning any circumstance with a time and place. This helps you remember the context of where/when/why/how you connected. Ex: 'Office Luncheon,' 'Couples Retreat,' 'Networking Event' ect. 
+- Have the ability to add notes about a contact to make it easy to remember why you connected in the first place.
 
 ## Tech Stack
 
@@ -80,6 +82,10 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches test runner, and runs tests.
+
+### `npx cypress open'
+
+Launches the Cypress testing gui to run cypress tests. 
 
 ### `npm build`
 

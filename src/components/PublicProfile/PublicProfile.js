@@ -74,6 +74,7 @@ const PublicProfile = () => {
                           : preferredContact.value
                       }
                       target="_blank"
+                      rel="noreopener noreferrer"
                     >
                       <SVGIcon
                         type={preferredContact.type}

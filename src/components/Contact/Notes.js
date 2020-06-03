@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import DisplayValue from '../../components/Profile/DisplayValue';
 export const Notes = ({ connectionId, contacts }) => {
   //converting the connectionId to something I can use for the updateConnectionNote()
-  //this also allows us to use the connection id to find the correct connction in contacts. 
+  //this also allows us to use the connection id to find the correct connection in contacts. 
   const id = connectionId
   const userId = contacts.user.id
   //This is the connection we will be working with 
@@ -13,7 +13,7 @@ export const Notes = ({ connectionId, contacts }) => {
   let input
   //just setting our function for making the update.
   const [updateConnectionNote] = useMutation(UPDATE_CONNECTION_NOTE);
-  //This is the state of the connection note. When editing, the note UI will conver to a form we can update.
+  //This is the state of the connection note. When editing, the note UI will convert to a form we can update.
   const [editing, setEditing] = useState(false);
   //declare the note we want to render.
   const note = (userId === connection.sender.id) ? connection.senderNote : connection.receiverNote
@@ -28,7 +28,7 @@ export const Notes = ({ connectionId, contacts }) => {
   return (
     <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
       {editing ? (
-        <form
+        <form 
           onSubmit={e => {
             e.preventDefault();
             { (userId === connection.sender.id) ? (
@@ -40,12 +40,14 @@ export const Notes = ({ connectionId, contacts }) => {
             setEditing(false)
           }}
         >
-          <input
+          <input className="bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
+            type="textarea"
             ref={node => {
               input = node
             }}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="w-3/6 py-5 bg-purple-700 text-white mx-4 mt-2">Save</button>
+          <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold shadow-sm">X</button>
         </form>
       ) : (
           <>
