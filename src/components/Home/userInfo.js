@@ -5,7 +5,7 @@ import ProfileLink from '../PublicProfile/profilelink';
 export default function UserInfo(props) {
   const { data, qrcData, qrLink, qrPubLink, QRC } = props;
   // false means the QR code is set to the one for SWAAP users
-  const [toggleQR, setToggleQR] = useState(true);
+  //const [toggleQR, setToggleQR] = useState(true);
 
   return (
     <div className="desktop:hidden profile-card bg-white desktop:m-0 shadow-md mt-0 overflow-hidden">
@@ -57,13 +57,13 @@ export default function UserInfo(props) {
         {/* <img
             className="rounded-full shadow-lg w-96 h-96 object-cover -mt-12 ml-2 -mr-12"
             src={data.user.picture}
-            alt={`profile picuture of ${data.user.name}`}
+            alt={`profile picture of ${data.user.name}`}
           /> */}
         {/* EXPLORATION IMAGE -> */}
         <img
           className="rounded-full shadow-lg w-96 h-96 object-cover -mt-12  -mr-12 mobile:w-64 mobile:h-64 "
           src={data.user.picture}
-          alt={`profile picuture of ${data.user.name}`}
+          alt={`${data.user.name}`}
         />
       </div>
       <div className="flex justify-center">

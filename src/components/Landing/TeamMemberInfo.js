@@ -15,6 +15,7 @@ export default function TeamMemberInfo({ img, name, title, linkedin, github }) {
               href={linkedin}
               className="text-2xl mr-4 duration-300 hover:text-gray-400"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <AiOutlineLinkedin />
             </a>
@@ -22,6 +23,7 @@ export default function TeamMemberInfo({ img, name, title, linkedin, github }) {
               href={github}
               className="text-2xl mr-4 duration-300 hover:text-gray-400"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <AiFillGithub />
             </a>

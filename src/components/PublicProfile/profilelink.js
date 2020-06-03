@@ -3,13 +3,13 @@ import ClipboardJS from 'clipboard';
 import Popup from 'reactjs-popup';
 import {useQuery, useMutation} from '@apollo/react-hooks';
 import {NAVBAR_PROFILE, UPDATE_USERNAME} from "../../queries/index"
-import { fieldsConflictMessage } from 'graphql/validation/rules/OverlappingFieldsCanBeMerged';
+//import { fieldsConflictMessage } from 'graphql/validation/rules/OverlappingFieldsCanBeMerged';
 
 // Component Start
 export default function ProfileLink(props) {
     const {qrPubLink } = props;
     
-    const [copySuccess, setCopySuccess] = useState('');
+    //const [copySuccess, setCopySuccess] = useState('');
 
     // useEffect(() => {
     //   setCopySuccess('')
@@ -59,8 +59,8 @@ export default function ProfileLink(props) {
   if (!data.user.username) {
     return (
       <div>
-        <Popup trigger={ <button class='btn'>
-          <a classname="text-blue-500">click to copy profile link</a>
+        <Popup trigger={ <button class='btn'
+          className="text-blue-500">click to copy profile link
         </button>}
         modal
         position="center center">
@@ -95,15 +95,15 @@ export default function ProfileLink(props) {
     return (
         <div>
           <div className="mobile:hidden">
-          <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}>
-            <a classname="text-blue-500">click to copy profile link</a>
+          <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}
+            className="text-blue-500">click to copy profile link
               </button>} 
               modal
               position="center center">
                 {(close) => (
                   <div>
                     <br />
-                    <div classname="">Link Copied to Your Clipboard!</div>
+                    <div>Link Copied to Your Clipboard!</div>
                     <br />
                     <button
                     className="my-4 text-white bg-purple-600 hover:bg-purple-900 font-bold py-2 px-4 rounded"
@@ -122,9 +122,9 @@ export default function ProfileLink(props) {
               modal
               position="center center">
                 {(close) => (
-                  <div classname="text-center mt-8 text-blue-500">
+                  <div className="text-center mt-8 text-blue-500">
                     <br />
-                    <div classname="">Link Copied to Your Clipboard!</div>
+                    <div>Link Copied to Your Clipboard!</div>
                     <br />
                     <button
                     className="my-4 text-white bg-purple-600 hover:bg-purple-900 font-bold py-2 px-4 rounded"

@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import DisplayValue from '../../components/Profile/DisplayValue';
 export const Events = ({ connectionId, contacts }) => {
   //converting the connectionId to something I can use for the updateConnectionEvent()
-  //this also allows us to use the connection id to find the correct connction in contacts. 
+  //this also allows us to use the connection id to find the correct connection in contacts. 
   const id = connectionId
   const userId = contacts.user.id
   //This is the connection we will be working with 
@@ -13,7 +13,7 @@ export const Events = ({ connectionId, contacts }) => {
   let input
   //just setting our function for making the update.
   const [updateConnectionEvent] = useMutation(UPDATE_CONNECTION_EVENT);
-  //This is the state of the connection event. When editing, the event UI will conver to a form we can update.
+  //This is the state of the connection event. When editing, the event UI will convert to a form we can update.
   const [editing, setEditing] = useState(false);
   //declare the event we want to render.
   const event = (userId === connection.sender.id) ? connection.senderEvent : connection.receiverEvent

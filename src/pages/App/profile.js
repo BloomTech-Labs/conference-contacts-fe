@@ -75,7 +75,7 @@ const Profile = ({ location, navigate }) => {
               <img
                 className="rounded-full shadow-lg w-96 h-96 object-cover mobile:w-64 mobile:h-64"
                 src={data.user.picture}
-                alt={`profile picture of ${data.user.name}`}
+                alt={`${data.user.name}`}
               />
             </div>
         
@@ -180,6 +180,7 @@ const Profile = ({ location, navigate }) => {
                           : preferredContact.value
                       }
                       target="_blank"
+                      rel="noreopener noreferrer"
                     >
                       <SVGIcon
                         type={preferredContact.type}
@@ -214,6 +215,7 @@ const Profile = ({ location, navigate }) => {
                               : field.value
                           }
                           target="_blank"
+                          rel="noreopener noreferrer"
                         >
                           <SVGIcon
                             type={field.type}

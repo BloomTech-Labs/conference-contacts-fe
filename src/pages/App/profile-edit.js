@@ -199,7 +199,7 @@ export default function ProfileEdit(props) {
     setShowEditLink(!showEditLink);
     setLinkToEdit(field);
 
-    if (field.value == fields.link) {
+    if (field.value === fields.link) {
       setFields({
         ...fields,
         link: '',
