@@ -6,6 +6,8 @@ import { FETCH_USER_PROFILE, DELETE_CONNECTION, GET_USER_CONNECTIONS } from '../
 import Icon from '../../components/icon';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import DisplayValue from '../../components/Profile/DisplayValue';
+import {Notes} from '../../components/Contact/Notes';
+import {Events} from '../../components/Contact/Events';
 import BeatLoader from 'react-spinners/BeatLoader';
 import ConnectionMap from '../../components/Profile/map';
 import * as moment from 'moment';
@@ -17,7 +19,7 @@ const Profile = ({ location, navigate }) => {
   const viewingContact = Boolean(location.state.userId);
   const { loading, error, data } = useQuery(FETCH_USER_PROFILE, {
     variables: { id: location.state.userId },
-  });
+  });    
 
   const [deleteConnection, { loading: deleteLoading }] = useMutation(DELETE_CONNECTION, {
     update(
@@ -31,6 +33,7 @@ const Profile = ({ location, navigate }) => {
       const { user } = cache.readQuery({ query: GET_USER_CONNECTIONS });
       const connections = user.connections.filter((c) => c.id !== connection.id);
       const pendingConnections = user.pendingConnections.filter((c) => c.id !== connection.id);
+      
       cache.writeQuery({
         query: GET_USER_CONNECTIONS,
         data: {
@@ -54,6 +57,7 @@ const Profile = ({ location, navigate }) => {
     ? data.user.profile.filter((field) => field.id !== preferredContact.id)
     : data.user.profile;
 
+    
   return (
     <div className="pb-6  mt-24 desktop:flex desktop:justify-end">
       <div className="profile-card bg-white mx-6 desktop:mx-0 shadow-md overflow-hidden desktop:w-11/12">
@@ -71,10 +75,10 @@ const Profile = ({ location, navigate }) => {
               <img
                 className="rounded-full shadow-lg w-96 h-96 object-cover mobile:w-64 mobile:h-64"
                 src={data.user.picture}
-                alt={`profile picuture of ${data.user.name}`}
+                alt={`${data.user.name}`}
               />
             </div>
-
+        
             <div className="flex flex-col pl-0 m-0  desktop:max-w-xs">
               {/* name, industry, and edit icon if on own profile */}
               <section className="mt-12">
@@ -136,7 +140,6 @@ const Profile = ({ location, navigate }) => {
                               <button
                                 className="flex-1 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
                                 onClick={() => {
-                                  console.log('modal closed');
                                   close();
                                 }}
                               >
@@ -151,11 +154,18 @@ const Profile = ({ location, navigate }) => {
                 </div>
                 <p className="text-gray-700 tracking-wide text-xl">{data.user.industry}</p>
               </section>
+
+          {/* Events */}            
+          {viewingContact && (
+              <Events contacts={data} connectionId={location.state.connectionId}/>
+            )
+            } 
+
               {/* job title */}
               <section className="mt-10">
                 <DisplayValue title="Job Title" value={data.user.jobtitle} />
               </section>
-              {/* preffered contact method if user has one selected */}
+              {/* preferred contact method if user has one selected */}
               {preferredContact && (
                 <section className="mt-10">
                   <h2 className="block uppercase text-sm text-gray-700 tracking-widest mobile:text-lg">
@@ -170,6 +180,7 @@ const Profile = ({ location, navigate }) => {
                           : preferredContact.value
                       }
                       target="_blank"
+                      rel="noreopener noreferrer"
                     >
                       <SVGIcon
                         type={preferredContact.type}
@@ -204,6 +215,7 @@ const Profile = ({ location, navigate }) => {
                               : field.value
                           }
                           target="_blank"
+                          rel="noreopener noreferrer"
                         >
                           <SVGIcon
                             type={field.type}
@@ -221,6 +233,7 @@ const Profile = ({ location, navigate }) => {
                   )}
                 </div>
               </section>
+              
             </div>
           </div>
           {/* lower half of profile card on desktop */}
@@ -232,7 +245,7 @@ const Profile = ({ location, navigate }) => {
               </section>
               {/* DOB */}
               <section className="mt-10">
-                <DisplayValue title="Birthdate" value={data.user.birthdate} />
+                <DisplayValue title="Birthdate" value={data.user.birthdate ? moment(data.user.birthdate).format('L') : null} />
               </section>
               {/* tagline */}
               <section className="mt-10">
@@ -243,15 +256,36 @@ const Profile = ({ location, navigate }) => {
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
+            
+          {/* Notes */}
+            
+            
+            {/* <section>
+            {viewingContact && (
+              <Notes contacts={data} connectionId={location.state.connectionId}/>
+            )
+            } 
+            </section> */}
+    
           </div>
+          <section className='flex justify-end'>
+            {viewingContact && (
+              <Notes contacts={data} connectionId={location.state.connectionId}/>
+            )
+            } 
+            </section>
         </div>
         {/* Rendering map */}
-        <div className="flex justify-center">
+        <div className="mt-4 flex justify-center">
           <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
+
+
+
       </div>
     </div>
   );
 };
 export default Profile;
+  

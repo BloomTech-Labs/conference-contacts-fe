@@ -119,7 +119,7 @@ export default function TeamPage() {
   return (
     // container
     <div className="mx-auto text-center container">
-      <h2 className="text-4xl flex justify-center font-sembold text-black-600 p-12" id="team">
+      <h2 className="text-4xl flex justify-center font-semibold text-black-600 p-12" id="team">
         Team
       </h2>
 
@@ -134,7 +134,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/macjabeth" target="_blank">
+                <a href="https://github.com/macjabeth" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -149,7 +149,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/macjabeth/" target="_blank">
+                <a href="https://www.linkedin.com/in/macjabeth/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -181,7 +181,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/bobbyhalljr" target="_blank">
+                <a href="https://github.com/bobbyhalljr" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -196,7 +196,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/bobby-hall-jr-339091143/" target="_blank">
+                <a href="https://www.linkedin.com/in/bobby-hall-jr-339091143/" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -226,7 +226,7 @@ export default function TeamPage() {
                 alt="Tyler"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Bangstry" target="_blank">
+                <a href="https://github.com/Bangstry" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -241,7 +241,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tyler-quinn-b78a41195/" target="_blank">
+                <a href="https://www.linkedin.com/in/tyler-quinn-b78a41195/" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -272,7 +272,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/zpallday" target="_blank">
+                <a href="https://github.com/zpallday" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -287,7 +287,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/zachary-peasley-b8b057194/" target="_blank">
+                <a href="https://www.linkedin.com/in/zachary-peasley-b8b057194/" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -318,7 +318,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Fullmetal235" target="_blank">
+                <a href="https://github.com/Fullmetal235" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -336,6 +336,7 @@ export default function TeamPage() {
                 <a
                   href="https://www.linkedin.com/in/jarvise-billups-brown-a41a44172/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <svg
                     width="40"
@@ -366,7 +367,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/CoreyGumbs" target="_blank">
+                <a href="https://github.com/CoreyGumbs" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -381,7 +382,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/coreygumbs/" target="_blank">
+                <a href="https://www.linkedin.com/in/coreygumbs/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -413,7 +414,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/evoingram" target="_blank">
+                <a href="https://github.com/evoingram" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -428,7 +429,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/aquocotrans/" target="_blank">
+                <a href="https://www.linkedin.com/in/aquocotrans/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -460,7 +461,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Banbanaste" target="_blank">
+                <a href="https://github.com/Banbanaste" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -475,7 +476,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/roberto-banbanaste-2a1627132/" target="_blank">
+                <a href="https://www.linkedin.com/in/roberto-banbanaste-2a1627132/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -507,7 +508,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/scurtis6" target="_blank">
+                <a href="https://github.com/scurtis6" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -522,7 +523,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/sierra-curtis/" target="_blank">
+                <a href="https://www.linkedin.com/in/sierra-curtis/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -554,7 +555,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/tadepew" target="_blank">
+                <a href="https://github.com/tadepew" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -569,7 +570,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tristan-depew-60a2b28/" target="_blank">
+                <a href="https://www.linkedin.com/in/tristan-depew-60a2b28/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -601,7 +602,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/marlonjames71" target="_blank">
+                <a href="https://github.com/marlonjames71" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -616,7 +617,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/marlon-raskin/" target="_blank">
+                <a href="https://www.linkedin.com/in/marlon-raskin/" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -646,7 +647,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/mredig" target="_blank">
+                <a href="https://github.com/mredig" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -661,7 +662,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="http://www.linkedin.com/in/michael-redig" target="_blank">
+                <a href="http://www.linkedin.com/in/michael-redig" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -691,7 +692,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/chadarutherford" target="_blank">
+                <a href="https://github.com/chadarutherford" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4 mx-auto"
                     width="40"
@@ -706,7 +707,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/chadarutherford/" target="_blank">
+                <a href="https://www.linkedin.com/in/chadarutherford/" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mx-auto"
                     width="40"
@@ -738,7 +739,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/tylernishida" target="_blank">
+                <a href="https://github.com/tylernishida" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -753,7 +754,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tyler-nishida/" target="_blank">
+                <a href="https://www.linkedin.com/in/tyler-nishida/" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -783,7 +784,7 @@ export default function TeamPage() {
                 border="0"
               ></img>
               <div className="middle flex">
-                <a href="https://github.com/Ehuntwork" target="_blank">
+                <a href="https://github.com/Ehuntwork" target="_blank" rel="noopener noreferrer">
                   <svg
                     className="mr-4"
                     width="40"
@@ -798,7 +799,7 @@ export default function TeamPage() {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/emily-arias-921924181/" target="_blank">
+                <a href="https://www.linkedin.com/in/emily-arias-921924181/" target="_blank" rel="noopener noreferrer">
                   <svg
                     width="40"
                     height="40"
@@ -824,7 +825,7 @@ export default function TeamPage() {
 
     // modular component for fixing / changing styles in one place, replaces all of the above
     /* <div className="container mx-auto">
-      <h2 className="text-4xl text-center font-sembold text-black-600" id="team">
+      <h2 className="text-4xl text-center font-semibold text-black-600" id="team">
         Team
       </h2>
 

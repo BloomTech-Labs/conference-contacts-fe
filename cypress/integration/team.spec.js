@@ -13,12 +13,12 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 		cy.visit('http://localhost:3000/');
 	});
 	it('appropriate heading', () => {
-		cy.get('#root > div > div > .px-24').find('h2').contains('Team');
+		cy.get('#root > div > div > .text-center').find('h2').contains('Team');
 	});
 
 	context('team member:  Jonathan Picazo 0', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)
@@ -30,7 +30,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'profile.jpg');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)
@@ -39,16 +39,16 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Jonathan Picazo');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)
 				.find('.col-12')
 				.find('p')
-				.contains('Team Leader/Software Engineer');
+				.contains('Team Leader');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)
@@ -59,7 +59,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)
@@ -70,7 +70,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
                 .and('contains', 'linkedin');
             
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)
@@ -84,7 +84,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Bobby Hall 1', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(1)
@@ -96,7 +96,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(1)
@@ -105,16 +105,16 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Bobby Hall');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(1)
 				.find('.col-12')
 				.find('p')
-				.contains('Team Leader/Software Engineer');
+				.contains('Team Leader');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(1)
@@ -125,7 +125,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(1)
@@ -136,7 +136,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(1)
@@ -150,7 +150,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Tyler Quinn 2', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(2)
@@ -162,7 +162,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(2)
@@ -171,7 +171,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Tyler Quinn');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(2)
@@ -180,7 +180,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(2)
@@ -191,7 +191,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(2)
@@ -202,7 +202,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(2)
@@ -216,7 +216,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Zachary Peasley 3', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(3)
@@ -228,7 +228,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(3)
@@ -237,7 +237,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Zachary Peasley');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(3)
@@ -246,7 +246,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(3)
@@ -257,7 +257,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(3)
@@ -268,7 +268,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(3)
@@ -282,7 +282,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Jarvise Billups-Brown 4', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(4)
@@ -294,7 +294,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(4)
@@ -303,7 +303,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Jarvise Billups-Brown');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(4)
@@ -312,7 +312,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(4)
@@ -323,7 +323,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(4)
@@ -334,7 +334,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(4)
@@ -348,7 +348,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Corey Gumbs 5', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(5)
@@ -360,7 +360,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'v-4');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(5)
@@ -369,7 +369,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Corey Gumbs');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(5)
@@ -378,7 +378,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(5)
@@ -389,7 +389,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(5)
@@ -400,7 +400,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(5)
@@ -414,7 +414,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Erica Ingram 6', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(6)
@@ -426,7 +426,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'v-4');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(6)
@@ -435,7 +435,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Erica Ingram');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(6)
@@ -444,7 +444,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(6)
@@ -455,7 +455,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(6)
@@ -466,7 +466,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(6)
@@ -480,7 +480,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Roberto Banbanaste 7', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(7)
@@ -492,7 +492,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'v-4');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(7)
@@ -501,7 +501,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Roberto Banbanaste');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(7)
@@ -510,7 +510,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(7)
@@ -521,7 +521,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(7)
@@ -532,7 +532,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(7)
@@ -546,7 +546,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Sierra Curtis 8', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(8)
@@ -558,7 +558,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'v-4');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(8)
@@ -567,7 +567,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Sierra Curtis');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(8)
@@ -576,7 +576,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(8)
@@ -587,7 +587,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(8)
@@ -598,7 +598,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(8)
@@ -612,7 +612,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Tristan Depew 9', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(9)
@@ -624,7 +624,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'v-4');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(9)
@@ -633,7 +633,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Tristan Depew');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(9)
@@ -642,7 +642,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Software Engineer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(9)
@@ -653,7 +653,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(9)
@@ -664,7 +664,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(9)
@@ -678,7 +678,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Marlon Raskin 10', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
@@ -690,7 +690,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
@@ -699,7 +699,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Marlon Raskin');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
@@ -708,7 +708,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('IOS Developer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
@@ -719,7 +719,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
@@ -730,7 +730,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
@@ -744,7 +744,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Michael Redig 11', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(11)
@@ -756,7 +756,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(11)
@@ -765,7 +765,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Michael Redig');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(11)
@@ -774,7 +774,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('IOS Developer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(11)
@@ -785,7 +785,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(11)
@@ -796,7 +796,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(11)
@@ -810,7 +810,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Chad Rutherford 12', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(12)
@@ -822,7 +822,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', 'beta');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(12)
@@ -831,7 +831,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Chad Rutherford');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(12)
@@ -840,7 +840,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('IOS Developer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(12)
@@ -851,7 +851,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(12)
@@ -862,7 +862,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(12)
@@ -876,7 +876,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Tyler Nishida 13', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(13)
@@ -888,7 +888,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(13)
@@ -897,7 +897,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Tyler Nishida');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(13)
@@ -906,7 +906,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('UX Designer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(13)
@@ -917,7 +917,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(13)
@@ -928,7 +928,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(13)
@@ -942,7 +942,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 	});
 	context('team member:  Emily Arias 14', () => {
 		it('appropriate picture', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(14)
@@ -954,7 +954,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.and('contains', '512');
 		});
 		it('appropriate name', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(14)
@@ -963,7 +963,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('Emily Arias');
 		});
 		it('appropriate title', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(14)
@@ -972,7 +972,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.contains('UX Designer');
 		});
 		it('appropriate hover links', () => {
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(14)
@@ -983,7 +983,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'github');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(14)
@@ -994,7 +994,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
 
-			cy.get('#root > div > div > .px-24')
+			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(0)

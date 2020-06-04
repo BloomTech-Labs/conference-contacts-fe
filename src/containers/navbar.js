@@ -24,16 +24,11 @@ export default function NavBar({ inHeader, qr }) {
   if (error) return <ErrorPage />;
 
   // set qr code links
-  let qrLink;
-  let qrPubLink;
 
-  if (inDevelopment) {
-    qrLink = `https://staging.swaap.co/qrLink/${qrcData}`;
-    qrPubLink = `https://staging.swaap.co/card/${data.user.id}`;
-  } else {
-    qrLink = `https://swaap.co/qrLink/${qrcData}`;
-    qrPubLink = `https://swaap.co/card/${data.user.id}`;
-  }
+  
+  let qrLink = `https://swaap.co/qrLink/${qrcData}`;
+  let qrPubLink = `https://swaap.co/card/${data.user.id}`;
+  
 
   const handleLogout = () => {
     const hosts = {

@@ -76,10 +76,66 @@ export const UPDATE_USER_INFO = gql`
         jobtitle
         tagline
         bio
+        username
       }
     }
   }
 `;
+
+export const UPDATE_USERNAME = gql`
+  mutation updateUser($data: UpdateUserInput!) {
+    updateUser(data:$data) {
+      code
+      success
+      message
+      user {
+        username
+      }
+    }
+  }
+`;
+
+export const UPDATE_CONNECTION_NOTE = gql`
+  mutation updateConnectionNote($id: ID!, $senderNote: String, $receiverNote: String){
+    updateConnectionNote(id: $id, senderNote: $senderNote, receiverNote: $receiverNote){
+      code
+      success
+      message
+      connection{
+        id
+        senderNote
+        receiverNote
+        sender{
+          id
+        }
+        receiver{
+          id
+        }
+      }
+    }
+  }
+`
+
+export const UPDATE_CONNECTION_EVENT = gql`
+  mutation updateConnectionEvent($id: ID!, $senderEvent: String, $receiverEvent: String){
+    updateConnectionEvent(id: $id, senderEvent: $senderEvent, receiverEvent: $receiverEvent){
+      code
+      success
+      message
+      connection{
+        id
+        senderEvent
+        receiverEvent
+        sender{
+          id
+        }
+        receiver{
+          id
+        }
+      }
+    }
+  }
+`
 
 export const CREATE_PROFILE_FIELD = gql`
   mutation createProfileField($data: CreateProfileFieldInput!) {
@@ -134,6 +190,7 @@ export const FETCH_HOME_USER = gql`
       id
       name
       picture
+      username
       notifications {
         id
         message
@@ -236,6 +293,20 @@ export const FETCH_USER_PROFILE = gql`
       jobtitle
       tagline
       bio
+      connections {
+        id
+        senderNote
+        receiverNote
+        senderEvent
+        receiverEvent
+        sender{
+          id
+        }
+        receiver{
+          id
+        }
+      }
+      username
       profile {
         id
         value
@@ -253,15 +324,7 @@ export const FETCH_PUBLIC_PROFILE = gql`
       id
       name
       picture
-      birthdate
-      location
-      industry
-      jobtitle
-      tagline
       bio
-      connections {
-        id
-      }
       profile {
         id
         value
@@ -279,6 +342,7 @@ export const NAVBAR_PROFILE = gql`
       name
       picture
       id
+      username
     }
   }
 `;
@@ -332,6 +396,8 @@ export const GET_USER_CONNECTIONS = gql`
         senderLat
         receiverLat
         receiverLon
+        senderNote
+        receiverNote
         sender {
           id
           name
@@ -369,4 +435,7 @@ export const GET_USER_CONNECTIONS = gql`
       }
     }
   }
+
+
 `;
+

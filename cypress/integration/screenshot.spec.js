@@ -18,16 +18,14 @@ context('APP SCREENSHOTS', () => {
 	});
 
 	it('first picture of carousel', () => {
-		cy.get('#root > div')
+		cy.get('#root > div ')
 			.get('.GestureGallery')
 			.get('.Gesture-view')
+			.get('.Gesture-view__animated-container')
 			.get('.Gesture-view__pane')
-			.eq(0)
-			.get('div > img')
-			.eq(4)
+			.find('div > img')
 			.should('have.attr', 'src')
-			.and('contains', 'https://i.ibb.co/')
-			.and('contains', 'image.png');
+			.and('contains', '/static/media/home.883156d8.png')
 	});
 
 	it('second picture of carousel', () => {
@@ -39,8 +37,7 @@ context('APP SCREENSHOTS', () => {
 			.eq(1)
 			.find('div > img')
 			.should('have.attr', 'src')
-			.and('contains', 'https://i.ibb.co/')
-			.and('contains', 'image-1.png');
+			.and('contains', '/static/media/scanqr.bbf6c884.png')
 	});
 
 	it('third picture of carousel', () => {
@@ -52,7 +49,6 @@ context('APP SCREENSHOTS', () => {
 			.eq(2)
 			.find('div > img')
 			.should('have.attr', 'src')
-			.and('contains', 'https://i.ibb.co/')
-			.and('contains', 'image-6.png');
+			.and('contains', '/static/media/profile.bcdd342d.png')
 	});
 });

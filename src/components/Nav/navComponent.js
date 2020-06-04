@@ -26,7 +26,6 @@ export default function NavComponent(props) {
   const [copyFailed, setCopyFailed] = useState('');
 
   var clipboard = new ClipboardJS('.btn');
-  console.log('clipboard', clipboard);
 
   clipboard.on('success', function (e) {
     setCopySuccess('Copied!');
@@ -48,7 +47,7 @@ export default function NavComponent(props) {
       className={
         inHeader
           ? ''
-          : 'mobile:hidden py-8 profile-card bg-white m-0 shadow-md overflow-hidden w-3/12 mt-24'
+          : 'mobile:hidden py-8 profile-card bg-white m-0 shadow-md w-auto m-auto my-32'
       }
       style={inHeader ? null : { height: '720px' }}
     >
@@ -58,7 +57,7 @@ export default function NavComponent(props) {
       >
         <div className="px-6">
           <div className=" flex-col justify-center items-center">
-            {/* SMALL IMG ROUNG */}
+            {/* SMALL IMG ROUND */}
             <img
               className="rounded-full shadow-md mx-auto w-32 h-32 object-cover"
               src={data.user.picture}
@@ -84,6 +83,7 @@ export default function NavComponent(props) {
               {/* <a
                 href={qrPubLink}
                 target="_blank"
+                rel="noreopener noreferrer"
                 className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
               >
                 Public Profile link
