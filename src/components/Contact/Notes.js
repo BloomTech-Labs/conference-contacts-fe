@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { UPDATE_CONNECTION_NOTE } from '../../queries/index';
 import { useMutation } from '@apollo/react-hooks';
 import DisplayValue from '../../components/Profile/DisplayValue';
-export const Notes = ({ currentConnection, contacts }) => {
+export const Notes = ({ connectionId, contacts }) => {
   //converting the connectionId to something I can use for the updateConnectionNote()
   //this also allows us to use the connection id to find the correct connection in contacts. 
-  const id = currentConnection.id || null
+  const id = connectionId
   const userId = contacts.user.id
   //This is the connection we will be working with 
   const connection = contacts.user.connections.find(connection => connection.id === id)
@@ -16,10 +16,7 @@ export const Notes = ({ currentConnection, contacts }) => {
   //This is the state of the connection note. When editing, the note UI will convert to a form we can update.
   const [editing, setEditing] = useState(false);
   //declare the note we want to render.
-  let note
-  if (connection) {
-  note = (userId === connection.sender.id) ? connection.senderNote : connection.receiverNote
-  }
+  const note = (userId === connection.sender.id) ? connection.senderNote : connection.receiverNote
   //decide if note is sender or receiver note
  
   
@@ -28,10 +25,6 @@ export const Notes = ({ currentConnection, contacts }) => {
     e.preventDefault();
     editing ? (setEditing(false)) : (setEditing(true));
   }
-
-  if (id === null) {
-    return null
-  } else {
   return (
     <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
       {editing ? (
@@ -87,7 +80,7 @@ export const Notes = ({ currentConnection, contacts }) => {
       }
     </section>
   )
-}}
+}
 
 // if viewingContact = true 
   //Access data.user.connections and loop through it, displaying sender/receiver note.
