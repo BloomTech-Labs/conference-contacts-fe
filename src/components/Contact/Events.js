@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { UPDATE_CONNECTION_EVENT } from '../../queries/index';
 import { useMutation } from '@apollo/react-hooks';
 import DisplayValue from '../../components/Profile/DisplayValue';
-export const Events = ({ connectionId, contacts }) => {
+export const Events = ({ currentConnection, contacts }) => {
   //converting the connectionId to something I can use for the updateConnectionEvent()
   //this also allows us to use the connection id to find the correct connection in contacts. 
-  const id = connectionId
+  const id = currentConnection.id || null
   const userId = contacts.user.id
   //This is the connection we will be working with 
   const connection = contacts.user.connections.find(connection => connection.id === id)
@@ -16,7 +16,10 @@ export const Events = ({ connectionId, contacts }) => {
   //This is the state of the connection event. When editing, the event UI will convert to a form we can update.
   const [editing, setEditing] = useState(false);
   //declare the event we want to render.
+  let event
+  if (event) {
   const event = (userId === connection.sender.id) ? connection.senderEvent : connection.receiverEvent
+  }
   //decide if event is sender or receiver event
    
   //set up an event handler for clicking on the edit icon on the connection event UI
@@ -24,6 +27,10 @@ export const Events = ({ connectionId, contacts }) => {
     e.preventDefault();
     editing ? (setEditing(false)) : (setEditing(true));
   }
+
+  if (id === null) {
+    return null
+  } else {
   return (
     <section className='mt-8'>
       {editing ? (
@@ -79,7 +86,7 @@ export const Events = ({ connectionId, contacts }) => {
       }
     </section>
   )
-}
+}};
 
 // if viewingContact = true 
   //Access data.user.connections and loop through it, displaying sender/receiver note.
