@@ -15,8 +15,8 @@ export default function ProfileLink(props) {
     return (
         <div>
           <div className="mobile:hidden">
-          <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}
-            className="text-blue-500">click to copy profile link
+          <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}>
+            <a className="text-blue-500">click to copy profile link</a>
               </button>} 
               modal
               position="center center">
