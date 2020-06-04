@@ -42,7 +42,7 @@ export const Alphabetical = ({ connections, navigate }) => {
   );
 };
 
-//BELWO SORTS CONTACTS BY MOST RECENT.
+//BELOW SORTS CONTACTS BY MOST RECENT.
 export const Recent = ({ connections, navigate }) => {
   return connections.length > 0 ? (
     [...connections].reverse().map((connection) => (

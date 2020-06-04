@@ -177,8 +177,8 @@ const Home = ({ qr }) => {
     let notificationCount = receivedConnections.length + data.user.notifications.length;
 
     // set wether in staging/localhost or in production
-    const inDevelopment =
-      process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
+    // const inDevelopment =
+    //   process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
 
     // set qr code links
     const qrLink = `https://swaap.co/qrLink/${qrcData || qr}`;

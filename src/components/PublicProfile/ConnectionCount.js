@@ -11,6 +11,10 @@ export default function ConnectionCount (props) {
                 <BeatLoader size={35} loading={loading} color="#7B41FF" />
             </div>
         );
+    if(error)
+        return (
+            <ErrorPage/>
+        )
     
         return (
             <div>
@@ -46,7 +50,6 @@ export default function ConnectionCount (props) {
                         </linearGradient>
                         </defs>
                     </svg>
-                    {/* {data.user.name} */}
                         {data.user.connections.length === 1 ? (
                             <p>{data.user.connections.length} swaaps</p>
                             ) : data.user.connections.length === 0 ? (

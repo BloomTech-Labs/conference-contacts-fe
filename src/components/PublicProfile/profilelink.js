@@ -1,36 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ClipboardJS from 'clipboard';
 import Popup from 'reactjs-popup';
-import {useQuery} from '@apollo/react-hooks';
-import {NAVBAR_PROFILE} from "../../queries/index"
-import { fieldsConflictMessage } from 'graphql/validation/rules/OverlappingFieldsCanBeMerged';
 
 // Component Start
 export default function ProfileLink(props) {
     const {qrPubLink } = props;
     
-    //const [copySuccess, setCopySuccess] = useState('');
-
-    // useEffect(() => {
-    //   setCopySuccess('')
-    // }, []);
-
     var clipboard = new ClipboardJS('.btn');
     
     clipboard.on('success', function(e) {
-        // let timeId = setInterval(3000);
-        // setTimeout(() => { clearInterval(timeId) }, 1000)   
-    
-        // console.info('Action:', e.action);
-        // console.info('Text:', e.text);
-        // console.info('Trigger:', e.trigger);
-        // console.log(e);
-
-        e.clearSelection();
+       e.clearSelection();
     });
-
-    //GraphQL Queries
-    const {data} = useQuery(NAVBAR_PROFILE);
 
     return (
         <div>
