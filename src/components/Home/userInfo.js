@@ -87,7 +87,7 @@ export default function UserInfo(props) {
           <div className="mb-2 text-gray-400 uppercase text-sm tracking-widest">
             Share Your Profile
           </div>
-          <div className="flex items-end justify-between min-w-full">
+          {/* <div className="flex items-end justify-between min-w-full">
             <Popup
               trigger={
                 <button className="cursor-pointer w-full bg-gray-100 border border-blue-200 border-l-0 border-b-0 text-black shadow text-center py-2">
@@ -128,7 +128,10 @@ export default function UserInfo(props) {
             <div className="w-full text-center bg-gray-100 border border-blue-200 border-r-0 border-l-0 border-b-0 text-black shadow py-2">
               <ProfileLink qrPubLink={qrPubLink} />
             </div>
-          </div>
+          </div> */}
+          <div className="w-full p-4 text-center bg-gray-100 border border-blue-200 border-r-0 border-l-0 border-b-0 text-black shadow py-2">
+              <ProfileLink qrPubLink={qrPubLink} />
+            </div>
         </div>
       )}
     </div>
