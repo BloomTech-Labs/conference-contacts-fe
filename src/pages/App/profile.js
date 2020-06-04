@@ -260,12 +260,20 @@ const Profile = ({ location, navigate }) => {
           {/* Notes */}
             
             
+            {/* <section>
             {viewingContact && (
               <Notes contacts={data} connectionId={location.state.connectionId}/>
             )
             } 
+            </section> */}
     
           </div>
+          <section className='flex justify-end'>
+            {viewingContact && (
+              <Notes contacts={data} connectionId={location.state.connectionId}/>
+            )
+            } 
+            </section>
         </div>
         {/* Rendering map */}
         <div className="mt-4 flex justify-center">

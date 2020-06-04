@@ -47,7 +47,7 @@ const ScanQr = () => {
     const inDevelopment =
       process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
 
-    // ? do we have the right qrcode for our environment
+    // // ? do we have the right qrcode for our environment
     if ((!inDevelopment && qrMatch[1]) || (inDevelopment && !qrMatch[1])) {
       return setErrors(['Environment Mismatch']);
     }
@@ -84,7 +84,7 @@ const ScanQr = () => {
         onScan={handleScan}
         facingMode="environment"
         className="mb-6 mt-16 qrsizing"
-        showViewFinder={true}
+        showViewFinder={false}
       />
       {errors.length > 0 && (
         <pre className="text-red-500">

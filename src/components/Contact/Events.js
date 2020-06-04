@@ -25,7 +25,7 @@ export const Events = ({ connectionId, contacts }) => {
     editing ? (setEditing(false)) : (setEditing(true));
   }
   return (
-    <section >
+    <section className='mt-8'>
       {editing ? (
         <form
           onSubmit={e => {
@@ -45,7 +45,7 @@ export const Events = ({ connectionId, contacts }) => {
               input = node
             }}
           />
-          <button type="submit"className="w-3/6 py-5 bg-purple-700 text-white mx-4 mt-2">Save</button>
+          <button type="submit"className="w-3/6 py-5 rounded bg-purple-700 text-white mx-4 mt-2">Save</button>
           <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold text-lg shadow-sm">X</button>
         </form>
       ) : (
@@ -57,7 +57,7 @@ export const Events = ({ connectionId, contacts }) => {
             {/* EDIT ICON */}
             <div className="w-1/4">
               <svg onClick={handleEditEventClick}
-                className="ml-3 mt-6"
+                className="ml-3"
                 width="60"
                 height="40"
                 viewBox="0 0 30 30"

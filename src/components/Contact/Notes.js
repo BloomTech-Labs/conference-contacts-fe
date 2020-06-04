@@ -40,13 +40,13 @@ export const Notes = ({ connectionId, contacts }) => {
             setEditing(false)
           }}
         >
-          <input className="bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
+          <input className="max-w-3/4 bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
             type="textarea"
             ref={node => {
               input = node
             }}
           />
-          <button type="submit" className="w-3/6 py-5 bg-purple-700 text-white mx-4 mt-2">Save</button>
+          <button type="submit" className="w-3/6 py-4 bg-purple-700 text-white mx-4 mt-4">Save</button>
           <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold text-lg shadow-sm">X</button>
         </form>
       ) : (
