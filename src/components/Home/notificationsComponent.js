@@ -40,7 +40,7 @@ export default function NotificationsComponent(props) {
         </div>
         <p className="text-xl flex-1 text-center -ml-6">Notifications</p>
       </div>
-      <p className="ml-4 mt-4 text-xl desktop:text-base text-gray-500">Notifications</p>
+      <p className="ml-4 mt-4 text-xl desktop:text-base text-gray-500">Messages</p>
       {!data.user.notifications.length ? (
         <div className="flex flex-col items-center my-16">
           <svg

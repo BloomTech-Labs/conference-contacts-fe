@@ -253,35 +253,25 @@ const Profile = ({ location, navigate }) => {
               </section>
             </div>
             {/* bio */}
-            <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
+            <section className="mt-5 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
-            
-          {/* Notes */}
-            
-            
-            {/* <section>
-            {viewingContact && (
-              <Notes contacts={data} connectionId={location.state.connectionId}/>
-            )
-            } 
-            </section> */}
-    
-          </div>
-          <section className='flex justify-end'>
+            </div>
+
+          {/* Notes */}               
+          
+          <div className='flex justify-end w-full'>
             {viewingContact && (
               <Notes contacts={data} currentConnection={location.state}/>
             )
             } 
-            </section>
+            </div>
         </div>
         {/* Rendering map */}
         <div className="mt-4 flex justify-center">
           <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
-
-
 
       </div>
     </div>

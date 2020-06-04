@@ -46,7 +46,7 @@ export const Events = ({ currentConnection, contacts }) => {
             setEditing(false)
           }}
         >
-          <input className="bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
+          <input className="bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24 bg-gray-100"
             type="textarea"
             ref={node => {
               input = node
@@ -59,7 +59,7 @@ export const Events = ({ currentConnection, contacts }) => {
           <div className="flex">
           
             <div className="w-3/4">
-              <DisplayValue title="Circumstances of our meeting" value={event} />
+              <DisplayValue title="Event" value={event} />
             </div>
             {/* EDIT ICON */}
             <div className="w-1/4">
@@ -88,9 +88,3 @@ export const Events = ({ currentConnection, contacts }) => {
   )
 }};
 
-// if viewingContact = true 
-  //Access data.user.connections and loop through it, displaying sender/receiver note.
-  // Display senderNote if connection.sender.id return senderNote
-  //else if connection.receiver.id  return receiverNote
-//data.user.connections.senderNote
-// contacts.user.connections[6].receiverNote
