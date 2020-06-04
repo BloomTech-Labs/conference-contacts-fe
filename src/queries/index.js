@@ -354,6 +354,12 @@ export const GET_USER_CONNECTIONS = gql`
       pendingConnections {
         id
         location
+        senderLon
+        senderLat
+        receiverLat
+        receiverLon
+        senderNote
+        receiverNote
         sender {
           id
           name
