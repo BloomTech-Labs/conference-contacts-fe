@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
-import Popup from 'reactjs-popup';
+import React, { Fragment } from 'react';
+
 import { useParams } from '@reach/router';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery} from '@apollo/react-hooks';
 import { FETCH_PUBLIC_PROFILE } from '../../queries/index';
 import SVGIcon from '../../components/SocialLinks/SocialIcons/SVGIcon';
 import BeatLoader from 'react-spinners/BeatLoader';
 
 //components
-import ConnectionCount from '../PublicProfile/ConnectionCount';
-import PublicNavBar from '../../containers/publicnavbar';
+
+//import PublicNavBar from '../../containers/publicnavbar';
 import AddButton from './AddButton/AddButton';
 
 const PublicProfile = () => {
@@ -62,7 +62,7 @@ const PublicProfile = () => {
                   {data.user.bio ? data.user.bio : <span>This user doesn't have a bio</span>}
                 </p>
               </section>
-              {/* preffered contact method */}
+              {/* preferred contact method */}
               {preferredContact && (
                 <section className="mt-4">
                   <div className="flex text-base items-end">
@@ -89,12 +89,6 @@ const PublicProfile = () => {
                 </section>
               )}
             </div>
-            {/*
-            Due to security concerns we have removed this funcionality.
-            Do not want to display personal data on the public profile.
-            <div className="my-4">
-              <ConnectionCount data={data} />
-            </div> */}
           </div>
           <AddButton params={params} />
         </div>

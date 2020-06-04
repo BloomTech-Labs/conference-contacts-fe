@@ -10,7 +10,7 @@ export default function NavBarLanding() {
         </h2>
         <h3 className="mx-auto m-auto desktop:text-2xl mobile:text-lg mb-8 text-black-200">
           Business cards get thrown in the trash. Swaap makes trading business information
-          effortless
+          effortless. Never loose another contact!
         </h3>
       </div>
       <img
@@ -24,7 +24,7 @@ export default function NavBarLanding() {
           <div className="w-full desktop:w-1/2 pl-10">
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Connect Seamlessly</h4>
             <p className="text-gray-600 mb-8">
-              Adding contacts had never been easier. Search by name, scan QR code or download the
+              Adding contacts has never been easier. Search by name, scan QR code or download the
               app and "Swaap" with bluetooth.
             </p>
           </div>

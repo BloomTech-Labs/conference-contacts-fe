@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import BeatLoader from 'react-spinners/BeatLoader';
 import DrpBtn from '../../components/Contact/dropButton';
 import ContactButton from '../../components/Contact/ContactButton';
+import ConnectionCount from '../../components/PublicProfile/ConnectionCount'
 // import { AtoZ, Recent, ContactList } from '../../components/contactList';
 
 // import components
@@ -102,6 +103,7 @@ const Contacts = ({ navigate }) => {
             onChange={handleSearch}
           />
         </div>
+
         <div className="mt-6">
           <div className="bg-gray-300 py-2">
             <strong className="ml-4">PENDING</strong>
@@ -113,16 +115,22 @@ const Contacts = ({ navigate }) => {
           ) : (
             <p className="ml-4 my-2">None</p>
           )}
-
-          <div className="flex justify-between items-center bg-gray-300 py-2">
+        <div className="flex justify-between bg-gray-300">
+          <div className="w-1/5 items-center py-2">
             <p>
               <strong className="ml-4">CONNECTED</strong>
             </p>
           </div>
-          <div>
-            <DrpBtn connections={connections} navigate={navigate} />
+          <div className="w-1/2 mt-2">
+             <ConnectionCount data={data}/>
           </div>
+          </div>
+         
+            <DrpBtn connections={connections} navigate={navigate} />
+           
+          
         </div>
+        
       </div>
     );
   }

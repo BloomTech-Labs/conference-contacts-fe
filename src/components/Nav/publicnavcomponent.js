@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from '@reach/router';
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
-const QRC = React.memo(QRCode);
+//const QRC = React.memo(QRCode);
 
 // Component Start
 export default function PublicNav(props) {
-  const { open, setOpen, inHeader, data, isCurrent } = props;
+  const { open, setOpen, inHeader} = props;
 
   return (
     <nav
