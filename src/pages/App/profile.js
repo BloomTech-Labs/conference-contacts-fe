@@ -157,7 +157,7 @@ const Profile = ({ location, navigate }) => {
 
           {/* Events */}            
           {viewingContact && (
-              <Events contacts={data} currentConnection={location.state}/>
+              <Events contacts={data} connectionId={location.state.connectionId}/>
             )
             } 
 
@@ -270,7 +270,7 @@ const Profile = ({ location, navigate }) => {
           </div>
           <section className='flex justify-end'>
             {viewingContact && (
-              <Notes contacts={data} currentConnection={location.state}/>
+              <Notes contacts={data} connectionId={location.state.connectionId}/>
             )
             } 
             </section>
