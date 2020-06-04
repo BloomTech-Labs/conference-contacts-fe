@@ -47,20 +47,18 @@ export const Notes = ({ currentConnection, contacts }) => {
             setEditing(false)
           }}
         >
-          
-          <input className="max-w-3/4 bg-gray-100 shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
+          <input className="max-w-3/4 bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
             type="textarea"
             ref={node => {
               input = node
             }}
           />
-         
-          <button type="submit" className="w-3/6 py-4 bg-purple-700 hover:bg-black-400 hover:shadow-lg text-white mx-4 mt-4">Save</button>
-          <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold text-lg hover:bg-black-400 hover:shadow-lg">X</button>
+          <button type="submit" className="w-3/6 py-4 bg-purple-700 text-white mx-4 mt-4">Save</button>
+          <button onClick={() => setEditing(false)} className="mx-6 mt-2 text-purple-700 font-semi-bold text-lg shadow-sm">X</button>
         </form>
       ) : (
           <div className="flex">
-            <div className="w-3/4 h-32">
+            <div className="w-3/4">
               <DisplayValue title="Notes to remember me by..." value={note} />
             </div>
             <div className="w-1/4">
@@ -87,6 +85,13 @@ export const Notes = ({ currentConnection, contacts }) => {
           </div>
         )
       }
-    </section> 
+    </section>
   )
-}
+}}
+
+// if viewingContact = true 
+  //Access data.user.connections and loop through it, displaying sender/receiver note.
+  // Display senderNote if connection.sender.id return senderNote
+  //else if connection.receiver.id  return receiverNote
+//data.user.connections.senderNote
+// contacts.user.connections[6].receiverNote
