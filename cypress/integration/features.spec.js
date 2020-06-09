@@ -35,7 +35,7 @@ context('BIG FEATURES', () => {
 		it('paragraph with correct content', () => {
 			cy.get('#root > div > div > .container > .padding-title > .mb-20 > .pl-10');
 			cy.get('p').contains(
-				'Adding contacts had never been easier. Search by name, scan QR code or download the app and "Swaap" with bluetooth.'
+				'Adding contacts has never been easier. Search by name, scan QR code or download the app and "Swaap" with bluetooth.'
 			);
 		});
 	});
