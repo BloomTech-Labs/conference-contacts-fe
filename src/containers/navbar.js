@@ -34,17 +34,12 @@ export default function NavBar({ inHeader, qr }) {
     const hosts = {
       'localhost:3000': 'http://localhost:3000',
       'swaap.co': 'https://swaap.co',
-      'staging.swaap.co': 'https://staging.swaap.co',
     };
     client.writeData({ data: { isLoggedIn: false } });
-    localStorage.clear();
+    sessionStorage.clear();
     logout({ returnTo: hosts[window.location.host] });
   };
 
-  // const showQrCode = () => {
-  //   navigate('scanqr')
-  //   setOpen(!open);
-  // }
 
   // Changes page link background to grey when on that page - tristan depew
   const NavLink = (props) => (

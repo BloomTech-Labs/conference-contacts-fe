@@ -18,8 +18,7 @@ export default function NavComponent(props) {
     qrPubLink,
     qrcData,
     handleLogout,
-    data,
-    isCurrent,
+    data
   } = props;
 
   const [copySuccess, setCopySuccess] = useState('');
@@ -80,14 +79,7 @@ export default function NavComponent(props) {
                   />
                 </span>
               </div>
-              {/* <a
-                href={qrPubLink}
-                target="_blank"
-                rel="noreopener noreferrer"
-                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
-              >
-                Public Profile link
-              </a> */}
+              
             </div>
           )}
           {/* personal link information */}
@@ -131,12 +123,7 @@ export default function NavComponent(props) {
                 />
               </svg>
               <span className="uppercase">Contacts</span>
-              {/*
-								className="bg-gray-200 w-1/2 shadow br-black text-center text-xl py-2 px-6 rounded-lg hover:bg-black-400 hover:shadow-lg desktop:text:base desktop:px-0 desktop:w-2/3"
-								933EFF electricViolet
-								hover:bg-electricViolet hover:text-white
-
-							*/}
+              
             </li>
           </NavLink>
           <NavLink to="/profile" onClick={inHeader ? () => setOpen(!open) : null}>

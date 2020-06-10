@@ -40,7 +40,7 @@ export const Notes = ({ connectionId, contacts }) => {
             setEditing(false)
           }}
         >
-          <input className="max-w-3/4 bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
+          <input className="max-w-3/4 bg-gray-100 shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
             type="textarea"
             ref={node => {
               input = node

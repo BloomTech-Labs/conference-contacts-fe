@@ -17,7 +17,7 @@ export default function ErrorPage() {
       'staging.swaap.co': 'https://staging.swaap.co'
     };
     client.writeData({ data: { isLoggedIn: false } });
-    localStorage.clear();
+    sessionStorage.clear();
     logout({ returnTo: hosts[window.location.host] });
   };
 

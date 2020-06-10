@@ -1,7 +1,8 @@
 import React from 'react';
 
 // apollo imports
-import { ApolloClient, InMemoryCache, gql } from 'apollo-boost';
+import { ApolloClient, gql } from 'apollo-boost';
+import {InMemoryCache} from 'apollo-cache-inmemory';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
@@ -15,7 +16,7 @@ const AuthorizedApolloProvider = ({ children }) => {
 
   // create authentication
   const authLink = setContext(async () => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     return {
       headers: {
         authorization: token || ''
@@ -41,7 +42,7 @@ const AuthorizedApolloProvider = ({ children }) => {
   apolloClient.writeQuery({
     query,
     data: {
-      isLoggedIn: Boolean(localStorage.getItem('token'))
+      isLoggedIn: Boolean(sessionStorage.getItem('token'))
     }
   });
 

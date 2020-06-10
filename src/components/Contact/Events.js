@@ -39,7 +39,7 @@ export const Events = ({ connectionId, contacts }) => {
             setEditing(false)
           }}
         >
-          <input className="bg-white shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
+          <input className="bg-gray-100 shadow-lg p-8 pt-6 rounded mt-4 mx-4 ht-24"
             type="textarea"
             ref={node => {
               input = node
@@ -52,7 +52,7 @@ export const Events = ({ connectionId, contacts }) => {
           <div className="flex">
           
             <div className="w-3/4">
-              <DisplayValue title="Circumstances of our meeting" value={event} />
+              <DisplayValue title="Event of Meeting" value={event} />
             </div>
             {/* EDIT ICON */}
             <div className="w-1/4">
