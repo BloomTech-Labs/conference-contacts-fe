@@ -38,7 +38,7 @@ export const Auth0Provider = ({
       if (isAuthenticated) {
         let user = await auth0FromHook.getUser();
 
-        localStorage.setItem('token', await auth0FromHook.getTokenSilently());
+        sessionStorage.setItem('token', await auth0FromHook.getTokenSilently());
         setUser(user);
       }
       setLoading(false);

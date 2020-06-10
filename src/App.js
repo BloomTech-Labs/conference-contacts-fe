@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from '@reach/router';
+
 // apollo imports
 import { gql } from 'apollo-boost';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
