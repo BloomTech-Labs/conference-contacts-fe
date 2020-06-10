@@ -9,7 +9,7 @@ export default function connectionMap(props) {
   //displays in person connection point
   if (typeof connection.senderLat !== 'undefined' && connection.location !== 'REMOTE')
     return (
-      <Map style={{ height: '300px', width: '100%' }} center={[lat, lng]} zoom={13}>
+      <Map style={{ height: '300px', width: '100%', borderRadius: '1rem' }} center={[lat, lng]} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -23,7 +23,7 @@ export default function connectionMap(props) {
   else if (typeof connection.senderLat !== 'undefined' && connection.receiver === connection.userId)
     return (
       <Map
-        style={{ height: '300px', width: '400px', borderRadius: '1rem' }}
+        style={{ height: '300px', width: '100%', borderRadius: '1rem' }}
         center={[receiverLat, receiverLon]}
         zoom={13}
       >
@@ -40,7 +40,7 @@ export default function connectionMap(props) {
   else if (typeof connection.senderLat !== 'undefined' && connection.sender === connection.userId)
     return (
       <Map
-        style={{ height: '300px', width: '400px', borderRadius: '1rem' }}
+        style={{ height: '300px', width: '100%', borderRadius: '1rem' }}
         center={[lat, lng]}
         zoom={13}
       >
