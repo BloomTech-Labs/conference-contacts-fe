@@ -190,7 +190,7 @@ const Home = ({ qr }) => {
         <div className="desktop:w-full mobile:w-10/12 desktop:items-start desktop:flex desktop:flex-row desktop:justify-start">
           {/* qrcode and user info display component */}
           <UserInfo data={data} qrcData={qrcData} qrLink={qrLink} qrPubLink={qrPubLink} QRC={QRC} />
-          {/* open camera / scane qr component */}
+          {/* open camera / scan qr component */}
           <ScanQrButton />
           {/* notifications and requests component */}
           <NotificationsComponent

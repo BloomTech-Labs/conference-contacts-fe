@@ -239,36 +239,31 @@ const Profile = ({ location, navigate }) => {
           {/* lower half of profile card on desktop */}
           <div className="desktop:flex desktop:justify-between">
             <div className="">
+
               {/* location */}
               <section className="mt-10">
                 <DisplayValue title="Location" value={data.user.location} />
               </section>
+
               {/* DOB */}
               <section className="mt-10">
                 <DisplayValue title="Birthdate" value={data.user.birthdate ? moment(data.user.birthdate).format('L') : null} />
               </section>
+
               {/* tagline */}
               <section className="mt-10">
                 <DisplayValue title="Tagline" value={data.user.tagline} />
               </section>
             </div>
+
             {/* bio */}
             <section className="mt-10 desktop:w-96 desktop:shadow-lg desktop:p-5 desktop:border-t-4 desktop:border-indigo-500 desktop:rounded-b-lg">
               <DisplayValue title="Bio" value={data.user.bio} />
             </section>
             
-          {/* Notes */}
-            
-            
-            {/* <section>
-            {viewingContact && (
-              <Notes contacts={data} connectionId={location.state.connectionId}/>
-            )
-            } 
-            </section> */}
-    
+          {/* Notes */}    
           </div>
-          <section className='flex justify-end'>
+          <section className='flex justify-center w-full'>
             {viewingContact && (
               <Notes contacts={data} connectionId={location.state.connectionId}/>
             )
@@ -280,9 +275,6 @@ const Profile = ({ location, navigate }) => {
           <ConnectionMap connection={location.state} />
         </div>
         {/* <!-- closing the two card style divs: --> */}
-
-
-
       </div>
     </div>
   );

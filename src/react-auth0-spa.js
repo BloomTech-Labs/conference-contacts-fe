@@ -8,7 +8,7 @@ const DEFAULT_REDIRECT_CALLBACK = () => {
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
 
-//compnent start
+//component start
 export const Auth0Provider = ({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
