@@ -31,7 +31,7 @@ const Home = ({ qr }) => {
 
   // fetch user data from server
   const { loading, error, data, stopPolling } = useQuery(FETCH_HOME_USER, {
-    pollInterval: 3000,
+    //pollInterval: 3000,  <---causing query to run every 3 seconds
   });
 
   //ApolloCache Client to retrieve profileID
