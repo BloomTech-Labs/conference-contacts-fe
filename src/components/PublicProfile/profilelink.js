@@ -15,7 +15,7 @@ export default function ProfileLink(props) {
     return (
         <div>
           <div className="mobile:hidden">
-          <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}>
+          <Popup trigger={ <button className="btn" data-clipboard-text={qrPubLink}>
             <a className="text-blue-500">click to copy profile link</a>
               </button>} 
               modal
@@ -36,7 +36,7 @@ export default function ProfileLink(props) {
               </Popup>
           </div>
           <div className="desktop:hidden">
-            <Popup trigger={ <button class="btn" data-clipboard-text={qrPubLink}>
+            <Popup trigger={ <button className="btn" data-clipboard-text={qrPubLink}>
                   Share Link
               </button>} 
               modal

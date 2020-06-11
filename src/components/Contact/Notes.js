@@ -51,7 +51,7 @@ export const Notes = ({ connectionId, contacts }) => {
         </form>
       ) : (
           <div className="flex">
-            <div className="w-3/4">
+            <div className="w-full">
               <DisplayValue title="Notes to remember me by..." value={note} />
             </div>
             <div className="w-1/4">

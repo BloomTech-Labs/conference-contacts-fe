@@ -13,9 +13,6 @@ export default function NavBar({ inHeader, qr }) {
 
   const qrcData = localStorage.getItem('qrCode');
 
-  const inDevelopment =
-    process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENV === 'development';
-
   const client = useApolloClient();
   const { logout } = useAuth0();
   const { loading, error, data } = useQuery(NAVBAR_PROFILE);
