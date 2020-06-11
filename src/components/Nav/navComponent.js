@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { Link } from '@reach/router';
+import React, { useState } from 'react';
+
 import NavLink from './navlink';
 import QRCode from 'qrcode.react';
-import Popup from 'reactjs-popup';
+
 import ClipboardJS from 'clipboard';
 import ProfileLink from '../PublicProfile/profilelink';
 

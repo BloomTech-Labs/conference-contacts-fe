@@ -175,12 +175,12 @@ const Profile = ({ location, navigate }) => {
                     <a
                       className="flex text-blue-500 hover:text-blue-800 duration-200 w-full"
                       href={
-                        preferredContact.type == 'EMAIL'
+                        preferredContact.type === 'EMAIL'
                           ? `mailto:${preferredContact.value}`
                           : preferredContact.value
                       }
                       target="_blank"
-                      rel="noreopener noreferrer"
+                      rel="noopener noreferrer"
                     >
                       <SVGIcon
                         type={preferredContact.type}
@@ -206,16 +206,16 @@ const Profile = ({ location, navigate }) => {
                         <a
                           className="text-blue-500 hover:text-blue-800 duration-200 mr-8 mb-2"
                           href={
-                            field.type == 'EMAIL'
+                            field.type === 'EMAIL'
                               ? `mailto:${field.value}`
-                              : field.type == 'PHONE'
+                              : field.type === 'PHONE'
                               ? `tel:${field.value}`
-                              : field.type == 'SMS'
+                              : field.type === 'SMS'
                               ? `sms:${field.value}`
                               : field.value
                           }
                           target="_blank"
-                          rel="noreopener noreferrer"
+                          rel="noopener noreferrer"
                         >
                           <SVGIcon
                             type={field.type}

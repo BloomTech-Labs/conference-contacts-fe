@@ -30,22 +30,21 @@ const PublicProfile = () => {
 
   return (
     <Fragment>
-      {/* <PublicNavBar inHeader={true} /> */}
+      
       {/* public profile page */}
       <div className="bg-gray-300  pt-24" style={{ minHeight: '100vh' }}>
         <div
           className="container rounded-lg shadow-lg mx-auto flex flex-col bg-white overflow-hidden mobile:w-10/12"
           style={{ maxWidth: '350px' }}
         >
-          {/* <PublicNavBar inHeader={false} /> */}
-
+          
           <div className="px-4 flex flex-col">
             {/* IMG ROUND LARGE */}
             <div className="self-end -mr-10 -mt-8 mb-4 w-64">
               <img
                 className="rounded-full shadow-lg object-cover "
                 src={data.user.picture}
-                alt={`profile picuture of ${data.user.name}`}
+                alt={`${data.user.name}`}
               />
             </div>
 
@@ -69,12 +68,12 @@ const PublicProfile = () => {
                     <a
                       className="flex items-end text-blue-500 hover:text-blue-800 duration-200 mr-2"
                       href={
-                        preferredContact.type == 'EMAIL'
+                        preferredContact.type === 'EMAIL'
                           ? `mailto:${preferredContact.value}`
                           : preferredContact.value
                       }
                       target="_blank"
-                      rel="noreopener noreferrer"
+                      rel="noopener noreferrer"
                     >
                       <SVGIcon
                         type={preferredContact.type}

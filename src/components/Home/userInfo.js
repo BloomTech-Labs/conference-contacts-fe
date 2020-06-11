@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Popup from 'reactjs-popup';
+import React from 'react';
+
 import ProfileLink from '../PublicProfile/profilelink';
 
 export default function UserInfo(props) {

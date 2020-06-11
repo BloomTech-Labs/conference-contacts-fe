@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamMemberInfo from './TeamMemberInfo';
+//import TeamMemberInfo from './TeamMemberInfo';
 
 export default function TeamPage() {
   // team member info list for use with modular component below

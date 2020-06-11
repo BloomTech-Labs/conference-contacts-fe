@@ -79,7 +79,7 @@ export default function App(props) {
       isLoggedInStateHandler();
       createUserMutationHandler();
     }
-  }, [user]);
+  }, [createUserMutationHandler, isLoggedInStateHandler, user]);
 
   return (
     // Router Component

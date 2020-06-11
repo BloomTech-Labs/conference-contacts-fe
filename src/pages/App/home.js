@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation, useApolloClient } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import {
   FETCH_HOME_USER,
   DISMISS_NOTIFICATION,
@@ -36,9 +36,27 @@ const Home = ({ qr }) => {
 
   //ApolloCache Client to retrieve profileID
   //see AddPublicProfileHandler helper function below
-  const client = useApolloClient();
+  //const client = useApolloClient();
 
-  //Use Effect
+   //Add Public Profile connection to Home User connections helper function
+   const AddPublicProfileHandler = async (position) => {
+    //geolocation coords
+    const { latitude, longitude } = await position.coords;
+
+    //retrieves profile id from session storage
+    const isProfileId = sessionStorage.getItem('isProfileId');
+
+    if (isProfileId) {
+      await createConnection({
+        variables: {
+          userID: isProfileId,
+          senderCoords: { latitude, longitude },
+        },
+      });
+    }
+  };
+
+ 
   useEffect(() => {
     //gets geolocation data
     navigator.geolocation.getCurrentPosition((position) => {
@@ -143,23 +161,7 @@ const Home = ({ qr }) => {
     },
   });
 
-  //Add Public Profile connection to Home User connections helper function
-  const AddPublicProfileHandler = async (position) => {
-    //geolocation coords
-    const { latitude, longitude } = await position.coords;
-
-    //retrieves profile id from session storage
-    const isProfileId = sessionStorage.getItem('isProfileId');
-
-    if (isProfileId) {
-      await createConnection({
-        variables: {
-          userID: isProfileId,
-          senderCoords: { latitude, longitude },
-        },
-      });
-    }
-  };
+ 
 
   // React Rendering Logic for loading, error, and home component
   if (loading) {
