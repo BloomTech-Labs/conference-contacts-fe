@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('Login', () => {
+context('Testing contacts', () => {
 	
 	beforeEach(() => {
 		
@@ -12,7 +12,7 @@ context('Login', () => {
 		})
 	});
 
-	it('logs in successfully, then logs out', () => {
+	it('logs in successfully, then goes to contact adding note and events', () => {
 		cy.visit('/')
 		cy.contains('Login').click()
 		cy.get('form').within(() => {
@@ -23,7 +23,8 @@ context('Login', () => {
 		})
 		cy.contains('Notifications');
 		cy.contains('Swaap QR Code');
-		
+		cy.get('.py-8 > :nth-child(1) > .mt-8 > [href="/contacts"] > .flex > .uppercase').click({force:true})
+        cy.location('pathname').should('include', 'contacts');
 		cy.contains('Logout').click({force: true});
 	});
 	

@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (overrides = {}) => {
+Cypress.Commands.add('login', (email, password) => {
   Cypress.log({
     name: 'loginViaAuth0'
   });
@@ -43,5 +43,21 @@ Cypress.Commands.add('login', (overrides = {}) => {
     }
   };
 
-  cy.request(options);
-});
+  cy.request(options)
+})
+
+Cypress.Commands.add('checkToken', (token) => {
+  cy.window()
+  .its('sessionStorage')
+  .should('eq', token)
+})
+
+// .then(resp => {
+//   expect(resp.status).to.eq(200);
+//   window.sessionStorage.setItem(
+//     'loginViaAuth0: isLoggedin',
+//     'token'
+//   )
+//    cy.visit('/');
+//    cy.contains('Login').click()
+// });
