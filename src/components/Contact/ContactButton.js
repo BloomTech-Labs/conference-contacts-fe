@@ -2,18 +2,18 @@ import React from 'react';
 
 export default function ContactButton({ connection, navigate }) {
   return (
-    <button
+    <div
       key={connection.id}
-      onClick={() =>
-        navigate('/profile', {
-          state: {
-            userId: connection.contact.id,
-            connectionId: connection.id,
-            location: connection.location,
-            status: 'PENDING',
-          },
-        })
-      }
+      // onClick={() =>
+      //   navigate('/profile', {
+      //     state: {
+      //       userId: connection.contact.id,
+      //       connectionId: connection.id,
+      //       location: connection.location,
+      //       status: 'PENDING',
+      //     },
+      //   })
+      // }
       className="flex justify-start items-center my-2 ml-4 pb-2 border-b-2 w-11/12"
     >
       <div>
@@ -34,6 +34,6 @@ export default function ContactButton({ connection, navigate }) {
         </span>
         <small>{connection.contact.industry}</small>
       </div>
-    </button>
+    </div>
   );
 }
