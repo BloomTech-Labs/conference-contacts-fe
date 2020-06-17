@@ -676,12 +676,177 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
-	context('team member:  Marlon Raskin 10', () => {
+	context('team member:  Michael Bailar 10', () => {
 		it('appropriate picture', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
 				.eq(10)
+				.find('.col-lg-3')
+				.find('.hovereffect > img')
+				.should('have.attr', 'alt', 'Michael')
+				.should('have.attr', 'src')
+				.and('contains', 'https://i.ibb.co/')
+				.and('contains', '512');
+		});
+		it('appropriate name', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(10)
+				.find('.col-lg-3')
+				.find('h4')
+				.contains('Michael Bailar');
+		});
+		it('appropriate title', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(10)
+				.find('.col-lg-3')
+				.find('p')
+				.contains('Software Engineer');
+		});
+		it('appropriate hover links', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(10)
+				.find('.col-lg-3')
+				.find('.middle')
+				.find('a')
+				.eq(0)
+				.should('have.attr', 'href')
+				.and('contains', 'github');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
+		});
+	});
+	context('team member:  Christine Fletcher 11', () => {
+		it('appropriate picture', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(11)
+				.find('.col-lg-3')
+				.find('.hovereffect > img')
+				.should('have.attr', 'alt', 'Christine')
+				.should('have.attr', 'src')
+				.and('contains', 'https://i.ibb.co/')
+				.and('contains', '512');
+		});
+		it('appropriate name', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(11)
+				.find('.col-lg-3')
+				.find('h4')
+				.contains('Christine Fletcher');
+		});
+		it('appropriate title', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(11)
+				.find('.col-lg-3')
+				.find('p')
+				.contains('Software Engineer');
+		});
+		it('appropriate hover links', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(11)
+				.find('.col-lg-3')
+				.find('.middle')
+				.find('a')
+				.eq(0)
+				.should('have.attr', 'href')
+				.and('contains', 'github');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
+		});
+	});
+	context('team member:  Christian Rios 12', () => {
+		it('appropriate picture', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(12)
+				.find('.col-lg-3')
+				.find('.hovereffect > img')
+				.should('have.attr', 'alt', 'Christian')
+				.should('have.attr', 'src')
+				.and('contains', 'https://i.ibb.co/')
+				.and('contains', '512');
+		});
+		it('appropriate name', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(12)
+				.find('.col-lg-3')
+				.find('h4')
+				.contains('Christian Rios');
+		});
+		it('appropriate title', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(12)
+				.find('.col-lg-3')
+				.find('p')
+				.contains('Software Engineer');
+		});
+		it('appropriate hover links', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(12)
+				.find('.col-lg-3')
+				.find('.middle')
+				.find('a')
+				.eq(0)
+				.should('have.attr', 'href')
+				.and('contains', 'github');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
+		});
+	});
+	context('team member:  Marlon Raskin 13', () => {
+		it('appropriate picture', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(13)
 				.find('.col-12')
 				.find('.hovereffect > img')
 				.should('have.attr', 'alt', 'Marlon')
@@ -693,7 +858,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(10)
+				.eq(13)
 				.find('.col-12')
 				.find('h4')
 				.contains('Marlon Raskin');
@@ -702,7 +867,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(10)
+				.eq(13)
 				.find('.col-12')
 				.find('p')
 				.contains('IOS Developer');
@@ -711,7 +876,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(10)
+				.eq(13)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -722,7 +887,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(10)
+				.eq(13)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -733,7 +898,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(10)
+				.eq(13)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -742,12 +907,12 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
-	context('team member:  Michael Redig 11', () => {
+	context('team member:  Michael Redig 14', () => {
 		it('appropriate picture', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(11)
+				.eq(14)
 				.find('.col-12')
 				.find('.hovereffect > img')
 				.should('have.attr', 'alt', 'Michael')
@@ -759,7 +924,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(11)
+				.eq(14)
 				.find('.col-12')
 				.find('h4')
 				.contains('Michael Redig');
@@ -768,7 +933,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(11)
+				.eq(14)
 				.find('.col-12')
 				.find('p')
 				.contains('IOS Developer');
@@ -777,7 +942,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(11)
+				.eq(14)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -788,7 +953,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(11)
+				.eq(14)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -799,7 +964,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(11)
+				.eq(14)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -808,12 +973,12 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
-	context('team member:  Chad Rutherford 12', () => {
+	context('team member:  Chad Rutherford 15', () => {
 		it('appropriate picture', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(12)
+				.eq(15)
 				.find('.col-12')
 				.find('.hovereffect > img')
 				.should('have.attr', 'alt', 'Chad')
@@ -825,7 +990,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(12)
+				.eq(15)
 				.find('.col-12')
 				.find('h4')
 				.contains('Chad Rutherford');
@@ -834,7 +999,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(12)
+				.eq(15)
 				.find('.col-12')
 				.find('p')
 				.contains('IOS Developer');
@@ -843,7 +1008,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(12)
+				.eq(15)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -854,7 +1019,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(12)
+				.eq(15)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -865,7 +1030,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(12)
+				.eq(15)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -874,12 +1039,133 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
-	context('team member:  Tyler Nishida 13', () => {
+	context('team member:  Jesse Ruiz 16', () => {
 		it('appropriate picture', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(13)
+				.eq(16)
+				.find('.col-lg-3')
+				.find('.hovereffect > img')
+				.should('have.attr', 'alt', 'Jesse')
+				.should('have.attr', 'src')
+				.and('contains', 'https://i.ibb.co/')
+				.and('contains', '512');
+		});
+		it('appropriate name', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(16)
+				.find('.col-lg-3')
+				.find('h4')
+				.contains('Jesse Ruiz');
+		});
+		it('appropriate title', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(16)
+				.find('.col-lg-3')
+				.find('p')
+				.contains('IOS Developer');
+		});
+		it('appropriate hover links', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(16)
+				.find('.col-lg-3')
+				.find('.middle')
+				.find('a')
+				.eq(0)
+				.should('have.attr', 'href')
+				.and('contains', 'github');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(16)
+				.find('.col-lg-3')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.should('have.attr', 'href')
+				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
+		});
+	});
+	context('team member:  Kerianne Levesque 17', () => {
+		it('appropriate picture', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(17)
+				.find('.col-lg-3')
+				.find('.hovereffect > img')
+				.should('have.attr', 'alt', 'Keri')
+				.should('have.attr', 'src')
+				.and('contains', 'https://i.ibb.co/')
+				.and('contains', '512');
+		});
+		it('appropriate name', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(17)
+				.find('.col-lg-3')
+				.find('h4')
+				.contains('Kerianne Levesque');
+		});
+		it('appropriate title', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(17)
+				.find('.col-lg-3')
+				.find('p')
+				.contains('IOS Developer');
+		});
+		it('appropriate hover links', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(16)
+				.find('.col-lg-3')
+				.find('.middle')
+				.find('a')
+				.eq(0)
+				.should('have.attr', 'href')
+				.and('contains', 'github');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
+		});
+	});
+	context('team member:  Tyler Nishida 18', () => {
+		it('appropriate picture', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(18)
 				.find('.col-12')
 				.find('.hovereffect > img')
 				.should('have.attr', 'alt', 'Tylers')
@@ -891,7 +1177,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(13)
+				.eq(18)
 				.find('.col-12')
 				.find('h4')
 				.contains('Tyler Nishida');
@@ -900,7 +1186,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(13)
+				.eq(18)
 				.find('.col-12')
 				.find('p')
 				.contains('UX Designer');
@@ -909,7 +1195,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(13)
+				.eq(18)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -920,7 +1206,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(13)
+				.eq(18)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -931,7 +1217,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(13)
+				.eq(18)
 				.find('.col-12')
 				.find('.middle')
 				.find('a')
@@ -940,12 +1226,12 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 				.should('have.attr', 'fill', '#2B6CB0');
 		});
 	});
-	context('team member:  Emily Arias 14', () => {
+	context('team member:  Emily Arias 19', () => {
 		it('appropriate picture', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(14)
+				.eq(19)
 				.find('.col-lg-3')
 				.find('.hovereffect > img')
 				.should('have.attr', 'alt', 'Emily')
@@ -957,7 +1243,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(14)
+				.eq(19)
 				.find('.col-lg-3')
 				.find('h4')
 				.contains('Emily Arias');
@@ -966,7 +1252,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(14)
+				.eq(19)
 				.find('.col-lg-3')
 				.find('p')
 				.contains('UX Designer');
@@ -975,7 +1261,7 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(14)
+				.eq(19)
 				.find('.col-lg-3')
 				.find('.middle')
 				.find('a')
@@ -986,13 +1272,58 @@ context('TEAM MEMBER PROFILES SECTION', () => {
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')
 				.find('.px-2')
-				.eq(14)
+				.eq(19)
 				.find('.col-lg-3')
 				.find('.middle')
 				.find('a')
 				.eq(1)
 				.should('have.attr', 'href')
 				.and('contains', 'linkedin');
+
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(0)
+				.find('.col-12')
+				.find('.middle')
+				.find('a')
+				.eq(1)
+				.find('svg > path')
+				.should('have.attr', 'fill', '#2B6CB0');
+		});
+	});
+	context('team member:  Frantz-Eder Audige 20', () => {
+		it('appropriate picture', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(20)
+				.find('.col-lg-3')
+				.find('.hovereffect > img')
+				.should('have.attr', 'alt', 'Frantz')
+				.should('have.attr', 'src')
+				.and('contains', 'https://i.ibb.co/')
+				.and('contains', '512');
+		});
+		it('appropriate name', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(20)
+				.find('.col-lg-3')
+				.find('h4')
+				.contains('Frantz-Eder Audige');
+		});
+		it('appropriate title', () => {
+			cy.get('#root > div > div > .text-center')
+				.find('.flex-wrap')
+				.find('.px-2')
+				.eq(20)
+				.find('.col-lg-3')
+				.find('p')
+				.contains('UX Designer');
+		});
+		it('appropriate hover links', () => {
 
 			cy.get('#root > div > div > .text-center')
 				.find('.flex-wrap')

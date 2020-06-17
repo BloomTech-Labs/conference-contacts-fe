@@ -657,7 +657,7 @@ export default function TeamPage() {
             </div>
 
             <h4 className="text-base text-gray-800 font-bold mt-2">Christine Fletcher</h4>
-            <p className="text-gray-500 mb-8 text-sm">Software Developer</p>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
 
@@ -691,7 +691,7 @@ export default function TeamPage() {
             </div>
 
             <h4 className="text-base text-gray-800 font-bold mt-2">Christian Rios</h4>
-            <p className="text-gray-500 mb-8 text-sm">Software Developer</p>
+            <p className="text-gray-500 mb-8 text-sm">Software Engineer</p>
           </div>
         </div>
 
