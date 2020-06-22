@@ -149,7 +149,6 @@ export default function NavComponent(props) {
         <div className="flex justify-center mt-6">
           <button
             data-testid="logout-button"
-            data-cy="logout"
             className="bg-gray-200 w-1/2 shadow br-black text-center text-xl py-2 px-6 rounded-lg hover:bg-black-400 hover:shadow-lg desktop:text:base desktop:px-0 desktop:w-2/3"
             onClick={handleLogout}
           >
