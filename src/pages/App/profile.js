@@ -88,7 +88,6 @@ const Profile = ({ location, navigate }) => {
                     <Link to="edit">
                       {/* EDIT ICON */}
                       <svg
-                        data-cy="edit-profile"
                         className="ml-3 mt-6"
                         width="60"
                         height="40"
