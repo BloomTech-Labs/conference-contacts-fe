@@ -91,7 +91,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches test runner, and runs tests.
+Launches test runner, and runs tests. 6/7 failing
 
 ### `npx cypress open'
 
