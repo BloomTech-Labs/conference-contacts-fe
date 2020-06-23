@@ -41,7 +41,9 @@
 
 * [Product Canvas](https://www.notion.so/Conference-Contacts-1fa5dafff4964d9d99e07d98dadb8615)
 
-* [Design Files](https://www.figma.com/file/CkvwWMzxcI4lI4udHm8QiH/Labs18_Conference-Contacts%2C-Emily%2CTylerr?node-id=877%3A72346)
+* [Design Files]Labs 18: (https://www.figma.com/file/CkvwWMzxcI4lI4udHm8QiH/Labs18_Conference-Contacts%2C-Emily%2CTylerr?node-id=877%3A72346)
+
+* [Design Files]Labs 24: (https://www.figma.com/file/vqDiwtC4NT9VavqeFhxSmm/Swaap-Frantz-Plus-Labs-18-version?node-id=2217%3A270)
 
 # Project Description
 
@@ -89,7 +91,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches test runner, and runs tests.
+Launches test runner, and runs tests. 6/7 failing
 
 ### `npx cypress open'
 
@@ -132,7 +134,7 @@ In order for the app to function correctly, you must set up your own environment
 
 ## Cypress
 
-We use [cypress](https://www.cypress.io/) to for end to end tests on the frontend.
+We use [cypress](https://www.cypress.io/) for end to end tests on the frontend.
 
 Writing end-to-end tests takes a lot of different tools to work together. With Cypress you get multiple tools in one.
 
